@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Systech Lighting and Controls Inc. | Lighting, Dimming &amp; Audio-Visual Systems</title>
+<meta name="description" content="Systech Lighting &amp; Controls Inc. designs, supplies and installs architectural lighting, dimming, audio-visual and sound systems across the Philippines.">
+<meta name="theme-color" content="#0035fe">
+<script>document.documentElement.className+=" js";window.pjImg=function(i){if(i.dataset.remote&&!i.dataset.tried){i.dataset.tried=1;i.src=i.dataset.remote}else i.remove()}</script>
+  <link rel="icon" href="images/systech.png">
+  <link href="style.css" rel="stylesheet">
+<style>
+/* ---- Welcome pop-up video ---- */
+#welcomeVid{--wv-width:960px;position:fixed;inset:0;z-index:1000000;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(8,10,24,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .9s ease,visibility 0s .9s}
+#welcomeVid.on{opacity:1;visibility:visible;transition:opacity .5s ease}
+#welcomeVid .wv-box{position:relative;line-height:0;transform:scale(.94);transition:transform .9s cubic-bezier(.16,1,.3,1);border-radius:18px;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);background:#000}
+#welcomeVid.on .wv-box{transform:scale(1)}
+#welcomeVid video{display:block;width:min(94vw,var(--wv-width));max-height:82vh;border-radius:18px;background:#000}
+</style>
+</head>
+<body x-data="{ page: 'home', 'darkMode': true, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+  x-init="
+         darkMode = JSON.parse(localStorage.getItem('darkMode'));
+         $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'b eh': darkMode === true}">
+<div id="welcomeVid" role="dialog" aria-modal="true" aria-label="Welcome video">
+  <div class="wv-box">
+    <video id="welcomeVideo" playsinline preload="auto"></video>
+  </div>
+</div>
+<div class="pj-progress" aria-hidden="true"><i></i></div>
+<header class="g s r vd ya cj transition-transform duration-300 ease-in-out"
+  :class="{
+    'hh sm _k dj bl ll': stickyMenu,
+    '-translate-y-full': hideHeader && stickyMenu
+  }"
+  x-data="{ lastScrollY: 0, hideHeader: false }"
+  @scroll.window="
+    stickyMenu = (window.pageYOffset > 20);
+    hideHeader = (window.pageYOffset > lastScrollY && window.pageYOffset > 80);
+    lastScrollY = window.pageYOffset;
+  ">
+  <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i flex-row-reverse">
+    <div class="vd to/4 tc wf yf">
+      <a href="index.html">
+        <img class="om h-10 w-auto max-h-10 object-contain" src="images/logo-light_systech.png" alt="Logo Light" />
+        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="images/logo-dark_systech.png" alt="Logo Dark" />
+      </a>
+      <button class="po rc" @click="navigationOpen = !navigationOpen">
+        <span class="rc i pf re pd">
+          <span class="du-block h q vd yc">
+            <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
+            <span class="rc i r s eh um tg te rd eb ml jl fl" :class="{ 'ue qr': !navigationOpen }"></span>
+            <span class="rc i r s eh um tg te rd eb ml jl gl" :class="{ 'ue hl': !navigationOpen }"></span>
+          </span>
+          <span class="du-block h q vd yc lf">
+            <span class="rc eh um tg ml jl el h na r ve yc" :class="{ 'sd dl': !navigationOpen }"></span>
+            <span class="rc eh um tg ml jl qr h s pa vd rd" :class="{ 'sd rr': !navigationOpen }"></span>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+      <nav>
+        <ul class="tc _o sf yo cg ep">
+          <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
+          <li class="c i" x-data="{ dropdown: false }"><a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown" :class="{ 'mk': false }">Services <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512">
+                <path
+                  d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products
+
+              </a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a><li><a href="Lightings.html" class="xl">Lightings</a><li><a href="Dimmings.html" class="xl">Dimming Systems</a></li></ul></li>
+          <li class="c i" x-data="{ dropdown: false }">
+            <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
+              :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
+              Projects
+              <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512">
+                <path
+                  d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
+              </svg>
+            </a>
+            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="index.html#partners" class="xl">Brand Partners</a></li></ul>
+          </li>
+          <li><a href="index.html#support" class="xl">Support</a></li>
+        </ul>
+      </nav>
+      <div class="tc wf ig pb no">
+        <div class="pc h io pa ra" :class="navigationOpen ? '!-ud-visible' : 'd'">
+          <label class="rc ab i">
+            <input type="checkbox" :value="darkMode" @change="darkMode = !darkMode" class="pf vd yc uk h r za ab" />
+            <svg :class="{ 'wn' : page === 'home', 'xh' : page === 'home' && stickyMenu }" class="th om" width="25"
+              height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12.0908 18.6363C10.3549 18.6363 8.69 17.9467 7.46249 16.7192C6.23497 15.4916 5.54537 13.8268 5.54537 12.0908C5.54537 10.3549 6.23497 8.69 7.46249 7.46249C8.69 6.23497 10.3549 5.54537 12.0908 5.54537C13.8268 5.54537 15.4916 6.23497 16.7192 7.46249C17.9467 8.69 18.6363 10.3549 18.6363 12.0908C18.6363 13.8268 17.9467 15.4916 16.7192 16.7192C15.4916 17.9467 13.8268 18.6363 12.0908 18.6363ZM12.0908 16.4545C13.2481 16.4545 14.358 15.9947 15.1764 15.1764C15.9947 14.358 16.4545 13.2481 16.4545 12.0908C16.4545 10.9335 15.9947 9.8236 15.1764 9.00526C14.358 8.18692 13.2481 7.72718 12.0908 7.72718C10.9335 7.72718 9.8236 8.18692 9.00526 9.00526C8.18692 9.8236 7.72718 10.9335 7.72718 12.0908C7.72718 13.2481 8.18692 14.358 9.00526 15.1764C9.8236 15.9947 10.9335 16.4545 12.0908 16.4545ZM10.9999 0.0908203H13.1817V3.36355H10.9999V0.0908203ZM10.9999 20.8181H13.1817V24.0908H10.9999V20.8181ZM2.83446 4.377L4.377 2.83446L6.69082 5.14828L5.14828 6.69082L2.83446 4.37809V4.377ZM17.4908 19.0334L19.0334 17.4908L21.3472 19.8046L19.8046 21.3472L17.4908 19.0334ZM19.8046 2.83337L21.3472 4.377L19.0334 6.69082L17.4908 5.14828L19.8046 2.83446V2.83337ZM5.14828 17.4908L6.69082 19.0334L4.377 21.3472L2.83446 19.8046L5.14828 17.4908ZM24.0908 10.9999V13.1817H20.8181V10.9999H24.0908ZM3.36355 10.9999V13.1817H0.0908203V10.9999H3.36355Z"
+                fill="" />
+            </svg>
+            <img class="xc nm" src="images/icon-moon.svg" alt="Moon" />
+          </label>
+        </div>
+        <a href="index.html#support" :class="{ 'hh/[0.15]' : page === 'home', 'sh' : page === 'home' && stickyMenu }"
+          class="lk gh dk rg tc wf xf _l gi hi">Talk to Expert</a>
+      </div>
+    </div>
+  </div>
+</header>
+<style>
+html{scroll-behavior:smooth}
+main>section{scroll-margin-top:84px}
+main>section:not(:first-child):not(#video-showcase):not(#features-section){padding-top:clamp(40px,5vw,64px)!important;padding-bottom:clamp(40px,5vw,64px)!important}
+main>section:first-child{padding-bottom:clamp(32px,5vw,56px)!important}
+.systech-features-wrapper{padding:24px 20px 32px;background:#fff;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;transition:background-color .3s}
+.features-container{max-width:1200px;margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px;align-items:start}
+.feature-card{background:#fff;border:1px solid rgba(1,1,1,.08);border-radius:16px;padding:22px;cursor:pointer;transition:border-color .3s,box-shadow .3s,background-color .3s}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.icon-badge{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#4e6bff,#0035fe);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 12px rgba(0,53,254,.2)}
+.icon-badge svg{width:24px;height:24px;fill:#fff}
+.toggle-icon svg{width:20px;height:20px;fill:#0035fe;transition:transform .3s}
+.card-title{font-size:18px;font-weight:700;color:#010101;margin:0 0 8px;line-height:1.3}
+.card-teaser{font-size:14px;color:#52525b;margin:0;line-height:1.5}
+.card-full-desc{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.card-full-desc p{font-size:13.5px;color:#3f3f46;line-height:1.6;margin:12px 0 0;padding-top:12px;border-top:1px dashed rgba(1,1,1,.1)}
+.feature-card:hover{border-color:#4e6bff}
+.feature-card:hover .card-full-desc,.feature-card.expanded .card-full-desc{max-height:250px}
+.feature-card:hover .toggle-icon svg,.feature-card.expanded .toggle-icon svg{transform:rotate(180deg)}
+.feature-card.expanded{border-color:#0035fe;box-shadow:0 8px 20px rgba(0,53,254,.12)}
+/* ---- project progress ---- */
+.sp-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sp-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:14px;margin-bottom:26px}
+.sp-stat{background:#f5f8ff;border:1px solid rgba(0,53,254,.12);border-radius:14px;padding:16px 20px}
+.sp-stat b{display:block;font-size:2rem;line-height:1.1;font-weight:800;color:#0035fe;font-variant-numeric:tabular-nums}
+.sp-stat span{font-size:.85rem;color:#52525b}
+.sp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:22px}
+.sp-card{background:#fff;border:1px solid rgba(1,1,1,.08);border-radius:18px;padding:12px;transition:border-color .3s,box-shadow .3s,transform .3s,opacity .6s}
+.sp-card:hover{border-color:#4e6bff;box-shadow:0 8px 20px rgba(0,53,254,.12)}
+.sp-media{position:relative}
+.pj-img{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#0035fe,#4e6bff)}
+.pj-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.sp-card:hover .pj-img img,.cp-card:hover .pj-img img{transform:scale(1.05)}
+.sp-badge{font-size:.72rem;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.pj-img .sp-badge{position:absolute;top:12px;left:12px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.sp-track{background:#e8f0fe;color:#0035fe}
+.sp-watch{background:#fff3df;color:#b45f00}
+.sp-ahead{background:#e6f7ec;color:#0f8a4b}
+.sp-ring{position:absolute;right:14px;bottom:-38px;width:84px;height:84px;padding:5px;border-radius:50%;background:#fff;box-shadow:0 6px 18px rgba(0,53,254,.2)}
+.sp-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.sp-ring circle{fill:none;stroke-width:10}
+.sp-ring .sp-c-bg{stroke:#e6ebf7}
+.sp-ring .sp-c-fg{stroke:url(#spGrad);stroke-linecap:round}
+.sp-num{position:absolute;inset:0;display:flex;align-items:baseline;justify-content:center;gap:1px;font-size:1.15rem;font-weight:800;color:#010101;font-variant-numeric:tabular-nums}
+.sp-num small{font-size:.65rem;font-weight:700;margin-left:0}
+.sp-cbody{padding:20px 8px 8px}
+.sp-cbody h3{font-size:1.05rem;font-weight:700;line-height:1.3;color:#010101;padding-right:78px;margin-bottom:8px}
+.pj-meta{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:2px 0 8px;padding:0;font-size:.8rem;color:#52525b}
+.pj-meta li{display:inline-flex;align-items:center;gap:6px}
+.pj-meta svg{width:15px;height:15px;fill:#0035fe;flex:none}
+.sp-cbody p{font-size:.86rem;color:#52525b;line-height:1.55;margin:0 0 12px}
+.sp-bar{height:8px;background:#e6ebf7;border-radius:99px;overflow:hidden}
+.sp-bar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#4e6bff,#0035fe)}
+.sp-phases{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 8px;padding:0;list-style:none}
+.sp-phases li{font-size:.7rem;padding:3px 9px;border-radius:999px;border:1px solid rgba(1,1,1,.12);color:#71717a;transition:background-color .3s,color .3s}
+.sp-phases li.sp-done{background:#0035fe;border-color:#0035fe;color:#fff}
+.sp-phases li.sp-now{border-color:#0035fe;color:#0035fe;font-weight:600}
+.sp-target{font-size:.78rem;color:#71717a}
+/* ---- completed projects ---- */
+.cp-grid{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:28px 20px}
+.cp-card{text-align:center;transition:transform .3s,opacity .6s}
+.cp-card .pj-img{border-radius:16px;box-shadow:0 6px 16px rgba(1,1,1,.08)}
+.cp-card h3{font-size:.98rem;font-weight:700;line-height:1.35;color:#010101;margin:12px 0 4px}
+.cp-card .pj-meta{justify-content:center;margin:0 0 6px;padding:0 6px}
+.cp-card p{font-size:.78rem;color:#71717a;line-height:1.5;margin:0 6px}
+/* reveal */
+.js .sp-card,.js .cp-card{opacity:0;transform:translateY(14px)}
+.js .sp-card.sp-in,.js .cp-card.sp-in{opacity:1;transform:none}
+.js .sp-card.sp-in:hover,.js .cp-card.sp-in:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.js .sp-card,.js .cp-card{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+/* ---- services ---- */
+.sv-grid{max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:26px}
+.sv-card{background:#fff;border:1px solid rgba(1,1,1,.08);border-radius:20px;padding:12px;transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s}
+.sv-card:hover{transform:translateY(-6px);border-color:#4e6bff;box-shadow:0 18px 40px -14px rgba(0,53,254,.35)}
+.sv-media{position:relative;display:block;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#0035fe,#4e6bff)}
+.sv-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.sv-card:hover .sv-media img{transform:scale(1.08)}
+.sv-media::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-18deg);transition:left .9s}
+.sv-media:hover::after{left:130%}
+.sv-overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;padding:18px;background:linear-gradient(to top,rgba(4,10,40,.88),rgba(4,10,40,.3) 55%,transparent);opacity:0;transition:opacity .4s}
+.sv-media:hover .sv-overlay,.sv-media:focus-visible .sv-overlay{opacity:1}
+.sv-cta{display:inline-flex;align-items:center;gap:8px;color:#fff;font-weight:600;font-size:.95rem;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;transform:translateY(16px);transition:transform .45s .05s cubic-bezier(.2,.8,.2,1),opacity .45s .05s,background .3s,border-color .3s}
+.sv-media:hover .sv-cta,.sv-media:focus-visible .sv-cta{opacity:1;transform:none}
+.sv-cta:hover{background:#0035fe;border-color:#0035fe}
+.sv-cta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;transition:transform .3s}
+.sv-media:hover .sv-cta svg{transform:translateX(4px)}
+.sv-body{padding:20px 10px 10px}
+.sv-num{font-size:.75rem;font-weight:700;letter-spacing:.2em;color:#0035fe}
+.sv-body h3{margin:6px 0 8px;font-size:1.25rem;font-weight:800;letter-spacing:.02em;color:#010101}
+.sv-body h3::after{content:"";display:block;width:32px;height:3px;margin-top:10px;border-radius:3px;background:linear-gradient(90deg,#0035fe,#4e6bff);transition:width .5s}
+.sv-card:hover .sv-body h3::after{width:64px}
+.sv-body p{font-size:.92rem;line-height:1.6;color:#52525b}
+.js .sv-card{opacity:0}
+.js .sv-card.sp-in{opacity:1;animation:svIn .8s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--i)*.14s)}
+@keyframes svIn{from{opacity:0;transform:translateY(26px)}}
+@media(hover:none){.sv-overlay{opacity:1;background:linear-gradient(to top,rgba(4,10,40,.75),transparent 50%)}.sv-cta{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.js .sv-card{opacity:1}.js .sv-card.sp-in{animation:none}.sv-media img,.sv-media::after{transition:none}}
+/* ---- dark mode ---- */
+body.b.eh,body.b.eh .systech-features-wrapper{background-color:#181c31!important}
+body.b.eh .feature-card,body.b.eh .sp-card{background:#181c31;border-color:rgba(255,255,255,.12)}
+body.b.eh .feature-card:hover,body.b.eh .sp-card:hover{border-color:#4e6bff}
+body.b.eh .card-title,body.b.eh .sp-cbody h3,body.b.eh .cp-card h3,body.b.eh .sp-num{color:#fff}
+body.b.eh .card-teaser,body.b.eh .sp-cbody p,body.b.eh .pj-meta,body.b.eh .cp-card p,body.b.eh .sp-stat span,body.b.eh .sp-target{color:#a1a1aa}
+body.b.eh .card-full-desc p{color:#d4d4d8;border-top-color:rgba(255,255,255,.1)}
+body.b.eh .toggle-icon svg{fill:#4e6bff}
+body.b.eh .pj-meta svg{fill:#8fa3ff}
+body.b.eh .sp-stat{background:#1f2440;border-color:rgba(255,255,255,.1)}
+body.b.eh .sp-stat b{color:#8fa3ff}
+body.b.eh .sp-ring{background:#181c31}
+body.b.eh .sp-ring .sp-c-bg{stroke:rgba(255,255,255,.1)}
+body.b.eh .sp-bar{background:rgba(255,255,255,.1)}
+body.b.eh .sp-phases li{border-color:rgba(255,255,255,.18);color:#a1a1aa}
+body.b.eh .sp-phases li.sp-done{background:#4e6bff;border-color:#4e6bff;color:#fff}
+body.b.eh .sp-phases li.sp-now{border-color:#8fa3ff;color:#8fa3ff}
+body.b.eh .sp-track{background:rgba(78,107,255,.18);color:#9fb0ff}
+body.b.eh .sp-watch{background:rgba(255,179,71,.16);color:#ffc36b}
+body.b.eh .sp-ahead{background:rgba(63,200,120,.16);color:#6fe0a0}
+body.b.eh .pj-img .sp-badge{background:#181c31}
+body.b.eh .sv-card{background:#181c31;border-color:rgba(255,255,255,.12)}
+body.b.eh .sv-card:hover{border-color:#4e6bff}
+body.b.eh .sv-body h3{color:#fff}
+body.b.eh .sv-body p{color:#a1a1aa}
+body.b.eh .sv-num{color:#8fa3ff}
+.sp-grid>*,.cp-grid>*{min-width:0;max-width:none;box-sizing:border-box}
+
+/* =====================================================================
+   PREMIUM REDESIGN — progress / completed / services / features / awards
+   Elevated, minimal, "quiet luxury" styling: no neon, no sci-fi effects.
+   ===================================================================== */
+:root{--pj-ease:cubic-bezier(.16,1,.3,1)}
+
+/* ---- shared kicker label (used on services, on-going, completed) ---- */
+.pj-kicker{display:block;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0035fe;margin-bottom:8px}
+body.b.eh .pj-kicker{color:#8fa3ff}
+
+/* ---- premium hover shine (reused on sv/sp/cp images) ---- */
+.pj-img::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.32),transparent);transform:skewX(-18deg);transition:left .9s var(--pj-ease);z-index:1}
+.sp-card:hover .pj-img::after,.cp-card:hover .pj-img::after{left:130%}
+
+/* ---- on-going project cards: premium treatment ---- */
+.sp-card{border-radius:20px;transition:border-color .4s var(--pj-ease),box-shadow .4s var(--pj-ease),transform .4s var(--pj-ease),opacity .7s var(--pj-ease)}
+.sp-card:hover{transform:translateY(-5px);box-shadow:0 22px 44px -22px rgba(0,53,254,.28)}
+.pj-img{transition:none}
+.pj-img img{transition:transform .7s var(--pj-ease)}
+.sp-card:hover .pj-img img{transform:scale(1.045)}
+.sp-ring{box-shadow:0 10px 24px -6px rgba(0,53,254,.28),0 0 0 4px #fff}
+body.b.eh .sp-ring{box-shadow:0 10px 24px -6px rgba(0,0,0,.4),0 0 0 4px #181c31}
+.sp-c-fg{transition:stroke-dashoffset .1s linear}
+.sp-cbody h3{letter-spacing:-.01em}
+.sp-phases li{transition:background-color .35s var(--pj-ease),color .35s var(--pj-ease),border-color .35s var(--pj-ease)}
+.sp-phases li:nth-child(1){transition-delay:0s}
+.sp-phases li:nth-child(2){transition-delay:.05s}
+.sp-phases li:nth-child(3){transition-delay:.1s}
+.sp-phases li:nth-child(4){transition-delay:.15s}
+
+/* ---- completed project cards: premium treatment ---- */
+.cp-card{border-radius:20px;padding:10px 10px 18px;border:1px solid transparent}
+.cp-card:hover{border-color:rgba(0,53,254,.16)}
+.cp-card .pj-img img{filter:grayscale(.25) saturate(1.05);transition:transform .7s var(--pj-ease),filter .5s var(--pj-ease)}
+.cp-card:hover .pj-img img{transform:scale(1.045);filter:grayscale(0)}
+.cp-badge{position:absolute;top:12px;left:12px;color:#0f8a4b;background:#fff}
+body.b.eh .cp-badge{background:#181c31;color:#6fe0a0}
+.cp-card .pj-kicker{margin-top:14px}
+.cp-card h3{transition:color .3s}
+.cp-card h3::after{content:"";display:block;width:26px;height:2px;margin:8px auto 0;border-radius:2px;background:#0035fe;transition:width .5s var(--pj-ease)}
+.cp-card:hover h3::after{width:52px}
+body.b.eh .cp-card h3::after{background:#4e6bff}
+
+/* ---- entrance stagger (progress + completed), capped delay ---- */
+.js .sp-card,.js .cp-card{transition:opacity .7s var(--pj-ease),transform .7s var(--pj-ease)}
+.js .sp-card{transition-delay:calc(min(var(--i,0),4) * .08s)}
+.js .cp-card{transition-delay:calc(min(var(--i,0),7) * .06s)}
+
+/* ---- features section: premium treatment ---- */
+.systech-features-wrapper{background:transparent}
+.feature-card{border-radius:20px;box-shadow:0 1px 2px rgba(16,24,40,.03)}
+.feature-card{transition:border-color .4s var(--pj-ease),box-shadow .4s var(--pj-ease),transform .4s var(--pj-ease),opacity .7s var(--pj-ease)}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -20px rgba(0,53,254,.28)}
+.icon-badge{transition:transform .4s var(--pj-ease)}
+.feature-card:hover .icon-badge{transform:scale(1.08) rotate(-4deg)}
+.card-title::after{content:"";display:block;width:24px;height:2px;margin-top:8px;border-radius:2px;background:#0035fe;transition:width .5s var(--pj-ease)}
+.feature-card:hover .card-title::after,.feature-card.expanded .card-title::after{width:44px}
+body.b.eh .card-title::after{background:#4e6bff}
+.js .feature-card{opacity:0;transform:translateY(18px)}
+.js .feature-card.sp-in{opacity:1;transform:none;transition-delay:calc(min(var(--i,0),5) * .07s)}
+@media(prefers-reduced-motion:reduce){.js .feature-card{opacity:1;transform:none;transition:none}}
+
+/* ---- awards carousel ---- */
+.aw-section{overflow:hidden}
+.aw-viewport{max-width:100%;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);margin-top:8px}
+.aw-track{display:flex;align-items:stretch;gap:18px;list-style:none;margin:0;padding:0 0 6px;width:max-content;animation:awScroll 34s linear infinite}
+.aw-viewport:hover .aw-track{animation-play-state:paused}
+.aw-card{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:200px;padding:16px 16px 20px;border-radius:18px;background:#fff;border:1px solid rgba(1,1,1,.08);box-shadow:0 1px 2px rgba(16,24,40,.03);transition:border-color .3s,box-shadow .3s,transform .3s}
+.aw-card:hover{border-color:#4e6bff;box-shadow:0 14px 30px -16px rgba(0,53,254,.28);transform:translateY(-3px)}
+.aw-photo{position:relative;width:100%;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#0035fe,#4e6bff);display:flex;align-items:center;justify-content:center}
+.aw-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--pj-ease)}
+.aw-card:hover .aw-photo img{transform:scale(1.06)}
+.aw-fallback{width:34px;height:34px;color:#fff;opacity:.9}
+.aw-fallback svg{width:100%;height:100%;fill:currentColor}
+.aw-name{font-size:.88rem;font-weight:700;color:#010101;text-align:center;line-height:1.35}
+.aw-year{font-size:.76rem;color:#71717a;letter-spacing:.08em}
+body.b.eh .aw-card{background:#181c31;border-color:rgba(255,255,255,.12)}
+body.b.eh .aw-name{color:#fff}
+body.b.eh .aw-year{color:#a1a1aa}
+@keyframes awScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.aw-track{animation:none;overflow-x:auto}}
+
+/* ---- video sound toggle ---- */
+#video-showcase{margin-top:76px}
+
+/* ---- custom glowing cursor (audiovisual / lighting themed) ---- */
+@media(pointer:fine){
+  html.pj-cursor-ready,html.pj-cursor-ready *{cursor:none!important}
+  .pj-cursor-dot,.pj-cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:2147483000;will-change:transform}
+  .pj-cursor-dot{width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#0035fe;box-shadow:0 0 10px 2px rgba(0,53,254,.9)}
+  .pj-cursor-ring{width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1px solid rgba(0,53,254,.55);box-shadow:0 0 18px 4px rgba(0,53,254,.25);transition:width .25s var(--pj-ease),height .25s var(--pj-ease),margin .25s var(--pj-ease),border-color .25s,opacity .25s}
+  .pj-cursor-ring.pj-hover{width:56px;height:56px;margin:-28px 0 0 -28px;border-color:rgba(0,53,254,.85);box-shadow:0 0 26px 8px rgba(0,53,254,.35)}
+  .pj-cursor-pulse{position:fixed;top:0;left:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1px solid #0035fe;pointer-events:none;z-index:2147483000;opacity:0;animation:pjPulse .6s ease-out forwards}
+  @keyframes pjPulse{from{opacity:.7;transform:scale(1)}to{opacity:0;transform:scale(4.2)}}
+}
+@media(pointer:coarse),(prefers-reduced-motion:reduce){
+  html.pj-cursor-ready,html.pj-cursor-ready *{cursor:auto!important}
+  .pj-cursor-dot,.pj-cursor-ring,.pj-cursor-pulse{display:none!important}
+}
+
+/* ---- soft section background, matching the Contact ("Let's Stay
+   Connected") section's light tint + faint decorative shapes ---- */
+.pj-soft-bg{position:relative;isolation:isolate;overflow:hidden;
+  background:radial-gradient(60% 55% at 8% 0%,rgba(0,53,254,.06),transparent 60%),
+             radial-gradient(55% 50% at 100% 100%,rgba(78,107,255,.07),transparent 60%),
+             #f6f8fd}
+.pj-soft-bg .pj-shape{position:absolute;z-index:-1;pointer-events:none;opacity:.5}
+.pj-shape-a{top:-40px;left:-40px;width:180px}
+.pj-shape-b{bottom:-30px;right:-20px;width:160px;transform:scaleX(-1)}
+.pj-shape-c{top:40%;right:6%;width:90px;opacity:.35}
+.pj-soft-bg .sv-card,.pj-soft-bg .sp-card,.pj-soft-bg .cp-card,.pj-soft-bg .feature-card,.pj-soft-bg .aw-card,.pj-soft-bg .sp-stat{background:#fff}
+body.b.eh .pj-soft-bg{background:radial-gradient(60% 55% at 8% 0%,rgba(78,107,255,.12),transparent 60%),radial-gradient(55% 50% at 100% 100%,rgba(78,107,255,.1),transparent 60%),#12162b}
+body.b.eh .pj-soft-bg .pj-shape{opacity:.18}
+body.b.eh .pj-soft-bg .sv-card,body.b.eh .pj-soft-bg .sp-card,body.b.eh .pj-soft-bg .cp-card,body.b.eh .pj-soft-bg .feature-card,body.b.eh .pj-soft-bg .aw-card,body.b.eh .pj-soft-bg .sp-stat{background:#181c31}
+@media(max-width:640px){.pj-shape-a,.pj-shape-b{width:110px}.pj-shape-c{display:none}}
+
+/* =====================================================================
+   RESPONSIVE SAFETY NET — laptop / tablet / mobile
+   Guards the sections built for this site; the base theme (style.css)
+   handles the header, hero and footer, which already ship responsive.
+   ===================================================================== */
+html,body{overflow-x:hidden;max-width:100%}
+img,video{max-width:100%}
+.features-grid{grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr))}
+.sv-grid,.sp-grid{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+.cp-grid{grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))}
+@media(max-width:480px){
+  .sp-ring{width:66px;height:66px;right:10px;bottom:-30px}
+  .sp-cbody h3{padding-right:58px;font-size:1rem}
+  .sp-num{font-size:1rem}
+  .sv-body h3{font-size:1.1rem}
+  .aw-card{min-width:180px;padding:20px 16px}
+  #video-showcase{margin-top:40px}
+}
+@media(max-width:360px){
+  .sp-stats{grid-template-columns:repeat(2,1fr)}
+}
+
+
+/* ===== REVISION: one page-wide background ===== */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(50% 42% at 0% 0%,rgba(0,53,254,.10),transparent 70%),radial-gradient(45% 40% at 100% 38%,rgba(78,107,255,.11),transparent 70%),radial-gradient(55% 45% at 8% 100%,rgba(0,53,254,.08),transparent 70%),#f4f7fd}
+body.b.eh::before{background:radial-gradient(50% 42% at 0% 0%,rgba(78,107,255,.16),transparent 70%),radial-gradient(45% 40% at 100% 38%,rgba(78,107,255,.12),transparent 70%),radial-gradient(55% 45% at 8% 100%,rgba(0,53,254,.14),transparent 70%),#12162b}
+.pj-soft-bg,body.b.eh .pj-soft-bg,.pj-clear,#support,#features-section,.systech-features-wrapper,body.b.eh .systech-features-wrapper{background:transparent!important}
+/* section subtitles span the card grid edge to edge */
+.pj-soft-bg .animate_top{max-width:1200px!important;width:100%;padding-left:24px!important;padding-right:24px!important}
+.pj-soft-bg .animate_top p{max-width:none!important;width:100%!important;text-wrap:balance}
+/* features: 3 x 2 so the grid has no empty slot */
+.features-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.features-grid{grid-template-columns:1fr}}
+/* header hides while scrolling down */
+header{transition:transform .35s var(--pj-ease),background-color .3s}
+header.pj-hide{transform:translateY(-130%)!important}
+.pj-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:99999;pointer-events:none}
+.pj-progress i{display:block;height:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,#4e6bff,#0035fe);box-shadow:0 0 10px rgba(0,53,254,.6)}
+/* progress ring: number truly centred */
+.sp-num{align-items:center!important;line-height:1}
+.sp-num b{line-height:1;font-size:inherit}
+.sp-num small{line-height:1;margin-top:.12em}
+/* completed cards: orbiting glow border + lift */
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes cpSpin{to{--ang:360deg}}
+.cp-card{position:relative;background:#fff;border:1px solid rgba(1,1,1,.07)}
+body.b.eh .cp-card{background:#181c31;border-color:rgba(255,255,255,.1)}
+.cp-card::before{content:"";position:absolute;inset:-1px;border-radius:21px;padding:2px;pointer-events:none;background:conic-gradient(from var(--ang),transparent 0 55%,#8fa3ff 78%,#0035fe 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;animation:cpSpin 2.6s linear infinite}
+.cp-card:hover{border-color:transparent;box-shadow:0 0 0 1px rgba(78,107,255,.2),0 26px 50px -16px rgba(0,53,254,.45),0 0 44px -8px rgba(78,107,255,.4)}
+.cp-card:hover::before{opacity:1}
+.js .cp-card.sp-in:hover{transform:translateY(-8px)}
+.cp-card:hover .pj-img{box-shadow:0 14px 30px -10px rgba(0,53,254,.5)}
+@media(prefers-reduced-motion:reduce){.cp-card::before{animation:none}}
+/* awards: PHINMA-style coverflow */
+.aw-carousel{position:relative;width:100%;margin:8px 0 0;padding:0}
+.aw-stage{position:relative;height:clamp(600px,60vw,660px);margin:0;padding:0;list-style:none;overflow:hidden}
+.aw-slide{--w:min(440px,82vw);position:absolute;top:22px;left:50%;width:var(--w);margin-left:calc(var(--w)/-2);cursor:pointer;transition:transform .7s var(--pj-ease),opacity .6s,filter .6s;transform:translateX(calc(var(--o,0)*68%)) scale(calc(1 - var(--d,0)*.12));opacity:calc(1 - var(--d,0)*.3);filter:blur(calc(var(--d,0)*3px))}
+.aw-slide.is-far{opacity:0;pointer-events:none}
+.aw-slide.is-active{cursor:zoom-in}
+.aw-slide .aw-card{min-width:0;width:100%;height:590px;box-sizing:border-box;justify-content:flex-start;gap:0;padding:44px 30px 32px;border-radius:28px;border:1px solid transparent;box-shadow:0 18px 44px -22px rgba(16,24,40,.28);transform:none!important}
+.aw-slide.is-active .aw-card{box-shadow:0 34px 70px -28px rgba(0,53,254,.4),0 0 0 1px rgba(78,107,255,.14)}
+.aw-slide.is-active:hover .aw-card{box-shadow:0 38px 80px -26px rgba(0,53,254,.55),0 0 50px -12px rgba(78,107,255,.5),0 0 0 1px rgba(78,107,255,.4)}
+.aw-slide .aw-photo{width:230px;height:320px;max-width:100%;flex:none;aspect-ratio:auto;border-radius:0;background:none;overflow:visible;display:flex;align-items:center;justify-content:center}
+.aw-slide .aw-photo img{position:static;inset:auto;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;padding:0}
+.aw-slide .aw-card:hover .aw-photo img{transform:none}
+.aw-slide .aw-fallback{width:190px;height:310px;border-radius:6px;display:grid;place-items:center;background:linear-gradient(160deg,#fff7e0,#f2d999);border:1px solid rgba(201,162,74,.55);color:#c9a24a;opacity:1}
+.aw-slide .aw-fallback svg{width:44px;height:44px}
+.aw-photo img ~ .aw-fallback{display:none}
+.aw-issuer{margin-top:26px;font-family:Optima,Candara,'Gill Sans','Segoe UI',sans-serif;font-size:1.12rem;line-height:1.45;text-align:center;color:#0035fe}
+.aw-slide .aw-name{margin-top:20px;font-family:Optima,Candara,'Gill Sans','Segoe UI',sans-serif;font-size:1.28rem;font-weight:700;line-height:1.4;color:#010101}
+body.b.eh .aw-issuer{color:#8fa3ff}
+.aw-arrow{position:absolute;top:46%;z-index:30;width:50px;height:50px;border-radius:50%;border:0;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#4e6bff,#0035fe);box-shadow:0 10px 24px -8px rgba(0,53,254,.7);transition:transform .3s var(--pj-ease),box-shadow .3s}
+.aw-arrow svg{width:24px;height:24px}
+.aw-arrow:hover{transform:scale(1.12);box-shadow:0 14px 32px -8px rgba(0,53,254,.85)}
+.aw-arrow:active{transform:scale(.94)}
+.aw-prev{left:14px}.aw-next{right:14px}
+.aw-dots{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.aw-dot{width:9px;height:9px;padding:0;border:0;border-radius:99px;background:rgba(0,53,254,.22);transition:width .4s var(--pj-ease),background .3s}
+.aw-dot.on{width:28px;background:#0035fe}
+.aw-modal{position:fixed;inset:0;z-index:2147482000;display:grid;place-items:center;padding:20px;background:rgba(6,10,30,.66);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:awFade .3s}
+.aw-modal[hidden]{display:none}
+.aw-m-panel{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;width:min(1180px,100%);max-height:92vh;overflow:auto;padding:56px 48px;border-radius:18px;background:#eef2fa;animation:awPop .45s var(--pj-ease)}
+.aw-m-panel.no-img{grid-template-columns:1fr}.aw-m-panel.no-img .aw-m-img{display:none}
+body.b.eh .aw-m-panel{background:#181c31}
+.aw-m-img{display:grid;place-items:center}
+.aw-m-img img{max-height:66vh;max-width:100%;width:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.25))}
+.aw-m-text{text-align:center}
+.aw-m-text span{display:block;font-family:Optima,Candara,'Gill Sans','Segoe UI',sans-serif;font-size:clamp(1.3rem,2.3vw,1.9rem);font-weight:400;line-height:1.6;color:#0a2a8f;margin-bottom:24px}
+.aw-m-text h3{font-family:Optima,Candara,'Gill Sans','Segoe UI',sans-serif;font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1.15;font-weight:800;color:#0a2a8f;padding-top:24px;border-top:1px solid rgba(0,53,254,.4)}
+body.b.eh .aw-m-text span,body.b.eh .aw-m-text h3{color:#fff}
+.aw-m-close{position:absolute;top:14px;right:18px;width:40px;height:40px;border:0;border-radius:50%;background:transparent;font-size:30px;line-height:1;color:#0035fe;transition:background .3s,transform .3s}
+.aw-m-close:hover{background:rgba(0,53,254,.1);transform:rotate(90deg)}
+@keyframes awFade{from{opacity:0}}
+@keyframes awPop{from{opacity:0;transform:translateY(24px) scale(.96)}}
+@media(max-width:700px){.aw-m-panel{grid-template-columns:1fr;padding:56px 22px 28px;gap:18px}.aw-slide .aw-card{height:560px}.aw-arrow{width:42px;height:42px}}
+/* background icons back on every section (same shapes as Let's Stay Connected) */
+.pj-soft-bg .pj-shape{opacity:.6}
+.pj-shape-d{top:10%;right:3%;width:120px}
+.pj-shape-e{bottom:16%;left:2%;width:110px;opacity:.5}
+body.b.eh .pj-soft-bg .pj-shape{opacity:.22}
+@media(max-width:640px){.pj-shape-d,.pj-shape-e{display:none}}
+/* features: title beside icon */
+.card-header{gap:14px;margin-bottom:12px}
+.card-header .card-title{flex:1;margin:0;font-size:17px}
+.card-header .card-title::after{display:none}
+/* header: hidden as soon as the page is scrolled */
+header.pj-hide{transform:translateY(-130%)!important;opacity:0;visibility:hidden;pointer-events:none;transition:transform .35s var(--pj-ease),opacity .3s,visibility 0s .35s}
+/* hero fills the first screen at 100% zoom */
+main>section:first-child{min-height:100vh;min-height:100svh;box-sizing:border-box;display:flex;align-items:center;padding-top:clamp(88px,11vh,130px)!important;padding-bottom:clamp(32px,6vh,72px)!important}
+main>section:first-child>.bb{width:100%}
+#video-showcase{margin-top:0}
+/* buttons + focus + form */
+a.vc,#contactForm button,header a.lk{position:relative;overflow:hidden;transition:transform .3s var(--pj-ease),box-shadow .3s,background-color .3s}
+a.vc::after,#contactForm button::after,header a.lk::after{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-18deg);transition:left .7s var(--pj-ease)}
+a.vc:hover::after,#contactForm button:hover::after,header a.lk:hover::after{left:130%}
+a.vc:hover,#contactForm button:hover,header a.lk:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(0,53,254,.6)}
+a.vc:active,#contactForm button:active,header a.lk:active{transform:scale(.97)}
+#contactForm button:disabled{opacity:.7;cursor:progress;transform:none}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,.aw-slide:focus-visible{outline:2px solid #4e6bff;outline-offset:3px}
+#contactForm input,#contactForm textarea{transition:border-color .3s,box-shadow .3s}
+#contactForm input:focus,#contactForm textarea:focus{border-color:#0035fe!important;box-shadow:0 0 0 4px rgba(0,53,254,.14)!important}
+#formStatus{margin-top:14px;min-height:1.4em;font-size:.92rem;font-weight:600}
+#formStatus.ok{color:#0f8a4b}#formStatus.err{color:#d92d20}
+
+/* ===== brand partners ===== */
+#partners .aw-stage{height:clamp(470px,52vw,500px)}
+#partners .aw-slide{--w:min(400px,80vw)}
+#partners .aw-slide .aw-card{height:410px;padding:34px 28px 30px;align-items:center}
+#partners .aw-slide .aw-photo{width:100%;height:200px;padding:20px;box-sizing:border-box;background:#fff;border:1px solid rgba(1,1,1,.08);border-radius:18px}
+#partners .aw-slide .aw-fallback{width:auto;height:auto;border:0;background:none;color:#0a2a8f;font-weight:800;font-size:1.7rem;letter-spacing:.14em}
+#partners .aw-issuer{margin-top:24px;font-size:1rem}
+#partners .aw-slide .aw-name{margin-top:8px;font-size:1.7rem;letter-spacing:.06em}
+.aw-m-img img{background:#fff;padding:26px;border-radius:18px;max-height:46vh;filter:none;box-shadow:0 18px 40px -20px rgba(0,0,0,.3)}
+.aw-m-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:13px 28px;border-radius:99px;background:linear-gradient(135deg,#4e6bff,#0035fe);color:#fff!important;font-weight:600;text-decoration:none;box-shadow:0 12px 26px -10px rgba(0,53,254,.7);transition:transform .3s var(--pj-ease),box-shadow .3s}
+.aw-m-link:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px rgba(0,53,254,.85)}
+.aw-m-link[hidden]{display:none}
+/* ===== a unique background for every section (fades into the page at top and bottom) ===== */
+.pj-clear,#support{position:relative;isolation:isolate}
+.pj-soft-bg::before,.pj-clear::before,#support::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;-webkit-mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent);mask-image:linear-gradient(180deg,transparent,#000 16%,#000 84%,transparent)}
+body.b.eh .pj-soft-bg::before,body.b.eh .pj-clear::before,body.b.eh #support::before{opacity:.55}
+#features-section{padding-top:clamp(48px,7vw,84px)!important}
+#features-section::before{background:radial-gradient(circle,rgba(0,53,254,.2) 1.3px,transparent 1.8px) 0 0/28px 28px,radial-gradient(60% 60% at 0% 0%,rgba(78,107,255,.14),transparent 70%)}
+.pj-clear::before{background:linear-gradient(115deg,rgba(78,107,255,.15),transparent 55%),radial-gradient(40% 50% at 100% 100%,rgba(0,180,216,.13),transparent 70%)}
+#services::before{background:repeating-linear-gradient(135deg,rgba(0,53,254,.05) 0 2px,transparent 2px 18px),radial-gradient(50% 60% at 100% 0%,rgba(78,107,255,.17),transparent 70%)}
+#progress::before{background:radial-gradient(55% 70% at 88% 25%,rgba(255,193,60,.2),transparent 65%),radial-gradient(50% 60% at 6% 85%,rgba(0,53,254,.13),transparent 65%)}
+#completed::before{background:linear-gradient(rgba(0,53,254,.07) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(0,53,254,.07) 1px,transparent 1px) 0 0/44px 44px,radial-gradient(50% 60% at 0% 50%,rgba(0,190,220,.15),transparent 70%)}
+#partners::before{background:repeating-radial-gradient(circle at 50% 48%,rgba(0,53,254,.06) 0 1px,transparent 1px 54px),radial-gradient(45% 55% at 50% 48%,rgba(78,107,255,.2),transparent 70%)}
+#support::before{background:radial-gradient(45% 55% at 100% 0%,rgba(78,107,255,.2),transparent 70%),radial-gradient(45% 55% at 0% 100%,rgba(255,110,170,.15),transparent 70%)}
+</style>
+<main>
+  <section class="gj do ir hj sp jr i pg overflow-hidden">
+    <div class="xc fn zd/2 2xl:ud-w-187.5 bd 2xl:ud-h-171.5 h q r max-w-[50%] lg:max-w-[45%] right-0">
+      <img src="images/shape-01.svg" alt="shape" class="xc 2xl:ud-block h t -ud-left-[10%] ua" />
+      <img src="images/shape-02.svg" alt="shape" class="xc 2xl:ud-block h u p va" />
+      <img src="images/shape-03.svg" alt="shape" class="xc 2xl:ud-block h v w va" />
+      <img src="images/shape-04.svg" alt="shape" class="h q r transform translate-x-12 lg:translate-x-20" />
+      <img src="images/hero.png" alt="Hero" class="h q r ua transform translate-x-12 lg:translate-x-20" />
+    </div>
+    <div class="bb ze ki xn 2xl:ud-px-0">
+      <div class="tc _o">
+        <div class="animate_left jn/2">
+          <h1 class="fk vj zp or kk wm wb">We make you appreciate
+            Light and Sounds through SYSTECH EXPERTISE</h1>
+          <p class="fq">
+            Systech Lighting &amp; Controls Inc. is a lighting, dimming, audio visual and sound system company that primarily focuses on project planning, installation, technical support services and system design development.
+          </p>
+          <div class="tc tf yo zf mb">
+            <a href="#support" class="ek jk lk gh gi hi rg ml il vc _d _l">Inquire now</a>
+            <span class="tc sf">
+              <a href="tel:+63283749938" class="inline-block ek xj kk wm"> Call us +632-8374-9938 </a>
+              <span class="inline-block">For any question or concern</span>
+            </span>
+          </div></div></div></div>
+  </section>
+<section id="video-showcase" class="w-full bg-slate-900 py-0 overflow-hidden">
+  <div class="w-full relative group" id="video-container">
+    <video
+      id="scroll-autoplay-video"
+      class="w-full h-[450px] sm:h-[550px] md:h-[650px] lg:h-[750px] object-cover block cursor-pointer"
+      muted
+      loop
+      playsinline
+      autoplay
+      controls
+      preload="auto">
+      <source src="images/systech_ads.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+<section id="features-section" class="systech-features-wrapper pj-soft-bg">
+<img src="images/shape-03.svg" alt="" class="pj-shape pj-shape-a" aria-hidden="true"><img src="images/shape-06.svg" alt="" class="pj-shape pj-shape-b" aria-hidden="true"><img src="images/shape-13.svg" alt="" class="pj-shape pj-shape-c" aria-hidden="true"><img src="images/shape-07.svg" alt="" class="pj-shape pj-shape-d" aria-hidden="true"><img src="images/shape-12.svg" alt="" class="pj-shape pj-shape-e" aria-hidden="true">
+  <div class="features-container">
+    <div class="features-grid">
+      <div class="feature-card" style="--i:0" onclick="toggleFeatureCard(this)">
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 105 5 5 5 0 00-5-5zm0 8a3 3 0 113-3 3 3 0 01-3 3zm9 11v-1a4 4 0 00-4-4h-2v2h2a2 2 0 012 2v1h2zm-12-1v-1a2 2 0 012-2h2v-2h-2a4 4 0 00-4 4v1h2zm13-8h-3v-2h3v2zm-1 4h-2v-2h2v2z"/></svg>
+          </div>
+          <h4 class="card-title">24/7 Support</h4>
+          <span class="toggle-icon">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </span>
+        </div>
+        <p class="card-teaser">Round-the-clock technical assistance and immediate service support covering all installed systems.</p>
+        <div class="card-full-desc">
+          <p>Our Service Center provides 24/7 technical and after-sales support covering all aspects of the installed systems. We assure our clients that they receive immediate attention and the highest level of service support.</p>
+        </div>
+      </div>
+      <div class="feature-card" style="--i:1" onclick="toggleFeatureCard(this)">
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm6.93 6h-2.95a15.65 15.65 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4.04c.83 1.2 1.48 2.59 1.91 3.96h-3.82c.43-1.37 1.08-2.76 1.91-3.96zM4.26 14a7.82 7.82 0 010-4h3.38a16.6 16.6 0 00-.14 2 16.6 16.6 0 00.14 2zm.81 2h2.95a15.65 15.65 0 001.38 3.56A8.03 8.03 0 015.07 16zm2.95-8H5.07a8.03 8.03 0 013.33-3.56A15.65 15.65 0 007.02 8zM12 19.96c-.83-1.2-1.48-2.59-1.91-3.96h3.82c-.43 1.37-1.08 2.76-1.91 3.96zM9.82 14a14.7 14.7 0 010-4h4.36a14.7 14.7 0 010 4zm4.8 5.56a15.65 15.65 0 001.38-3.56h2.95a8.03 8.03 0 01-3.33 3.56zM16.36 14a16.6 16.6 0 00.14-2 16.6 16.6 0 00-.14-2h3.38a7.82 7.82 0 010 4z"/></svg>
+          </div>
+          <h4 class="card-title">Take Ownership</h4>
+          <span class="toggle-icon">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </span>
+        </div>
+        <p class="card-teaser">Working hand-in-hand with design teams to eliminate guesswork during construction, saving time and money.</p>
+        <div class="card-full-desc">
+          <p>This essential service works hand-in-hand with the design team or facility owner in planning lighting and audio visual systems accompanying construction to eliminate guesswork during the design phase, thereby saving time and money.</p>
+        </div>
+      </div>
+      <div class="feature-card" style="--i:2" onclick="toggleFeatureCard(this)">
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <h4 class="card-title">Team Work</h4>
+          <span class="toggle-icon">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </span>
+        </div>
+        <p class="card-teaser">Experienced technical and sales staff continuously trained by leading global manufacturers.</p>
+        <div class="card-full-desc">
+          <p>Systech is comprised of experienced technical and sales staff. Our team receives regular training from the manufacturers we represent and attends industry association seminars to stay up-to-date with the latest trends and technology.</p>
+        </div>
+      </div>
+      <div class="feature-card" style="--i:3" onclick="toggleFeatureCard(this)">
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-4 8h2v4H8v-4zm8 4h-2v-4h2v4zm2-6H6v-2h12v2z"/></svg>
+          </div>
+          <h4 class="card-title">Facade Illumination & Controls</h4>
+          <span class="toggle-icon">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </span>
+        </div>
+        <p class="card-teaser">Comprehensive project planning, design development, equipment supply, and installation.</p>
+        <div class="card-full-desc">
+          <p>Systech is a full-service lighting, lighting controls, audio visual, and sound reinforcement integration company providing complete services from initial project planning to equipment supply and final installation.</p>
+        </div>
+      </div>
+      <div class="feature-card" style="--i:4" onclick="toggleFeatureCard(this)">
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 3v18c-4.97 0-9-4.03-9-9s4.03-9 9-9zm2 3.29c2.83.48 5 2.94 5 5.71s-2.17 5.23-5 5.71v-2.05c1.72-.44 3-1.99 3-3.66s-1.28-3.22-3-3.66V6.29z"/></svg>
+          </div>
+          <h4 class="card-title">Audiovisual System Design & Build</h4>
+          <span class="toggle-icon">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </span>
+        </div>
+        <p class="card-teaser">Direct technical support and assistance to architects, interior designers, and facility owners.</p>
+        <div class="card-full-desc">
+          <p>Systech provides technical support and assistance to architects, interior designers, professional consultants, and facility owners during the initial design phase to ensure flawless integration across all systems.</p>
+        </div>
+      </div>
+      <div class="feature-card" style="--i:5" onclick="toggleFeatureCard(this)">
+        <div class="card-header">
+          <div class="icon-badge">
+            <svg viewBox="0 0 24 24"><path d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-5 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 16c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </div>
+          <h4 class="card-title">Sound Reinforcement & Acoustics</h4>
+          <span class="toggle-icon">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+          </span>
+        </div>
+        <p class="card-teaser">Computer-aided software to describe lighting illumination, sound levels, and coverage beforehand.</p>
+        <div class="card-full-desc">
+          <p>Our design team assists clients using CAD software to describe illumination, sound levels, and space coverage beforehand, providing 3D renderings and drawings to guide facility owners throughout installation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="ji gp uq 2xl:ud-py-35 pg pj-clear">
+      <div class="bb ze ki xn wq">
+        <div class="tc wf gg qq">
+          <div class="animate_left xc gn gg jn/2 i">
+            <div>
+              <img loading="lazy" decoding="async" src="images/shape-05.svg" alt="Shape" class="h -ud-left-5 x" />
+              <img loading="lazy" decoding="async" src="images/about-01.png" alt="About" class="ib" />
+              <img loading="lazy" decoding="async" src="images/about-02.png" alt="About" />
+            </div>
+            <div>
+              <img loading="lazy" decoding="async" src="images/shape-06.svg" alt="Shape" />
+              <img loading="lazy" decoding="async" src="images/about-03.png" alt="About" class="ob gb" />
+              <img loading="lazy" decoding="async" src="images/shape-07.svg" alt="Shape" class="bb" />
+            </div>
+          </div>
+          <div class="animate_right jn/2">
+            <h4 class="ek yj mk gb">Why Choose Us</h4>
+            <h2 class="fk vj zp pr kk wm qb">Engineering Precision Meets Seamless Integration</h2>
+            <p class="uo">We empower architects, developers, and facility owners through turnkey lighting automation, high-performance audio-visual systems, and uncompromised technical support. By combining computer-aided 3D simulations with global equipment sourcing, we transform complex design visions into flawlessly executed environments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- SECTION: Services (hover an image to reveal the Explore button) -->
+<section id="services" class="lj tp kr pj-soft-bg">
+<img src="images/shape-03.svg" alt="" class="pj-shape pj-shape-a" aria-hidden="true"><img src="images/shape-06.svg" alt="" class="pj-shape pj-shape-b" aria-hidden="true"><img src="images/shape-13.svg" alt="" class="pj-shape pj-shape-c" aria-hidden="true"><img src="images/shape-07.svg" alt="" class="pj-shape pj-shape-d" aria-hidden="true"><img src="images/shape-12.svg" alt="" class="pj-shape pj-shape-e" aria-hidden="true">
+<div x-data="{ sectionTitle: `We Offer The Best Quality Service for You`, sectionTitleText: `Discover our specialized solutions engineered to meet your exact lighting, dimming, and audiovisual needs.`}"><div class="animate_top bb ze rj ki xn vq"><h2 x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b"></h2><p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p></div></div>
+<div class="sv-grid">
+<article class="sv-card" style="--i:0"><a class="sv-media" href="Audiovisual.html" aria-label="Explore Audiovisual"><img src="images/audiovisual.jpg" alt="Audiovisual" loading="lazy" decoding="async" onerror="this.remove()"><span class="sv-overlay"><span class="sv-cta">Explore Audiovisual<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><div class="sv-body"><span class="sv-num">01</span><h3>AUDIOVISUAL</h3><p>Integrated high-performance sound reinforcement, video display systems, and acoustic solutions designed for seamless immersive experiences.</p></div></article>
+<article class="sv-card" style="--i:1"><a class="sv-media" href="Lightings.html" aria-label="Explore Lightings"><img src="images/lightings.jpg" alt="Lightings" loading="lazy" decoding="async" onerror="this.remove()"><span class="sv-overlay"><span class="sv-cta">Explore Lightings<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><div class="sv-body"><span class="sv-num">02</span><h3>LIGHTINGS</h3><p>Architectural lighting, facade illumination, and dynamic fixture designs tailored to enhance aesthetics and operational efficiency.</p></div></article>
+<article class="sv-card" style="--i:2"><a class="sv-media" href="Dimmings.html" aria-label="Explore Dimming System"><img src="images/dimming-system.jpg" alt="Dimming System" loading="lazy" decoding="async" onerror="this.remove()"><span class="sv-overlay"><span class="sv-cta">Explore Guest Room Management System (GRMS)<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span></a><div class="sv-body"><span class="sv-num">03</span><h3>Guest Room Management System  (GRMS)</h3><p>Advanced lighting control, automated dimming, and scene management software built for complete space adaptability and energy savings.</p></div></article>
+</div>
+</section>
+<!-- SECTION: On-going project progress. EDIT each card: data-progress (0-100), name, location, badge, description, target. -->
+<section id="progress" class="pg pj vp mr oj wp nr pj-soft-bg">
+<img src="images/shape-03.svg" alt="" class="pj-shape pj-shape-a" aria-hidden="true"><img src="images/shape-06.svg" alt="" class="pj-shape pj-shape-b" aria-hidden="true"><img src="images/shape-13.svg" alt="" class="pj-shape pj-shape-c" aria-hidden="true"><img src="images/shape-07.svg" alt="" class="pj-shape pj-shape-d" aria-hidden="true"><img src="images/shape-12.svg" alt="" class="pj-shape pj-shape-e" aria-hidden="true">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="spGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4e6bff"/><stop offset="1" stop-color="#0035fe"/></linearGradient></defs></svg>
+<div x-data="{ sectionTitle: `On-Going Project Progress`, sectionTitleText: `Follow where each active installation stands, from design and supply through installation and commissioning.`}"><div class="animate_top bb ze rj ki xn vq"><h2 x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b"></h2><p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p></div></div>
+<div class="sp-wrap">
+<div class="sp-stats"><div class="sp-stat"><b data-to="0" id="statActive">0</b><span>Active projects</span></div><div class="sp-stat"><b data-to="0" data-suffix="%" id="statAvg">0%</b><span>Average completion</span></div><div class="sp-stat"><b data-to="12" data-suffix="+">0</b><span>Projects completed</span></div><div class="sp-stat"><b data-to="24" data-suffix="/7">0/7</b><span>Service center support</span></div></div>
+<div class="sp-grid">
+<article class="sp-card" style="--i:0" data-progress="50"><div class="sp-media"><div class="pj-img"><img src="images/ccp.jpg" alt="Sample Theater" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="50 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 01</span><h3>Cultural Convention of the Philippines</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Metro Manila</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Performing Arts Theater</li></ul><p>CP-12: Supply, delivery, installation, testing and commissioning of work lights and run lights systems, controls, panels, devices and circuits (including roughing-ins) for the house and stage lighting of the CCP Main Building. CP-18: Sound system, intercom and LED monitor speakers, with standard and customized accessories, for Tanghalang Nicanor Abelardo (TNA).</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q4 2026</span></div></article>
+<article class="sp-card" style="--i:1" data-progress="60"><div class="sp-media"><div class="pj-img"><img src="images/grand-westside-hotel.jpg" alt="Sample Tower" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="60 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 02</span><h3>WestSide</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Metro Manila</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Hotel &amp; Resort</li></ul><p>WestSide City audiovisual and lighting works: Audio-visual system Batch 1 for the casino, atrium, public areas and hotel guestrooms; supply and delivery of atrium lighting; supply and installation of an LED videowall (under ECRC); and installation of atrium lighting fixtures (under Megawide Construction Corporation).</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q1 2027</span></div></article>
+<article class="sp-card" style="--i:2" data-progress="38"><div class="sp-media"><div class="pj-img"><img src="images/mactan.jpg" alt="Sample Resort" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="38 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 03</span><h3>Mactan World Museum</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Visayas</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Hotel &amp; Resort</li></ul><p>Complete supply, delivery, installation, programming, testing and commissioning of the gallery lighting system with AV integration, the dimming control system, and the gallery audio-visual system, including roughing-ins, cable tray trunking and wiring.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q3 2027</span></div></article>
+<article class="sp-card" style="--i:3" data-progress="99"><div class="sp-media"><div class="pj-img"><img src="images/MERALCO.jpg" alt="Sample Stadium" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="99 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 04</span><h3>Meralco Theater</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Metro Manila</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Stadium</li></ul><p>Design and build of sound reinforcement for the ballroom and function rooms.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q2 2027</span></div></article>
+<article class="sp-card" style="--i:4" data-progress="45"><div class="sp-media"><div class="pj-img"><img src="images\APOLLO.jpg" alt="Apollo Theater" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="45 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 05</span><h3>Apollo Theater</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Metro Manila</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Performing Arts Theater</li></ul><p>Design, supply and installation of an LED videowall.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q1 2027</span></div></article>
+<article class="sp-card" style="--i:5" data-progress="60"><div class="sp-media"><div class="pj-img"><img src="images\ARCOVIA.png" alt="Arcovia Park Place" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="60 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 06</span><h3>Arcovia Park Place</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Pasig City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Commercial Development</li></ul><p>Supply, delivery, installation, termination, testing and commissioning of façade lighting at the Sky Lounge (17th–19th floors) and the 39th–41st floors, plus roofdeck façade lighting for Altea and Benissa, including necessary supports.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q4 2026</span></div></article>
+<article class="sp-card" style="--i:6" data-progress="30"><div class="sp-media"><div class="pj-img"><img src="images\CIR.jpg" alt="Cebu Integrated Resort" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="30 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 07</span><h3>Cebu Integrated Resort</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Cebu</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Hotel &amp; Resort</li></ul><p>Supply and installation of the audio-visual system for CIR (Nustar).</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q3 2027</span></div></article>
+<article class="sp-card" style="--i:7" data-progress="70"><div class="sp-media"><div class="pj-img"><img src="images\OKADA.jpg" alt="Okada Manila Zone" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="70 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 08</span><h3>Okada Manila Zone</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Parañaque City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Hotel &amp; Resort</li></ul><p>Lighting enhancement works for Zones A to K.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q2 2027</span></div></article>
+<article class="sp-card" style="--i:8" data-progress="55"><div class="sp-media"><div class="pj-img"><img src="images\BDO.jpg" alt="BDO Corporate Center, Makati" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="55 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 09</span><h3>BDO Corporate Center, Makati</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Makati City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Corporate Office</li></ul><p>CP07a: Supply and installation of façade lighting.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q1 2027</span></div></article>
+<article class="sp-card" style="--i:9" data-progress="80"><div class="sp-media"><div class="pj-img"><img src="images\RUSTAN.png" alt="Rustan&#x27;s Makati" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="80 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 10</span><h3>Rustan's Makati</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Makati City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Retail</li></ul><p>CP07a: Supply and installation of façade lighting.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q4 2026</span></div></article>
+<article class="sp-card" style="--i:10" data-progress="40"><div class="sp-media"><div class="pj-img"><img src="images\MANDARIN.jpg" alt="Mandarin Oriental Hotel Makati" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="40 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 11</span><h3>Mandarin Oriental Hotel Makati</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Makati City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Hotel &amp; Resort</li></ul><p>Supply and installation of the dimming system.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q3 2027</span></div></article>
+<article class="sp-card" style="--i:11" data-progress="65"><div class="sp-media"><div class="pj-img"><img src="images\CRIMSON.jpg" alt="Crimson Resort and Spa Mactan" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="65 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 12</span><h3>Crimson Resort and Spa Mactan</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Mactan, Cebu</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Hotel &amp; Resort</li></ul><p>Supply and installation of the guestroom management system.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q2 2027</span></div></article>
+<article class="sp-card" style="--i:12" data-progress="50"><div class="sp-media"><div class="pj-img"><img src="images\JW.jpg" alt="JW Marriott Sales Gallery" loading="lazy" decoding="async" onerror="this.remove()"></div><div class="sp-ring" role="img" aria-label="50 percent complete"><svg viewBox="0 0 120 120"><circle class="sp-c-bg" cx="60" cy="60" r="52"/><circle class="sp-c-fg" cx="60" cy="60" r="52"/></svg><span class="sp-num"><b>0</b><small>%</small></span></div></div><div class="sp-cbody"><span class="pj-kicker">In Progress &middot; 13</span><h3>JW Marriott Sales Gallery</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Metro Manila</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Sales Gallery</li></ul><p>Supply and installation of the dimming system.</p><div class="sp-bar"><i></i></div><ul class="sp-phases"><li>Design</li><li>Supply</li><li>Installation</li><li>Commissioning</li></ul><span class="sp-target">Target completion: Q1 2027</span></div></article>
+</div>
+</div>
+</section>
+<!-- SECTION: Completed projects -->
+<section id="completed" class="pg pj vp mr oj wp nr pj-soft-bg">
+<img src="images/shape-03.svg" alt="" class="pj-shape pj-shape-a" aria-hidden="true"><img src="images/shape-06.svg" alt="" class="pj-shape pj-shape-b" aria-hidden="true"><img src="images/shape-13.svg" alt="" class="pj-shape pj-shape-c" aria-hidden="true"><img src="images/shape-07.svg" alt="" class="pj-shape pj-shape-d" aria-hidden="true"><img src="images/shape-12.svg" alt="" class="pj-shape pj-shape-e" aria-hidden="true">
+<div x-data="{ sectionTitle: `Completed Projects.`, sectionTitleText: `A selection of delivered lighting, dimming, audio-visual and control installations across the Philippines.`}"><div class="animate_top bb ze rj ki xn vq"><h2 x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b"></h2><p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p></div></div>
+<div class="cp-grid">
+<article class="cp-card" style="--i:0"><div class="pj-img"><img src="images/S.SOLAIR.jpg" alt="Solaire North Resort &amp; Casino" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 01</span><h3>Solaire North Resort &amp; Casino</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Quezon City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Resort &amp; Casino</li></ul><p>Architectural, landscape and facade lighting with full lighting controls.</p></article>
+<article class="cp-card" style="--i:1"><div class="pj-img"><img src="images/S.SAMAL.jpeg" alt="Samal Shores Hotel &amp; Resort" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 02</span><h3>Samal Shores Hotel &amp; Resort</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Davao Samal Island</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Hotel &amp; Resort</li></ul><p>Dimming, architectural lighting and audio-visual systems.</p></article>
+<article class="cp-card" style="--i:2"><div class="pj-img"><img src="images/S.SHANG.png" alt="Shang Residences at Wack-Wack" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 03</span><h3>Shang Residences at Wack-Wack</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Mandaluyong City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Residential Condominium</li></ul><p>Front-of-house and landscape lighting with dimming system.</p></article>
+<article class="cp-card" style="--i:3"><div class="pj-img"><img src="images/S.COPETON.jpg" alt="Copeton Baysuites" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 04</span><h3>Copeton Baysuites</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Parañaque City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Condominium</li></ul><p>Facade lighting installation.</p></article>
+<article class="cp-card" style="--i:4"><div class="pj-img"><img src="images/S.AURELIA.jpg" alt="Aurelia Residences" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 05</span><h3>Aurelia Residences</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Bonifacio Global City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Residential Condominium</li></ul><p>Supply and delivery of architectural lighting.</p></article>
+<article class="cp-card" style="--i:5"><div class="pj-img"><img src="images/S.LAYA.jpg" alt="LAYA Sales Gallery" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 06</span><h3>LAYA Sales Gallery</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Pasig City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Sales Gallery</li></ul><p>Architectural lighting and display TV installation.</p></article>
+<article class="cp-card" style="--i:6"><div class="pj-img"><img src="images/S.GATEWAY.jpg" alt="Gateway Mall 2 &amp; IBIS Hotel" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 07</span><h3>Gateway Mall 2 &amp; IBIS Hotel</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Araneta Cubao, Quezon City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Mall &amp; Hotel</li></ul><p>Facade lighting and control system.</p></article>
+<article class="cp-card" style="--i:7"><div class="pj-img"><img src="images/S.LANSON.jpg" alt="Lanson Place" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 08</span><h3>Lanson Place</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>SM Mall of Asia</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Serviced Residences</li></ul><p>Dimming system installation.</p></article>
+<article class="cp-card" style="--i:0"><div class="pj-img"><img src="images/S.NEWPORT.jpg" alt="Newport Performing Arts Theater" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 09</span><h3>Newport Performing Arts Theater</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Newport World Resorts</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Performing Arts Theater</li></ul><p>LED backdrop with customized rigging system.</p></article>
+<article class="cp-card" style="--i:1"><div class="pj-img"><img src="images/S.ROCKWELL.jpg" alt="Rockwell Performing Arts Theater" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 10</span><h3>Rockwell Performing Arts Theater</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Makati City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Performing Arts Theater</li></ul><p>Full stage lighting installation.</p></article>
+<article class="cp-card" style="--i:2"><div class="pj-img"><img src="images/S.PANGLAO.jpg" alt="South Palms Resort Panglao" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 11</span><h3>South Palms Resort Panglao</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Bohol</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Resort</li></ul><p>GRMS and PA/BGM sound system.</p></article>
+<article class="cp-card" style="--i:3"><div class="pj-img"><img src="images/S.MARCOS.jpg" alt="FEM Memorial Stadium" loading="lazy" decoding="async" onerror="this.remove()"></div><span class="pj-kicker">Project 12</span><h3>FEM Memorial Stadium</h3><ul class="pj-meta"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Laoag City</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V3h11v6h5v12h-6v-4h-3v4H4zM7 6v2h2V6H7zm0 4v2h2v-2H7zm0 4v2h2v-2H7zm4-8v2h2V6h-2zm0 4v2h2v-2h-2zm7 2v2h2v-2h-2zm0 4v2h2v-2h-2z"/></svg>Stadium</li></ul><p>Outdoor LED videowall and facade lighting.</p></article>
+</div>
+</section>
+
+<!-- SECTION: Our Brand Partners. Logos load from images/partners/ (copy the files from your old site's img folder: crestron.jpeg, extron.jpeg, kremer.jpeg, panasonic.jpeg, epson.png, draper.jpeg, GV.jpg). -->
+<section id="partners" class="pg pj vp mr oj wp nr aw-section pj-soft-bg">
+<img src="images/shape-03.svg" alt="" class="pj-shape pj-shape-a" aria-hidden="true"><img src="images/shape-06.svg" alt="" class="pj-shape pj-shape-b" aria-hidden="true"><img src="images/shape-13.svg" alt="" class="pj-shape pj-shape-c" aria-hidden="true"><img src="images/shape-07.svg" alt="" class="pj-shape pj-shape-d" aria-hidden="true"><img src="images/shape-12.svg" alt="" class="pj-shape pj-shape-e" aria-hidden="true">
+<div x-data="{ sectionTitle: `Our Brand Partners`, sectionTitleText: `World-class audiovisual, lightings, dimming systems and automation brands behind the systems we design, integrate, and install.`}"><div class="animate_top bb ze rj ki xn vq"><h2 x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b"></h2><p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p></div></div>
+<div class="aw-carousel" aria-roledescription="carousel" aria-label="Our brand partners"><button class="aw-arrow aw-prev" aria-label="Previous partner"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="aw-stage"><li class="aw-slide"><div class="aw-card" data-site="https://www.crestron.com"><span class="aw-photo"><img src="images/partners/crestron.jpeg" data-remote="http://www.systechlc.com/img/crestron.jpeg" alt="Crestron logo" loading="lazy" decoding="async" onerror="pjImg(this)"><span class="aw-fallback">CRESTRON</span></span><span class="aw-issuer">System Automation</span><span class="aw-name">CRESTRON</span></div></li><li class="aw-slide"><div class="aw-card" data-site="https://www.extron.com"><span class="aw-photo"><img src="images/partners/extron.jpeg" data-remote="http://www.systechlc.com/img/extron.jpeg" alt="Extron logo" loading="lazy" decoding="async" onerror="pjImg(this)"><span class="aw-fallback">EXTRON</span></span><span class="aw-issuer">System Automation</span><span class="aw-name">EXTRON</span></div></li><li class="aw-slide"><div class="aw-card" data-site="https://www.kramerav.com"><span class="aw-photo"><img src="images/partners/kremer.jpeg" data-remote="http://www.systechlc.com/img/kremer.jpeg" alt="Kramer logo" loading="lazy" decoding="async" onerror="pjImg(this)"><span class="aw-fallback">KRAMER</span></span><span class="aw-issuer">System Automation</span><span class="aw-name">KRAMER</span></div></li><li class="aw-slide"><div class="aw-card" data-site="https://www.panasonic.com"><span class="aw-photo"><img src="images/partners/panasonic.jpeg" data-remote="http://www.systechlc.com/img/panasonic.jpeg" alt="Panasonic logo" loading="lazy" decoding="async" onerror="pjImg(this)"><span class="aw-fallback">PANASONIC</span></span><span class="aw-issuer">Broadcast and Professional AV</span><span class="aw-name">PANASONIC</span></div></li><li class="aw-slide"><div class="aw-card" data-site="https://www.epson.com"><span class="aw-photo"><img src="images/partners/epson.png" data-remote="http://www.systechlc.com/img/epson.png" alt="Epson logo" loading="lazy" decoding="async" onerror="pjImg(this)"><span class="aw-fallback">EPSON</span></span><span class="aw-issuer">Projection and Professional AV</span><span class="aw-name">EPSON</span></div></li><li class="aw-slide"><div class="aw-card" data-site="https://www.draperinc.com"><span class="aw-photo"><img src="images/partners/draper.jpeg" data-remote="http://www.systechlc.com/img/draper.jpeg" alt="Draper logo" loading="lazy" decoding="async" onerror="pjImg(this)"><span class="aw-fallback">DRAPER</span></span><span class="aw-issuer">Projection Screen</span><span class="aw-name">DRAPER</span></div></li><li class="aw-slide"><div class="aw-card" data-site="https://www.grandviewscreen.com"><span class="aw-photo"><img src="images/partners/GV.jpg" data-remote="http://www.systechlc.com/img/GV.jpg" alt="Grandview logo" loading="lazy" decoding="async" onerror="pjImg(this)"><span class="aw-fallback">GRANDVIEW</span></span><span class="aw-issuer">Projection Screen</span><span class="aw-name">GRANDVIEW</span></div></li></ul><button class="aw-arrow aw-next" aria-label="Next partner"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="aw-dots"><button class="aw-dot" aria-label="Show partner 1"></button><button class="aw-dot" aria-label="Show partner 2"></button><button class="aw-dot" aria-label="Show partner 3"></button><button class="aw-dot" aria-label="Show partner 4"></button><button class="aw-dot" aria-label="Show partner 5"></button><button class="aw-dot" aria-label="Show partner 6"></button><button class="aw-dot" aria-label="Show partner 7"></button></div></div>
+</section>
+    <!-- SECTION: Contact -->
+<section id="support" class="i pg fh rm ji gp uq">
+<img src="images/shape-06.svg" alt="" class="h aa y">
+<img src="images/shape-03.svg" alt="" class="h ca u">
+<img src="images/shape-07.svg" alt="" class="h w da ee">
+<img src="images/shape-12.svg" alt="" class="h p s">
+<img src="images/shape-13.svg" alt="" class="h r q">
+<div x-data="{ sectionTitle: `Let’s Stay Connected`, sectionTitleText: `Tell us about your space and our team will help you light and sound it right.`}"><div class="animate_top bb ze rj ki xn vq"><h2 x-text="sectionTitle" class="fk vj pr kk wm on/5 gq/2 bb _b"></h2><p class="bb on/5 wo/5 hq" x-text="sectionTitleText"></p></div></div>
+<div class="i va bb ye ki xn wq jb mo">
+<div class="tc uf sn tf rn un zf xl:gap-10">
+<div class="animate_top w-full mn/5 to/3 vk sg hh sm yh rq i pg">
+<img src="images/shape-03.svg" alt="" class="h la x wd">
+<img src="images/shape-06.svg" alt="" class="h la ma ne kf">
+<div class="fb"><h4 class="wj kk wm cc">Email Address</h4><p><a href="mailto:sales@systechlc.com">sales@systechlc.com</a></p></div>
+<div class="fb"><h4 class="wj kk wm cc">Residential Office</h4><p>2 Scout Rallos corner Mother Ignacia Avenue, Quezon City, Philippines 1103</p></div>
+<div class="fb"><h4 class="wj kk wm cc">Commercial Office</h4><p>144 Sumulong Highway, Mayamot, Antipolo City, Philippines 1870</p></div>
+<div class="fb"><h4 class="wj kk wm cc">Phone &amp; Fax</h4><p><a href="tel:+63283749938">+632-8374-9938</a> · Fax +632-8376-9004</p></div>
+<span class="rc nd rh tm lc fb"></span>
+<div><h4 class="wj kk wm qb">Social Media</h4><ul class="tc wf fg"><li>
+                  <a href="https://www.facebook.com/systechlc/" target="_blank" rel="noopener" aria-label="Facebook" class="c tc wf xf ie ld rg ml il tl">
+                    <svg class="th lm ml il" width="11" height="20" viewBox="0 0 11 20" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M6.83366 11.3752H9.12533L10.042 7.7085H6.83366V5.87516C6.83366 4.931 6.83366 4.04183 8.667 4.04183H10.042V0.96183C9.74316 0.922413 8.61475 0.833496 7.42308 0.833496C4.93433 0.833496 3.16699 2.35241 3.16699 5.14183V7.7085H0.416992V11.3752H3.16699V19.1668H6.83366V11.3752Z"
+                        fill="" />
+                    </svg>
+                  </a>
+                </li></ul></div>
+</div>
+<div class="animate_top w-full nn/5 vo/3 vk sg hh sm yh tq">
+<form id="contactForm">
+<div class="tc sf yo ap zf ep qb">
+<div class="vd to/2"><label class="rc ac" for="fullname">Full name</label><input type="text" name="fullname" id="fullname" placeholder="Your name" required class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 xi mi"></div>
+<div class="vd to/2"><label class="rc ac" for="email">Email address</label><input type="email" name="email" id="email" placeholder="you@company.com" required class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 xi mi"></div>
+</div>
+<div class="tc sf yo ap zf ep qb">
+<div class="vd to/2"><label class="rc ac" for="phone">Phone number</label><input type="tel" name="phone" id="phone" placeholder="+63 900 000 0000" class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 xi mi"></div>
+<div class="vd to/2"><label class="rc ac" for="subject">Subject</label><input type="text" name="subject" id="subject" placeholder="Type your subject" class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 xi mi"></div>
+</div>
+<div class="fb"><label class="rc ac" for="message">Message</label><textarea placeholder="Tell us about your project" rows="4" name="message" id="message" required class="vd ph sg zk xm _g ch pm hm dm dn em pl/50 ci"></textarea></div>
+<div class="tc xf"><button type="submit" class="vc rg lk gh ml il hi gi _l">Send Message</button></div><p id="formStatus" role="status" aria-live="polite"></p>
+</form>
+</div>
+</div>
+</div>
+</section>
+    <section class="i pg gh ji">
+<img class="h p q" src="images/shape-16.svg" alt="">
+<div class="bb ye i z-10 ki xn dr">
+<div class="tc uf sn tn un gg">
+<div class="animate_left to/2">
+<h2 class="fk vj zp pr lk ac">Planning a lighting or audio-visual project?</h2>
+<p class="lk">From design-stage support to installation and 24/7 after-sales service, Systech is with you every step of the way.</p>
+</div>
+<div class="animate_right bf"><a href="#support" class="vc ek kk hh rg ol il cm gi hi">Request a Quote</a></div>
+</div>
+</div>
+</section>
+  </main>
+  <footer>
+<div class="bb ze ki xn 2xl:ud-px-0">
+<div class="ji gp">
+<div class="tc uf ap gg fp">
+<div class="animate_top zd/2 to/4">
+<a href="index.html"><img src="images/logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="images/logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
+<p class="lc fb">Lighting, dimming, audio-visual and sound systems — planned, installed and supported by one team.</p>
+<ul class="tc wf cg"><li>
+                <a href="https://www.facebook.com/systechlc/" target="_blank" rel="noopener" aria-label="Facebook">
+                  <svg class="vh ul cl il" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                      <path
+                        d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z"
+                        fill="" />
+                    </g>
+                  </svg>
+                </a>
+              </li></ul>
+</div>
+<div class="vd ro tc sf rn un gg vn">
+<div class="animate_top"><h4 class="kk wm tj ec">Quick Links</h4><ul>
+<li><a href="index.html" class="sc xl vb">Home</a></li>
+<li><a href="#services" class="sc xl vb">Services</a></li>
+<li><a href="#progress" class="sc xl vb">On-Going Projects</a></li>
+<li><a href="#completed" class="sc xl vb">Completed Projects</a></li>
+<li><a href="#partners" class="sc xl vb">Brand Partners</a></li>
+</ul></div>
+<div class="animate_top"><h4 class="kk wm tj ec">Services</h4><ul>
+<li><a href="audiovisual.html" class="sc xl vb">Audiovisual</a></li>
+<li><a href="#services" class="sc xl vb">Lightings</a></li>
+<li><a href="#services" class="sc xl vb">Dimming System</a></li>
+<li><a href="#features-section" class="sc xl vb">24/7 Support</a></li>
+</ul></div>
+<div class="animate_top"><h4 class="kk wm tj ec">Contact</h4><ul>
+<li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
+<li><a href="mailto:sales@systechlc.com" class="sc xl vb">sales@systechlc.com</a></li>
+<li><a href="#support" class="sc xl vb">Send an inquiry</a></li>
+</ul></div>
+<div class="animate_top"><h4 class="kk wm tj ec">Offices</h4>
+<p class="ac qe">Quezon City &amp; Antipolo City, Philippines</p></div>
+</div>
+</div>
+</div>
+<div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
+<div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li><li><a href="#support" class="xl">Support</a></li></ul></div>
+<div class="animate_top"><p>&copy; 2026 Systech Lighting and Controls Inc. All rights reserved.</p></div>
+</div>
+</div>
+</footer>
+  <button class="xc wf xf ie ld vg sr gh tr g sa ta _a" @click="window.scrollTo({top: 0, behavior: 'smooth'})"
+    @scroll.window="scrollTop = (window.pageYOffset > 50) ? true : false" :class="{ 'uc' : scrollTop }">
+    <svg class="uh se qd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z" />
+    </svg>
+  </button>
+<script>
+function toggleFeatureCard(c){c.classList.toggle('expanded')}
+(function(){
+  var v=document.getElementById('scroll-autoplay-video');
+  if(!v)return;
+  v.removeAttribute('muted');
+  function tryWithSound(){
+    v.muted=false;
+    var p=v.play();
+    if(p&&p.catch)p.catch(function(){v.muted=true;var p2=v.play();if(p2&&p2.catch)p2.catch(function(){})});
+  }
+  function unmuteOnInteract(){
+    v.muted=false;
+    var p=v.play();
+    if(p&&p.catch)p.catch(function(){});
+    ['click','touchstart','keydown','scroll'].forEach(function(t){removeEventListener(t,unmuteOnInteract)});
+  }
+  ['click','touchstart','keydown','scroll'].forEach(function(t){addEventListener(t,unmuteOnInteract,{passive:true})});
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause()}
+    })},{threshold:.15}).observe(v);
+  }
+  tryWithSound();
+})();
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var C=2*Math.PI*52;
+  function ease(t){return 1-Math.pow(1-t,3)}
+  function run(dur,tick){
+    var st=null;
+    (function f(ts){if(st===null)st=ts;var t=Math.min((ts-st)/dur,1);tick(ease(t));if(t<1)requestAnimationFrame(f)})(performance.now());
+  }
+  function seen(list,cb,th){
+    if(!('IntersectionObserver' in window)){list.forEach(cb);return}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cb(e.target);io.unobserve(e.target)}})},{threshold:th||.25});
+    list.forEach(function(el){io.observe(el)});
+  }
+  function countTo(el){
+    var to=+el.dataset.to,suf=el.dataset.suffix||'',id=el._id=(el._id||0)+1;
+    run(1600,function(t){if(el._id===id)el.textContent=Math.round(to*t)+suf});
+  }
+  function animateCard(card){
+    var p=Math.max(0,Math.min(100,+card.dataset.progress||0));
+    var fg=card.querySelector('.sp-c-fg'),bar=card.querySelector('.sp-bar i'),num=card.querySelector('.sp-num b'),ph=card.querySelectorAll('.sp-phases li');
+    card.classList.add('sp-in');
+    run(1900,function(t){
+      var v=p*t;
+      fg.style.strokeDashoffset=C*(1-v/100);
+      bar.style.width=v+'%';
+      num.textContent=Math.round(v);
+      var idx=v>=99.5?4:v<25?0:v<50?1:v<90?2:3;
+      for(var i=0;i<ph.length;i++)ph[i].className=i<idx?'sp-done':i===idx?'sp-now':'';
+    });
+  }
+  var cards=[].slice.call(document.querySelectorAll('.sp-card'));
+  cards.forEach(function(c){var fg=c.querySelector('.sp-c-fg');fg.style.strokeDasharray=C;fg.style.strokeDashoffset=C});
+  var act=document.getElementById('statActive'),avg=document.getElementById('statAvg');
+  if(act)act.dataset.to=cards.length;
+  if(avg&&cards.length)avg.dataset.to=Math.round(cards.reduce(function(a,c){return a+(+c.dataset.progress||0)},0)/cards.length);
+  seen(cards,animateCard,.3);
+  seen([].slice.call(document.querySelectorAll('.sv-card')),function(c){c.classList.add('sp-in')},.2);
+  seen([].slice.call(document.querySelectorAll('.feature-card')),function(c){c.classList.add('sp-in')},.2);
+  seen([].slice.call(document.querySelectorAll('.cp-card')),function(c){c.classList.add('sp-in')},.15);
+  var box=document.querySelector('.sp-stats');
+  if(box){
+    var nums=[].slice.call(box.querySelectorAll('b[data-to]'));
+    var reset=function(){nums.forEach(function(n){n._id=(n._id||0)+1;n.textContent='0'+(n.dataset.suffix||'')})};
+    var play=function(){reset();nums.forEach(function(n,i){setTimeout(function(){countTo(n)},i*150)})};
+    reset();
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?play():reset()})},{threshold:.35}).observe(box);
+    }else play();
+  }
+})();
+
+(function(){
+  var fine=window.matchMedia&&matchMedia('(pointer:fine)').matches;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!fine||reduce)return;
+  var dot=document.createElement('div');dot.className='pj-cursor-dot';
+  var ring=document.createElement('div');ring.className='pj-cursor-ring';
+  document.body.appendChild(dot);document.body.appendChild(ring);
+  document.documentElement.classList.add('pj-cursor-ready');
+  var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  addEventListener('mousemove',function(e){
+    mx=e.clientX;my=e.clientY;
+    dot.style.transform='translate3d('+mx+'px,'+my+'px,0)';
+    var t=e.target;
+    var hoverable=t.closest && t.closest('a,button,input,textarea,select,.sv-card,.sp-card,.cp-card,.aw-card,.feature-card,[onclick]');
+    ring.classList.toggle('pj-hover',!!hoverable);
+  },{passive:true});
+  addEventListener('mousedown',function(e){
+    var p=document.createElement('div');p.className='pj-cursor-pulse';
+    p.style.transform='translate3d('+e.clientX+'px,'+e.clientY+'px,0)';
+    document.body.appendChild(p);
+    setTimeout(function(){p.remove()},650);
+  });
+  addEventListener('mouseleave',function(){dot.style.opacity='0';ring.style.opacity='0'});
+  addEventListener('mouseenter',function(){dot.style.opacity='1';ring.style.opacity='1'});
+  (function loop(){
+    rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
+    ring.style.transform='translate3d('+rx+'px,'+ry+'px,0)';
+    requestAnimationFrame(loop);
+  })();
+})();
+</script>
+<div class="aw-modal" id="awModal" hidden role="dialog" aria-modal="true" aria-labelledby="awMTitle"><div class="aw-m-panel"><button class="aw-m-close" aria-label="Close">&times;</button><div class="aw-m-img"><img alt=""></div><div class="aw-m-text"><span id="awMIssuer"></span><h3 id="awMTitle"></h3><a id="awMLink" class="aw-m-link" target="_blank" rel="noopener" hidden></a></div></div></div>
+<script>
+(function(){
+  var hd=document.querySelector('header'),bar=document.querySelector('.pj-progress i'),last=0,tick=false;
+  function onScroll(){
+    var y=window.pageYOffset||0,max=document.documentElement.scrollHeight-innerHeight;
+    if(bar)bar.style.transform='scaleX('+(max>0?Math.min(y/max,1):0)+')';
+    if(hd)hd.classList.toggle('pj-hide',y>80);
+    last=y;tick=false;
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});onScroll();
+  /* awards carousel */
+  var stg=document.querySelector('.aw-stage');if(!stg)return;
+  var sl=[].slice.call(stg.querySelectorAll('.aw-slide')),dots=[].slice.call(document.querySelectorAll('.aw-dot')),n=sl.length,cur=0,paused=false,
+      reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,
+      md=document.getElementById('awModal'),mi=md.querySelector('img'),opener=null;
+  sl.forEach(function(s){var im=s.querySelector('img');if(im&&im.complete&&!im.naturalWidth)window.pjImg(im)});
+  function render(){
+    sl.forEach(function(s,i){var o=((i-cur)%n+n)%n;if(o>n/2)o-=n;var a=Math.abs(o);
+      s.style.setProperty('--o',o);s.style.setProperty('--d',Math.min(a,3));s.style.zIndex=10-a;
+      s.classList.toggle('is-active',o===0);s.classList.toggle('is-far',a>2);s.tabIndex=o===0?0:-1;s.setAttribute('aria-hidden',o===0?'false':'true')});
+    dots.forEach(function(d,i){d.classList.toggle('on',i===cur)});
+  }
+  function go(k){cur=((k%n)+n)%n;render()}
+  function open(){var s=sl[cur],im=s.querySelector('img');opener=s;
+    mi.hidden=!im||!im.complete||!im.naturalWidth;if(!mi.hidden)mi.src=im.src;
+    document.getElementById('awMIssuer').textContent=s.querySelector('.aw-issuer').textContent;
+    md.querySelector('.aw-m-panel').classList.toggle('no-img',mi.hidden);
+    var site=s.querySelector('.aw-card').dataset.site,lk=document.getElementById('awMLink');
+    if(site){lk.href=site;lk.textContent='Visit '+site.replace(/^https?:\/\/(www\.)?/,'')+' \u2197';lk.hidden=false}else lk.hidden=true;
+    document.getElementById('awMTitle').textContent=s.querySelector('.aw-name').textContent;
+    md.hidden=false;paused=true;document.body.style.overflow='hidden';md.querySelector('.aw-m-close').focus()}
+  function close(){md.hidden=true;paused=false;document.body.style.overflow='';if(opener)opener.focus()}
+  sl.forEach(function(s,i){s.addEventListener('click',function(){i===cur?open():go(i)});
+    s.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}})});
+  document.querySelector('.aw-prev').addEventListener('click',function(){go(cur-1)});
+  document.querySelector('.aw-next').addEventListener('click',function(){go(cur+1)});
+  dots.forEach(function(d,i){d.addEventListener('click',function(){go(i)})});
+  md.addEventListener('click',function(e){if(e.target===md||e.target.closest('.aw-m-close'))close()});
+  addEventListener('keydown',function(e){if(!md.hidden){if(e.key==='Escape')close();return}
+    var r=stg.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0){if(e.key==='ArrowLeft')go(cur-1);if(e.key==='ArrowRight')go(cur+1)}});
+  var sx=null;stg.addEventListener('pointerdown',function(e){sx=e.clientX});
+  stg.addEventListener('pointerup',function(e){if(sx!==null&&Math.abs(e.clientX-sx)>45){go(cur+(e.clientX<sx?1:-1));stg.dataset.sw=1;setTimeout(function(){delete stg.dataset.sw},50)}sx=null});
+  stg.addEventListener('click',function(e){if(stg.dataset.sw)e.stopPropagation()},true);
+  var car=document.querySelector('.aw-carousel');car.addEventListener('mouseenter',function(){paused=true});car.addEventListener('mouseleave',function(){paused=!md.hidden});
+  if(!reduce)setInterval(function(){if(!paused&&!document.hidden)go(cur+1)},4500);
+  render();
+})();
+</script>
+<script type="module">
+/* Contact form -> Firebase Firestore (collection "mail"). The "Trigger Email from Firestore" extension turns each document into an email. */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCSGn1_azlDNArx3dK9AnTsl21v1199Kuk",
+  authDomain: "systechlc-1ed3f.firebaseapp.com",
+  projectId: "systechlc-1ed3f",
+  storageBucket: "systechlc-1ed3f.firebasestorage.app",
+  messagingSenderId: "132068460496",
+  appId: "1:132068460496:web:69f42cc6933706fd5d1bd5",
+  measurementId: "G-PYHCY4M7JW"
+};
+const RECIPIENT = "sales@systechlc.com";
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+/* analytics is optional: it must never stop the form from working */
+import("https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js")
+  .then(m => m.isSupported().then(ok => ok && m.getAnalytics(app)))
+  .catch(() => {});
+
+const f = document.getElementById("contactForm");
+if (f) {
+  const st = document.getElementById("formStatus");
+  const btn = f.querySelector("button[type=submit]");
+  const say = (c, t) => { st.className = c; st.textContent = t; };
+  f.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!f.checkValidity()) { f.reportValidity(); return; }
+    const d = Object.fromEntries(new FormData(f));
+    const label = btn.textContent;
+    btn.disabled = true; btn.textContent = "Sending\u2026"; say("", "Sending your message\u2026");
+    const subject = "Website inquiry: " + (d.subject || "New message");
+    const text = "Name: " + d.fullname + "\nEmail: " + d.email + "\nPhone: " + (d.phone || "-") +
+                 "\nSubject: " + (d.subject || "-") + "\n\nMessage:\n" + d.message;
+    try {
+      await Promise.race([
+        addDoc(collection(db, "mail"), { to: [RECIPIENT], replyTo: d.email, message: { subject, text }, createdAt: serverTimestamp() }),
+        new Promise((_, rej) => setTimeout(() => rej(new Error("The server did not respond. Check your connection.")), 15000))
+      ]);
+      f.reset();
+      say("ok", "Message sent. Our team will reply to " + d.email + " soon.");
+    } catch (err) {
+      console.error("Contact form error", err);
+      const why = err && err.code === "permission-denied" ? "Permission denied by Firestore rules." : (err && err.message) || "Unknown error.";
+      say("err", "Message not sent. " + why + " You can also email sales@systechlc.com.");
+    } finally {
+      btn.disabled = false; btn.textContent = label;
+    }
+  });
+}
+</script>
+<script>
+/* Welcome pop-up video: opens when the site is opened, closes by itself when the video ends. */
+(function(){
+  var SRC="images/pop_vid.mp4";          /* <-- path to your video */
+  var KEY="systechWelcomeSeen";          /* plays once per browser session */
+  var box=document.getElementById("welcomeVid"); if(!box) return;
+  try{ if(sessionStorage.getItem(KEY)){ box.remove(); return; } }catch(e){}
+  var v=document.getElementById("welcomeVideo"),
+      opened=false, closed=false;
+
+  function close(){
+    if(closed) return; closed=true;
+    try{ v.pause(); }catch(e){}
+    box.classList.remove("on");
+    document.documentElement.style.overflow="";
+    setTimeout(function(){ v.removeAttribute("src"); v.load(); box.remove(); },1000);
+  }
+  function play(){
+    v.muted=false;
+    var p=v.play();
+    if(p&&p.catch) p.catch(function(){            /* browser blocked sound -> play muted */
+      v.muted=true;
+      var q=v.play(); if(q&&q.catch) q.catch(close);
+    });
+  }
+  function open(){
+    if(opened||closed) return; opened=true;
+    try{ sessionStorage.setItem(KEY,"1"); }catch(e){}
+    document.documentElement.style.overflow="hidden";
+    box.classList.add("on"); play();
+  }
+
+  v.addEventListener("canplay",open,{once:true});   /* show only once the video is ready */
+  v.addEventListener("ended",close);                /* auto close when finished */
+  v.addEventListener("error",close);
+  box.addEventListener("click",function(e){ if(e.target===box) close(); });
+  document.addEventListener("keydown",function(e){ if(e.key==="Escape") close(); });
+  setTimeout(function(){ if(!opened) close(); },8000);  /* give up if it never loads */
+  v.src=SRC;
+})();
+</script>
+<script defer src="bundle.js"></script>
+</body>
+</html>

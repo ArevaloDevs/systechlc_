@@ -10,12 +10,12 @@
 <script>document.documentElement.className+=" js";try{if(JSON.parse(localStorage.getItem("darkMode"))===true)document.documentElement.className+=" pj-dark"}catch(e){}window.pjImg=function(i){var r=(i.dataset.remote||'').split('|').filter(Boolean),n=+i.dataset.tried||0;if(n<r.length){i.dataset.tried=n+1;i.src=r[n]}else i.remove()}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="systech.png">
+  <link rel="icon" href="images/systech.png">
   <link href="style.css" rel="stylesheet">
 
 <style>
 /* utilities used in markup but missing from the purged style.css (logos rendered at natural size) */
-.h-10{height:2.5rem}.w-auto{width:auto}.max-h-10{max-height:2.5rem}.object-contain{object-fit:contain}
+.w-auto{width:auto}.object-contain{object-fit:contain}
 html{scroll-behavior:smooth}
 main>section{scroll-margin-top:84px}
 main>section:not(:first-child):not(#video-showcase):not(#features-section){padding-top:clamp(40px,5vw,64px)!important;padding-bottom:clamp(40px,5vw,64px)!important}
@@ -606,6 +606,17 @@ body.b.eh .aw-year{color:#a1a1aa}
 
 </style>
 
+<style>
+.lk-sec{position:relative;padding:70px 0 90px}
+.lk-sec h2{text-align:center;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--av-t);margin:0 0 8px}
+.lk-sec .lk-sub{text-align:center;color:var(--av-m);margin:0 0 30px}
+.lk-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.lk-strip a{display:flex;flex-direction:column;gap:4px;padding:18px 20px;border-radius:18px;background:var(--av-card);border:1px solid var(--av-line);text-decoration:none;transition:transform .35s,border-color .3s,box-shadow .35s}
+.lk-strip a:hover{transform:translateY(-5px);border-color:#4e6bff;box-shadow:0 20px 40px -22px rgba(0,53,254,.5)}
+.lk-strip b{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--av-t);font-weight:800}
+.lk-strip b::after{content:"\2192";color:#0035fe}
+.lk-strip small{color:var(--av-m);font-size:.82rem}
+</style>
 </head>
 <body x-data="{ page: 'audiovisual', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -627,8 +638,8 @@ body.b.eh .aw-year{color:#a1a1aa}
   <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i flex-row-reverse">
     <div class="vd to/4 tc wf yf">
       <a href="index.html">
-        <img class="om h-10 w-auto max-h-10 object-contain" src="logo-light_systech.png" alt="Logo Light" />
-        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="logo-dark_systech.png" alt="Logo Dark" />
+        <img class="om h-10 w-auto max-h-10 object-contain" src="images/logo-light_systech.png" alt="Logo Light" />
+        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="images/logo-dark_systech.png" alt="Logo Dark" />
       </a>
       <button class="po rc" @click="navigationOpen = !navigationOpen">
         <span class="rc i pf re pd">
@@ -652,7 +663,7 @@ body.b.eh .aw-year{color:#a1a1aa}
                 viewBox="0 0 512 512">
                 <path
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lighting</a></li><li><a href="Dimmings.html" class="xl">Guest Room Management System (GRMS)</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Guest Room Management System (GRMS)</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
           <li class="c i" x-data="{ dropdown: false }">
             <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
               :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
@@ -664,8 +675,7 @@ body.b.eh .aw-year{color:#a1a1aa}
               </svg>
             </a>
             <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="index.html#partners" class="xl">Brand Partners</a></li></ul>
-          </li>
-          <li><a href="index.html#support" class="xl">Support</a></li>
+          </li><li><a href="NEWS.html" class="xl" :class="{ 'mk': page === 'news' }">News</a></li><li><a href="Career.html" class="xl" :class="{ 'mk': page === 'careers' }">Careers</a></li><li><a href="CONTACT.html" class="xl" :class="{ 'mk': page === 'contact' }">Contact</a></li>
         </ul>
       </nav>
       <div class="tc wf ig pb no">
@@ -726,13 +736,14 @@ body.b.eh .aw-year{color:#a1a1aa}
   <div><h4>Contact</h4><p>Tel: <a href="tel:+63283749938">+632-8374-9938</a><br>Fax: +632-8376-9004<br><a href="mailto:sales@systechlc.com">sales@systechlc.com</a></p></div></div>
  <div class="av-band rv"><h2>Planning an audiovisual project?</h2><p>Tell us about your space and we will recommend the right system.</p><a class="av-btn" href="CONTACT.html">Send an inquiry</a></div>
 </div></section>
+<section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Dimmings.html"><b>Guest Room Management (GRMS)</b><small>Dimming and room control</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
 </main>
 <footer>
 <div class="bb ze ki xn 2xl:ud-px-0">
 <div class="ji gp">
 <div class="tc uf ap gg fp">
 <div class="animate_top zd/2 to/4">
-<a href="index.html"><img src="logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
+<a href="index.html"><img src="images/logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="images/logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
 <p class="lc fb">Lighting, dimming, audio-visual and sound systems — planned, installed and supported by one team.</p>
 <ul class="tc wf cg"><li>
                 <a href="https://www.facebook.com/systechlc/" target="_blank" rel="noopener" aria-label="Facebook">
@@ -754,17 +765,22 @@ body.b.eh .aw-year{color:#a1a1aa}
 <li><a href="index.html#progress" class="sc xl vb">On-Going Projects</a></li>
 <li><a href="index.html#completed" class="sc xl vb">Completed Projects</a></li>
 <li><a href="index.html#partners" class="sc xl vb">Brand Partners</a></li>
+
+<li><a href="NEWS.html" class="sc xl vb">News</a></li>
+<li><a href="Career.html" class="sc xl vb">Careers</a></li>
+<li><a href="CONTACT.html" class="sc xl vb">Contact</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Services</h4><ul>
 <li><a href="Audiovisual.html" class="sc xl vb">Audiovisual</a></li>
 <li><a href="Lightings.html" class="sc xl vb">Lightings</a></li>
 <li><a href="Dimmings.html" class="sc xl vb">Guest Room Management System (GRMS)</a></li>
+<li><a href="Solar.html" class="sc xl vb">Solar Power System</a></li>
 <li><a href="index.html#features-section" class="sc xl vb">24/7 Support</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Contact</h4><ul>
 <li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
 <li><a href="mailto:markjosepharevalo.systechlc@gmail.com" class="sc xl vb">markjosepharevalo.systechlc@gmail.com</a></li>
-<li><a href="CONTACT.html" class="sc xl vb">Send an inquiry</a></li>
+<li><a href="CONTACT.html#av-form" class="sc xl vb">Send an inquiry</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Offices</h4>
 <p class="ac qe">Quezon City &amp; Antipolo City, Philippines</p></div>
@@ -772,7 +788,7 @@ body.b.eh .aw-year{color:#a1a1aa}
 </div>
 </div>
 <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
-<div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li><li><a href="index.html#support" class="xl">Support</a></li></ul></div>
+<div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li></ul></div>
 <div class="animate_top"><p>&copy; 2026 Systech Lighting and Controls Inc. All rights reserved.</p></div>
 </div>
 </div>

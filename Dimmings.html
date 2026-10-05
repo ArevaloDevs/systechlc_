@@ -974,7 +974,8 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
   var $=function(id){return document.getElementById(id)};
 
   /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension) in the same folder as this page (see LOGO_DIR), k=filter group(s), ex=exclusive distributor ===== */
- var EXTS=['jpg','png','jpeg','webp','svg'];
+ var EXTS=['jpg','png','jpeg','webp','svg','JPG','PNG','JPEG'];
+function cands(f){var o=[];[f,f.toLowerCase(),f.toUpperCase()].forEach(function(n){EXTS.forEach(function(x){var u=n+'.'+x;if(o.indexOf(u)<0)o.push(u)})});return o}
 var LOGO_DIR=''; /* folder that holds the logo files ('' = same folder as this page) */
 var CATS=[
    {id:'dim',title:'Guestroom Management System and Dimming System',note:'Dimming, room management and lighting control systems.',items:[
@@ -983,7 +984,7 @@ var CATS=[
     {n:'LITEPUTER',t:'Lighting Control System',s:'www.liteputer.com.tw',f:'liteputer',k:'ctl'}]}];
   var BF=[['all','All'],['dim','Dimming'],['room','Room Management'],['ctl','Controls']];
 
-  /* ===== EDIT HERE: dimming solutions (images in projects/) ===== */
+  /* ===== EDIT HERE: dimming solutions (image files sit in the same folder as this page) ===== */
   var P=[{"n":"Dimming Systems","c":"dim","t":"Dimming","d":"Smooth, reliable dimming for hotels, resorts and residences, supplied and installed as a complete system.","i":["Samal Shores Hotel &amp; Resort","Shang Residences at Wack-Wack","Lanson Place, SM Mall of Asia"],"f":"Samal-Shore.jpg","g":"linear-gradient(135deg,#7a5cff,#0035fe)"},
    {"n":"Guestroom Management System","c":"room","t":"Guestroom","d":"Guestroom management supplied and installed for hotels and resorts.","i":["South Palms Resorts Panglao"],"f":"south-palms.jpg","g":"linear-gradient(135deg,#00b4f0,#0035fe)"},
    {"n":"Lighting Controls","c":"ctl","t":"Controls","d":"Design, supply, supervision and commissioning of complete lighting controls for large properties.","i":["Solaire North Resort &amp; Casino"],"f":"Solaire-North.png","g":"linear-gradient(135deg,#ff8a3d,#d6336c)"},
@@ -1036,8 +1037,8 @@ var CATS=[
   /* ---- brand catalogue ---- */
   function card(p,i){
     var a=document.createElement('article');a.className='av-card rv';a.dataset.k=p.k||'';a.style.setProperty('--i',i%4);
-    var alt=EXTS.slice(1).map(function(x){return LOGO_DIR+p.f+'.'+x}).join('|');
-    var logo='<div class="av-logo"><img src="'+LOGO_DIR+p.f+'.'+EXTS[0]+'" data-remote="'+alt+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
+    var cc=cands(p.f).map(function(u){return LOGO_DIR+u}),alt=cc.slice(1).concat(['jpg','png','jpeg'].map(function(x){return 'https://www.systechlc.com/img/'+p.f+'.'+x})).join('|');
+    var logo='<div class="av-logo"><img src="'+cc[0]+'" data-remote="'+alt+'" referrerpolicy="no-referrer" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
     a.innerHTML=(p.s?'<a class="av-media-link" href="https://'+p.s+'" target="_blank" rel="noopener" aria-label="Visit '+p.n+' website">'+logo+'</a>':logo)
       +'<h3>'+p.n+'</h3>'
       +'<div class="av-tags"><span class="av-tag">'+p.t+'</span>'+(p.ex?'<span class="av-ex">Exclusive Distributor</span>':'')+'</div>'
@@ -1064,7 +1065,7 @@ var CATS=[
   /* ---- dimming solution cards ---- */
   var g=$('dmGrid'),lf=$('dmFilter'),cards=[];
   P.forEach(function(p){var a=document.createElement('article');a.className='av-card rv';a.dataset.c=p.c;
-    a.innerHTML='<a class="av-media-link" href="CONTACT.html#av-form" aria-label="Explore '+p.n.replace(/<[^>]+>/g,'')+'"><div class="av-art" style="--g:'+p.g+'"><img src="projects/'+p.f+'" data-remote="http://www.systechlc.com/img/'+p.f+'" alt="'+p.n+'" loading="lazy" onerror="pjImg(this)">'+IC+'<span class="av-explore"><span>Explore '+CHEV+'</span></span></div></a><span class="av-tag">'+p.t+'</span><h3>'+p.n+'</h3><p>'+p.d+'</p><p class="av-feat">Featured in</p><ul class="av-chips">'+p.i.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
+    a.innerHTML='<a class="av-media-link" href="CONTACT.html#av-form" aria-label="Explore '+p.n.replace(/<[^>]+>/g,'')+'"><div class="av-art" style="--g:'+p.g+'"><img src="https://www.systechlc.com/img/'+p.f+'" data-remote="http://www.systechlc.com/img/'+p.f+'|'+p.f+'" referrerpolicy="no-referrer" alt="'+p.n+'" loading="lazy" onerror="pjImg(this)">'+IC+'<span class="av-explore"><span>Explore '+CHEV+'</span></span></div></a><span class="av-tag">'+p.t+'</span><h3>'+p.n+'</h3><p>'+p.d+'</p><p class="av-feat">Featured in</p><ul class="av-chips">'+p.i.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
     g.appendChild(a);cards.push(a)});
   F.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.textContent=x[1];if(!i)b.className='on';
     b.onclick=function(){[].forEach.call(lf.children,function(y){y.classList.remove('on')});b.classList.add('on');

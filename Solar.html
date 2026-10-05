@@ -10,7 +10,7 @@
 <script>document.documentElement.className+=" js";try{if(JSON.parse(localStorage.getItem("darkMode"))===true)document.documentElement.className+=" pj-dark"}catch(e){}window.pjImg=function(i){var r=(i.dataset.remote||'').split('|').filter(Boolean),n=+i.dataset.tried||0;if(n<r.length){i.dataset.tried=n+1;i.src=r[n]}else i.remove()}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="images/systech.png">
+  <link rel="icon" href="systech.png">
   <link href="style.css" rel="stylesheet">
 
 <style>
@@ -226,20 +226,21 @@ body.b.eh .aw-year{color:#a1a1aa}
 /* ---- video sound toggle ---- */
 #video-showcase{margin-top:76px}
 
-/* ---- custom glowing cursor (audiovisual / lighting themed) ---- */
+/* ---- cursor glow: a soft light in the page background follows the cursor ---- */
 @media(pointer:fine){
-  html.pj-cursor-ready,html.pj-cursor-ready *{cursor:none!important}
-  .pj-cursor-dot,.pj-cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:2147483000;will-change:transform}
-  .pj-cursor-dot{width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#0035fe;box-shadow:0 0 10px 2px rgba(0,53,254,.9)}
-  .pj-cursor-ring{width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1px solid rgba(0,53,254,.55);box-shadow:0 0 18px 4px rgba(0,53,254,.25);transition:width .25s var(--pj-ease),height .25s var(--pj-ease),margin .25s var(--pj-ease),border-color .25s,opacity .25s}
-  .pj-cursor-ring.pj-hover{width:56px;height:56px;margin:-28px 0 0 -28px;border-color:rgba(0,53,254,.85);box-shadow:0 0 26px 8px rgba(0,53,254,.35)}
-  .pj-cursor-pulse{position:fixed;top:0;left:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1px solid #0035fe;pointer-events:none;z-index:2147483000;opacity:0;animation:pjPulse .6s ease-out forwards}
-  @keyframes pjPulse{from{opacity:.7;transform:scale(1)}to{opacity:0;transform:scale(4.2)}}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;
+    background:radial-gradient(calc(var(--gr,420px) * .3) circle at var(--gx,50%) var(--gy,50%),rgba(255,196,110,.26),transparent 100%),
+               radial-gradient(var(--gr,420px) circle at var(--gx,50%) var(--gy,50%),rgba(0,53,254,.17),rgba(78,107,255,.07) 45%,transparent 72%)}
+  html::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;
+    background:radial-gradient(circle,rgba(0,53,254,.5) 0 1.2px,transparent 1.7px) 0 0/26px 26px;
+    -webkit-mask-image:radial-gradient(calc(var(--gr,420px) * .75) circle at var(--gx,50%) var(--gy,50%),#000,transparent 100%);
+    mask-image:radial-gradient(calc(var(--gr,420px) * .75) circle at var(--gx,50%) var(--gy,50%),#000,transparent 100%)}
+  html.pj-glow-on body::after,html.pj-glow-on::before{opacity:1}
+  body.b.eh::after{background:radial-gradient(calc(var(--gr,420px) * .3) circle at var(--gx,50%) var(--gy,50%),rgba(255,196,110,.2),transparent 100%),
+               radial-gradient(var(--gr,420px) circle at var(--gx,50%) var(--gy,50%),rgba(110,140,255,.26),rgba(78,107,255,.1) 45%,transparent 72%)}
+  html.pj-dark::before{background-image:radial-gradient(circle,rgba(160,180,255,.55) 0 1.2px,transparent 1.7px)}
 }
-@media(pointer:coarse),(prefers-reduced-motion:reduce){
-  html.pj-cursor-ready,html.pj-cursor-ready *{cursor:auto!important}
-  .pj-cursor-dot,.pj-cursor-ring,.pj-cursor-pulse{display:none!important}
-}
+@media(prefers-reduced-motion:reduce){body::after,html::before{display:none}}
 
 /* ---- soft section background, matching the Contact ("Let's Stay
    Connected") section's light tint + faint decorative shapes ---- */
@@ -436,7 +437,7 @@ body.b.eh .av-btn.ghost{color:#8fa3ff!important;box-shadow:inset 0 0 0 2px #8fa3
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--pj-ease),transform .8s var(--pj-ease);transition-delay:calc(var(--i,0)*90ms)}
 .js .rv.pj-in{opacity:1;transform:none}
 /* hero */
-#av-hero{padding-top:clamp(110px,15vh,150px);min-height:100svh;display:flex;align-items:center}
+main>section#av-hero{padding-top:clamp(130px,17vh,170px)!important}
 .av-hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
 .av-crumb{font-size:.85rem;color:var(--av-m);margin-bottom:18px}.av-crumb a{color:inherit}.av-crumb a:hover{color:#0035fe}
 #av-hero h1{font-size:clamp(2.3rem,5vw,3.7rem);font-weight:800;line-height:1.08;color:var(--av-t)}
@@ -670,6 +671,30 @@ body.b.eh .aw-year{color:#a1a1aa}
 .lk-strip b::after{content:"\2192";color:#0035fe}
 .lk-strip small{color:var(--av-m);font-size:.82rem}
 </style>
+<style>
+/* inquiry form (same look as the Contact page) */
+.ct-form{max-width:760px;margin:0 auto;padding:30px;border-radius:26px;background:var(--av-card);border:1px solid var(--av-line);box-shadow:0 30px 60px -38px rgba(0,53,254,.5)}
+.ct-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ct-f{display:flex;flex-direction:column;gap:6px}
+.ct-f.full{grid-column:1/-1}
+.ct-f[hidden]{display:none!important}
+.ct-f label{font-size:.95rem;font-weight:500;color:var(--av-t)}
+.ct-f input,.ct-f select,.ct-f textarea{width:100%;box-sizing:border-box;height:44px;padding:0 20px;border-radius:999px;background:#fff;border:1px solid #d9d9e8;color:#1d2144;font:inherit;font-size:.95rem;outline:0;transition:border-color .3s,box-shadow .3s}
+.ct-f textarea{height:auto;min-height:170px;padding:14px 20px;border-radius:14px;resize:vertical}
+.ct-f select{-webkit-appearance:none;appearance:none;padding-right:46px;background-repeat:no-repeat;background-position:right 18px center;background-size:14px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a90ab' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+.ct-f input:focus,.ct-f select:focus,.ct-f textarea:focus{border-color:#0035fe;box-shadow:0 0 0 4px rgba(0,53,254,.14)}
+body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background-color:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18);color:var(--av-t)}
+.ct-f select option{color:#1d2144}
+.ct-submit{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.ct-submit button{border:0;cursor:pointer}
+.ct-submit button:disabled{opacity:.7;cursor:progress}
+.ct-note{font-size:.8rem;color:var(--av-m)}
+#ctStatus{min-height:1.4em;margin-top:14px;font-weight:600}
+#ctStatus.ct-ok{color:#0f8a4b}
+#ctStatus.ct-err{color:#d92d20}
+@media(max-width:560px){.ct-fields{grid-template-columns:1fr}.ct-form{padding:22px 18px}}
+</style>
 </head>
 <body x-data="{ page: 'solar', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -691,8 +716,8 @@ body.b.eh .aw-year{color:#a1a1aa}
   <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i flex-row-reverse">
     <div class="vd to/4 tc wf yf">
       <a href="index.html">
-        <img class="om h-10 w-auto max-h-10 object-contain" src="images/logo-light_systech.png" alt="Logo Light" />
-        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="images/logo-dark_systech.png" alt="Logo Dark" />
+        <img class="om h-10 w-auto max-h-10 object-contain" src="logo-light_systech.png" alt="Logo Light" />
+        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="logo-dark_systech.png" alt="Logo Dark" />
       </a>
       <button class="po rc" @click="navigationOpen = !navigationOpen">
         <span class="rc i pf re pd">
@@ -716,7 +741,7 @@ body.b.eh .aw-year{color:#a1a1aa}
                 viewBox="0 0 512 512">
                 <path
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Guest Room Management System (GRMS)</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems & GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
           <li class="c i" x-data="{ dropdown: false }">
             <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
               :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
@@ -727,7 +752,7 @@ body.b.eh .aw-year{color:#a1a1aa}
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
               </svg>
             </a>
-            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="index.html#partners" class="xl">Brand Partners</a></li></ul>
+            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="Partners.html" class="xl">Partners</a></li></ul>
           </li>
 <li><a href="NEWS.html" class="xl" :class="{ 'mk': page === 'news' }">News</a></li><li><a href="Career.html" class="xl" :class="{ 'mk': page === 'careers' }">Careers</a></li><li><a href="CONTACT.html" class="xl" :class="{ 'mk': page === 'contact' }">Contact</a></li>
         </ul>
@@ -830,16 +855,33 @@ body.b.eh .aw-year{color:#a1a1aa}
  <div class="av-office rv"><div><h4>Residential Office</h4><p>2 Scout Rallos corner Mother Ignacia Avenue, Quezon City 1103</p></div>
   <div><h4>Commercial Office</h4><p>144 Sumulong Highway, Mayamot, Antipolo City 1870</p></div>
   <div><h4>Contact</h4><p>Tel: <a href="tel:+63283749938">+632-8374-9938</a><br>Fax: +632-8376-9004<br><a href="mailto:sales@systechlc.com">sales@systechlc.com</a></p></div></div>
- <div class="av-band rv"><h2>Planning a solar power project?</h2><p>Tell us about your site and we will recommend the right system.</p><a class="av-btn" href="CONTACT.html">Send an inquiry</a></div>
+ <div class="av-head rv"><h2>Planning a solar power project?</h2><p>Tell us about your site and we will recommend the right system.</p></div>
+ <form class="ct-form rv" id="contactForm" novalidate><div class="ct-fields">
+  <div class="ct-f"><label for="cF">First name</label><input id="cF" name="first_name" autocomplete="given-name" required></div>
+  <div class="ct-f"><label for="cLn">Last name</label><input id="cLn" name="last_name" autocomplete="family-name"></div>
+  <div class="ct-f full"><label for="cE">Email address</label><input id="cE" name="email" type="email" autocomplete="email" required></div>
+  <div class="ct-f full"><label for="cP">Phone number</label><input id="cP" name="phone" type="tel" autocomplete="tel"></div>
+  <div class="ct-f full"><label for="cT">How can we help you?</label>
+    <select id="cT" name="topic">
+      <option value="services">Inquiry for services</option>
+      <option value="expert">Talk to an expert</option>
+      <option value="support">Ask for Support (for aftersales)</option>
+      <option value="job">Application for company job</option>
+    </select></div>
+  <div class="ct-f ct-job-only" hidden><label for="cR">Position</label><select id="cR" name="role"></select></div>
+  <div class="ct-f ct-job-only" hidden><label for="cL">Resume / LinkedIn / portfolio link</label><input id="cL" name="link" type="url"></div>
+  <div class="ct-f full"><label for="cC">Country</label><select id="cC" name="country"><option value="">Select region...</option></select></div>
+  <div class="ct-f full"><label for="cM">Message</label><textarea id="cM" name="message" required></textarea></div></div>
+  <div class="ct-submit"><button type="submit" class="av-btn">Send Message</button><span class="ct-note">We reply to the email address you provide.</span></div><div id="ctStatus" role="status" aria-live="polite"></div></form>
 </div></section>
-<section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Dimmings.html"><b>Guest Room Management (GRMS)</b><small>Dimming and room control</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
+<section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Dimmings.html"><b>Guest Room Management (GRMS)</b><small>Dimming and room control</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="Partners.html"><b>Partner</b><small>Brands we work with</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
 </main>
 <footer>
 <div class="bb ze ki xn 2xl:ud-px-0">
 <div class="ji gp">
 <div class="tc uf ap gg fp">
 <div class="animate_top zd/2 to/4">
-<a href="index.html"><img src="images/logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="images/logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
+<a href="index.html"><img src="logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
 <p class="lc fb">Lighting, dimming, audio-visual and sound systems — planned, installed and supported by one team.</p>
 <ul class="tc wf cg"><li>
                 <a href="https://www.facebook.com/systechlc/" target="_blank" rel="noopener" aria-label="Facebook">
@@ -860,7 +902,7 @@ body.b.eh .aw-year{color:#a1a1aa}
 <li><a href="index.html#services" class="sc xl vb">Products</a></li>
 <li><a href="index.html#progress" class="sc xl vb">On-Going Projects</a></li>
 <li><a href="index.html#completed" class="sc xl vb">Completed Projects</a></li>
-<li><a href="index.html#partners" class="sc xl vb">Brand Partners</a></li>
+<li><a href="Partners.html" class="sc xl vb">Partner</a></li>
 
 <li><a href="NEWS.html" class="sc xl vb">News</a></li>
 <li><a href="Career.html" class="sc xl vb">Careers</a></li>
@@ -869,13 +911,13 @@ body.b.eh .aw-year{color:#a1a1aa}
 <div class="animate_top"><h4 class="kk wm tj ec">Services</h4><ul>
 <li><a href="Audiovisual.html" class="sc xl vb">Audiovisual</a></li>
 <li><a href="Lightings.html" class="sc xl vb">Lightings</a></li>
-<li><a href="Dimmings.html" class="sc xl vb">Guest Room Management System (GRMS)</a></li>
+<li><a href="Dimmings.html" class="sc xl vb">Dimming Systems & GRMS</a></li>
 <li><a href="Solar.html" class="sc xl vb">Solar Power System</a></li>
 <li><a href="index.html#features-section" class="sc xl vb">24/7 Support</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Contact</h4><ul>
 <li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
-<li><a href="mailto:markjosepharevalo.systechlc@gmail.com" class="sc xl vb">markjosepharevalo.systechlc@gmail.com</a></li>
+<li><a href="mailto:sales@systechlc.com" class="sc xl vb">sales@systechlc.com</a></li>
 <li><a href="CONTACT.html#av-form" class="sc xl vb">Send an inquiry</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Offices</h4>
@@ -885,7 +927,7 @@ body.b.eh .aw-year{color:#a1a1aa}
 </div>
 <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
 <div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li></ul></div>
-<div class="animate_top"><p>&copy; 2026 Systech Lighting and Controls Inc. All rights reserved.</p></div>
+<div class="animate_top"><p>&copy; 2027 Systech Lighting and Controls Inc. All rights reserved.</p></div>
 </div>
 </div>
 </footer>
@@ -895,12 +937,13 @@ body.b.eh .aw-year{color:#a1a1aa}
   var NS='http://www.w3.org/2000/svg';
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension) in images/partners/ ===== */
+  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension) in partners/ ===== */
   var EXTS=['jpg','png','jpeg','webp','svg'];
+  var LOGO_DIR=''; /* folder that holds TRINA.jpg, BLUESUN.jpg, INVT.jpg ('' = same folder as this page) */
   var CATS=[{id:'solar',title:'Solar Power System',note:'Solar power system brands we supply, install and support.',items:[
-    {n:'TRINA',t:'Solar Power System',s:'www.trinasolar.com',f:'trina'},
-    {n:'BLUESUN',t:'Solar Power System',s:'www.bluesunpv.com',f:'bluesun'},
-    {n:'INVT',t:'Solar Power System',s:'www.invt-solar.com',f:'invt'}]}];
+    {n:'TRINA',t:'Solar Power System',s:'www.trinasolar.com',f:'TRINA'},
+    {n:'BLUESUN',t:'Solar Power System',s:'www.bluesunpv.com',f:'BLUESUN'},
+    {n:'INVT',t:'Solar Power System',s:'www.invt-solar.com',f:'INVT'}]}];
   var CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   /* ---- hero: solar day cycle ---- */
@@ -1003,8 +1046,8 @@ body.b.eh .aw-year{color:#a1a1aa}
   /* ---- brand catalogue ---- */
   function card(p,i){
     var a=document.createElement('article');a.className='av-card rv';a.style.setProperty('--i',i%4);
-    var alt=EXTS.slice(1).map(function(x){return 'images/partners/'+p.f+'.'+x}).join('|');
-    var logo='<div class="av-logo"><img src="images/partners/'+p.f+'.'+EXTS[0]+'" data-remote="'+alt+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
+    var alt=EXTS.slice(1).map(function(x){return LOGO_DIR+p.f+'.'+x}).join('|');
+    var logo='<div class="av-logo"><img src="'+LOGO_DIR+p.f+'.'+EXTS[0]+'" data-remote="'+alt+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
     a.innerHTML=(p.s?'<a class="av-media-link" href="https://'+p.s+'" target="_blank" rel="noopener" aria-label="Visit '+p.n+' website">'+logo+'</a>':logo)
       +'<h3>'+p.n+'</h3><div class="av-tags"><span class="av-tag">'+p.t+'</span></div>'
       +(p.s?'<a class="av-visit" href="https://'+p.s+'" target="_blank" rel="noopener">'+p.s+'</a>':'');
@@ -1035,29 +1078,16 @@ body.b.eh .aw-year{color:#a1a1aa}
   var fine=window.matchMedia&&matchMedia('(pointer:fine)').matches;
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!fine||reduce)return;
-  var dot=document.createElement('div');dot.className='pj-cursor-dot';
-  var ring=document.createElement('div');ring.className='pj-cursor-ring';
-  document.body.appendChild(dot);document.body.appendChild(ring);
-  dot.style.opacity='0';ring.style.opacity='0';document.documentElement.classList.add('pj-cursor-ready');
-  var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  var root=document.documentElement,mx=innerWidth/2,my=innerHeight/2,x=mx,y=my,r=420,tr=420;
   addEventListener('mousemove',function(e){
-    mx=e.clientX;my=e.clientY;if(dot.style.opacity==='0'){rx=mx;ry=my;dot.style.opacity='1';ring.style.opacity='1'}
-    dot.style.transform='translate3d('+mx+'px,'+my+'px,0)';
-    var t=e.target;
-    var hoverable=t.closest && t.closest('a,button,input,textarea,select,.sv-card,.sp-card,.cp-card,.aw-card,.feature-card,[onclick]');
-    ring.classList.toggle('pj-hover',!!hoverable);
+    mx=e.clientX;my=e.clientY;root.classList.add('pj-glow-on');
+    var t=e.target;tr=(t.closest&&t.closest('a,button,input,textarea,select,.sv-card,.sp-card,.cp-card,.aw-card,.feature-card,[onclick]'))?560:420;
   },{passive:true});
-  addEventListener('mousedown',function(e){
-    var p=document.createElement('div');p.className='pj-cursor-pulse';
-    p.style.transform='translate3d('+e.clientX+'px,'+e.clientY+'px,0)';
-    document.body.appendChild(p);
-    setTimeout(function(){p.remove()},650);
-  });
-  document.documentElement.addEventListener('mouseleave',function(){dot.style.opacity='0';ring.style.opacity='0'});
-  document.documentElement.addEventListener('mouseenter',function(){dot.style.opacity='1';ring.style.opacity='1'});
+  root.addEventListener('mouseleave',function(){root.classList.remove('pj-glow-on')});
+  root.addEventListener('mouseenter',function(){root.classList.add('pj-glow-on')});
   (function loop(){
-    rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
-    ring.style.transform='translate3d('+rx+'px,'+ry+'px,0)';
+    x+=(mx-x)*.14;y+=(my-y)*.14;r+=(tr-r)*.08;
+    root.style.setProperty('--gx',x.toFixed(1)+'px');root.style.setProperty('--gy',y.toFixed(1)+'px');root.style.setProperty('--gr',r.toFixed(0)+'px');
     requestAnimationFrame(loop);
   })();
 })();
@@ -1130,5 +1160,208 @@ body.b.eh .aw-year{color:#a1a1aa}
   addEventListener('pageshow',function(e){if(e.persisted)ready()});
 })();
 </script>
+<script src="cc-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+/* ======================================================================
+   EDIT HERE  (inquiry form settings)
+   ======================================================================
+   CONTACT_EMAIL   Backup address shown if sending fails.
+   POSITIONS       Jobs people can pick when they choose "Application for company job".
+                   Add, remove or rename lines. Keep each text inside the backticks ` `.
+   ====================================================================== */
+
+var CONTACT_EMAIL = 'sales@systechlc.com';
+
+var POSITIONS = [
+  `General application`,
+  `SITE SUPERVISOR`,
+  `Controls Programming Technician`
+];
+</script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('contactForm');
+  if (!form) return;
+
+  /* ---- dropdowns filled from the data block / list below ---- */
+  var topicSel = $('cT');
+  var roleSel = $('cR');
+  var countrySel = $('cC');
+
+  POSITIONS.forEach(function (title) {
+    var option = document.createElement('option');
+    option.textContent = title;
+    roleSel.appendChild(option);
+  });
+
+  /* Philippines first, then A to Z */
+  var COUNTRIES = [
+    'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan',
+    'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia',
+    'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada',
+    'Chile', 'China', 'Colombia', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Dominican Republic',
+    'Ecuador', 'Egypt', 'El Salvador', 'Estonia', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Georgia', 'Germany',
+    'Ghana', 'Greece', 'Guatemala', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia',
+    'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya',
+    'Kuwait', 'Laos', 'Latvia', 'Lebanon', 'Libya', 'Lithuania', 'Luxembourg', 'Macau', 'Malaysia', 'Maldives',
+    'Malta', 'Mexico', 'Mongolia', 'Morocco', 'Myanmar', 'Nepal', 'Netherlands', 'New Zealand', 'Nigeria', 'Norway',
+    'Oman', 'Pakistan', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Poland', 'Portugal', 'Qatar', 'Romania',
+    'Russia', 'Saudi Arabia', 'Senegal', 'Serbia', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain',
+    'Sri Lanka', 'Sudan', 'Sweden', 'Switzerland', 'Taiwan', 'Tanzania', 'Thailand', 'Turkey', 'Uganda', 'Ukraine',
+    'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
+  ];
+  ['Philippines'].concat(COUNTRIES).forEach(function (name) {
+    var option = document.createElement('option');
+    option.textContent = name;
+    countrySel.appendChild(option);
+  });
+
+  /* ---- what the visitor wants: services / expert / job ---- */
+  var TOPICS = {
+    services: {
+      label: 'Inquiry for services',
+      icon: '\uD83D\uDEE0\uFE0F',
+      cc: 'sales',
+      hint: 'Tell us about your project: location, type of space and what you need.'
+    },
+    expert: {
+      label: 'Talk to an expert',
+      icon: '\uD83D\uDCAC',
+      cc: 'sales',
+      hint: 'What would you like to discuss? Add your preferred schedule for a call.'
+    },
+    support: {
+      label: 'Ask for support (aftersales)',
+      icon: '\uD83C\uDFA7',
+      cc: 'aftersales',
+      hint: 'Describe the issue. Please include the product, the project location and any model or serial number.'
+    },
+    job: {
+      label: 'Application for company job',
+      icon: '\uD83D\uDCBC',
+      cc: 'hr',
+      hint: 'Tell us about yourself and your experience.'
+    }
+  };
+
+  var DEFAULT_CC = { sales: 'sales@systechlc.com', hr: 'hr@systechlc.com', aftersales: 'aftersales@systechlc.com' };
+  var FALLBACK_CC = (typeof CONTACT_EMAIL !== 'undefined' && CONTACT_EMAIL) ? CONTACT_EMAIL : 'sales@systechlc.com';
+  /* the department that gets a CC copy. cc-config.js can override these; the defaults above always work */
+  function ccFor(t) {
+    var key = t && t.cc, map = window.SYSTECH_CC || {}, pick = [map[key], DEFAULT_CC[key]];
+    for (var i = 0; i < pick.length; i++) {
+      var a = String(pick[i] || '').trim();
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(a) && a.indexOf('yourdomain') < 0) return a;
+    }
+    return FALLBACK_CC;   /* never blank, so the Cc line is always valid */
+  }
+  /* sends; if the mail service refuses the department address, retries once with the main inbox as the copy */
+  function sendWithCc(svc, tpl, p) {
+    return emailjs.send(svc, tpl, p).catch(function (err) {
+      console.error('EmailJS first attempt failed:', err);
+      if (p.cc_email && p.cc_email !== FALLBACK_CC) {
+        var p2 = {}; for (var k in p) p2[k] = p[k]; p2.cc_email = FALLBACK_CC;
+        return emailjs.send(svc, tpl, p2);
+      }
+      throw err;
+    });
+  }
+
+  /* show the Position + resume fields only for job applications */
+  function syncTopic() {
+    var isJob = topicSel.value === 'job';
+    [].forEach.call(form.querySelectorAll('.ct-job-only'), function (f) { f.hidden = !isJob; });
+    $('cM').placeholder = (TOPICS[topicSel.value] || TOPICS.services).hint;
+  }
+  topicSel.addEventListener('change', syncTopic);
+  syncTopic();
+
+  /* ---- send with EmailJS (no email app needed) ---- */
+  var EMAILJS_PUBLIC_KEY = 'gQ2T9LAubWGQijBsb';
+  var EMAILJS_SERVICE_ID = 'default_service';
+  var EMAILJS_TEMPLATE_ID = 'template_rkx63r6';
+
+  var status = form.querySelector('[role="status"]');
+  var sendBtn = form.querySelector('button[type="submit"]');
+  var sendLabel = sendBtn.textContent;
+  var emailjsReady = false;
+
+  function say(kind, text) {
+    status.className = kind === 'ok' ? 'ct-ok ok' : (kind === 'err' ? 'ct-err err' : '');
+    status.textContent = text;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sendBtn.disabled) return;
+
+    var data = new FormData(form);
+    var first = (data.get('first_name') || '').trim();
+    var last = (data.get('last_name') || '').trim();
+    var email = (data.get('email') || '').trim();
+    var phone = (data.get('phone') || '').trim();
+    var country = (data.get('country') || '').trim();
+    var role = (data.get('role') || '').trim();
+    var link = (data.get('link') || '').trim();
+    var message = (data.get('message') || '').trim();
+    var topic = TOPICS[data.get('topic')] || TOPICS.services;
+    var isJob = data.get('topic') === 'job';
+    var emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+
+    if (!first || !message || !emailOk) {
+      say('err', 'Please add your first name, a valid email and a short message.');
+      return;
+    }
+    if (!window.emailjs) {
+      say('err', 'The mail service could not be loaded. Please check your connection and try again, or write to ' + CONTACT_EMAIL + '.');
+      return;
+    }
+    if (!emailjsReady) {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      emailjsReady = true;
+    }
+
+    /* these names are the {{fields}} used in the EmailJS email template */
+    var params = {
+      name: (first + ' ' + last).trim(),
+      first_name: first,
+      last_name: last,
+      email: email,
+      phone: phone || '-',
+      country: country || '-',
+      topic: topic.label,
+      topic_icon: topic.icon,
+      role: isJob ? (role || '-') : '-',
+      link: isJob ? (link || '-') : '-',
+      time: new Date().toLocaleString('en-PH', {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: 'numeric', minute: '2-digit',
+        timeZone: 'Asia/Manila', timeZoneName: 'short'
+      }),
+      message: message,
+      cc_email: ccFor(topic)
+    };
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending...';
+    say('', '');
+
+    sendWithCc(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params).then(function () {
+      form.reset();
+      syncTopic();
+      say('ok', 'Thank you! Your message was sent. We will reply to ' + email + '.');
+    }, function (err) {
+      console.error('EmailJS error:', err);
+      say('err', 'Sorry, we could not send your message' + (err && err.text ? ' (' + err.text + ')' : '') +
+        '. Please try again, or write to ' + CONTACT_EMAIL + '.');
+    }).then(function () {
+      sendBtn.disabled = false;
+      sendBtn.textContent = sendLabel;
+    });
+  });
+})();
+</script>
 </body>
-</html>ß
+</html>

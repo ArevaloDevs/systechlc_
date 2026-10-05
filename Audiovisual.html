@@ -840,32 +840,33 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
   /* ===== EDIT HERE: the "Tap to play" sound. Put the file next to this page, or in /audio/ ===== */
   var AUDIO_SRC=['systech_audio.mp3'];
 
-  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file in images/partners/ ===== */
-  var REMOTE='systechlc.com/img/'; /* fallback: the old site's logo folder, used only if images/partners/<f> is missing */
+  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension), same folder as this page ===== */
+  var EXTS=['jpg','png','jpeg','webp','svg','JPG','PNG','JPEG']; /* logo files sit in the same folder as this page; name = f + extension, tries each extension and also lowercase */
+  function cands(f){var o=[];[f,f.toLowerCase()].forEach(function(n){EXTS.forEach(function(x){o.push(n+'.'+x)})});return o}
   var CATS=[
    {id:'sound',title:'Sound System',note:'Professional audio solutions and digital sound processors.',items:[
-    {n:'Adam Hall',t:'Professional Audio Solutions',s:'www.adamhall.com',f:'adam.jpg'},
-    {n:'Harman',t:'Professional Audio Solutions',s:'www.harman.com',f:'HARMAN.jpeg'},
-    {n:'Clair Brothers',t:'Professional Sound Reinforcement Innovators',s:'www.clairsystem.com',f:'clair.jpeg'},
-    {n:'Symetrix',t:'Digital Sound Processor',s:'www.symetrix.co',f:'symetrix.jpeg',ex:1},
-    {n:'Media Matrix',t:'Digital Sound Processor',f:'mediamatrix.jpeg'},
-    {n:'Ashly',t:'Professional Audio Solutions',s:'www.ashly.com',f:'ashly.jpeg'},
-    {n:'JBL',t:'Professional Audio Solutions',s:'www.jbl.com',f:'jbl.jpg'},
-    {n:'Crown',t:'Professional Audio Solutions',s:'www.crownaudio.com',f:'crown.jpeg'},
-    {n:'Powersoft',t:'Professional Audio Solutions',s:'www.powersoft.com',f:'powersoft.jpg'},
-    {n:'Wharfedale',t:'Professional Audio Solutions',s:'www.wharfedale.co.uk',f:'wharfedale.jpg'},
-    {n:'DiGiCo',t:'Professional Audio Solutions',s:'www.digico.biz',f:'digico.jpg'}]},
+    {n:'Adam Hall',t:'Professional Audio Solutions',s:'www.adamhall.com',f:'ADAMHALL'},
+    {n:'Harman',t:'Professional Audio Solutions',s:'www.harman.com',f:'HARMAN'},
+    {n:'Clair Brothers',t:'Professional Sound Reinforcement Innovators',s:'www.clairsystem.com',f:'CLAIR'},
+    {n:'Symetrix',t:'Digital Sound Processor',s:'www.symetrix.co',f:'SYMETRIC',ex:1},
+    {n:'Media Matrix',t:'Digital Sound Processor',f:'MEDIATRIX'},
+    {n:'Ashly',t:'Professional Audio Solutions',s:'www.ashly.com',f:'ASHLY'},
+    {n:'JBL',t:'Professional Audio Solutions',s:'www.jbl.com',f:'JBL'},
+    {n:'Crown',t:'Professional Audio Solutions',s:'www.crownaudio.com',f:'CROWN'},
+    {n:'Powersoft',t:'Professional Audio Solutions',s:'www.powersoft.com',f:'POWERSOFT'},
+    {n:'Wharfedale',t:'Professional Audio Solutions',s:'www.wharfedale.co.uk',f:'WHARFEDALE'},
+    {n:'DiGiCo',t:'Professional Audio Solutions',s:'www.digico.biz',f:'DIGICO'}]},
    {id:'acc',title:'Audio Accessories',note:'Cables, cases, stands and accessories.',items:[
-    {n:'Proel',t:'Audio Cables and Accessories, Italy',f:'proel.jpeg'},
-    {n:'Pro-Case',t:'Case, Stand and Accessories, China',f:'pro.jpeg'},
-    {n:'Gravity',t:'Audio Accessories',f:'gravity.jpg'}]},
+    {n:'Proel',t:'Audio Cables and Accessories, Italy',f:'PROEL'},
+    {n:'Pro-Case',t:'Case, Stand and Accessories, China',f:'PROCASE'},
+    {n:'Gravity',t:'Audio Accessories',f:'GRAVITY'}]},
    {id:'sign',title:'Digital Signage and Display',note:'Signage systems, display monitors, hotel TV and LED video walls.',items:[
-    {n:'Spinetix',t:'Digital Signage System',s:'www.spinetix.com',f:'spin.jpeg'},
-    {n:'BrightSign',t:'Digital Signage System',s:'www.brightsign.biz',f:'bs.jpeg'},
-    {n:'Samsung',t:'Digital Signage Monitor and Hotel TV',s:'www.samsung.com',f:'samsung.jpg'},
-    {n:'LG',t:'Digital Signage Monitor and Hotel TV',s:'www.lg.com',f:'lg.jpg'},
-    {n:'Panasonic',t:'Digital Signage Monitor',s:'www.panasonic.com',f:'panasonic.jpg'},
-    {n:'Uocolor',t:'LED Videowall',s:'www.uocolor.com',f:'uocolor.jpg'}]}];
+    {n:'Spinetix',t:'Digital Signage System',s:'www.spinetix.com',f:'SPINETIX'},
+    {n:'BrightSign',t:'Digital Signage System',s:'www.brightsign.biz',f:'BRIGHTSIGN'},
+    {n:'Samsung',t:'Digital Signage Monitor and Hotel TV',s:'www.samsung.com',f:'SAMSUNG'},
+    {n:'LG',t:'Digital Signage Monitor and Hotel TV',s:'www.lg.com',f:'LG'},
+    {n:'Panasonic',t:'Digital Signage Monitor',s:'www.panasonic.com',f:'PANASONIC'},
+    {n:'Uocolor',t:'LED Videowall',s:'www.uocolor.com',f:'UOCOLOR'}]}];
 
   var $=function(id){return document.getElementById(id)};
   var eq=$('avEq');for(var k=0;k<30;k++){var b=document.createElement('i');b.style.setProperty('--d',(.45+Math.random()*.9).toFixed(2)+'s');b.style.setProperty('--h',(25+Math.random()*75).toFixed(0)+'%');b.style.animationDelay=(-Math.random()).toFixed(2)+'s';eq.appendChild(b)}
@@ -912,7 +913,7 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
   var CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function card(p,i){
     var a=document.createElement('article');a.className='av-card rv';a.style.setProperty('--i',i%4);
-    var logo='<div class="av-logo"><img src="images/partners/'+p.f+'" data-remote="https://www.'+REMOTE+p.f+'|http://www.'+REMOTE+p.f+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
+    var logo='<div class="av-logo"><img src="'+cands(p.f)[0]+'" data-remote="'+cands(p.f).slice(1).join('|')+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
     a.innerHTML=(p.s?'<a class="av-media-link" href="https://'+p.s+'" target="_blank" rel="noopener" aria-label="Visit '+p.n+' website">'+logo+'</a>':logo)
       +'<h3>'+p.n+'</h3>'
       +'<div class="av-tags"><span class="av-tag">'+p.t+'</span>'+(p.ex?'<span class="av-ex">Exclusive Distributor</span>':'')+'</div>'

@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | Systech Lighting and Controls Inc.</title>
-<meta name="description" content="Contact Systech Lighting &amp; Controls Inc. Visit our Quezon City or Antipolo City office, call +632-8374-9938, email sales@systechlc.com, or send an inquiry.">
+<meta name="description" content="Contact Systech Lighting &amp; Controls Inc. Request our services, talk to an expert or apply for a role.">
 <meta name="theme-color" content="#0035fe">
 <script>document.documentElement.className+=" js";try{if(JSON.parse(localStorage.getItem("darkMode"))===true)document.documentElement.className+=" pj-dark"}catch(e){}window.pjImg=function(i){var r=(i.dataset.remote||'').split('|').filter(Boolean),n=+i.dataset.tried||0;if(n<r.length){i.dataset.tried=n+1;i.src=r[n]}else i.remove()}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
 
 <style>
 /* utilities used in markup but missing from the purged style.css (logos rendered at natural size) */
-.h-10{height:2.5rem}.w-auto{width:auto}.max-h-10{max-height:2.5rem}.object-contain{object-fit:contain}
+.w-auto{width:auto}.object-contain{object-fit:contain}
 html{scroll-behavior:smooth}
 main>section{scroll-margin-top:84px}
 main>section:not(:first-child):not(#video-showcase):not(#features-section){padding-top:clamp(40px,5vw,64px)!important;padding-bottom:clamp(40px,5vw,64px)!important}
@@ -226,20 +226,21 @@ body.b.eh .aw-year{color:#a1a1aa}
 /* ---- video sound toggle ---- */
 #video-showcase{margin-top:76px}
 
-/* ---- custom glowing cursor (audiovisual / lighting themed) ---- */
+/* ---- cursor glow: a soft light in the page background follows the cursor ---- */
 @media(pointer:fine){
-  html.pj-cursor-ready,html.pj-cursor-ready *{cursor:none!important}
-  .pj-cursor-dot,.pj-cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:2147483000;will-change:transform}
-  .pj-cursor-dot{width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#0035fe;box-shadow:0 0 10px 2px rgba(0,53,254,.9)}
-  .pj-cursor-ring{width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1px solid rgba(0,53,254,.55);box-shadow:0 0 18px 4px rgba(0,53,254,.25);transition:width .25s var(--pj-ease),height .25s var(--pj-ease),margin .25s var(--pj-ease),border-color .25s,opacity .25s}
-  .pj-cursor-ring.pj-hover{width:56px;height:56px;margin:-28px 0 0 -28px;border-color:rgba(0,53,254,.85);box-shadow:0 0 26px 8px rgba(0,53,254,.35)}
-  .pj-cursor-pulse{position:fixed;top:0;left:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1px solid #0035fe;pointer-events:none;z-index:2147483000;opacity:0;animation:pjPulse .6s ease-out forwards}
-  @keyframes pjPulse{from{opacity:.7;transform:scale(1)}to{opacity:0;transform:scale(4.2)}}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;
+    background:radial-gradient(calc(var(--gr,420px) * .3) circle at var(--gx,50%) var(--gy,50%),rgba(255,196,110,.26),transparent 100%),
+               radial-gradient(var(--gr,420px) circle at var(--gx,50%) var(--gy,50%),rgba(0,53,254,.17),rgba(78,107,255,.07) 45%,transparent 72%)}
+  html::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;
+    background:radial-gradient(circle,rgba(0,53,254,.5) 0 1.2px,transparent 1.7px) 0 0/26px 26px;
+    -webkit-mask-image:radial-gradient(calc(var(--gr,420px) * .75) circle at var(--gx,50%) var(--gy,50%),#000,transparent 100%);
+    mask-image:radial-gradient(calc(var(--gr,420px) * .75) circle at var(--gx,50%) var(--gy,50%),#000,transparent 100%)}
+  html.pj-glow-on body::after,html.pj-glow-on::before{opacity:1}
+  body.b.eh::after{background:radial-gradient(calc(var(--gr,420px) * .3) circle at var(--gx,50%) var(--gy,50%),rgba(255,196,110,.2),transparent 100%),
+               radial-gradient(var(--gr,420px) circle at var(--gx,50%) var(--gy,50%),rgba(110,140,255,.26),rgba(78,107,255,.1) 45%,transparent 72%)}
+  html.pj-dark::before{background-image:radial-gradient(circle,rgba(160,180,255,.55) 0 1.2px,transparent 1.7px)}
 }
-@media(pointer:coarse),(prefers-reduced-motion:reduce){
-  html.pj-cursor-ready,html.pj-cursor-ready *{cursor:auto!important}
-  .pj-cursor-dot,.pj-cursor-ring,.pj-cursor-pulse{display:none!important}
-}
+@media(prefers-reduced-motion:reduce){body::after,html::before{display:none}}
 
 /* ---- soft section background, matching the Contact ("Let's Stay
    Connected") section's light tint + faint decorative shapes ---- */
@@ -437,7 +438,7 @@ body.b.eh .av-btn.ghost{color:#8fa3ff!important;box-shadow:inset 0 0 0 2px #8fa3
 .js .rv.pj-in{opacity:1;transform:none}
 /* hero */
 #av-hero{padding-top:clamp(110px,15vh,150px);min-height:100svh;display:flex;align-items:center}
-.av-hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.av-hero-grid{display:grid;grid-template-columns:1.05fr minmax(0,1fr);gap:56px;align-items:center}
 .av-crumb{font-size:.85rem;color:var(--av-m);margin-bottom:18px}.av-crumb a{color:inherit}.av-crumb a:hover{color:#0035fe}
 #av-hero h1{font-size:clamp(2.3rem,5vw,3.7rem);font-weight:800;line-height:1.08;color:var(--av-t)}
 #av-hero p{margin:22px 0 32px;max-width:520px;font-size:1.05rem}
@@ -606,71 +607,143 @@ body.b.eh .aw-year{color:#a1a1aa}
 
 </style>
 
-<style>
-#av-hero::before{background:radial-gradient(50% 60% at 80% 40%,rgba(78,107,255,.22),transparent 70%),repeating-radial-gradient(circle at 80% 40%,rgba(0,53,254,.07) 0 1px,transparent 1px 46px)}
-#av-map::before{background:linear-gradient(rgba(0,53,254,.06) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(0,53,254,.06) 1px,transparent 1px) 0 0/44px 44px,radial-gradient(45% 55% at 100% 100%,rgba(0,190,220,.15),transparent 70%)}
-#av-form::before{background:radial-gradient(circle,rgba(0,53,254,.18) 1.3px,transparent 1.8px) 0 0/28px 28px,radial-gradient(55% 60% at 100% 0%,rgba(122,92,255,.15),transparent 70%)}
-
-/* hero quick-contact cards */
-.ct-cards{position:relative;display:grid;gap:16px}
-.ct-cards::before{content:"";position:absolute;z-index:-1;inset:-30px -20px;border-radius:40px;background:radial-gradient(60% 60% at 50% 50%,rgba(78,107,255,.22),transparent 70%);filter:blur(10px)}
-.ct-card{display:flex;align-items:center;gap:18px;padding:20px 22px;border-radius:22px;background:var(--av-card);border:1px solid var(--av-line);text-decoration:none;
-  transition:transform .45s var(--pj-ease),box-shadow .45s,border-color .3s}
+<style>#av-hero::before{background:radial-gradient(50% 60% at 80% 40%,rgba(78,107,255,.22),transparent 70%),repeating-radial-gradient(circle at 80% 40%,rgba(0,53,254,.07) 0 1px,transparent 1px 46px)}
+#av-latest::before,#av-jobs::before{background:radial-gradient(circle,rgba(0,53,254,.16) 1.3px,transparent 1.8px) 0 0/28px 28px,radial-gradient(55% 60% at 100% 0%,rgba(122,92,255,.15),transparent 70%)}
+.nw-art{position:relative;overflow:hidden;border-radius:16px;aspect-ratio:16/10;display:grid;place-items:center;background:var(--g)}
+.nw-art::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.5),transparent 65%);animation:nwP 3.4s ease-in-out infinite}
+@keyframes nwP{50%{transform:scale(1.25);opacity:.6}}
+.nw-art svg{position:relative;width:22%;min-width:44px;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 10px rgba(255,255,255,.7))}
+.nw-art img{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover}
+.nw-meta{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:16px;font-size:.78rem;color:var(--av-m)}
+.nw-meta b{color:#0035fe;font-weight:700}body.b.eh .nw-meta b{color:#8fa3ff}
+.nw-card{cursor:pointer;text-align:left}.nw-card h3{margin:8px 0 8px;font-size:1.12rem;font-weight:800;line-height:1.3;color:var(--av-t)}
+.nw-card p{font-size:.92rem;line-height:1.55;color:var(--av-m)}
+.nw-more{margin-top:auto;padding-top:14px;font-weight:700;font-size:.88rem;color:#0035fe}body.b.eh .nw-more{color:#8fa3ff}
+.nw-search{display:block;width:min(420px,100%);margin:0 auto 26px;padding:13px 20px;border-radius:99px;border:1px solid var(--av-line);background:var(--av-card);color:var(--av-t);font:inherit;outline:0}
+.nw-search:focus{border-color:#0035fe;box-shadow:0 0 0 4px rgba(0,53,254,.14)}
+.nw-empty{text-align:center;color:var(--av-m);padding:30px}
+dialog.nw-dlg{width:min(720px,92vw);max-height:88vh;overflow:auto;border:0;border-radius:24px;padding:0;background:var(--av-card);color:var(--av-t);box-shadow:0 40px 90px -20px rgba(0,0,0,.5)}
+dialog.nw-dlg::backdrop{background:rgba(5,8,30,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.nw-body{padding:28px 32px 32px}.nw-body h2{font-size:1.7rem;font-weight:800;line-height:1.25;margin:10px 0}.nw-body p{margin:0 0 14px;line-height:1.7;color:var(--av-m)}
+.nw-x{position:sticky;top:12px;float:right;margin:12px 12px 0 0;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:rgba(6,9,32,.6);color:#fff;font-size:1.3rem;line-height:1}
+.ct-card{display:flex;align-items:center;gap:18px;padding:20px 22px;border-radius:22px;background:var(--av-card);border:1px solid var(--av-line);transition:transform .45s var(--pj-ease),box-shadow .45s,border-color .3s}
 .ct-card:hover{transform:translateX(-8px);border-color:#4e6bff;box-shadow:0 24px 46px -22px rgba(0,53,254,.5)}
+.ct-cards{display:grid;gap:16px}
 .ct-ic{position:relative;flex:none;display:grid;place-items:center;width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#4e6bff,#0035fe);box-shadow:0 12px 22px -8px rgba(0,53,254,.65)}
 .ct-ic::after{content:"";position:absolute;inset:0;border-radius:16px;border:2px solid rgba(78,107,255,.6);animation:ctPing 2.6s ease-out infinite}
-.ct-card:nth-child(2) .ct-ic::after{animation-delay:.8s}.ct-card:nth-child(3) .ct-ic::after{animation-delay:1.6s}
 @keyframes ctPing{to{transform:scale(1.6);opacity:0}}
 .ct-ic svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.ct-card small{display:block;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0035fe}
-body.b.eh .ct-card small{color:#8fa3ff}
-.ct-card b{display:block;margin-top:2px;font-size:1.08rem;font-weight:800;color:var(--av-t);word-break:break-word}
-.ct-card span.ct-sub{display:block;margin-top:1px;font-size:.84rem;color:var(--av-m)}
-
-/* map section */
-.ct-map-grid{display:grid;grid-template-columns:.9fr 1.3fr;gap:28px;align-items:stretch}
-.ct-office{display:flex;flex-direction:column;padding:26px;border-radius:26px;background:var(--av-card);border:1px solid var(--av-line);box-shadow:0 30px 60px -38px rgba(0,53,254,.5)}
-.ct-tabs{display:flex;gap:4px;padding:4px;border-radius:99px;background:rgba(0,53,254,.07);margin-bottom:22px}
-.ct-tabs button{flex:1;padding:10px 12px;border-radius:99px;border:0;background:transparent;color:var(--av-t);font-weight:700;font-size:.85rem;transition:all .35s var(--pj-ease)}
-.ct-tabs button.on{background:linear-gradient(135deg,#4e6bff,#0035fe);color:#fff;box-shadow:0 10px 20px -10px rgba(0,53,254,.8)}
-.ct-office h3{font-size:1.5rem;font-weight:800;color:var(--av-t);line-height:1.2}
-.ct-list{list-style:none;margin:18px 0 22px;padding:0;display:grid;gap:14px}
-.ct-list li{display:flex;gap:14px;align-items:flex-start;font-size:.95rem;line-height:1.5;color:var(--av-m)}
-.ct-list svg{flex:none;width:20px;height:20px;margin-top:2px;fill:none;stroke:#0035fe;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-body.b.eh .ct-list svg{stroke:#8fa3ff}
-.ct-list a{color:var(--av-t);font-weight:600}.ct-list a:hover{color:#0035fe}
-.ct-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto}
-.ct-map{position:relative;min-height:420px;border-radius:26px;overflow:hidden;border:1px solid var(--av-line);background:linear-gradient(135deg,#dfe7ff,#f1f4ff);box-shadow:0 40px 80px -40px rgba(0,53,254,.55)}
-.ct-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;transition:opacity .4s}
-.ct-map.ld iframe{opacity:.0}
-.ct-map-tag{position:absolute;z-index:2;left:14px;top:14px;display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.92);color:#1d2144;font-size:.78rem;font-weight:700;box-shadow:0 8px 20px -8px rgba(0,0,0,.35);pointer-events:none}
-.ct-map-tag i{width:9px;height:9px;border-radius:50%;background:#e8354f;box-shadow:0 0 0 0 rgba(232,53,79,.6);animation:ctDot 1.8s infinite}
-@keyframes ctDot{70%{box-shadow:0 0 0 10px rgba(232,53,79,0)}100%{box-shadow:0 0 0 0 rgba(232,53,79,0)}}
-body.b.eh .ct-map{background:#1c2142}
-
-/* inquiry form */
-.ct-form-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
-.ct-form-grid h2{margin-bottom:16px}
-.ct-links{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:10px}
-.ct-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-radius:16px;background:var(--av-card);border:1px solid var(--av-line);color:var(--av-t);font-weight:700;text-decoration:none;transition:transform .35s var(--pj-ease),border-color .3s,box-shadow .35s}
-.ct-links a:hover{transform:translateX(6px);border-color:#4e6bff;box-shadow:0 16px 30px -18px rgba(0,53,254,.5)}
-.ct-links svg{width:18px;height:18px;fill:none;stroke:#0035fe;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.ct-form{padding:30px;border-radius:26px;background:var(--av-card);border:1px solid var(--av-line);box-shadow:0 30px 60px -38px rgba(0,53,254,.5)}
-.ct-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.ct-f{display:flex;flex-direction:column;gap:6px}.ct-f.full{grid-column:1/-1}
-.ct-f label{font-size:.8rem;font-weight:700;color:var(--av-t);letter-spacing:.02em}
-.ct-f input,.ct-f select,.ct-f textarea{width:100%;padding:13px 16px;border-radius:14px;border:1px solid rgba(1,1,1,.14);background:rgba(0,53,254,.03);color:var(--av-t);font:inherit;font-size:.95rem;outline:0;transition:border-color .3s,box-shadow .3s,background .3s}
+.ct-card b{display:block;font-size:1.05rem;font-weight:800;color:var(--av-t)}.ct-card span.s{display:block;margin-top:2px;font-size:.86rem;color:var(--av-m)}
+.cr-job{padding:0}.cr-job summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:20px 24px}
+.cr-job summary::-webkit-details-marker{display:none}.cr-job summary h3{flex:1 1 240px;margin:0;font-size:1.12rem;font-weight:800;color:var(--av-t)}
+.cr-job summary::after{content:"+";font-size:1.5rem;font-weight:300;color:#0035fe;transition:transform .3s}.cr-job[open] summary::after{transform:rotate(45deg)}
+.cr-job .cr-in{padding:0 24px 24px;color:var(--av-m);line-height:1.65;font-size:.94rem}.cr-job ul{margin:8px 0 18px;padding-left:20px;list-style:disc}
+.cr-list{display:grid;gap:14px;max-width:880px;margin:0 auto}
+.ct-form{max-width:760px;margin:0 auto;padding:30px;border-radius:26px;background:var(--av-card);border:1px solid var(--av-line);box-shadow:0 30px 60px -38px rgba(0,53,254,.5)}
+.ct-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}.ct-f{display:flex;flex-direction:column;gap:6px}.ct-f.full{grid-column:1/-1}
+.ct-f label{font-size:.8rem;font-weight:700;color:var(--av-t)}
+.ct-f input,.ct-f select,.ct-f textarea{width:100%;padding:13px 16px;border-radius:14px;border:1px solid rgba(1,1,1,.14);background:rgba(0,53,254,.03);color:var(--av-t);font:inherit;font-size:.95rem;outline:0}
 body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
-.ct-f textarea{min-height:130px;resize:vertical}
-.ct-f select option{color:#1d2144}
-.ct-f input:focus,.ct-f select:focus,.ct-f textarea:focus{border-color:#0035fe;box-shadow:0 0 0 4px rgba(0,53,254,.14);background:transparent}
-.ct-submit{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
-.ct-submit button{border:0;cursor:pointer}
-.ct-note{font-size:.8rem;color:var(--av-m)}
-#ctStatus{min-height:1.4em;margin-top:14px;font-size:.92rem;font-weight:600}
-#ctStatus.ok{color:#0f8a4b}#ctStatus.err{color:#d92d20}
-@media(max-width:900px){.ct-map-grid,.ct-form-grid{grid-template-columns:1fr}.ct-map{min-height:340px}.ct-form-grid{gap:30px}}
-@media(max-width:560px){.ct-fields{grid-template-columns:1fr}.ct-form{padding:22px 18px}.ct-office{padding:20px}}
+.ct-f textarea{min-height:110px;resize:vertical}.ct-f select option{color:#1d2144}
+.ct-f input:focus,.ct-f select:focus,.ct-f textarea:focus{border-color:#0035fe;box-shadow:0 0 0 4px rgba(0,53,254,.14)}
+.ct-submit{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}.ct-submit button{border:0;cursor:pointer}.ct-note{font-size:.8rem;color:var(--av-m)}
+.ct-submit button:disabled{opacity:.7;cursor:progress}
+#ctStatus{min-height:1.4em;margin-top:14px;font-weight:600}#ctStatus.ct-ok{color:#0f8a4b}#ctStatus.ct-err{color:#d92d20}
+@media(max-width:560px){.ct-fields{grid-template-columns:1fr}.ct-form{padding:22px 18px}.nw-body{padding:22px 20px}}</style><style>
+.lk-sec{position:relative;padding:70px 0 90px}
+.lk-sec h2{text-align:center;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--av-t);margin:0 0 8px}
+.lk-sec .lk-sub{text-align:center;color:var(--av-m);margin:0 0 30px}
+.lk-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.lk-strip a{display:flex;flex-direction:column;gap:4px;padding:18px 20px;border-radius:18px;background:var(--av-card);border:1px solid var(--av-line);text-decoration:none;transition:transform .35s,border-color .3s,box-shadow .35s}
+.lk-strip a:hover{transform:translateY(-5px);border-color:#4e6bff;box-shadow:0 20px 40px -22px rgba(0,53,254,.5)}
+.lk-strip b{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--av-t);font-weight:800}
+.lk-strip b::after{content:"\2192";color:#0035fe}
+.lk-strip small{color:var(--av-m);font-size:.82rem}
+</style>
+<style>
+/* job thumbnail + banner */
+.cr-th{position:relative;flex:none;width:56px;height:56px;border-radius:14px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,#4e6bff,#0035fe)}
+.cr-th svg{width:46%;fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.cr-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cr-ban{border-radius:16px;overflow:hidden;aspect-ratio:16/7;margin:0 0 16px;background:#e8ecff}
+.cr-ban img{display:block;width:100%;height:100%;object-fit:cover}
+</style>
+<style>/* hero photo: lowered, gradient ring, glow, hover tilt / zoom / shine */
+@property --ra{syntax:"<angle>";inherits:false;initial-value:0deg}
+@media(min-width:901px){#av-hero{padding-bottom:100px}.cr-pic{top:72px}}
+.cr-pic{position:relative;isolation:isolate;justify-self:center;width:min(100%,450px);margin:0;perspective:1000px;animation:crFloat 7s ease-in-out infinite}
+.cr-pic::before{content:"";position:absolute;inset:-8%;z-index:-2;border-radius:52px;background:radial-gradient(60% 60% at 50% 58%,rgba(78,107,255,.5),rgba(122,92,255,.2) 55%,transparent 75%);filter:blur(26px);opacity:.8;transition:opacity .5s,transform .6s}
+.cr-pic::after{content:"";position:absolute;left:10%;right:10%;bottom:-26px;height:30px;z-index:-1;border-radius:50%;background:rgba(0,53,254,.35);filter:blur(22px);transition:transform .6s,opacity .6s}
+.cr-frame{position:relative;padding:6px;border-radius:34px;cursor:pointer;background:conic-gradient(from var(--ra),#4e6bff,#19c6ff,#fff,#7a5cff,#0035fe,#4e6bff);animation:crSpin 9s linear infinite;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .35s ease-out,box-shadow .5s;box-shadow:0 44px 80px -32px rgba(0,53,254,.6),0 16px 34px -16px rgba(0,53,254,.4)}
+.cr-clip{position:relative;overflow:hidden;border-radius:20px;background:#0b1130}
+.cr-clip img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.cr-clip::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);transform:translateX(-130%);transition:transform 1s ease}
+.cr-clip::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:28px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),inset 0 -90px 90px -70px rgba(0,16,80,.5);transition:box-shadow .6s}
+@media(hover:hover){
+.cr-pic:hover{animation-play-state:paused}
+.cr-pic:hover .cr-frame{animation-duration:3.5s;box-shadow:0 60px 100px -30px rgba(0,53,254,.75),0 22px 44px -16px rgba(0,53,254,.5),0 0 0 6px rgba(78,107,255,.14)}
+.cr-pic:hover .cr-clip img{transform:scale(1.08)}
+.cr-pic:hover .cr-clip::before{transform:translateX(130%)}
+.cr-pic:hover .cr-clip::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),inset 0 -90px 90px -70px rgba(0,16,80,.25)}
+.cr-pic:hover::before{opacity:1;transform:scale(1.08)}.cr-pic:hover::after{transform:scale(1.15);opacity:.9}}
+@keyframes crSpin{to{--ra:360deg}}@keyframes crFloat{50%{transform:translateY(-10px)}}
+@media(max-width:900px){.cr-pic{width:min(100%,400px)}}
+</style>
+<style>/* general contact form: job-only fields stay hidden unless "Application for company job" is chosen */
+.ct-f[hidden]{display:none!important}
+</style>
+<style>
+/* contact form: pill fields, labels above (matches the site's form style) */
+#contactForm .ct-f label{font-size:.95rem;font-weight:500}
+#contactForm .ct-f input,#contactForm .ct-f select{height:44px;padding:0 20px;border-radius:999px;background:#fff;border:1px solid #d9d9e8}
+#contactForm .ct-f textarea{min-height:170px;padding:14px 20px;border-radius:14px;background:#fff;border:1px solid #d9d9e8}
+#contactForm .ct-f select{-webkit-appearance:none;appearance:none;padding-right:46px;background-repeat:no-repeat;background-position:right 18px center;background-size:14px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a90ab' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+body.b.eh #contactForm .ct-f input,body.b.eh #contactForm .ct-f select,body.b.eh #contactForm .ct-f textarea{background-color:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18)}
+.ct-f[hidden]{display:none!important}
+.ct-hero-cards{margin-top:0}
+</style>
+<style>
+/* ===== CONTACT hero: aurora + glass message ===== */
+.ms-wrap{max-width:none;width:100%;margin:0}
+.ms-stage{--rx:0deg;--ry:0deg;container-type:inline-size;position:relative;isolation:isolate;aspect-ratio:6/5;border-radius:28px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(150deg,#071a8f,#3a2fd8 55%,#8a5cff);box-shadow:0 44px 90px -34px rgba(0,53,254,.6),inset 0 1px 0 rgba(255,255,255,.25)}
+.ms-blob{position:absolute;z-index:-1;border-radius:50%;filter:blur(9cqw);opacity:.75;animation:msF 14s ease-in-out infinite alternate}
+.ms-b1{width:62cqw;height:62cqw;left:-14cqw;top:-12cqw;background:#19c6ff}
+.ms-b2{width:56cqw;height:56cqw;right:-16cqw;bottom:-14cqw;background:#ff5fb2;animation-delay:-5s}
+.ms-b3{width:40cqw;height:40cqw;left:38cqw;top:34cqw;background:#ffb347;opacity:.4;animation-delay:-9s}
+@keyframes msF{to{transform:translate(9cqw,7cqw) scale(1.18)}}
+.ms-grid{position:absolute;inset:0;z-index:-1;background:radial-gradient(circle,rgba(255,255,255,.4) 0 .12cqw,transparent .2cqw) 0 0/4cqw 4cqw;-webkit-mask-image:radial-gradient(circle,#000,transparent 75%);mask-image:radial-gradient(circle,#000,transparent 75%)}
+.ms-card{position:relative;overflow:hidden;width:70%;padding:4.2cqw;border-radius:5cqw;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.38);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);box-shadow:0 6cqw 12cqw -4cqw rgba(0,10,80,.55),inset 0 1px 0 rgba(255,255,255,.45);transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));transition:transform .2s ease-out}
+.ms-card::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.28) 50%,transparent 60%);transform:translateX(-120%);animation:msSw 7s ease-in-out infinite}
+@keyframes msSw{45%,100%{transform:translateX(120%)}}
+.ms-top{display:flex;align-items:center;gap:2.4cqw;margin-bottom:3cqw}
+.ms-av{width:8cqw;height:8cqw;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#fff,#bcd0ff);color:#0035fe;font-weight:900;font-size:3.6cqw}
+.ms-top b{display:block;font-size:max(12px,3.3cqw)}
+.ms-top small{display:flex;align-items:center;gap:1cqw;font-size:max(10px,2.4cqw);opacity:.8}
+.ms-top small::before{content:"";width:1.4cqw;height:1.4cqw;border-radius:50%;background:#3ee08f;box-shadow:0 0 1.4cqw #3ee08f}
+.ms-b{max-width:90%;padding:2.8cqw 3.6cqw;border-radius:3.8cqw;font-size:max(12px,3.2cqw);line-height:1.45}
+.ms-out{margin-left:auto;min-height:9.5cqw;background:#fff;color:#14194a;border-bottom-right-radius:1cqw;box-shadow:0 2cqw 4cqw -2cqw rgba(0,10,80,.5)}
+.ms-out u{display:inline-block;width:.6cqw;height:3.4cqw;margin-left:.5cqw;vertical-align:-.5cqw;background:#0035fe;animation:msBl 1s steps(2) infinite}
+@keyframes msBl{50%{opacity:0}}
+.ms-st{height:4cqw;margin-top:1.2cqw;text-align:right;font-size:max(10px,2.3cqw);opacity:.85}
+.ms-in{min-height:8.5cqw;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-bottom-left-radius:1cqw;opacity:0;transform:translateY(2cqw);transition:opacity .4s,transform .4s}
+.ms-in.on{opacity:1;transform:none}
+.ms-in i{display:inline-block;width:1.6cqw;height:1.6cqw;margin:1.4cqw .5cqw 0;border-radius:50%;background:#fff;animation:msDt 1s ease-in-out infinite}.ms-in i:nth-child(2){animation-delay:.15s}.ms-in i:nth-child(3){animation-delay:.3s}
+@keyframes msDt{50%{transform:translateY(-1.2cqw);opacity:.4}}
+.ms-chips{display:flex;flex-wrap:wrap;gap:1.8cqw;margin-top:3.2cqw}
+.ms-chip{padding:1.6cqw 3.2cqw;border-radius:99px;border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.1);color:#fff;font:700 max(10px,2.7cqw)/1 system-ui,sans-serif;cursor:pointer;transition:.25s}
+.ms-chip:hover{background:rgba(255,255,255,.25)}.ms-chip.on{background:#fff;color:#0035fe;border-color:#fff}
+@media(prefers-reduced-motion:reduce){.ms-stage *{animation:none!important}.ms-card{transition:none}}
+</style>
+<style>
+.mp-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:start}
+.mp-lab{margin:0 0 12px;font-size:.78rem;font-weight:800;letter-spacing:.14em;color:var(--av-m)}
+.mp-map .av-filter{margin:0 0 14px;justify-content:flex-start}
+.mp-frame{height:430px;border-radius:22px;overflow:hidden;border:1px solid var(--av-line);box-shadow:0 30px 60px -38px rgba(0,53,254,.5);background:var(--av-card)}
+.mp-frame iframe{display:block;width:100%;height:100%;border:0}
+@media(max-width:900px){.mp-grid{grid-template-columns:1fr}.mp-frame{height:340px}}
+</style>
+<style>
 </style>
 </head>
 <body x-data="{ page: 'contact', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
@@ -693,8 +766,8 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
   <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i flex-row-reverse">
     <div class="vd to/4 tc wf yf">
       <a href="index.html">
-        <img class="om h-10 w-auto max-h-10 object-contain" src="logo-light.png" alt="Logo Light" />
-        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="logo-dark.png" alt="Logo Dark" />
+        <img class="om h-10 w-auto max-h-10 object-contain" src="logo-light_systech.png" alt="Logo Light" />
+        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="logo-dark_systech.png" alt="Logo Dark" />
       </a>
       <button class="po rc" @click="navigationOpen = !navigationOpen">
         <span class="rc i pf re pd">
@@ -718,7 +791,7 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
                 viewBox="0 0 512 512">
                 <path
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lighting</a></li><li><a href="Dimmings.html" class="xl">Dimming System</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems and GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
           <li class="c i" x-data="{ dropdown: false }">
             <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
               :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
@@ -729,9 +802,9 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
               </svg>
             </a>
-            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="index.html#partners" class="xl">Brand Partners</a></li></ul>
+            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="Partners.html" class="xl">Partners</a></li></ul>
           </li>
-          <li><a href="index.html#support" class="xl">Support</a></li><li><a href="Contact.html" class="xl" :class="{ 'mk': page === 'contact' }">Contact</a></li>
+<li><a href="NEWS.html" class="xl" :class="{ 'mk': page === 'news' }">News</a></li><li><a href="Career.html" class="xl" :class="{ 'mk': page === 'careers' }">Careers</a></li><li><a href="CONTACT.html" class="xl" :class="{ 'mk': page === 'contact' }">Contact</a></li>
         </ul>
       </nav>
       <div class="tc wf ig pb no">
@@ -747,7 +820,7 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
             <img class="xc nm" src="icon-moon.svg" alt="Moon" />
           </label>
         </div>
-        <a href="index.html#support" :class="{ 'hh/[0.15]' : page === 'home', 'sh' : page === 'home' && stickyMenu }"
+        <a href="CONTACT.html" :class="{ 'hh/[0.15]' : page === 'home', 'sh' : page === 'home' && stickyMenu }"
           class="lk gh dk rg tc wf xf _l gi hi">Talk to Expert</a>
       </div>
     </div>
@@ -757,61 +830,64 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
 
 <main>
 <section id="av-hero" class="av-sec pj-soft-bg"><div class="av-wrap av-hero-grid">
- <div class="rv"><div class="av-crumb"><a href="index.html">Home</a> / Contact</div>
-  <span class="av-kick"><i></i>Contact Us</span>
-  <h1>Let's light up <span class="av-grad">your next project.</span></h1>
-  <p>Tell us about your space and our team will recommend the right lighting, dimming, audiovisual or solar power system. Call, email, visit one of our two offices, or send an inquiry below.</p>
-  <div class="av-cta"><a class="av-btn" href="#av-form">Send an Inquiry</a><a class="av-btn ghost" href="#av-map">Find Our Offices</a></div></div>
- <div class="ct-cards rv" style="--i:2">
-  <a class="ct-card" href="tel:+63283749938"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><small>Call us</small><b>+632-8374-9938</b><span class="ct-sub">Fax: +632-8376-9004</span></div></a>
-  <a class="ct-card" href="mailto:sales@systechlc.com"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6 10-6"/></svg></span><div><small>Email us</small><b>sales@systechlc.com</b><span class="ct-sub">We reply to every inquiry</span></div></a>
-  <a class="ct-card" href="#av-map"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg></span><div><small>Visit us</small><b>Quezon City &amp; Antipolo City</b><span class="ct-sub">Two offices, one team</span></div></a>
+ <div class="rv"><div class="av-crumb"><a href="index.html">Home</a> / Contact</div><span class="av-kick"><i></i>Contact us</span>
+  <h1>Let&rsquo;s talk about <span class="av-grad">your space.</span></h1>
+  <p>Request our services, talk to one of our experts, or apply to join the team. Send us a message and we will reply by email.</p>
+  <div class="av-cta"><a class="av-btn" href="#av-apply">Send a Message</a><a class="av-btn ghost" href="tel:+63283749938">Call Us</a></div></div>
+ <div class="ms-wrap rv" style="--i:2">
+  <div class="ms-stage" id="msStage" role="group" aria-label="Animated message preview: pick a topic to start your message">
+   <i class="ms-blob ms-b1"></i><i class="ms-blob ms-b2"></i><i class="ms-blob ms-b3"></i><div class="ms-grid"></div>
+   <div class="ms-card" id="msCard">
+    <div class="ms-top"><span class="ms-av">S</span><span><b>Systech team</b><small>online</small></span></div>
+    <div class="ms-b ms-out"><span id="msOut"></span><u></u></div><div class="ms-st" id="msSt"></div>
+    <div class="ms-b ms-in" id="msIn"></div>
+    <div class="ms-chips" id="msChips"></div>
+   </div>
+  </div>
  </div>
 </div></section>
-
-<section id="av-map" class="av-sec pj-soft-bg"><div class="av-wrap">
- <div class="av-head rv"><h2>Find our offices</h2><p>Choose an office to see it on the map, get directions, or open it in Google Maps.</p></div>
- <div class="ct-map-grid">
-  <div class="ct-office rv">
-   <div class="ct-tabs" id="ctTabs" role="tablist"></div>
-   <h3 id="ctName"></h3>
-   <ul class="ct-list">
-    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg><span id="ctAddr"></span></li>
-    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Tel: <a href="tel:+63283749938">+632-8374-9938</a></span></li>
-    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="7" rx="1"/></svg><span>Fax: +632-8376-9004</span></li>
-    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 6 10-6"/></svg><span><a href="mailto:sales@systechlc.com">sales@systechlc.com</a></span></li>
-   </ul>
-   <div class="ct-btns"><a class="av-btn" id="ctOpen" href="#" target="_blank" rel="noopener">Open in Google Maps</a><a class="av-btn ghost" id="ctDir" href="#" target="_blank" rel="noopener">Get Directions</a></div>
-  </div>
-  <div class="ct-map rv" style="--i:2"><span class="ct-map-tag"><i></i>Systech Lighting and Controls Inc.</span>
-   <iframe id="ctFrame" title="Map of the Systech Lighting and Controls office" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
- </div>
+<section id="av-apply" class="av-sec pj-soft-bg"><div class="av-wrap"><div class="av-head rv"><h2>Send us a message</h2><p>Choose what you need and tell us a little about it.</p></div>
+ <form class="ct-form rv" id="contactForm" novalidate><div class="ct-fields">
+  <div class="ct-f"><label for="cF">First name</label><input id="cF" name="first_name" autocomplete="given-name" required></div>
+  <div class="ct-f"><label for="cLn">Last name</label><input id="cLn" name="last_name" autocomplete="family-name"></div>
+  <div class="ct-f full"><label for="cE">Email address</label><input id="cE" name="email" type="email" autocomplete="email" required></div>
+  <div class="ct-f full"><label for="cP">Phone number</label><input id="cP" name="phone" type="tel" autocomplete="tel"></div>
+  <div class="ct-f full"><label for="cT">How can we help you?</label>
+    <select id="cT" name="topic">
+      <option value="services">Inquiry for services</option>
+      <option value="expert">Talk to an expert</option>
+      <option value="support">Ask for Support (for aftersales)</option>
+      <option value="job">Application for company job</option>
+    </select></div>
+  <div class="ct-f ct-job-only" hidden><label for="cR">Position</label><select id="cR" name="role"></select></div>
+  <div class="ct-f ct-job-only" hidden><label for="cL">Resume / LinkedIn / portfolio link</label><input id="cL" name="link" type="url"></div>
+  <div class="ct-f full"><label for="cC">Country</label><select id="cC" name="country"><option value="">Select region...</option></select></div>
+  <div class="ct-f full"><label for="cM" id="cMl">Message</label><textarea id="cM" name="message" required></textarea></div></div>
+  <div class="ct-submit"><button type="submit" class="av-btn">Send Message</button><span class="ct-note">We reply to the email address you provide.</span></div><div id="ctStatus" role="status" aria-live="polite"></div></form>
 </div></section>
-
-<section id="av-form" class="av-sec pj-soft-bg"><div class="av-wrap ct-form-grid">
- <div class="rv"><span class="av-kick">Send an inquiry</span><h2>Tell us about your project</h2>
-  <p>Share a few details and we will get back to you with the right solution. Not sure where to start? Explore what we do:</p>
-  <ul class="ct-links"><li><a href="Audiovisual.html">Audiovisual &amp; Automation Systems <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="Lightings.html">Lighting Solutions <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="Dimmings.html">Dimming &amp; Control Systems <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li><li><a href="Solar.html">Solar Power System <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li></ul></div>
- <form class="ct-form rv" id="contactForm" style="--i:2" novalidate>
-  <div class="ct-fields">
-   <div class="ct-f"><label for="ctN">Full name *</label><input id="ctN" name="name" type="text" autocomplete="name" required></div>
-   <div class="ct-f"><label for="ctE">Email *</label><input id="ctE" name="email" type="email" autocomplete="email" required></div>
-   <div class="ct-f"><label for="ctP">Phone</label><input id="ctP" name="phone" type="tel" autocomplete="tel"></div>
-   <div class="ct-f"><label for="ctC">Company / Project</label><input id="ctC" name="company" type="text" autocomplete="organization"></div>
-   <div class="ct-f full"><label for="ctS">I'm interested in</label><select id="ctS" name="interest"><option>Lighting Solutions</option><option>Dimming &amp; Control Systems</option><option>Audiovisual &amp; Automation Systems</option><option>Solar Power System</option><option>Something else</option></select></div>
-   <div class="ct-f full"><label for="ctM">Message *</label><textarea id="ctM" name="message" required></textarea></div>
+<section id="av-visit" class="av-sec pj-soft-bg"><div class="av-wrap">
+ <div class="av-head rv"><h2>Visit or reach us</h2><p>Our offices and contact details.</p></div>
+ <div class="mp-grid rv">
+  <div><p class="mp-lab">ADDRESS</p><div class="ct-cards">
+   <div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Residential Office</b><span class="s">2 Scout Rallos corner Mother Ignacia Avenue, Quezon City, Philippines 1103</span></span></div>
+   <div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Commercial Office</b><span class="s">144 Sumulong Highway, Mayamot, Antipolo City, Philippines 1870</span></span></div>
   </div>
-  <div class="ct-submit"><button type="submit" class="av-btn">Send Inquiry</button><span class="ct-note">Opens your email app with your inquiry ready to send to sales@systechlc.com.</span></div>
-  <div id="ctStatus" role="status" aria-live="polite"></div>
- </form>
-</div></section>
+  <p class="mp-lab" style="margin-top:26px">CONTACT DETAILS</p><div class="ct-cards">
+   <a class="ct-card" href="tel:+63283749938"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><b>Phone</b><span class="s">+632-8374-9938</span></span></a>
+   <div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><b>Fax</b><span class="s">+632-8376-9004</span></span></div>
+   <a class="ct-card" href="mailto:sales@systechlc.com"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><b>Email Address</b><span class="s">sales@systechlc.com</span></span></a>
+  </div></div>
+  <div class="mp-map"><div class="av-filter" id="mpTabs"><button type="button" class="on" data-i="0">Residential Office</button><button type="button" data-i="1">Commercial Office</button></div>
+   <div class="mp-frame"><iframe id="mpFrame" title="Office map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=2%20Scout%20Rallos%20corner%20Mother%20Ignacia%20Avenue%2C%20Quezon%20City%2C%20Philippines%201103&output=embed"></iframe></div></div>
+ </div></div></section>
+<section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Dimmings.html"><b>Dimming Systems and GRMS</b><small>Dimming and room control</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Partners.html"><b>Partner</b><small>Brands we work with</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
 </main>
 <footer>
 <div class="bb ze ki xn 2xl:ud-px-0">
 <div class="ji gp">
 <div class="tc uf ap gg fp">
 <div class="animate_top zd/2 to/4">
-<a href="index.html"><img src="logo-light.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="logo-dark.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
+<a href="index.html"><img src="logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
 <p class="lc fb">Lighting, dimming, audio-visual and sound systems — planned, installed and supported by one team.</p>
 <ul class="tc wf cg"><li>
                 <a href="https://www.facebook.com/systechlc/" target="_blank" rel="noopener" aria-label="Facebook">
@@ -832,20 +908,23 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
 <li><a href="index.html#services" class="sc xl vb">Products</a></li>
 <li><a href="index.html#progress" class="sc xl vb">On-Going Projects</a></li>
 <li><a href="index.html#completed" class="sc xl vb">Completed Projects</a></li>
-<li><a href="index.html#partners" class="sc xl vb">Brand Partners</a></li>
-<li><a href="Contact.html" class="sc xl vb">Contact</a></li>
+<li><a href="Partners.html" class="sc xl vb">Partner</a></li>
+
+<li><a href="NEWS.html" class="sc xl vb">News</a></li>
+<li><a href="Career.html" class="sc xl vb">Careers</a></li>
+<li><a href="CONTACT.html" class="sc xl vb">Contact</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Services</h4><ul>
 <li><a href="Audiovisual.html" class="sc xl vb">Audiovisual</a></li>
 <li><a href="Lightings.html" class="sc xl vb">Lightings</a></li>
-<li><a href="Dimmings.html" class="sc xl vb">Dimming System</a></li>
+<li><a href="Dimmings.html" class="sc xl vb">Dimming Systems and GRMS</a></li>
 <li><a href="Solar.html" class="sc xl vb">Solar Power System</a></li>
 <li><a href="index.html#features-section" class="sc xl vb">24/7 Support</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Contact</h4><ul>
 <li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
-<li><a href="mailto:markjosepharevalo.systechlc@gmail.com" class="sc xl vb">markjosepharevalo.systechlc@gmail.com</a></li>
-<li><a href="index.html#support" class="sc xl vb">Send an inquiry</a></li>
+<li><a href="mailto:sales@systechlc.com" class="sc xl vb">sales@systechlc.com</a></li>
+<li><a href="CONTACT.html#av-form" class="sc xl vb">Send an inquiry</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Offices</h4>
 <p class="ac qe">Quezon City &amp; Antipolo City, Philippines</p></div>
@@ -853,59 +932,235 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
 </div>
 </div>
 <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
-<div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li><li><a href="index.html#support" class="xl">Support</a></li></ul></div>
-<div class="animate_top"><p>&copy; 2026 Systech Lighting and Controls Inc. All rights reserved.</p></div>
+<div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li></ul></div>
+<div class="animate_top"><p>&copy; 2027 Systech Lighting and Controls Inc. All rights reserved.</p></div>
 </div>
 </div>
 </footer>
 <script>
-(function(){
-  var $=function(id){return document.getElementById(id)};
+/* ======================================================================
+   EDIT HERE  (Contact page settings)
+   ======================================================================
+   CONTACT_EMAIL   Backup address shown if sending fails.
+   POSITIONS       The jobs people can pick when they choose "Application for company job".
+                   Add, remove or rename lines. Keep each text inside the backticks ` `.
+   ====================================================================== */
 
-  /* ===== EDIT HERE: offices. To pin the exact Google Maps listing, replace "embed" with the
-     iframe src from Google Maps > Share > Embed a map, and "link" with the Share link. ===== */
-  function q(a){return encodeURIComponent(a)}
-  var OFFICES=[
-   {tab:'Residential Office',name:'Residential Office',addr:'2 Scout Rallos corner Mother Ignacia Avenue, Quezon City 1103',query:'2 Scout Rallos corner Mother Ignacia Avenue, Quezon City 1103, Philippines'},
-   {tab:'Commercial Office',name:'Commercial Office',addr:'144 Sumulong Highway, Mayamot, Antipolo City 1870',query:'144 Sumulong Highway, Mayamot, Antipolo City 1870, Philippines'}];
-  OFFICES.forEach(function(o){
-    o.embed='https://www.google.com/maps?q='+q(o.query)+'&output=embed';
-    o.link='https://www.google.com/maps/search/?api=1&query='+q(o.query);
-    o.dir='https://www.google.com/maps/dir/?api=1&destination='+q(o.query);
+var CONTACT_EMAIL = 'sales@systechlc.com';
+
+var POSITIONS = [
+  `General application`,
+  `SITE SUPERVISOR`,
+  `Controls Programming Technician`
+];
+</script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---- dropdowns filled from the data block / list below ---- */
+  var topicSel = $('cT');
+  var roleSel = $('cR');
+  var countrySel = $('cC');
+
+  POSITIONS.forEach(function (title) {
+    var option = document.createElement('option');
+    option.textContent = title;
+    roleSel.appendChild(option);
   });
 
-  var tabs=$('ctTabs'),frame=$('ctFrame'),mapBox=frame.parentNode,cur=-1;
-  function show(i){
-    if(i===cur)return;cur=i;var o=OFFICES[i];
-    [].forEach.call(tabs.children,function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-selected',k===i?'true':'false')});
-    $('ctName').textContent=o.name;$('ctAddr').textContent=o.addr;$('ctOpen').href=o.link;$('ctDir').href=o.dir;
-    mapBox.classList.add('ld');frame.src=o.embed;
-  }
-  frame.addEventListener('load',function(){mapBox.classList.remove('ld')});
-  OFFICES.forEach(function(o,i){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.textContent=o.tab;b.onclick=function(){show(i)};tabs.appendChild(b)});
-  show(0);
-
-  /* ---- inquiry form: opens the visitor's email app (no server needed) ---- */
-  var TO='sales@systechlc.com',form=$('contactForm'),st=$('ctStatus');
-  form.addEventListener('submit',function(e){
-    e.preventDefault();st.className='';
-    var d=new FormData(form),name=(d.get('name')||'').trim(),email=(d.get('email')||'').trim(),msg=(d.get('message')||'').trim();
-    if(!name||!msg||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){st.className='err';st.textContent='Please fill in your name, a valid email and your message.';return}
-    var body='Name: '+name+'\nEmail: '+email+'\nPhone: '+(d.get('phone')||'-')+'\nCompany / Project: '+(d.get('company')||'-')+'\nInterested in: '+d.get('interest')+'\n\n'+msg;
-    location.href='mailto:'+TO+'?subject='+encodeURIComponent('Website inquiry: '+d.get('interest'))+'&body='+encodeURIComponent(body);
-    st.className='ok';st.textContent='Thank you! Your email app should open with your inquiry. If it does not, write to '+TO+'.';
+  /* Philippines first, then A to Z */
+  var COUNTRIES = [
+    'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan',
+    'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia',
+    'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada',
+    'Chile', 'China', 'Colombia', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Dominican Republic',
+    'Ecuador', 'Egypt', 'El Salvador', 'Estonia', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Georgia', 'Germany',
+    'Ghana', 'Greece', 'Guatemala', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia',
+    'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya',
+    'Kuwait', 'Laos', 'Latvia', 'Lebanon', 'Libya', 'Lithuania', 'Luxembourg', 'Macau', 'Malaysia', 'Maldives',
+    'Malta', 'Mexico', 'Mongolia', 'Morocco', 'Myanmar', 'Nepal', 'Netherlands', 'New Zealand', 'Nigeria', 'Norway',
+    'Oman', 'Pakistan', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Poland', 'Portugal', 'Qatar', 'Romania',
+    'Russia', 'Saudi Arabia', 'Senegal', 'Serbia', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain',
+    'Sri Lanka', 'Sudan', 'Sweden', 'Switzerland', 'Taiwan', 'Tanzania', 'Thailand', 'Turkey', 'Uganda', 'Ukraine',
+    'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
+  ];
+  ['Philippines'].concat(COUNTRIES).forEach(function (name) {
+    var option = document.createElement('option');
+    option.textContent = name;
+    countrySel.appendChild(option);
   });
 
-  /* ---- scroll reveal ---- */
-  var els=[].slice.call(document.querySelectorAll('.rv'));
-  function boot(){
-    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('pj-in')});return}
-    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('pj-in');io.unobserve(e.target);
-      setTimeout(function(){e.target.classList.remove('rv','pj-in')},1600)})},{threshold:.1});
-    els.forEach(function(e){io.observe(e)});
+  /* ---- what the visitor wants: services / expert / job ---- */
+  var TOPICS = {
+    services: {
+      label: 'Inquiry for services',
+      icon: '\uD83D\uDEE0\uFE0F',
+      cc: 'sales',
+      hint: 'Tell us about your project: location, type of space and what you need.'
+    },
+    expert: {
+      label: 'Talk to an expert',
+      icon: '\uD83D\uDCAC',
+      cc: 'sales',
+      hint: 'What would you like to discuss? Add your preferred schedule for a call.'
+    },
+    support: {
+      label: 'Ask for support (aftersales)',
+      icon: '\uD83C\uDFA7',
+      cc: 'aftersales',
+      hint: 'Describe the issue. Please include the product, the project location and any model or serial number.'
+    },
+    job: {
+      label: 'Application for company job',
+      icon: '\uD83D\uDCBC',
+      cc: 'hr',
+      hint: 'Tell us about yourself and your experience.'
+    }
+  };
+
+  var DEFAULT_CC = { sales: 'sales@systechlc.com', hr: 'hr@systechlc.com', aftersales: 'aftersales@systechlc.com' };
+  var FALLBACK_CC = (typeof CONTACT_EMAIL !== 'undefined' && CONTACT_EMAIL) ? CONTACT_EMAIL : 'sales@systechlc.com';
+  /* the department that gets a CC copy. cc-config.js can override these; the defaults above always work */
+  function ccFor(t) {
+    var key = t && t.cc, map = window.SYSTECH_CC || {}, pick = [map[key], DEFAULT_CC[key]];
+    for (var i = 0; i < pick.length; i++) {
+      var a = String(pick[i] || '').trim();
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(a) && a.indexOf('yourdomain') < 0) return a;
+    }
+    return FALLBACK_CC;   /* never blank, so the Cc line is always valid */
   }
-  if(document.documentElement.classList.contains('pj-ready'))boot();
-  else document.addEventListener('pjready',function(){setTimeout(boot,120)},{once:true});
+  /* sends; if the mail service refuses the department address, retries once with the main inbox as the copy */
+  function sendWithCc(svc, tpl, p) {
+    return emailjs.send(svc, tpl, p).catch(function (err) {
+      console.error('EmailJS first attempt failed:', err);
+      if (p.cc_email && p.cc_email !== FALLBACK_CC) {
+        var p2 = {}; for (var k in p) p2[k] = p[k]; p2.cc_email = FALLBACK_CC;
+        return emailjs.send(svc, tpl, p2);
+      }
+      throw err;
+    });
+  }
+
+  /* show the Position + resume fields only for job applications */
+  function syncTopic() {
+    var isJob = topicSel.value === 'job';
+    [].forEach.call(document.querySelectorAll('.ct-job-only'), function (f) { f.hidden = !isJob; });
+    $('cM').placeholder = (TOPICS[topicSel.value] || TOPICS.services).hint;
+  }
+  topicSel.addEventListener('change', syncTopic);
+
+  /* a link such as CONTACT.html?topic=expert opens the form on that choice */
+  var wanted = new URLSearchParams(location.search).get('topic');
+  if (wanted && TOPICS[wanted]) topicSel.value = wanted;
+  syncTopic();
+
+  /* ---- contact form: sent with EmailJS (no email app needed) ---- */
+  var EMAILJS_PUBLIC_KEY = 'gQ2T9LAubWGQijBsb';
+  var EMAILJS_SERVICE_ID = 'default_service';
+  var EMAILJS_TEMPLATE_ID = 'template_rkx63r6';
+
+  var form = $('contactForm');
+  var status = $('ctStatus');
+  var sendBtn = form.querySelector('button[type="submit"]');
+  var sendLabel = sendBtn.textContent;
+  var emailjsReady = false;
+
+  function say(kind, text) { status.className = kind; status.textContent = text; }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sendBtn.disabled) return;
+
+    var data = new FormData(form);
+    var first = (data.get('first_name') || '').trim();
+    var last = (data.get('last_name') || '').trim();
+    var email = (data.get('email') || '').trim();
+    var phone = (data.get('phone') || '').trim();
+    var country = (data.get('country') || '').trim();
+    var role = (data.get('role') || '').trim();
+    var link = (data.get('link') || '').trim();
+    var message = (data.get('message') || '').trim();
+    var topic = TOPICS[data.get('topic')] || TOPICS.services;
+    var isJob = data.get('topic') === 'job';
+    var emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+
+    if (!first || !message || !emailOk) {
+      say('ct-err', 'Please add your first name, a valid email and a short message.');
+      return;
+    }
+    if (!window.emailjs) {
+      say('ct-err', 'The mail service could not be loaded. Please check your connection and try again, or write to ' + CONTACT_EMAIL + '.');
+      return;
+    }
+    if (!emailjsReady) {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      emailjsReady = true;
+    }
+
+    /* these names are the {{fields}} used in the EmailJS email template */
+    var params = {
+      name: (first + ' ' + last).trim(),
+      first_name: first,
+      last_name: last,
+      email: email,
+      phone: phone || '-',
+      country: country || '-',
+      topic: topic.label,
+      topic_icon: topic.icon,
+      role: isJob ? (role || '-') : '-',
+      link: isJob ? (link || '-') : '-',
+      time: new Date().toLocaleString('en-PH', {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: 'numeric', minute: '2-digit',
+        timeZone: 'Asia/Manila', timeZoneName: 'short'
+      }),
+      message: message,
+      cc_email: ccFor(topic)
+    };
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending...';
+    say('', '');
+
+    sendWithCc(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params).then(function () {
+      form.reset();
+      syncTopic();
+      say('ct-ok', 'Thank you! Your message was sent. We will reply to ' + email + '.');
+    }, function (err) {
+      console.error('EmailJS error:', err);
+      say('ct-err', 'Sorry, we could not send your message' + (err && err.text ? ' (' + err.text + ')' : '') +
+        '. Please try again, or write to ' + CONTACT_EMAIL + '.');
+    }).then(function () {
+      sendBtn.disabled = false;
+      sendBtn.textContent = sendLabel;
+    });
+  });
+
+  /* ---- scroll-reveal animation ---- */
+  var revealEls = [].slice.call(document.querySelectorAll('.rv,.av-steps'));
+  function startReveal() {
+    if (!('IntersectionObserver' in window)) {
+      revealEls.forEach(function (e) { e.classList.add('pj-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('pj-in');
+        io.unobserve(en.target);
+        if (en.target.classList.contains('rv')) {
+          setTimeout(function () { en.target.classList.remove('rv', 'pj-in'); }, 1600);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function (e) { io.observe(e); });
+  }
+  if (document.documentElement.classList.contains('pj-ready')) {
+    startReveal();
+  } else {
+    document.addEventListener('pjready', function () { setTimeout(startReveal, 120); }, { once: true });
+  }
 })();
 </script>
 <script>
@@ -913,29 +1168,16 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
   var fine=window.matchMedia&&matchMedia('(pointer:fine)').matches;
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!fine||reduce)return;
-  var dot=document.createElement('div');dot.className='pj-cursor-dot';
-  var ring=document.createElement('div');ring.className='pj-cursor-ring';
-  document.body.appendChild(dot);document.body.appendChild(ring);
-  dot.style.opacity='0';ring.style.opacity='0';document.documentElement.classList.add('pj-cursor-ready');
-  var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  var root=document.documentElement,mx=innerWidth/2,my=innerHeight/2,x=mx,y=my,r=420,tr=420;
   addEventListener('mousemove',function(e){
-    mx=e.clientX;my=e.clientY;if(dot.style.opacity==='0'){rx=mx;ry=my;dot.style.opacity='1';ring.style.opacity='1'}
-    dot.style.transform='translate3d('+mx+'px,'+my+'px,0)';
-    var t=e.target;
-    var hoverable=t.closest && t.closest('a,button,input,textarea,select,.sv-card,.sp-card,.cp-card,.aw-card,.feature-card,[onclick]');
-    ring.classList.toggle('pj-hover',!!hoverable);
+    mx=e.clientX;my=e.clientY;root.classList.add('pj-glow-on');
+    var t=e.target;tr=(t.closest&&t.closest('a,button,input,textarea,select,.sv-card,.sp-card,.cp-card,.aw-card,.feature-card,[onclick]'))?560:420;
   },{passive:true});
-  addEventListener('mousedown',function(e){
-    var p=document.createElement('div');p.className='pj-cursor-pulse';
-    p.style.transform='translate3d('+e.clientX+'px,'+e.clientY+'px,0)';
-    document.body.appendChild(p);
-    setTimeout(function(){p.remove()},650);
-  });
-  document.documentElement.addEventListener('mouseleave',function(){dot.style.opacity='0';ring.style.opacity='0'});
-  document.documentElement.addEventListener('mouseenter',function(){dot.style.opacity='1';ring.style.opacity='1'});
+  root.addEventListener('mouseleave',function(){root.classList.remove('pj-glow-on')});
+  root.addEventListener('mouseenter',function(){root.classList.add('pj-glow-on')});
   (function loop(){
-    rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
-    ring.style.transform='translate3d('+rx+'px,'+ry+'px,0)';
+    x+=(mx-x)*.14;y+=(my-y)*.14;r+=(tr-r)*.08;
+    root.style.setProperty('--gx',x.toFixed(1)+'px');root.style.setProperty('--gy',y.toFixed(1)+'px');root.style.setProperty('--gr',r.toFixed(0)+'px');
     requestAnimationFrame(loop);
   })();
 })();
@@ -988,6 +1230,8 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
   render();
 })();
 </script>
+<script src="cc-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script defer src="bundle.js"></script>
 <script>
 (function(){
@@ -1006,6 +1250,60 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
   setTimeout(ready,2200); /* safety net so the page never stays hidden */
   /* coming back via the Back button: never show a half-hidden page */
   addEventListener('pageshow',function(e){if(e.persisted)ready()});
+})();
+</script>
+<script>(function(){var p=document.querySelector(".cr-pic"),f=p&&p.querySelector(".cr-frame");if(!f||!matchMedia("(hover:hover)").matches)return;
+p.addEventListener("mousemove",function(e){var r=p.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;f.style.setProperty("--ry",(x*10).toFixed(2)+"deg");f.style.setProperty("--rx",(-y*10).toFixed(2)+"deg")});
+p.addEventListener("mouseleave",function(){f.style.setProperty("--rx","0deg");f.style.setProperty("--ry","0deg")});})();</script>
+<script>
+(function(){
+  var st=document.getElementById('msStage');if(!st)return;
+  var out=document.getElementById('msOut'),inn=document.getElementById('msIn'),sts=document.getElementById('msSt'),box=document.getElementById('msChips');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var T=[['Services',"Hi! I'd like to ask about lighting for our hotel.",'services'],['Expert',"Hello, can I talk to an expert about dimming?",'expert'],['Support',"We need some help with our solar setup.",'support'],['Careers',"I'd love to join the team!",'job']];
+  var chips=T.map(function(t,i){var b=document.createElement('button');b.type='button';b.className='ms-chip';b.textContent=t[0];b.addEventListener('click',function(){auto=false;play(i,true)});box.appendChild(b);return b});
+  var k=0,auto=true;
+  function wait(ms,t){return new Promise(function(r){setTimeout(function(){r(t===k)},ms)})}
+  async function play(i,route){
+    var t=++k,m=T[i][1];
+    chips.forEach(function(c,j){c.classList.toggle('on',j===i)});
+    out.textContent='';inn.classList.remove('on');sts.textContent='Typing...';
+    for(var c=1;c<=m.length;c++){out.textContent=m.slice(0,c);if(!await wait(reduce?0:28,t))return}
+    sts.textContent='\u2713 Sent';
+    if(!await wait(500,t))return;
+    inn.innerHTML='<i></i><i></i><i></i>';inn.classList.add('on');
+    if(!await wait(1100,t))return;
+    inn.textContent='Thanks! We will reply by email.';
+    if(route){
+      var sel=document.getElementById('cT'),f=document.getElementById('av-apply');
+      if(sel){sel.value=T[i][2];sel.dispatchEvent(new Event('change',{bubbles:true}))}
+      await wait(700,t);if(f&&t===k)f.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});return;
+    }
+    if(!await wait(2800,t))return;
+    if(auto&&!reduce)play((i+1)%T.length,false);
+  }
+  st.addEventListener('pointermove',function(e){if(reduce)return;var r=st.getBoundingClientRect();
+    st.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*10+'deg');st.style.setProperty('--rx',(.5-(e.clientY-r.top)/r.height)*8+'deg')});
+  st.addEventListener('pointerleave',function(){st.style.setProperty('--rx','0deg');st.style.setProperty('--ry','0deg')});
+  play(0,false);
+})();
+</script>
+<script>
+(function(){var t=document.getElementById('mpTabs'),f=document.getElementById('mpFrame');if(!t||!f)return;var U=["https://www.google.com/maps?q=2%20Scout%20Rallos%20corner%20Mother%20Ignacia%20Avenue%2C%20Quezon%20City%2C%20Philippines%201103&output=embed", "https://www.google.com/maps?q=144%20Sumulong%20Highway%2C%20Mayamot%2C%20Antipolo%20City%2C%20Philippines%201870&output=embed"];
+t.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;[].forEach.call(t.children,function(x){x.classList.toggle('on',x===b)});f.src=U[+b.dataset.i]})})();
+</script>
+<script>
+(function(){
+  var w=document.querySelector('.ms-wrap');if(!w)return;
+  function fit(){
+    w.style.width='';
+    if(innerWidth<1000)return;
+    var t=0;[].slice.call(document.querySelectorAll('a,button')).forEach(function(a){if(/talk to expert/i.test(a.textContent)){var b=a.getBoundingClientRect();if(b.width>0&&b.right>t)t=b.right}});
+    if(!t)return;
+    var r=w.getBoundingClientRect();
+    if(t>r.right)w.style.width=Math.min(t-r.left,innerWidth-r.left-8)+'px';
+  }
+  fit();addEventListener('resize',fit);addEventListener('load',fit);
 })();
 </script>
 </body>

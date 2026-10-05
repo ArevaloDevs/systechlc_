@@ -840,8 +840,8 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
   /* ===== EDIT HERE: the "Tap to play" sound. Put the file next to this page, or in /audio/ ===== */
   var AUDIO_SRC=['systech_audio.mp3'];
 
-  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file in partners/ ===== */
-  var REMOTE='systechlc.com/img/'; /* fallback: the old site's logo folder, used only if partners/<f> is missing */
+  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file in images/partners/ ===== */
+  var REMOTE='systechlc.com/img/'; /* fallback: the old site's logo folder, used only if images/partners/<f> is missing */
   var CATS=[
    {id:'sound',title:'Sound System',note:'Professional audio solutions and digital sound processors.',items:[
     {n:'Adam Hall',t:'Professional Audio Solutions',s:'www.adamhall.com',f:'adam.jpg'},
@@ -912,7 +912,7 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
   var CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function card(p,i){
     var a=document.createElement('article');a.className='av-card rv';a.style.setProperty('--i',i%4);
-    var logo='<div class="av-logo"><img src="partners/'+p.f+'" data-remote="https://www.'+REMOTE+p.f+'|http://www.'+REMOTE+p.f+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
+    var logo='<div class="av-logo"><img src="images/partners/'+p.f+'" data-remote="https://www.'+REMOTE+p.f+'|http://www.'+REMOTE+p.f+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
     a.innerHTML=(p.s?'<a class="av-media-link" href="https://'+p.s+'" target="_blank" rel="noopener" aria-label="Visit '+p.n+' website">'+logo+'</a>':logo)
       +'<h3>'+p.n+'</h3>'
       +'<div class="av-tags"><span class="av-tag">'+p.t+'</span>'+(p.ex?'<span class="av-ex">Exclusive Distributor</span>':'')+'</div>'

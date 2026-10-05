@@ -929,7 +929,16 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
 
   /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension) in the same folder as this page (see LOGO_DIR) ===== */
  var EXTS=['jpg','png','jpeg','webp','svg'];
-var LOGO_DIR=''; /* folder that holds the logo files ('' = same folder as this page) */
+vvar LOGO_DIRS=['','logos/','brands/','images/'];   /* keep only the folders you actually use */
+function logoCandidates(p){
+  var bases=[p.f,p.f.toUpperCase(),p.f.charAt(0).toUpperCase()+p.f.slice(1),p.n,
+             p.n.toLowerCase(),p.n.charAt(0)+p.n.slice(1).toLowerCase()];
+  bases=bases.filter(function(b,i){return b&&bases.indexOf(b)===i});
+  var out=[];
+  LOGO_DIRS.forEach(function(d){bases.forEach(function(b){
+    ['png','jpg','jpeg','webp','svg'].forEach(function(x){out.push(d+encodeURIComponent(b)+'.'+x)})})});
+  return out;
+}
 var CATS=[
  {id:'arch',title:'Architectural and Speciality Lighting',note:'Architectural, landscape and facade lighting from the makers we supply and support.',items:[
   {n:'ERCO',t:'Architectural Lighting',s:'www.erco.com',f:'erco'},
@@ -997,8 +1006,8 @@ var CATS=[
   /* ---- classified brand catalogue ---- */
   function card(p,i){
     var a=document.createElement('article');a.className='av-card rv';a.style.setProperty('--i',i%4);
-    var alt=EXTS.slice(1).map(function(x){return LOGO_DIR+p.f+'.'+x}).join('|');
-    var logo='<div class="av-logo"><img src="'+LOGO_DIR+p.f+'.'+EXTS[0]+'" data-remote="'+alt+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
+    var c=logoCandidates(p);
+var logo='<div class="av-logo"><img src="'+c[0]+'" data-remote="'+c.slice(1).join('|')+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
     a.innerHTML=(p.s?'<a class="av-media-link" href="https://'+p.s+'" target="_blank" rel="noopener" aria-label="Visit '+p.n+' website">'+logo+'</a>':logo)
       +'<h3>'+p.n+'</h3>'
       +'<div class="av-tags"><span class="av-tag">'+p.t+'</span>'+(p.ex?'<span class="av-ex">Exclusive Distributor</span>':'')+'</div>'

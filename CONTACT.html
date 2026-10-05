@@ -745,7 +745,18 @@ body.b.eh #contactForm .ct-f input,body.b.eh #contactForm .ct-f select,body.b.eh
 </style>
 <style>
 </style>
-</head>
+<style>
+.ct-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.ct-act a,.ct-act button{font:inherit;font-size:.78rem;font-weight:700;padding:6px 14px;border-radius:999px;border:1px solid #4e6bff;background:transparent;color:#4e6bff;cursor:pointer;text-decoration:none;transition:background .25s,color .25s,transform .25s}
+.ct-act a:hover,.ct-act button:hover{background:#0035fe;border-color:#0035fe;color:#fff;transform:translateY(-2px)}
+.ct-off{cursor:pointer}.ct-card.sel{border-color:#4e6bff;box-shadow:0 24px 46px -22px rgba(0,53,254,.55),inset 4px 0 0 #0035fe}
+.ct-status{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:8px 18px;border-radius:999px;font-size:.88rem;font-weight:700;background:var(--av-card);border:1px solid var(--av-line);color:var(--av-t)}
+.ct-status i{width:10px;height:10px;border-radius:50%;background:#9aa4b8}.ct-status.open i{background:#18c55e;animation:ctDot 1.8s infinite}.ct-status.closed i{background:#f0a020}
+@keyframes ctDot{0%{box-shadow:0 0 0 0 rgba(24,197,94,.6)}100%{box-shadow:0 0 0 12px rgba(24,197,94,0)}}
+.ct-toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:#0a1030;color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;font-size:.9rem;box-shadow:0 18px 40px -12px rgba(0,0,0,.5);transition:.35s;z-index:9999}
+.ct-toast.on{opacity:1;transform:translate(-50%,0)}
+.mp-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}.mp-bar .ct-act{margin:0}.mp-bar small{margin-left:auto;color:var(--av-m);font-weight:600}
+</style></head>
 <body x-data="{ page: 'contact', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
   :class="{'b eh': darkMode === true}">
@@ -866,17 +877,17 @@ body.b.eh #contactForm .ct-f input,body.b.eh #contactForm .ct-f select,body.b.eh
   <div class="ct-submit"><button type="submit" class="av-btn">Send Message</button><span class="ct-note">We reply to the email address you provide.</span></div><div id="ctStatus" role="status" aria-live="polite"></div></form>
 </div></section>
 <section id="av-visit" class="av-sec pj-soft-bg"><div class="av-wrap">
- <div class="av-head rv"><h2>Visit or reach us</h2><p>Our offices and contact details.</p></div>
+ <div class="av-head rv"><h2>Visit or reach us</h2><p>Our offices and contact details.</p><div class="ct-status" id="ctOpen" aria-live="polite"><i></i><span>Checking office hours&hellip;</span></div></div>
  <div class="mp-grid rv">
   <div><p class="mp-lab">ADDRESS</p><div class="ct-cards">
-   <div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Residential Office</b><span class="s">2 Scout Rallos corner Mother Ignacia Avenue, Quezon City, Philippines 1103</span></span></div>
-   <div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Commercial Office</b><span class="s">144 Sumulong Highway, Mayamot, Antipolo City, Philippines 1870</span></span></div>
-  </div>
-  <p class="mp-lab" style="margin-top:26px">CONTACT DETAILS</p><div class="ct-cards">
-   <a class="ct-card" href="tel:+63283749938"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><b>Phone</b><span class="s">+632-8374-9938</span></span></a>
-   <div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><b>Fax</b><span class="s">+632-8376-9004</span></span></div>
-   <a class="ct-card" href="mailto:sales@systechlc.com"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><b>Email Address</b><span class="s">sales@systechlc.com</span></span></a>
-  </div></div>
+<div class="ct-card ct-off sel" data-i="0" tabindex="0" role="button" aria-label="Show Residential Office on the map"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Residential Office</b><span class="s">2 Scout Rallos corner Mother Ignacia Avenue, Quezon City, Philippines 1103</span><span class="ct-act"><a href="https://www.google.com/maps/dir/?api=1&destination=2%20Scout%20Rallos%20corner%20Mother%20Ignacia%20Avenue%2C%20Quezon%20City%2C%20Philippines%201103" target="_blank" rel="noopener">Directions</a><a href="https://waze.com/ul?q=2%20Scout%20Rallos%20corner%20Mother%20Ignacia%20Avenue%2C%20Quezon%20City%2C%20Philippines%201103&navigate=yes" target="_blank" rel="noopener">Waze</a><button type="button" data-copy="2 Scout Rallos corner Mother Ignacia Avenue, Quezon City, Philippines 1103">Copy address</button></span></span></div>
+<div class="ct-card ct-off" data-i="1" tabindex="0" role="button" aria-label="Show Commercial Office on the map"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Commercial Office</b><span class="s">144 Sumulong Highway, Mayamot, Antipolo City, Philippines 1870</span><span class="ct-act"><a href="https://www.google.com/maps/dir/?api=1&destination=144%20Sumulong%20Highway%2C%20Mayamot%2C%20Antipolo%20City%2C%20Philippines%201870" target="_blank" rel="noopener">Directions</a><a href="https://waze.com/ul?q=144%20Sumulong%20Highway%2C%20Mayamot%2C%20Antipolo%20City%2C%20Philippines%201870&navigate=yes" target="_blank" rel="noopener">Waze</a><button type="button" data-copy="144 Sumulong Highway, Mayamot, Antipolo City, Philippines 1870">Copy address</button></span></span></div>
+</div>
+<p class="mp-lab" style="margin-top:26px">CONTACT DETAILS</p><div class="ct-cards">
+<div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><b>Phone</b><span class="s">+632-8374-9938</span><span class="ct-act"><a href="tel:+63283749938">Call</a><button type="button" data-copy="+632-8374-9938">Copy</button></span></span></div>
+<div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><span><b>Fax</b><span class="s">+632-8376-9004</span><span class="ct-act"><button type="button" data-copy="+632-8376-9004">Copy</button></span></span></div>
+<div class="ct-card"><span class="ct-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span><b>Email Address</b><span class="s">sales@systechlc.com</span><span class="ct-act"><a href="mailto:sales@systechlc.com">Write</a><button type="button" data-copy="sales@systechlc.com">Copy</button></span></span></div>
+</div></div>
   <div class="mp-map"><div class="av-filter" id="mpTabs"><button type="button" class="on" data-i="0">Residential Office</button><button type="button" data-i="1">Commercial Office</button></div>
    <div class="mp-frame"><iframe id="mpFrame" title="Office map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=2%20Scout%20Rallos%20corner%20Mother%20Ignacia%20Avenue%2C%20Quezon%20City%2C%20Philippines%201103&output=embed"></iframe></div></div>
  </div></div></section>
@@ -1306,5 +1317,26 @@ t.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)re
   fit();addEventListener('resize',fit);addEventListener('load',fit);
 })();
 </script>
-</body>
+<script>
+(function(){
+var HRS={days:[1,2,3,4,5],open:8,close:17,label:'Mon\u2013Fri, 8:00 AM \u2013 5:00 PM'}; /* edit office hours here */
+var st=document.getElementById('ctOpen');
+function tick(){if(!st)return;var p=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Manila',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()),g={};p.forEach(function(x){g[x.type]=x.value});
+var d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g.weekday),h=(+g.hour%24)+(+g.minute)/60,o=HRS.days.indexOf(d)>-1&&h>=HRS.open&&h<HRS.close;
+st.className='ct-status '+(o?'open':'closed');st.querySelector('span').textContent=(o?'Open now':'Closed now')+' \u00b7 '+HRS.label+' (Manila time)'}
+tick();setInterval(tick,60000);
+var tw=document.createElement('div');tw.className='ct-toast';document.body.appendChild(tw);var tt;
+function toast(m){tw.textContent=m;tw.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){tw.classList.remove('on')},1800)}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-copy]');if(!b)return;e.stopPropagation();var v=b.getAttribute('data-copy');
+(navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(function(){var t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(x){}t.remove()}).then?0:0;toast('Copied: '+v)});
+var cards=[].slice.call(document.querySelectorAll('.ct-off')),tabs=[].slice.call(document.querySelectorAll('#mpTabs button'));
+function sel(i){cards.forEach(function(c,k){c.classList.toggle('sel',k==i)})}
+cards.forEach(function(c){function go(){var i=+c.dataset.i;if(tabs[i])tabs[i].click();sel(i)}c.addEventListener('click',function(e){if(e.target.closest('a,button'))return;go()});c.addEventListener('keydown',function(e){if(e.key=='Enter'||e.key==' '){e.preventDefault();go()}})});
+tabs.forEach(function(b,i){b.addEventListener('click',function(){sel(i)})});
+var mp=document.querySelector('.mp-frame');if(mp){var bar=document.createElement('div');bar.className='mp-bar';bar.innerHTML='<span class="ct-act"><a id="mpDir" target="_blank" rel="noopener">Get directions</a><a id="mpOpen" target="_blank" rel="noopener">Open in Google Maps</a></span><small>Tap an office card to switch the map</small>';mp.after(bar);
+var A=[].map.call(cards,function(c){return c.querySelector('.s').textContent});
+function upd(i){var e=encodeURIComponent(A[i]);document.getElementById('mpDir').href='https://www.google.com/maps/dir/?api=1&destination='+e;document.getElementById('mpOpen').href='https://www.google.com/maps/search/?api=1&query='+e}
+upd(0);tabs.forEach(function(b,i){b.addEventListener('click',function(){upd(i)})})}
+})();
+</script></body>
 </html>

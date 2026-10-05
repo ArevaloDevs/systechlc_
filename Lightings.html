@@ -965,15 +965,15 @@ var CATS=[
   {n:'CHAMSYS',t:'Entertainment Lighting Controls',s:'www.chamsyslighting.com',f:'chamsys'}]}];
 
   /* ===== EDIT HERE: lighting solutions (images in projects/) ===== */
-  var P=[{"n":"Architectural &amp; Specialty Lighting","c":"in","t":"Interior","d":"Lighting that shapes hotel, residential and commercial interiors, planned with illumination studies before installation.","i":["Solaire North Resort &amp; Casino","Shang Residences at Wack-Wack","Aurelia Residences","LAYA Sales Gallery"],"f":"shang.jpg","g":"linear-gradient(135deg,#ffb347,#ff6a3d)"},
-   {"n":"Landscape Lighting","c":"out","t":"Exterior","d":"Pathway, garden and grounds lighting that keeps outdoor spaces safe and inviting after dark.","i":["Solaire North Resort &amp; Casino","Shang Residences at Wack-Wack","Samal Shores Hotel &amp; Resort"],"f":"Samal-Shore.jpg","g":"linear-gradient(135deg,#2ecc8f,#0a8f6b)"},
-   {"n":"Facade Lighting","c":"out","t":"Exterior","d":"Facade lighting that turns building exteriors into landmarks, from hotels and malls to stadiums.","i":["Copeton Baysuites","Gateway Mall 2 and IBIS Hotel","Ferdinand E. Marcos Memorial Stadium","Solaire North Resort &amp; Casino"],"f":"ibis.jpg","g":"linear-gradient(135deg,#4e6bff,#7a5cff)"},
-   {"n":"Stage Lighting","c":"stage","t":"Stage","d":"Stage lighting supplied and installed for performing arts venues.","i":["Rockwell Performing Arts Theater"],"f":"rockwell.jpg","g":"linear-gradient(135deg,#ff5e7e,#b026ff)"}];
+  var P=[{"n":"Architectural &amp; Specialty Lighting","c":"in","t":"Interior","d":"Lighting that shapes hotel, residential and commercial interiors, planned with illumination studies before installation.","i":["Solaire North Resort &amp; Casino","Shang Residences at Wack-Wack","Aurelia Residences","LAYA Sales Gallery"],"f":"S.SHANG.png","g":"linear-gradient(135deg,#ffb347,#ff6a3d)"},
+   {"n":"Landscape Lighting","c":"out","t":"Exterior","d":"Pathway, garden and grounds lighting that keeps outdoor spaces safe and inviting after dark.","i":["Solaire North Resort &amp; Casino","Shang Residences at Wack-Wack","Samal Shores Hotel &amp; Resort"],"f":"S.SAMAL.jpeg","g":"linear-gradient(135deg,#2ecc8f,#0a8f6b)"},
+   {"n":"Facade Lighting","c":"out","t":"Exterior","d":"Facade lighting that turns building exteriors into landmarks, from hotels and malls to stadiums.","i":["Copeton Baysuites","Gateway Mall 2 and IBIS Hotel","Ferdinand E. Marcos Memorial Stadium","Solaire North Resort &amp; Casino"],"f":"S.GATEWAY.jpg","g":"linear-gradient(135deg,#4e6bff,#7a5cff)"},
+   {"n":"Stage Lighting","c":"stage","t":"Stage","d":"Stage lighting supplied and installed for performing arts venues.","i":["Rockwell Performing Arts Theater"],"f":"S.ROCKWELL.jpg","g":"linear-gradient(135deg,#ff5e7e,#b026ff)"}];
 function projCandidates(f){
   var b=f.replace(/\.[^.]+$/,''),bases=[b,b.toLowerCase(),b.toUpperCase(),b.charAt(0).toUpperCase()+b.slice(1).toLowerCase()];
   bases=bases.filter(function(x,i){return bases.indexOf(x)===i});
-  var out=['projects/'+f];
-  ['projects/','Projects/','','images/','img/'].forEach(function(d){bases.forEach(function(x){
+  var out=[f];
+  ['','projects/','Projects/','images/','img/'].forEach(function(d){bases.forEach(function(x){
     ['jpg','jpeg','png','webp'].forEach(function(e){var u=d+encodeURIComponent(x)+'.'+e;if(out.indexOf(u)<0)out.push(u)})})});
   out.push('https://www.systechlc.com/img/'+f);
   return out;

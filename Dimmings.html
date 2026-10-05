@@ -10,7 +10,7 @@
 <script>document.documentElement.className+=" js";try{if(JSON.parse(localStorage.getItem("darkMode"))===true)document.documentElement.className+=" pj-dark"}catch(e){}window.pjImg=function(i){var r=(i.dataset.remote||'').split('|').filter(Boolean),n=+i.dataset.tried||0;if(n<r.length){i.dataset.tried=n+1;i.src=r[n]}else i.remove()}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="images/systech.png">
+  <link rel="icon" href="systech.png">
   <link href="style.css" rel="stylesheet">
 
 <style>
@@ -226,20 +226,21 @@ body.b.eh .aw-year{color:#a1a1aa}
 /* ---- video sound toggle ---- */
 #video-showcase{margin-top:76px}
 
-/* ---- custom glowing cursor (audiovisual / lighting themed) ---- */
+/* ---- cursor glow: a soft light in the page background follows the cursor ---- */
 @media(pointer:fine){
-  html.pj-cursor-ready,html.pj-cursor-ready *{cursor:none!important}
-  .pj-cursor-dot,.pj-cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:2147483000;will-change:transform}
-  .pj-cursor-dot{width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#0035fe;box-shadow:0 0 10px 2px rgba(0,53,254,.9)}
-  .pj-cursor-ring{width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;border:1px solid rgba(0,53,254,.55);box-shadow:0 0 18px 4px rgba(0,53,254,.25);transition:width .25s var(--pj-ease),height .25s var(--pj-ease),margin .25s var(--pj-ease),border-color .25s,opacity .25s}
-  .pj-cursor-ring.pj-hover{width:56px;height:56px;margin:-28px 0 0 -28px;border-color:rgba(0,53,254,.85);box-shadow:0 0 26px 8px rgba(0,53,254,.35)}
-  .pj-cursor-pulse{position:fixed;top:0;left:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:1px solid #0035fe;pointer-events:none;z-index:2147483000;opacity:0;animation:pjPulse .6s ease-out forwards}
-  @keyframes pjPulse{from{opacity:.7;transform:scale(1)}to{opacity:0;transform:scale(4.2)}}
+  body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;
+    background:radial-gradient(calc(var(--gr,420px) * .3) circle at var(--gx,50%) var(--gy,50%),rgba(255,196,110,.26),transparent 100%),
+               radial-gradient(var(--gr,420px) circle at var(--gx,50%) var(--gy,50%),rgba(0,53,254,.17),rgba(78,107,255,.07) 45%,transparent 72%)}
+  html::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;
+    background:radial-gradient(circle,rgba(0,53,254,.5) 0 1.2px,transparent 1.7px) 0 0/26px 26px;
+    -webkit-mask-image:radial-gradient(calc(var(--gr,420px) * .75) circle at var(--gx,50%) var(--gy,50%),#000,transparent 100%);
+    mask-image:radial-gradient(calc(var(--gr,420px) * .75) circle at var(--gx,50%) var(--gy,50%),#000,transparent 100%)}
+  html.pj-glow-on body::after,html.pj-glow-on::before{opacity:1}
+  body.b.eh::after{background:radial-gradient(calc(var(--gr,420px) * .3) circle at var(--gx,50%) var(--gy,50%),rgba(255,196,110,.2),transparent 100%),
+               radial-gradient(var(--gr,420px) circle at var(--gx,50%) var(--gy,50%),rgba(110,140,255,.26),rgba(78,107,255,.1) 45%,transparent 72%)}
+  html.pj-dark::before{background-image:radial-gradient(circle,rgba(160,180,255,.55) 0 1.2px,transparent 1.7px)}
 }
-@media(pointer:coarse),(prefers-reduced-motion:reduce){
-  html.pj-cursor-ready,html.pj-cursor-ready *{cursor:auto!important}
-  .pj-cursor-dot,.pj-cursor-ring,.pj-cursor-pulse{display:none!important}
-}
+@media(prefers-reduced-motion:reduce){body::after,html::before{display:none}}
 
 /* ---- soft section background, matching the Contact ("Let's Stay
    Connected") section's light tint + faint decorative shapes ---- */
@@ -436,7 +437,7 @@ body.b.eh .av-btn.ghost{color:#8fa3ff!important;box-shadow:inset 0 0 0 2px #8fa3
 .js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--pj-ease),transform .8s var(--pj-ease);transition-delay:calc(var(--i,0)*90ms)}
 .js .rv.pj-in{opacity:1;transform:none}
 /* hero */
-#av-hero{padding-top:clamp(110px,15vh,150px);min-height:100svh;display:flex;align-items:center}
+#av-hero{padding-top:clamp(110px,15vh,150px);min-height:110svh;display:flex;align-items:center}
 .av-hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
 .av-crumb{font-size:.85rem;color:var(--av-m);margin-bottom:18px}.av-crumb a{color:inherit}.av-crumb a:hover{color:#0035fe}
 #av-hero h1{font-size:clamp(2.3rem,5vw,3.7rem);font-weight:800;line-height:1.08;color:var(--av-t)}
@@ -620,59 +621,105 @@ body.b.eh .aw-year{color:#a1a1aa}
 @keyframes ltPulse{50%{transform:scale(1.25);opacity:.6}}
 
 /* =====================================================================
-   HERO: colour-temperature dimming room
+   HERO: living room - lights, curtains, day and night
    ===================================================================== */
-@property --f{syntax:'<number>';inherits:false;initial-value:1}
 .av-stage.dm-wrap{padding:0}
-.dm-stage{--lv:.7;container-type:inline-size;position:relative;isolation:isolate;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:#05071a;
-  border:1px solid rgba(255,255,255,.1);box-shadow:0 44px 90px -34px rgba(0,53,254,.55),0 0 90px -30px rgba(255,180,90,.55),inset 0 1px 0 rgba(255,255,255,.08)}
-.dm-wall{position:absolute;inset:0;background:linear-gradient(180deg,#7d7c84 0,#9c9a9c 9%,#a9a6a2 55%,#b6b2ab 80%)}
-.dm-ceil{position:absolute;left:0;right:0;top:0;height:7cqw;background:linear-gradient(180deg,#5d5c66,#85838b);box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.35)}
-.dm-floor{position:absolute;left:0;right:0;bottom:0;height:20%;border-top:.5cqw solid #d9d4cc;
-  background:linear-gradient(180deg,rgba(0,0,0,.28),transparent 60%),
-             repeating-linear-gradient(90deg,#7b6752 0 5cqw,#69563f 5cqw 5.25cqw,#86705a 5.25cqw 11cqw,#6e5a45 11cqw 11.25cqw,#7a6550 11.25cqw 17cqw,#62503c 17cqw 17.25cqw)}
-.dm-dim{position:absolute;inset:0;background:#04061a;opacity:calc(.97 - var(--lv) * .34)}
-.dm-pool{position:absolute;left:calc(var(--x) - 18cqw);width:36cqw;top:21cqw;height:56cqw;mix-blend-mode:screen;pointer-events:none;
-  background:radial-gradient(ellipse 28% 26% at 50% 9%,rgba(255,255,255,.55),transparent 100%),radial-gradient(ellipse 50% 60% at 50% 9%,var(--kc) 0,transparent 100%);
-  opacity:calc(var(--lv) * var(--f));transition:--f .5s ease}
-.dm-tex{position:absolute;inset:0;mix-blend-mode:soft-light;opacity:.55;pointer-events:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-.dm-lamp{position:absolute;z-index:3;top:0;left:calc(var(--x) - 6.5cqw);width:13cqw;height:26cqw;padding:0;border:0;background:none;cursor:pointer;transition:--f .5s ease}
-.dm-lamp::before{content:"";position:absolute;left:50%;top:0;width:.35cqw;height:17cqw;margin-left:-.175cqw;background:linear-gradient(180deg,#2c2f55,#c9ccea)}
-.dm-shade{position:absolute;left:0;right:0;top:17cqw;height:7.8cqw;border-radius:6.5cqw 6.5cqw .7cqw .7cqw/7.8cqw 7.8cqw .7cqw .7cqw;background:linear-gradient(90deg,#aeaca6,#f3f1eb 42%,#a5a39d);box-shadow:0 .5cqw 1.2cqw rgba(0,0,0,.35)}
-.dm-shade::before{content:"";position:absolute;left:50%;top:-1.3cqw;width:2.4cqw;height:1.5cqw;margin-left:-1.2cqw;border-radius:.5cqw .5cqw 0 0;background:#d8d6d0}
-.dm-rim{position:absolute;left:1cqw;right:1cqw;bottom:-.55cqw;height:1.7cqw;border-radius:50%;
-  background:radial-gradient(ellipse at center,#fff 0,var(--kc) 70%);opacity:calc(.25 + var(--lv) * var(--f) * .75);
-  box-shadow:0 0 calc(var(--lv) * var(--f) * 3.4cqw) calc(var(--lv) * var(--f) * .8cqw) var(--kc)}
-.dm-lamp:hover .dm-shade,.dm-lamp.is-f .dm-shade{filter:brightness(1.06)}
-.dm-lamp:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-radius:12px}
-.dm-k{position:absolute;z-index:4;left:calc(var(--x) - 10.5cqw);width:21cqw;top:47cqw;text-align:center;pointer-events:none;color:#fff;
-  font-weight:800;font-size:clamp(11px,2.9cqw,17px);line-height:1.15;letter-spacing:.02em;padding:1.2cqw 0 1.3cqw;border-radius:2cqw;
-  background:rgba(5,8,28,.46);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);
-  opacity:calc(.35 + var(--f) * .65);transition:--f .5s ease}
-.dm-k small{display:block;margin-top:.5cqw;font-weight:600;font-size:clamp(7.5px,1.85cqw,11px);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.78)}
-.dm-k i{display:inline-block;width:.9em;height:.9em;margin-right:.35em;border-radius:50%;vertical-align:-.1em;background:var(--kc);box-shadow:0 0 .8em var(--kc)}
+.dm-stage{--lv:.55;--c:.4;--day:.25;--dk:.5;--amb:.5;--dl:0;--dusk:.7;--st:.6;--eo:.5;--zz:0;--kc:#ffd9a6;container-type:inline-size;position:relative;isolation:isolate;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:#05071a;border:1px solid rgba(255,255,255,.1);box-shadow:0 44px 90px -34px rgba(0,53,254,.55),0 0 90px -30px rgba(255,180,90,.55),inset 0 1px 0 rgba(255,255,255,.08)}
+.dm-stage>*,.dm-win>*{position:absolute}
+.dm-wall{inset:0;background:linear-gradient(180deg,#7d7c84,#a9a6a2 60%,#b6b2ab)}
+.dm-ceil{left:0;right:0;top:0;height:5cqw;background:linear-gradient(#5d5c66,#85838b);box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.35)}
+.dm-plant{left:80cqw;top:50cqw;width:9cqw;height:18cqw}
+.dm-plant::before{content:"";position:absolute;left:1.5cqw;right:1.5cqw;bottom:0;height:6cqw;background:#b86b4b;border-radius:.8cqw .8cqw 2cqw 2cqw}
+.dm-plant i{position:absolute;bottom:5cqw;left:50%;width:3cqw;height:11cqw;margin-left:-1.5cqw;border-radius:50% 50% 30% 30%;background:linear-gradient(#4fae6a,#2a7a4a);transform-origin:50% 100%;transform:rotate(var(--r));animation:dmSway 5s ease-in-out infinite}
+@keyframes dmSway{50%{transform:rotate(calc(var(--r) + 4deg))}}
+.dm-dim{inset:0;z-index:2;background:#04061a;opacity:var(--dk)}
+.dm-win{left:33.9cqw;top:13.9cqw;width:32.2cqw;height:26.2cqw;z-index:3;overflow:hidden;background:linear-gradient(180deg,#040820,#1a2760 85%)}
+.dm-day{inset:0;background:linear-gradient(180deg,#3d9bff,#bfe6ff 75%);opacity:var(--day)}
+.dm-dusk{inset:0;background:radial-gradient(90% 60% at 50% 100%,#ff8a3d,rgba(255,90,120,.5) 50%,transparent 80%);opacity:var(--dusk)}
+.dm-stars{inset:0 0 30% 0;opacity:var(--st);background:radial-gradient(circle,#fff 0 .12cqw,transparent .2cqw) 0 0/3.3cqw 3.1cqw,radial-gradient(circle,#cfe0ff 0 .1cqw,transparent .18cqw) 1.4cqw 1.2cqw/4.7cqw 4.1cqw;animation:dmTw 3s ease-in-out infinite alternate}
+@keyframes dmTw{to{filter:brightness(.55)}}
+.dm-shoot{position:absolute;top:3cqw;left:70%;width:7cqw;height:.18cqw;background:linear-gradient(90deg,transparent,#fff);opacity:0;animation:dmShoot 7s ease-in 2s infinite}
+@keyframes dmShoot{0%{opacity:0;transform:translate(0,0) rotate(30deg)}3%{opacity:1}12%{opacity:0;transform:translate(-14cqw,8cqw) rotate(30deg)}100%{opacity:0}}
+.dm-sun{left:62%;top:calc(88% - var(--day) * 68%);width:6cqw;height:6cqw;border-radius:50%;background:#fff6c8;box-shadow:0 0 3cqw 1.5cqw rgba(255,210,100,.8)}
+.dm-moon{left:24%;top:calc(14% + var(--day) * 85%);width:4.4cqw;height:4.4cqw;border-radius:50%;box-shadow:inset -1.2cqw -.5cqw 0 #f4f1e4;filter:drop-shadow(0 0 1cqw rgba(200,220,255,.8))}
+.dm-cloud{top:5cqw;left:0;width:9cqw;height:2.6cqw;border-radius:2cqw;background:#fff;opacity:calc(var(--day) * .9);filter:blur(.3cqw);animation:dmCl 40s linear infinite}
+@keyframes dmCl{from{transform:translateX(-12cqw)}to{transform:translateX(38cqw)}}
+.dm-city{left:0;right:0;bottom:0;height:9cqw;background:#0b1233;filter:brightness(calc(.55 + var(--day) * .9));clip-path:polygon(0 60%,6% 60%,6% 30%,14% 30%,14% 55%,20% 55%,20% 15%,27% 15%,27% 45%,34% 45%,34% 65%,41% 65%,41% 25%,49% 25%,49% 50%,57% 50%,57% 10%,65% 10%,65% 40%,72% 40%,72% 60%,80% 60%,80% 22%,88% 22%,88% 50%,94% 50%,94% 35%,100% 35%,100% 100%,0 100%)}
+.dm-city::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#ffd98a 0 .13cqw,transparent .2cqw) 0 0/1.6cqw 1.5cqw;opacity:calc(1 - var(--day) * 1.3)}
+.dm-frame,.dm-sill{z-index:3;background:none;pointer-events:none;filter:brightness(calc(.35 + var(--amb) * .65))}
+.dm-frame{left:33cqw;top:13cqw;width:34cqw;height:28cqw;box-sizing:border-box;border:.9cqw solid #e7e2d8;border-radius:.6cqw;box-shadow:0 1cqw 2cqw rgba(0,0,0,.35)}
+.dm-frame::before,.dm-frame::after{content:"";position:absolute;background:#e7e2d8}
+.dm-frame::before{left:50%;top:0;bottom:0;width:.7cqw;margin-left:-.35cqw}.dm-frame::after{top:50%;left:0;right:0;height:.7cqw;margin-top:-.35cqw}
+.dm-sill{left:31.5cqw;top:41cqw;width:37cqw;height:1.4cqw;background:#e7e2d8;border-radius:.4cqw}
+.dm-beam{left:27cqw;top:42cqw;width:46cqw;height:33cqw;z-index:3;mix-blend-mode:screen;pointer-events:none;opacity:var(--dl);background:linear-gradient(180deg,rgba(255,236,190,.65),rgba(255,236,190,0));clip-path:polygon(6% 0,94% 0,112% 100%,-12% 100%)}
+.dm-pool{left:calc(var(--x) - 20cqw);width:40cqw;top:14cqw;height:58cqw;z-index:3;mix-blend-mode:screen;pointer-events:none;opacity:var(--lv);background:radial-gradient(ellipse 26% 22% at 50% 12%,rgba(255,255,255,.55),transparent),radial-gradient(ellipse 50% 60% at 50% 12%,var(--kc),transparent)}
+.dm-rod{left:29cqw;top:11.2cqw;width:42cqw;height:.9cqw;border-radius:1cqw;background:#2b2c3a;z-index:4}
+.dm-cur{top:12cqw;height:31cqw;width:19.5cqw;z-index:4;border-radius:0 0 .5cqw .5cqw;filter:brightness(calc(.3 + var(--amb) * .7));background:repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 .5cqw,transparent .5cqw 1.1cqw,rgba(255,255,255,.14) 1.1cqw 1.6cqw,transparent 1.6cqw 2.4cqw),linear-gradient(180deg,#a8466a,#7d2f4f);transform:scaleX(calc(.16 + var(--c) * .84));box-shadow:0 1cqw 2cqw rgba(0,0,0,.35)}
+.dm-cur.l{left:31cqw;transform-origin:0 50%}.dm-cur.r{left:50.5cqw;transform-origin:100% 50%}
+.dm-hit,.dm-catb{z-index:7;background:none;border:0;padding:0;cursor:pointer}
+.dm-hit{left:30cqw;top:11cqw;width:40cqw;height:32cqw}.dm-catb{left:34cqw;top:45cqw;width:8cqw;height:6cqw}
+.dm-bub{z-index:8;left:31cqw;top:41cqw;padding:.6cqw 1.6cqw;border-radius:2cqw;background:#fff;color:#1d2144;font-weight:700;font-size:max(10px,2.2cqw);opacity:0;transform:translateY(6px) scale(.8);transition:.3s;pointer-events:none}
+.dm-bub.on{opacity:1;transform:none}
+.dm-pend{left:calc(var(--x) - 5cqw);top:0;width:10cqw;height:16cqw;z-index:5;padding:0;border:0;background:none;cursor:pointer;transform-origin:50% 0}
+.dm-pend::before{content:"";position:absolute;left:50%;top:0;width:.3cqw;height:10cqw;background:#1c1e30}
+.dm-sh{position:absolute;left:1cqw;right:1cqw;top:10cqw;height:4.6cqw;border-radius:5cqw 5cqw .6cqw .6cqw/4.6cqw 4.6cqw .6cqw .6cqw;background:linear-gradient(90deg,#d9d6cf,#fff 45%,#bdbab3)}
+.dm-sh i{position:absolute;left:1cqw;right:1cqw;bottom:-.5cqw;height:1.4cqw;border-radius:50%;background:radial-gradient(#fff,var(--kc) 70%);opacity:calc(.2 + var(--lv) * .8);box-shadow:0 0 calc(var(--lv) * 3.4cqw) calc(var(--lv) * .9cqw) var(--kc)}
+.dm-pend.sw{animation:dmSw 1.6s ease-out}
+@keyframes dmSw{15%{transform:rotate(9deg)}35%{transform:rotate(-6deg)}55%{transform:rotate(3deg)}75%{transform:rotate(-1.5deg)}}
+.dm-floor{left:0;right:0;bottom:0;height:22%;border-top:.5cqw solid #e4dfd6;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 65%),conic-gradient(#d9d5cd 25%,#b4afa4 0 50%,#d9d5cd 0 75%,#b4afa4 0) 0 0/9cqw 9cqw}
+.dm-desk{left:22cqw;top:51cqw;width:38cqw;height:16cqw;border-radius:1cqw 1cqw .4cqw .4cqw;background:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 .4cqw,transparent .4cqw 2.4cqw),linear-gradient(180deg,#8a6a4b,#5a4230);box-shadow:0 1cqw 1.6cqw rgba(0,0,0,.35)}
+.dm-desk::before{content:"";position:absolute;left:-1cqw;right:-1cqw;top:-1.2cqw;height:2cqw;border-radius:.6cqw;background:linear-gradient(#f1ece2,#cfc7b8)}
+.dm-bell{left:36cqw;top:47.8cqw;width:3cqw;height:2cqw;border-radius:3cqw 3cqw .3cqw .3cqw;background:linear-gradient(90deg,#c9a24a,#ffe9a3 45%,#a8842f)}
+.dm-bell::before{content:"";position:absolute;left:1.1cqw;top:-.7cqw;width:.8cqw;height:.8cqw;border-radius:50%;background:#a8842f}
+.dm-art{left:7cqw;top:22cqw;width:17cqw;height:12cqw;border:.7cqw solid #2b2c3a;background:linear-gradient(135deg,#ff8a3d,#d6336c 50%,#0035fe);box-shadow:0 .6cqw 1.2cqw rgba(0,0,0,.35)}
+.dm-sign{left:73cqw;top:21cqw;width:21cqw;padding:1.2cqw 0;text-align:center;z-index:5;pointer-events:none;font-weight:800;letter-spacing:.35em;text-indent:.35em;font-size:2.6cqw;color:#fff4d6;border:.35cqw solid #ffd58a;border-radius:1cqw;text-shadow:0 0 1cqw #ffb347,0 0 2.4cqw #ff9a3c;box-shadow:0 0 1.6cqw rgba(255,170,70,.7),inset 0 0 1cqw rgba(255,170,70,.5);background:rgba(20,10,0,.3);opacity:calc(.35 + var(--dk) * .65);animation:dmFl 7s infinite}
+@keyframes dmFl{93%,95%,97%{filter:brightness(1)}94%{filter:brightness(.55)}96%{filter:brightness(.75)}}
+.dm-dls{left:0;right:0;top:3.4cqw;height:1.6cqw;z-index:5;pointer-events:none;background:radial-gradient(ellipse,#fff 0 .5cqw,var(--kc) .8cqw,transparent 1.6cqw) 0 0/12.5% 100%;opacity:calc(.15 + var(--lv) * .85)}
 .dm-stage::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(120% 100% at 50% 35%,transparent 55%,rgba(2,4,18,.5))}
+.dm-sw{z-index:8;bottom:8px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(6,9,32,.55);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;cursor:pointer;padding:0;transition:.3s}
+.dm-sw svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.dm-sw[aria-pressed=true]{background:#0035fe;border-color:transparent}.dm-sw:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.dm-stage *{animation:none!important}}
 .dm-pill{position:absolute;z-index:8;left:50%;bottom:14px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:9px;padding:6px 15px;border-radius:99px;white-space:nowrap;background:rgba(6,9,32,.55);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
 .dm-pill i{width:8px;height:8px;border-radius:50%;background:#ffc57a;box-shadow:0 0 10px 2px #ffb25e}
+
 .dm-pill b{font-size:.95rem;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums;min-width:2.6ch;text-align:right}
+
 .dm-pill span{opacity:.75}
 
+
+
 /* control panel */
+
 .dm-panel{margin-top:16px;padding:18px 22px 20px;border-radius:22px;background:var(--av-card);border:1px solid var(--av-line);box-shadow:0 24px 50px -32px rgba(0,53,254,.5)}
+
 .dm-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+
 .dm-row label{font-weight:800;color:var(--av-t);font-size:.95rem}
+
 .dm-hint{margin:0!important;font-size:.76rem!important;line-height:1.4!important;color:var(--av-m)!important}
+
 .dm-range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:8px;margin:0;border-radius:99px;outline:0;cursor:pointer;
+
   background:linear-gradient(90deg,#4e6bff,#0035fe) 0/var(--p,70%) 100% no-repeat,rgba(0,53,254,.15)}
+
 .dm-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;border:0;background:#fff;box-shadow:0 0 0 5px rgba(0,53,254,.2),0 5px 14px rgba(0,53,254,.55)}
+
 .dm-range::-moz-range-thumb{width:26px;height:26px;border-radius:50%;border:0;background:#fff;box-shadow:0 0 0 5px rgba(0,53,254,.2),0 5px 14px rgba(0,53,254,.55)}
+
 .dm-range:focus-visible{outline:2px solid #4e6bff;outline-offset:8px}
+
 .dm-scn{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+
 .dm-scn button{flex:1 1 0;min-width:72px;padding:9px 14px;border-radius:99px;border:1px solid var(--av-line);background:transparent;color:var(--av-t);font-weight:600;font-size:.86rem;transition:all .3s var(--pj-ease)}
+
 .dm-scn button:hover{transform:translateY(-2px);border-color:#4e6bff}
+
 .dm-scn button.on{background:linear-gradient(135deg,#4e6bff,#0035fe);color:#fff;border-color:transparent;box-shadow:0 10px 22px -10px rgba(0,53,254,.7)}
+
 @media(max-width:700px){.dm-k small{letter-spacing:.02em;white-space:nowrap}.dm-pill{font-size:.62rem;padding:5px 11px}.dm-panel{padding:16px 16px 18px}}
+
 </style>
 <style>
 .lk-sec{position:relative;padding:70px 0 90px}
@@ -684,6 +731,30 @@ body.b.eh .aw-year{color:#a1a1aa}
 .lk-strip b{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--av-t);font-weight:800}
 .lk-strip b::after{content:"\2192";color:#0035fe}
 .lk-strip small{color:var(--av-m);font-size:.82rem}
+</style>
+<style>
+/* inquiry form (same look as the Contact page) */
+.ct-form{max-width:760px;margin:0 auto;padding:30px;border-radius:26px;background:var(--av-card);border:1px solid var(--av-line);box-shadow:0 30px 60px -38px rgba(0,53,254,.5)}
+.ct-fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ct-f{display:flex;flex-direction:column;gap:6px}
+.ct-f.full{grid-column:1/-1}
+.ct-f[hidden]{display:none!important}
+.ct-f label{font-size:.95rem;font-weight:500;color:var(--av-t)}
+.ct-f input,.ct-f select,.ct-f textarea{width:100%;box-sizing:border-box;height:44px;padding:0 20px;border-radius:999px;background:#fff;border:1px solid #d9d9e8;color:#1d2144;font:inherit;font-size:.95rem;outline:0;transition:border-color .3s,box-shadow .3s}
+.ct-f textarea{height:auto;min-height:170px;padding:14px 20px;border-radius:14px;resize:vertical}
+.ct-f select{-webkit-appearance:none;appearance:none;padding-right:46px;background-repeat:no-repeat;background-position:right 18px center;background-size:14px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a90ab' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
+.ct-f input:focus,.ct-f select:focus,.ct-f textarea:focus{border-color:#0035fe;box-shadow:0 0 0 4px rgba(0,53,254,.14)}
+body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background-color:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18);color:var(--av-t)}
+.ct-f select option{color:#1d2144}
+.ct-submit{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.ct-submit button{border:0;cursor:pointer}
+.ct-submit button:disabled{opacity:.7;cursor:progress}
+.ct-note{font-size:.8rem;color:var(--av-m)}
+#ctStatus{min-height:1.4em;margin-top:14px;font-weight:600}
+#ctStatus.ct-ok{color:#0f8a4b}
+#ctStatus.ct-err{color:#d92d20}
+@media(max-width:560px){.ct-fields{grid-template-columns:1fr}.ct-form{padding:22px 18px}}
 </style>
 </head>
 <body x-data="{ page: 'dimming', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
@@ -706,8 +777,8 @@ body.b.eh .aw-year{color:#a1a1aa}
   <div class="bb ze ki xn 2xl:ud-px-0 oo wf yf i flex-row-reverse">
     <div class="vd to/4 tc wf yf">
       <a href="index.html">
-        <img class="om h-10 w-auto max-h-10 object-contain" src="images/logo-light_systech.png" alt="Logo Light" />
-        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="images/logo-dark_systech.png" alt="Logo Dark" />
+        <img class="om h-10 w-auto max-h-10 object-contain" src="logo-light_systech.png" alt="Logo Light" />
+        <img class="xc nm h-10 w-auto max-h-10 object-contain" src="logo-dark_systech.png" alt="Logo Dark" />
       </a>
       <button class="po rc" @click="navigationOpen = !navigationOpen">
         <span class="rc i pf re pd">
@@ -731,7 +802,7 @@ body.b.eh .aw-year{color:#a1a1aa}
                 viewBox="0 0 512 512">
                 <path
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Guest Room Management System (GRMS)</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems & GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
           <li class="c i" x-data="{ dropdown: false }">
             <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
               :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
@@ -742,7 +813,7 @@ body.b.eh .aw-year{color:#a1a1aa}
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
               </svg>
             </a>
-            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="index.html#partners" class="xl">Brand Partners</a></li></ul>
+            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="Partners.html" class="xl">Partners</a></li></ul>
           </li>
 <li><a href="NEWS.html" class="xl" :class="{ 'mk': page === 'news' }">News</a></li><li><a href="Career.html" class="xl" :class="{ 'mk': page === 'careers' }">Careers</a></li><li><a href="CONTACT.html" class="xl" :class="{ 'mk': page === 'contact' }">Contact</a></li>
         </ul>
@@ -776,18 +847,26 @@ body.b.eh .aw-year{color:#a1a1aa}
   <p>From dimming systems to guestroom management and complete lighting controls, Systech designs, installs and supports the systems that let you set the light. Try the dimmer.</p>
   <div class="av-cta"><a class="av-btn" href="#av-products">Explore Products</a><a class="av-btn ghost" href="#av-contact">Contact Us</a></div></div>
  <div class="av-stage dm-wrap rv" style="--i:2">
-  <div class="dm-stage" id="dmStage" role="group" aria-label="Interactive dimming demo: four pendant lamps from 2700K to 5000K">
-   <div class="dm-wall"></div><div class="dm-ceil"></div><div class="dm-floor"></div><div class="dm-dim"></div>
-   <span class="dm-pool" data-i="0" style="--x:14%;--kc:#ffae57"></span><span class="dm-pool" data-i="1" style="--x:38%;--kc:#ffc985"></span><span class="dm-pool" data-i="2" style="--x:62%;--kc:#fff1dc"></span><span class="dm-pool" data-i="3" style="--x:86%;--kc:#d9e8ff"></span>
-   <div class="dm-tex"></div>
-   <button type="button" class="dm-lamp" data-i="0" aria-pressed="false" aria-label="Compare 2700K Warm White" style="--x:14%;--kc:#ffae57"><span class="dm-shade"><span class="dm-rim"></span></span></button><button type="button" class="dm-lamp" data-i="1" aria-pressed="false" aria-label="Compare 3000K Soft White" style="--x:38%;--kc:#ffc985"><span class="dm-shade"><span class="dm-rim"></span></span></button><button type="button" class="dm-lamp" data-i="2" aria-pressed="false" aria-label="Compare 4000K Daylight" style="--x:62%;--kc:#fff1dc"><span class="dm-shade"><span class="dm-rim"></span></span></button><button type="button" class="dm-lamp" data-i="3" aria-pressed="false" aria-label="Compare 5000K Crystal White" style="--x:86%;--kc:#d9e8ff"><span class="dm-shade"><span class="dm-rim"></span></span></button>
-   <div class="dm-k" data-i="0" style="--x:14%;--kc:#ffae57"><i></i>2700K<small>Warm White</small></div><div class="dm-k" data-i="1" style="--x:38%;--kc:#ffc985"><i></i>3000K<small>Soft White</small></div><div class="dm-k" data-i="2" style="--x:62%;--kc:#fff1dc"><i></i>4000K<small>Daylight</small></div><div class="dm-k" data-i="3" style="--x:86%;--kc:#d9e8ff"><i></i>5000K<small>Crystal White</small></div>
-   <div class="dm-pill"><i></i><b id="dmVal">70%</b><span id="dmMode">All lamps</span></div>
+  <div class="dm-stage" id="dmStage" role="group" aria-label="Interactive hotel lobby: dim the lights, draw the curtains, switch between day and night">
+   <div class="dm-wall"></div><div class="dm-ceil"></div><div class="dm-floor"></div>
+   <div class="dm-plant"><i style="--r:-34deg;height:9cqw"></i><i style="--r:0deg"></i><i style="--r:32deg;height:9.5cqw"></i></div>
+   <div class="dm-desk"></div>
+   <div class="dm-art"></div><div class="dm-bell"></div><div class="dm-dim"></div>
+   <div class="dm-win"><div class="dm-day"></div><div class="dm-dusk"></div><div class="dm-stars"><i class="dm-shoot"></i></div><span class="dm-sun"></span><span class="dm-moon"></span><span class="dm-cloud"></span><span class="dm-cloud" style="top:12cqw;width:6cqw;animation-delay:-22s"></span><div class="dm-city"></div></div>
+   <div class="dm-frame"></div><div class="dm-sill"></div><div class="dm-beam"></div><span class="dm-pool" style="--x:15%"></span><span class="dm-pool" style="--x:50%"></span><span class="dm-pool" style="--x:85%"></span>
+   <div class="dm-rod"></div><div class="dm-cur l"></div><div class="dm-cur r"></div>
+   <button type="button" class="dm-hit" id="dmHit" aria-label="Open or close the curtains"></button>
+   <div class="dm-sign">LOBBY</div><div class="dm-dls"></div>
+   <button type="button" class="dm-catb" id="dmCat" aria-label="Ring the reception bell"></button><div class="dm-bub" id="dmBub">ding!</div>
+   <button type="button" class="dm-pend" style="--x:15%" aria-label="Switch the lights on or off"><span class="dm-sh"><i></i></span></button><button type="button" class="dm-pend" style="--x:85%" aria-label="Switch the lights on or off"><span class="dm-sh"><i></i></span></button>
+   <button type="button" class="dm-sw" id="dmCurt" style="left:14px" aria-pressed="false" aria-label="Open or close curtains" title="Open or close curtains"><svg viewBox="0 0 24 24"><path d="M3 4h18M5 4c0 6 2 12 3 16M19 4c0 6-2 12-3 16"/></svg></button>
+   <div class="dm-pill"><i></i><b id="dmVal">55%</b><span id="dmMode">Dinner</span></div>
+   <button type="button" class="dm-sw" id="dmTime" style="right:14px" aria-pressed="false" aria-label="Switch between day and night" title="Switch between day and night"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></button>
   </div>
   <div class="dm-panel">
-   <div class="dm-row"><label for="dmRange">Dim level</label><p class="dm-hint">Tap a lamp to compare colour temperatures</p></div>
-   <input class="dm-range" id="dmRange" type="range" min="0" max="100" value="70" aria-label="Dim level">
-   <div class="dm-scn" id="dmScn"><button type="button" data-v="100">Bright</button><button type="button" data-v="60">Dinner</button><button type="button" data-v="25">Movie</button><button type="button" data-v="8">Night</button></div>
+   <div class="dm-row"><label for="dmRange">Dim level</label><p class="dm-hint">Tap the lamps, the curtains or the bell</p></div>
+   <input class="dm-range" id="dmRange" type="range" min="0" max="100" value="55" aria-label="Dim level">
+   <div class="dm-scn" id="dmScn"><button type="button" data-v="0">Business</button><button type="button" data-v="1">Dinner</button><button type="button" data-v="2">Event</button><button type="button" data-v="3">After hours</button></div>
   </div>
  </div>
 </div></section>
@@ -814,16 +893,33 @@ body.b.eh .aw-year{color:#a1a1aa}
  <div class="av-office rv"><div><h4>Residential Office</h4><p>2 Scout Rallos corner Mother Ignacia Avenue, Quezon City 1103</p></div>
   <div><h4>Commercial Office</h4><p>144 Sumulong Highway, Mayamot, Antipolo City 1870</p></div>
   <div><h4>Contact</h4><p>Tel: <a href="tel:+63283749938">+632-8374-9938</a><br>Fax: +632-8376-9004<br><a href="mailto:sales@systechlc.com">sales@systechlc.com</a></p></div></div>
- <div class="av-band rv"><h2>Planning a dimming or control project?</h2><p>Tell us about your project and we will recommend the right solution.</p><a class="av-btn" href="CONTACT.html">Send an inquiry</a></div>
+ <div class="av-head rv"><h2>Planning a dimming or control project?</h2><p>Tell us about your project and we will recommend the right solution.</p></div>
+ <form class="ct-form rv" id="contactForm" novalidate><div class="ct-fields">
+  <div class="ct-f"><label for="cF">First name</label><input id="cF" name="first_name" autocomplete="given-name" required></div>
+  <div class="ct-f"><label for="cLn">Last name</label><input id="cLn" name="last_name" autocomplete="family-name"></div>
+  <div class="ct-f full"><label for="cE">Email address</label><input id="cE" name="email" type="email" autocomplete="email" required></div>
+  <div class="ct-f full"><label for="cP">Phone number</label><input id="cP" name="phone" type="tel" autocomplete="tel"></div>
+  <div class="ct-f full"><label for="cT">How can we help you?</label>
+    <select id="cT" name="topic">
+      <option value="services">Inquiry for services</option>
+      <option value="expert">Talk to an expert</option>
+      <option value="support">Ask for Support (for aftersales)</option>
+      <option value="job">Application for company job</option>
+    </select></div>
+  <div class="ct-f ct-job-only" hidden><label for="cR">Position</label><select id="cR" name="role"></select></div>
+  <div class="ct-f ct-job-only" hidden><label for="cL">Resume / LinkedIn / portfolio link</label><input id="cL" name="link" type="url"></div>
+  <div class="ct-f full"><label for="cC">Country</label><select id="cC" name="country"><option value="">Select region...</option></select></div>
+  <div class="ct-f full"><label for="cM">Message</label><textarea id="cM" name="message" required></textarea></div></div>
+  <div class="ct-submit"><button type="submit" class="av-btn">Send Message</button><span class="ct-note">We reply to the email address you provide.</span></div><div id="ctStatus" role="status" aria-live="polite"></div></form>
 </div></section>
-<section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
+<section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="Partners.html"><b>Partner</b><small>Brands we work with</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
 </main>
 <footer>
 <div class="bb ze ki xn 2xl:ud-px-0">
 <div class="ji gp">
 <div class="tc uf ap gg fp">
 <div class="animate_top zd/2 to/4">
-<a href="index.html"><img src="images/logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="images/logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
+<a href="index.html"><img src="logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
 <p class="lc fb">Lighting, dimming, audio-visual and sound systems — planned, installed and supported by one team.</p>
 <ul class="tc wf cg"><li>
                 <a href="https://www.facebook.com/systechlc/" target="_blank" rel="noopener" aria-label="Facebook">
@@ -844,7 +940,7 @@ body.b.eh .aw-year{color:#a1a1aa}
 <li><a href="index.html#services" class="sc xl vb">Products</a></li>
 <li><a href="index.html#progress" class="sc xl vb">On-Going Projects</a></li>
 <li><a href="index.html#completed" class="sc xl vb">Completed Projects</a></li>
-<li><a href="index.html#partners" class="sc xl vb">Brand Partners</a></li>
+<li><a href="Partners.html" class="sc xl vb">Partner</a></li>
 
 <li><a href="NEWS.html" class="sc xl vb">News</a></li>
 <li><a href="Career.html" class="sc xl vb">Careers</a></li>
@@ -853,13 +949,13 @@ body.b.eh .aw-year{color:#a1a1aa}
 <div class="animate_top"><h4 class="kk wm tj ec">Services</h4><ul>
 <li><a href="Audiovisual.html" class="sc xl vb">Audiovisual</a></li>
 <li><a href="Lightings.html" class="sc xl vb">Lightings</a></li>
-<li><a href="Dimmings.html" class="sc xl vb">Guest Room Management System (GRMS)</a></li>
+<li><a href="Dimmings.html" class="sc xl vb">Dimming Systems & GRMS</a></li>
 <li><a href="Solar.html" class="sc xl vb">Solar Power System</a></li>
 <li><a href="index.html#features-section" class="sc xl vb">24/7 Support</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Contact</h4><ul>
 <li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
-<li><a href="mailto:markjosepharevalo.systechlc@gmail.com" class="sc xl vb">markjosepharevalo.systechlc@gmail.com</a></li>
+<li><a href="mailto:sales@systechlc.com" class="sc xl vb">sales@systechlc.com</a></li>
 <li><a href="CONTACT.html#av-form" class="sc xl vb">Send an inquiry</a></li>
 </ul></div>
 <div class="animate_top"><h4 class="kk wm tj ec">Offices</h4>
@@ -869,7 +965,7 @@ body.b.eh .aw-year{color:#a1a1aa}
 </div>
 <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
 <div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li></ul></div>
-<div class="animate_top"><p>&copy; 2026 Systech Lighting and Controls Inc. All rights reserved.</p></div>
+<div class="animate_top"><p>&copy; 2027 Systech Lighting and Controls Inc. All rights reserved.</p></div>
 </div>
 </div>
 </footer>
@@ -877,18 +973,17 @@ body.b.eh .aw-year{color:#a1a1aa}
 (function(){
   var $=function(id){return document.getElementById(id)};
 
-  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension) in images/partners/, k=filter group(s), ex=exclusive distributor ===== */
-  var EXTS=['jpg','png','jpeg','webp','svg'];
-  var CATS=[
+  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension) in the same folder as this page (see LOGO_DIR), k=filter group(s), ex=exclusive distributor ===== */
+ var EXTS=['jpg','png','jpeg','webp','svg'];
+var LOGO_DIR=''; /* folder that holds the logo files ('' = same folder as this page) */
+var CATS=[
    {id:'dim',title:'Guestroom Management System and Dimming System',note:'Dimming, room management and lighting control systems.',items:[
-    {n:'ILight',t:'Dimming System',s:'www.ilight.co.uk',f:'ilight',k:'dim',ex:1},
-    {n:'VDA',t:'Room Management System',s:'www.vdagroup.com',f:'vda',k:'room',ex:1},
-    {n:'EELECTRON',t:'Room Management System',s:'www.eelectron.com',f:'eelectron',k:'room'},
+    {n:'EELECTRON',t:'Room Management System',s:'www.eelectron.com',f:'electron',k:'room'},
     {n:'ZERO88',t:'Dimming and Control System',s:'www.zero88.com',f:'zero88',k:'dim ctl'},
     {n:'LITEPUTER',t:'Lighting Control System',s:'www.liteputer.com.tw',f:'liteputer',k:'ctl'}]}];
   var BF=[['all','All'],['dim','Dimming'],['room','Room Management'],['ctl','Controls']];
 
-  /* ===== EDIT HERE: dimming solutions (images in images/projects/) ===== */
+  /* ===== EDIT HERE: dimming solutions (images in projects/) ===== */
   var P=[{"n":"Dimming Systems","c":"dim","t":"Dimming","d":"Smooth, reliable dimming for hotels, resorts and residences, supplied and installed as a complete system.","i":["Samal Shores Hotel &amp; Resort","Shang Residences at Wack-Wack","Lanson Place, SM Mall of Asia"],"f":"Samal-Shore.jpg","g":"linear-gradient(135deg,#7a5cff,#0035fe)"},
    {"n":"Guestroom Management System","c":"room","t":"Guestroom","d":"Guestroom management supplied and installed for hotels and resorts.","i":["South Palms Resorts Panglao"],"f":"south-palms.jpg","g":"linear-gradient(135deg,#00b4f0,#0035fe)"},
    {"n":"Lighting Controls","c":"ctl","t":"Controls","d":"Design, supply, supervision and commissioning of complete lighting controls for large properties.","i":["Solaire North Resort &amp; Casino"],"f":"Solaire-North.png","g":"linear-gradient(135deg,#ff8a3d,#d6336c)"},
@@ -898,40 +993,51 @@ body.b.eh .aw-year{color:#a1a1aa}
   var CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- hero: dimmer + colour-temperature comparison ---- */
+  /* ---- hero: living room (lights, curtains, day/night) ---- */
   (function(){
-    var sc=$('dmStage'),r=$('dmRange'),val=$('dmVal'),mode=$('dmMode'),scn=$('dmScn');if(!sc)return;
-    var lamps=[].slice.call(sc.querySelectorAll('.dm-lamp')),all=[].slice.call(sc.querySelectorAll('[data-i]')),
-        NAMES=['2700K Warm White','3000K Soft White','4000K Daylight','5000K Crystal White'],
-        cur=70,auto=true,vis=true,foc=-1,raf=0;
-    function set(p){
-      cur=p;sc.style.setProperty('--lv',(p/100).toFixed(3));val.textContent=Math.round(p)+'%';r.value=p;r.style.setProperty('--p',p+'%');
-      [].forEach.call(scn.children,function(b){b.classList.toggle('on',!auto&&Math.round(p)===+b.dataset.v)});
+    var sc=$('dmStage'),r=$('dmRange'),val=$('dmVal'),mode=$('dmMode'),scn=$('dmScn'),cb=$('dmCurt'),tb=$('dmTime'),bub=$('dmBub');if(!sc)return;
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,
+        SCN=[['Business',.3,0,1],['Dinner',.55,.4,.25],['Event',.12,1,0],['After hours',0,0,0]],
+        S={lv:.55,c:.4,day:.25},idx=1,auto=true,vis=true,raf=0,ai=1,bt=0,say=['ding!','Welcome!','Check in?','ding ding!'],si=0;
+    function cl(x){return Math.max(0,Math.min(1,x))}
+    function mx(a,b,t){return Math.round(a+(b-a)*t)}
+    function P(n,v){sc.style.setProperty('--'+n,typeof v==='number'?v.toFixed(3):v)}
+    function apply(){
+      var dl=Math.pow(S.day,1.3)*(1-S.c)*.95,amb=Math.min(1,S.lv*.9+dl+(1-S.day)*(1-S.c)*.08);
+      P('lv',S.lv);P('c',S.c);P('day',S.day);P('amb',amb);P('dl',dl);P('dk',.06+.84*Math.pow(1-amb,1.2));
+      P('dusk',1-Math.pow(2*S.day-1,2));P('st',cl(1-S.day*1.8));P('eo',1-cl((amb-.5)/.35));P('zz',cl((amb-.7)/.2));
+      P('kc','rgb(255,'+mx(150,224,S.lv)+','+mx(60,176,S.lv)+')');
+      val.textContent=Math.round(S.lv*100)+'%';mode.textContent=idx>=0?SCN[idx][0]:'Custom';
+      r.value=S.lv*100;r.style.setProperty('--p',S.lv*100+'%');
+      cb.setAttribute('aria-pressed',S.c>.5?'true':'false');tb.setAttribute('aria-pressed',S.day<.5?'true':'false');
+      [].forEach.call(scn.children,function(b){b.classList.toggle('on',idx===+b.dataset.v)});
     }
-    function tween(to){
-      cancelAnimationFrame(raf);var from=cur,t0=performance.now(),d=550;
-      if(reduce){set(to);return}
-      (function s(t){var k=Math.min((t-t0)/d,1),e=1-Math.pow(1-k,3);set(from+(to-from)*e);if(k<1)raf=requestAnimationFrame(s)})(t0);
+    function go(t){
+      cancelAnimationFrame(raf);var f={lv:S.lv,c:S.c,day:S.day},t0=performance.now();
+      if(reduce){S.lv=t.lv;S.c=t.c;S.day=t.day;apply();return}
+      (function s(n){var k=Math.min((n-t0)/1300,1),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;for(var q in f)S[q]=f[q]+(t[q]-f[q])*e;apply();if(k<1)raf=requestAnimationFrame(s)})(t0);
     }
-    function focus(i){
-      foc=(foc===i)?-1:i;
-      all.forEach(function(el){var on=foc<0||+el.dataset.i===foc;el.style.setProperty('--f',on?1:.12)});
-      lamps.forEach(function(l,k){var on=k===foc;l.classList.toggle('is-f',on);l.setAttribute('aria-pressed',on?'true':'false')});
-      mode.textContent=foc<0?'All lamps':NAMES[foc];
-    }
-    r.addEventListener('input',function(){auto=false;cancelAnimationFrame(raf);set(+r.value)});
-    scn.addEventListener('click',function(e){var b=e.target.closest('button');if(b){auto=false;tween(+b.dataset.v)}});
-    lamps.forEach(function(l){l.addEventListener('click',function(){focus(+l.dataset.i)})});
+    function preset(i){idx=i;go({lv:SCN[i][1],c:SCN[i][2],day:SCN[i][3]})}
+    function man(t){auto=false;idx=-1;go(t)}
+    function curt(){man({lv:S.lv,c:S.c>.5?0:1,day:S.day})}
+    r.addEventListener('input',function(){auto=false;idx=-1;cancelAnimationFrame(raf);S.lv=r.value/100;apply()});
+    scn.addEventListener('click',function(e){var b=e.target.closest('button');if(b){auto=false;preset(+b.dataset.v)}});
+    cb.addEventListener('click',curt);$('dmHit').addEventListener('click',curt);
+    tb.addEventListener('click',function(){man({lv:S.lv,c:S.c,day:S.day>.5?0:1})});
+    [].forEach.call(sc.querySelectorAll('.dm-pend'),function(p){p.addEventListener('click',function(){
+      var on=S.lv>.05;man({lv:on?0:.7,c:S.c,day:S.day});
+      [].forEach.call(sc.querySelectorAll('.dm-pend'),function(q){q.classList.remove('sw');void q.offsetWidth;q.classList.add('sw')})})});
+    $('dmCat').addEventListener('click',function(){clearTimeout(bt);bub.textContent=say[si++%4];bub.classList.add('on');bt=setTimeout(function(){bub.classList.remove('on')},1600)});
     if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(sc);
-    set(70);
-    if(!reduce)(function tick(t){if(auto&&vis&&!document.hidden)set(52+42*Math.sin(t/1400));requestAnimationFrame(tick)})(0);
+    apply();
+    if(!reduce)setInterval(function(){if(auto&&vis&&!document.hidden){ai=(ai+1)%4;preset(ai)}},5600);
   })();
 
   /* ---- brand catalogue ---- */
   function card(p,i){
     var a=document.createElement('article');a.className='av-card rv';a.dataset.k=p.k||'';a.style.setProperty('--i',i%4);
-    var alt=EXTS.slice(1).map(function(x){return 'images/partners/'+p.f+'.'+x}).join('|');
-    var logo='<div class="av-logo"><img src="images/partners/'+p.f+'.'+EXTS[0]+'" data-remote="'+alt+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
+    var alt=EXTS.slice(1).map(function(x){return LOGO_DIR+p.f+'.'+x}).join('|');
+    var logo='<div class="av-logo"><img src="'+LOGO_DIR+p.f+'.'+EXTS[0]+'" data-remote="'+alt+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
     a.innerHTML=(p.s?'<a class="av-media-link" href="https://'+p.s+'" target="_blank" rel="noopener" aria-label="Visit '+p.n+' website">'+logo+'</a>':logo)
       +'<h3>'+p.n+'</h3>'
       +'<div class="av-tags"><span class="av-tag">'+p.t+'</span>'+(p.ex?'<span class="av-ex">Exclusive Distributor</span>':'')+'</div>'
@@ -958,7 +1064,7 @@ body.b.eh .aw-year{color:#a1a1aa}
   /* ---- dimming solution cards ---- */
   var g=$('dmGrid'),lf=$('dmFilter'),cards=[];
   P.forEach(function(p){var a=document.createElement('article');a.className='av-card rv';a.dataset.c=p.c;
-    a.innerHTML='<a class="av-media-link" href="CONTACT.html#av-form" aria-label="Explore '+p.n.replace(/<[^>]+>/g,'')+'"><div class="av-art" style="--g:'+p.g+'"><img src="images/projects/'+p.f+'" data-remote="http://www.systechlc.com/img/'+p.f+'" alt="'+p.n+'" loading="lazy" onerror="pjImg(this)">'+IC+'<span class="av-explore"><span>Explore '+CHEV+'</span></span></div></a><span class="av-tag">'+p.t+'</span><h3>'+p.n+'</h3><p>'+p.d+'</p><p class="av-feat">Featured in</p><ul class="av-chips">'+p.i.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
+    a.innerHTML='<a class="av-media-link" href="CONTACT.html#av-form" aria-label="Explore '+p.n.replace(/<[^>]+>/g,'')+'"><div class="av-art" style="--g:'+p.g+'"><img src="projects/'+p.f+'" data-remote="http://www.systechlc.com/img/'+p.f+'" alt="'+p.n+'" loading="lazy" onerror="pjImg(this)">'+IC+'<span class="av-explore"><span>Explore '+CHEV+'</span></span></div></a><span class="av-tag">'+p.t+'</span><h3>'+p.n+'</h3><p>'+p.d+'</p><p class="av-feat">Featured in</p><ul class="av-chips">'+p.i.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
     g.appendChild(a);cards.push(a)});
   F.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.textContent=x[1];if(!i)b.className='on';
     b.onclick=function(){[].forEach.call(lf.children,function(y){y.classList.remove('on')});b.classList.add('on');
@@ -982,29 +1088,16 @@ body.b.eh .aw-year{color:#a1a1aa}
   var fine=window.matchMedia&&matchMedia('(pointer:fine)').matches;
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!fine||reduce)return;
-  var dot=document.createElement('div');dot.className='pj-cursor-dot';
-  var ring=document.createElement('div');ring.className='pj-cursor-ring';
-  document.body.appendChild(dot);document.body.appendChild(ring);
-  dot.style.opacity='0';ring.style.opacity='0';document.documentElement.classList.add('pj-cursor-ready');
-  var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  var root=document.documentElement,mx=innerWidth/2,my=innerHeight/2,x=mx,y=my,r=420,tr=420;
   addEventListener('mousemove',function(e){
-    mx=e.clientX;my=e.clientY;if(dot.style.opacity==='0'){rx=mx;ry=my;dot.style.opacity='1';ring.style.opacity='1'}
-    dot.style.transform='translate3d('+mx+'px,'+my+'px,0)';
-    var t=e.target;
-    var hoverable=t.closest && t.closest('a,button,input,textarea,select,.sv-card,.sp-card,.cp-card,.aw-card,.feature-card,[onclick]');
-    ring.classList.toggle('pj-hover',!!hoverable);
+    mx=e.clientX;my=e.clientY;root.classList.add('pj-glow-on');
+    var t=e.target;tr=(t.closest&&t.closest('a,button,input,textarea,select,.sv-card,.sp-card,.cp-card,.aw-card,.feature-card,[onclick]'))?560:420;
   },{passive:true});
-  addEventListener('mousedown',function(e){
-    var p=document.createElement('div');p.className='pj-cursor-pulse';
-    p.style.transform='translate3d('+e.clientX+'px,'+e.clientY+'px,0)';
-    document.body.appendChild(p);
-    setTimeout(function(){p.remove()},650);
-  });
-  document.documentElement.addEventListener('mouseleave',function(){dot.style.opacity='0';ring.style.opacity='0'});
-  document.documentElement.addEventListener('mouseenter',function(){dot.style.opacity='1';ring.style.opacity='1'});
+  root.addEventListener('mouseleave',function(){root.classList.remove('pj-glow-on')});
+  root.addEventListener('mouseenter',function(){root.classList.add('pj-glow-on')});
   (function loop(){
-    rx+=(mx-rx)*.18;ry+=(my-ry)*.18;
-    ring.style.transform='translate3d('+rx+'px,'+ry+'px,0)';
+    x+=(mx-x)*.14;y+=(my-y)*.14;r+=(tr-r)*.08;
+    root.style.setProperty('--gx',x.toFixed(1)+'px');root.style.setProperty('--gy',y.toFixed(1)+'px');root.style.setProperty('--gr',r.toFixed(0)+'px');
     requestAnimationFrame(loop);
   })();
 })();
@@ -1075,6 +1168,209 @@ body.b.eh .aw-year{color:#a1a1aa}
   setTimeout(ready,2200); /* safety net so the page never stays hidden */
   /* coming back via the Back button: never show a half-hidden page */
   addEventListener('pageshow',function(e){if(e.persisted)ready()});
+})();
+</script>
+<script src="cc-config.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+/* ======================================================================
+   EDIT HERE  (inquiry form settings)
+   ======================================================================
+   CONTACT_EMAIL   Backup address shown if sending fails.
+   POSITIONS       Jobs people can pick when they choose "Application for company job".
+                   Add, remove or rename lines. Keep each text inside the backticks ` `.
+   ====================================================================== */
+
+var CONTACT_EMAIL = 'sales@systechlc.com';
+
+var POSITIONS = [
+  `General application`,
+  `SITE SUPERVISOR`,
+  `Controls Programming Technician`
+];
+</script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('contactForm');
+  if (!form) return;
+
+  /* ---- dropdowns filled from the data block / list below ---- */
+  var topicSel = $('cT');
+  var roleSel = $('cR');
+  var countrySel = $('cC');
+
+  POSITIONS.forEach(function (title) {
+    var option = document.createElement('option');
+    option.textContent = title;
+    roleSel.appendChild(option);
+  });
+
+  /* Philippines first, then A to Z */
+  var COUNTRIES = [
+    'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan',
+    'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia',
+    'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada',
+    'Chile', 'China', 'Colombia', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Dominican Republic',
+    'Ecuador', 'Egypt', 'El Salvador', 'Estonia', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Georgia', 'Germany',
+    'Ghana', 'Greece', 'Guatemala', 'Haiti', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia',
+    'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya',
+    'Kuwait', 'Laos', 'Latvia', 'Lebanon', 'Libya', 'Lithuania', 'Luxembourg', 'Macau', 'Malaysia', 'Maldives',
+    'Malta', 'Mexico', 'Mongolia', 'Morocco', 'Myanmar', 'Nepal', 'Netherlands', 'New Zealand', 'Nigeria', 'Norway',
+    'Oman', 'Pakistan', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Poland', 'Portugal', 'Qatar', 'Romania',
+    'Russia', 'Saudi Arabia', 'Senegal', 'Serbia', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain',
+    'Sri Lanka', 'Sudan', 'Sweden', 'Switzerland', 'Taiwan', 'Tanzania', 'Thailand', 'Turkey', 'Uganda', 'Ukraine',
+    'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe'
+  ];
+  ['Philippines'].concat(COUNTRIES).forEach(function (name) {
+    var option = document.createElement('option');
+    option.textContent = name;
+    countrySel.appendChild(option);
+  });
+
+  /* ---- what the visitor wants: services / expert / job ---- */
+  var TOPICS = {
+    services: {
+      label: 'Inquiry for services',
+      icon: '\uD83D\uDEE0\uFE0F',
+      cc: 'sales',
+      hint: 'Tell us about your project: location, type of space and what you need.'
+    },
+    expert: {
+      label: 'Talk to an expert',
+      icon: '\uD83D\uDCAC',
+      cc: 'sales',
+      hint: 'What would you like to discuss? Add your preferred schedule for a call.'
+    },
+    support: {
+      label: 'Ask for support (aftersales)',
+      icon: '\uD83C\uDFA7',
+      cc: 'aftersales',
+      hint: 'Describe the issue. Please include the product, the project location and any model or serial number.'
+    },
+    job: {
+      label: 'Application for company job',
+      icon: '\uD83D\uDCBC',
+      cc: 'hr',
+      hint: 'Tell us about yourself and your experience.'
+    }
+  };
+
+  var DEFAULT_CC = { sales: 'sales@systechlc.com', hr: 'hr@systechlc.com', aftersales: 'aftersales@systechlc.com' };
+  var FALLBACK_CC = (typeof CONTACT_EMAIL !== 'undefined' && CONTACT_EMAIL) ? CONTACT_EMAIL : 'sales@systechlc.com';
+  /* the department that gets a CC copy. cc-config.js can override these; the defaults above always work */
+  function ccFor(t) {
+    var key = t && t.cc, map = window.SYSTECH_CC || {}, pick = [map[key], DEFAULT_CC[key]];
+    for (var i = 0; i < pick.length; i++) {
+      var a = String(pick[i] || '').trim();
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(a) && a.indexOf('yourdomain') < 0) return a;
+    }
+    return FALLBACK_CC;   /* never blank, so the Cc line is always valid */
+  }
+  /* sends; if the mail service refuses the department address, retries once with the main inbox as the copy */
+  function sendWithCc(svc, tpl, p) {
+    return emailjs.send(svc, tpl, p).catch(function (err) {
+      console.error('EmailJS first attempt failed:', err);
+      if (p.cc_email && p.cc_email !== FALLBACK_CC) {
+        var p2 = {}; for (var k in p) p2[k] = p[k]; p2.cc_email = FALLBACK_CC;
+        return emailjs.send(svc, tpl, p2);
+      }
+      throw err;
+    });
+  }
+
+  /* show the Position + resume fields only for job applications */
+  function syncTopic() {
+    var isJob = topicSel.value === 'job';
+    [].forEach.call(form.querySelectorAll('.ct-job-only'), function (f) { f.hidden = !isJob; });
+    $('cM').placeholder = (TOPICS[topicSel.value] || TOPICS.services).hint;
+  }
+  topicSel.addEventListener('change', syncTopic);
+  syncTopic();
+
+  /* ---- send with EmailJS (no email app needed) ---- */
+  var EMAILJS_PUBLIC_KEY = 'gQ2T9LAubWGQijBsb';
+  var EMAILJS_SERVICE_ID = 'default_service';
+  var EMAILJS_TEMPLATE_ID = 'template_rkx63r6';
+
+  var status = form.querySelector('[role="status"]');
+  var sendBtn = form.querySelector('button[type="submit"]');
+  var sendLabel = sendBtn.textContent;
+  var emailjsReady = false;
+
+  function say(kind, text) {
+    status.className = kind === 'ok' ? 'ct-ok ok' : (kind === 'err' ? 'ct-err err' : '');
+    status.textContent = text;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sendBtn.disabled) return;
+
+    var data = new FormData(form);
+    var first = (data.get('first_name') || '').trim();
+    var last = (data.get('last_name') || '').trim();
+    var email = (data.get('email') || '').trim();
+    var phone = (data.get('phone') || '').trim();
+    var country = (data.get('country') || '').trim();
+    var role = (data.get('role') || '').trim();
+    var link = (data.get('link') || '').trim();
+    var message = (data.get('message') || '').trim();
+    var topic = TOPICS[data.get('topic')] || TOPICS.services;
+    var isJob = data.get('topic') === 'job';
+    var emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+
+    if (!first || !message || !emailOk) {
+      say('err', 'Please add your first name, a valid email and a short message.');
+      return;
+    }
+    if (!window.emailjs) {
+      say('err', 'The mail service could not be loaded. Please check your connection and try again, or write to ' + CONTACT_EMAIL + '.');
+      return;
+    }
+    if (!emailjsReady) {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      emailjsReady = true;
+    }
+
+    /* these names are the {{fields}} used in the EmailJS email template */
+    var params = {
+      name: (first + ' ' + last).trim(),
+      first_name: first,
+      last_name: last,
+      email: email,
+      phone: phone || '-',
+      country: country || '-',
+      topic: topic.label,
+      topic_icon: topic.icon,
+      role: isJob ? (role || '-') : '-',
+      link: isJob ? (link || '-') : '-',
+      time: new Date().toLocaleString('en-PH', {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: 'numeric', minute: '2-digit',
+        timeZone: 'Asia/Manila', timeZoneName: 'short'
+      }),
+      message: message,
+      cc_email: ccFor(topic)
+    };
+
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending...';
+    say('', '');
+
+    sendWithCc(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params).then(function () {
+      form.reset();
+      syncTopic();
+      say('ok', 'Thank you! Your message was sent. We will reply to ' + email + '.');
+    }, function (err) {
+      console.error('EmailJS error:', err);
+      say('err', 'Sorry, we could not send your message' + (err && err.text ? ' (' + err.text + ')' : '') +
+        '. Please try again, or write to ' + CONTACT_EMAIL + '.');
+    }).then(function () {
+      sendBtn.disabled = false;
+      sendBtn.textContent = sendLabel;
+    });
+  });
 })();
 </script>
 </body>

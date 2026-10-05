@@ -969,6 +969,15 @@ var CATS=[
    {"n":"Landscape Lighting","c":"out","t":"Exterior","d":"Pathway, garden and grounds lighting that keeps outdoor spaces safe and inviting after dark.","i":["Solaire North Resort &amp; Casino","Shang Residences at Wack-Wack","Samal Shores Hotel &amp; Resort"],"f":"Samal-Shore.jpg","g":"linear-gradient(135deg,#2ecc8f,#0a8f6b)"},
    {"n":"Facade Lighting","c":"out","t":"Exterior","d":"Facade lighting that turns building exteriors into landmarks, from hotels and malls to stadiums.","i":["Copeton Baysuites","Gateway Mall 2 and IBIS Hotel","Ferdinand E. Marcos Memorial Stadium","Solaire North Resort &amp; Casino"],"f":"ibis.jpg","g":"linear-gradient(135deg,#4e6bff,#7a5cff)"},
    {"n":"Stage Lighting","c":"stage","t":"Stage","d":"Stage lighting supplied and installed for performing arts venues.","i":["Rockwell Performing Arts Theater"],"f":"rockwell.jpg","g":"linear-gradient(135deg,#ff5e7e,#b026ff)"}];
+function projCandidates(f){
+  var b=f.replace(/\.[^.]+$/,''),bases=[b,b.toLowerCase(),b.toUpperCase(),b.charAt(0).toUpperCase()+b.slice(1).toLowerCase()];
+  bases=bases.filter(function(x,i){return bases.indexOf(x)===i});
+  var out=['projects/'+f];
+  ['projects/','Projects/','','images/','img/'].forEach(function(d){bases.forEach(function(x){
+    ['jpg','jpeg','png','webp'].forEach(function(e){var u=d+encodeURIComponent(x)+'.'+e;if(out.indexOf(u)<0)out.push(u)})})});
+  out.push('https://www.systechlc.com/img/'+f);
+  return out;
+}
   var F=[["all","All"],["in","Interior"],["out","Exterior"],["stage","Stage"]];
   var IC='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6M10 18h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2h5.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>';
   var CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -1035,8 +1044,8 @@ var CATS=[
 
   /* ---- lighting solution cards ---- */
   var g=$('ltGrid'),lf=$('ltFilter'),cards=[];
-  P.forEach(function(p){var a=document.createElement('article');a.className='av-card rv';a.dataset.c=p.c;
-    a.innerHTML='<a class="av-media-link" href="CONTACT.html#av-form" aria-label="Explore '+p.n.replace(/<[^>]+>/g,'')+'"><div class="av-art" style="--g:'+p.g+'"><img src="projects/'+p.f+'" data-remote="http://www.systechlc.com/img/'+p.f+'" alt="'+p.n+'" loading="lazy" onerror="pjImg(this)">'+IC+'<span class="av-explore"><span>Explore '+CHEV+'</span></span></div></a><span class="av-tag">'+p.t+'</span><h3>'+p.n+'</h3><p>'+p.d+'</p><p class="av-feat">Featured in</p><ul class="av-chips">'+p.i.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
+  P.forEach(function(p){var pc=projCandidates(p.f);var a=document.createElement('article');a.className='av-card rv';a.dataset.c=p.c;
+    a.innerHTML='<a class="av-media-link" href="CONTACT.html#av-form" aria-label="Explore '+p.n.replace(/<[^>]+>/g,'')+'"><div class="av-art" style="--g:'+p.g+'"><img src="'+pc[0]+'" data-remote="'+pc.slice(1).join('|')+'" alt="'+p.n+'" loading="lazy" onerror="pjImg(this)">'+IC+'<span class="av-explore"><span>Explore '+CHEV+'</span></span></div></a><span class="av-tag">'+p.t+'</span><h3>'+p.n+'</h3><p>'+p.d+'</p><p class="av-feat">Featured in</p><ul class="av-chips">'+p.i.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
     g.appendChild(a);cards.push(a)});
   F.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.textContent=x[1];if(!i)b.className='on';
     b.onclick=function(){[].forEach.call(lf.children,function(y){y.classList.remove('on')});b.classList.add('on');

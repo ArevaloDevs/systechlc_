@@ -679,11 +679,16 @@ body.b.eh .pj-soft-bg::before,body.b.eh .pj-clear::before,body.b.eh #support::be
       loop
       playsinline
       autoplay
-      controls
       preload="auto">
       <source src="systech_ads.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
+    <button type="button" id="adSoundBtn" aria-pressed="false" aria-label="Turn sound on"
+      style="position:absolute;right:16px;bottom:16px;z-index:5;display:flex;align-items:center;gap:8px;padding:10px 16px;border:0;border-radius:999px;background:rgba(15,23,42,.72);color:#fff;font:600 14px/1 system-ui,sans-serif;cursor:pointer;backdrop-filter:blur(6px);-webkit-tap-highlight-color:transparent">
+      <svg id="adIconOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+      <svg id="adIconOn" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+      <span id="adSoundLbl">Tap for sound</span>
+    </button>
   </div>
 </section>
 <section id="features-section" class="systech-features-wrapper pj-soft-bg">
@@ -1002,27 +1007,37 @@ body.b.eh .pj-soft-bg::before,body.b.eh .pj-clear::before,body.b.eh #support::be
 <script>
 function toggleFeatureCard(c){c.classList.toggle('expanded')}
 (function(){
+  /* systech_ads.mp4: plays muted (no autoplay with sound); user taps to turn sound on / off */
   var v=document.getElementById('scroll-autoplay-video');
   if(!v)return;
-  v.removeAttribute('muted');
-  function tryWithSound(){
-    v.muted=false;
-    var p=v.play();
-    if(p&&p.catch)p.catch(function(){v.muted=true;var p2=v.play();if(p2&&p2.catch)p2.catch(function(){})});
+  var btn=document.getElementById('adSoundBtn'),
+      icOn=document.getElementById('adIconOn'),
+      icOff=document.getElementById('adIconOff'),
+      lbl=document.getElementById('adSoundLbl');
+  v.muted=true;
+  function ui(){
+    var on=!v.muted;
+    btn.setAttribute('aria-pressed',on?'true':'false');
+    btn.setAttribute('aria-label',on?'Turn sound off':'Turn sound on');
+    lbl.textContent=on?'Sound on \u00b7 tap to mute':'Tap for sound';
+    icOn.style.display=on?'':'none';
+    icOff.style.display=on?'none':'';
   }
-  function unmuteOnInteract(){
-    v.muted=false;
-    var p=v.play();
-    if(p&&p.catch)p.catch(function(){});
-    ['click','touchstart','keydown','scroll'].forEach(function(t){removeEventListener(t,unmuteOnInteract)});
+  function toggle(e){
+    if(e)e.preventDefault();
+    v.muted=!v.muted;
+    if(v.paused){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+    ui();
   }
-  ['click','touchstart','keydown','scroll'].forEach(function(t){addEventListener(t,unmuteOnInteract,{passive:true})});
+  btn.addEventListener('click',function(e){e.stopPropagation();toggle(e)});
+  v.addEventListener('click',toggle);
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause()}
+      if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+      else{v.pause();if(!v.muted){v.muted=true;ui()}}
     })},{threshold:.15}).observe(v);
   }
-  tryWithSound();
+  ui();
 })();
 (function(){
   function seen(list,cb,th){

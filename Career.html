@@ -765,6 +765,57 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
 .cr-jr .cr-list{max-width:none;margin:0}.cr-jr .av-filter{justify-content:flex-start;margin-bottom:18px}
 @media(max-width:900px){.cr-jg{grid-template-columns:1fr}.cr-jg .cr-pic{position:relative;top:0;width:min(100%,400px);justify-self:center}}
 </style>
+<style>
+/* ===== Careers enhancement layer ===== */
+main>section{scroll-margin-top:64px}
+#av-hero{min-height:calc(100svh - 52px);padding-top:clamp(96px,13vh,140px)}
+#av-hero h1{letter-spacing:-.025em;text-wrap:balance}
+#av-hero .av-grad{display:block}
+.hr-pic{position:relative;margin:0;justify-self:end;width:min(100%,520px)}
+.hr-frame{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:linear-gradient(160deg,#0a1b8f,#0035fe 55%,#4e6bff);box-shadow:0 50px 90px -40px rgba(0,53,254,.55)}
+.hr-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hr-ph{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:rgba(255,255,255,.85);font-weight:700;font-size:1.1rem}
+.hr-ph small{font-weight:500;opacity:.7}
+.hr-frame img~.hr-ph{display:none}
+.hr-spot{position:absolute;inset:0;pointer-events:none;background:radial-gradient(260px circle at var(--sx,50%) var(--sy,30%),rgba(255,255,255,.22),transparent 70%);opacity:0;transition:opacity .4s}
+.hr-pic:hover .hr-spot{opacity:1}
+.hr-pic::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:2px solid rgba(0,53,254,.35);border-radius:28px;z-index:-1}
+.hr-chip{position:absolute;left:-22px;bottom:34px;display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:center;padding:14px 20px;border-radius:16px;background:var(--av-card);border:1px solid var(--av-line);box-shadow:0 24px 44px -20px rgba(0,53,254,.5);color:var(--av-t);font-weight:700;text-decoration:none;transition:transform .3s var(--pj-ease)}
+.hr-chip:hover{transform:translateY(-3px)}
+.hr-chip i{grid-row:span 2;width:10px;height:10px;border-radius:50%;background:#12b76a;box-shadow:0 0 0 5px rgba(18,183,106,.18)}
+.hr-chip b{font-size:.8rem;font-weight:500;color:var(--av-m)}
+@media(max-width:900px){.av-hero-grid{grid-template-columns:1fr}.hr-pic{justify-self:center;width:min(100%,420px);margin-top:12px}.hr-chip{left:12px}.hr-pic::before{inset:12px -10px -12px 10px}}
+/* sticky section nav */
+.sn{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--av-card) 82%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--av-line)}
+.sn .av-wrap{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+.sn a{flex:none;padding:8px 16px;border-radius:99px;font-size:.88rem;font-weight:600;color:var(--av-m);text-decoration:none;transition:background .3s,color .3s}
+.sn a:hover{color:#0035fe}.sn a.on{background:rgba(0,53,254,.1);color:#0035fe}
+body.b.eh .sn a:hover,body.b.eh .sn a.on{color:#8fa3ff}
+.sn .sn-cta{margin-left:auto;background:linear-gradient(135deg,#4e6bff,#0035fe);color:#fff!important}
+/* marquee */
+.mq{overflow:hidden;border-block:1px solid var(--av-line);background:var(--av-card);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-t{display:flex;width:max-content;animation:mq 40s linear infinite}
+.mq span{padding:18px 34px;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--av-m);white-space:nowrap}
+.mq span::after{content:"";display:inline-block;width:6px;height:6px;margin-left:68px;border-radius:50%;background:#0035fe;vertical-align:middle;opacity:.5}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* benefits */
+.wy{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.wy-c{padding:28px;border-radius:20px;background:var(--av-card);border:1px solid var(--av-line);border-top:3px solid #0035fe;transition:transform .4s var(--pj-ease),box-shadow .4s}
+.wy-c:hover{transform:translateY(-5px);box-shadow:0 24px 40px -24px rgba(0,53,254,.45)}
+.wy-c h3{font-size:1.15rem;font-weight:800;color:var(--av-t);margin-bottom:8px;letter-spacing:-.01em}
+.wy-c p{font-size:.95rem;line-height:1.65;color:var(--av-m)}
+@media(max-width:900px){.wy{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.wy{grid-template-columns:1fr}}
+/* faq */
+.fq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.fq details{border-radius:16px;background:var(--av-card);border:1px solid var(--av-line);transition:border-color .3s,box-shadow .3s}
+.fq details[open]{border-color:#4e6bff;box-shadow:0 18px 34px -24px rgba(0,53,254,.5)}
+.fq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:20px 24px;font-weight:700;color:var(--av-t)}
+.fq summary::-webkit-details-marker{display:none}
+.fq summary::after{content:"+";font-size:1.4rem;line-height:1;color:#0035fe;transition:transform .3s var(--pj-ease)}
+.fq details[open] summary::after{transform:rotate(45deg)}
+.fq details p{padding:0 24px 22px;line-height:1.7;color:var(--av-m)}
+@media(prefers-reduced-motion:reduce){.mq-t{animation:none}}
+</style>
 </head>
 <body x-data="{ page: 'careers', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -848,19 +899,20 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{border-col
 </header>
 
 
-<main>
+<main><nav class="sn" id="sn" aria-label="On this page"><div class="av-wrap"><a href="#av-hero">Overview</a><a href="#av-why">Why Systech</a><a href="#av-jobs">Open roles</a><a href="#av-process">How we hire</a><a href="#av-faq">FAQ</a><a class="sn-cta" href="#av-apply">Apply now</a></div></nav>
 <section id="av-hero" class="av-sec pj-soft-bg"><div class="av-wrap av-hero-grid">
  <div class="rv"><div class="av-crumb"><a href="index.html">Home</a> / Careers</div><span class="av-kick"><i></i>Careers</span>
   <h1>Build your career <span class="av-grad">with the light.</span></h1>
   <p>Join the team that lights, powers and connects hotels, residences, stadiums and theaters across the Philippines. Learn from leading brands and grow with real projects.</p>
   <div class="av-cta"><a class="av-btn" href="#av-jobs">See Open Roles</a><a class="av-btn ghost" href="#av-apply">Apply Now</a></div></div>
- <div class="wk-wrap rv" style="--i:2"><div class="wk-stage" role="img" aria-label="Animated worksite: crews installing lighting, audio visual, dimming and solar while engineers plan the layout"><div class="wk-sky"></div><div class="wk-night"></div><div class="wk-orb"><i class="wk-sun"></i><i class="wk-moon"></i></div><i class="wk-cloud"></i><i class="wk-pv" style="left:14.0cqw;--d:0.0s"></i><i class="wk-pv" style="left:27.5cqw;--d:0.9s"></i><i class="wk-pv" style="left:41.0cqw;--d:1.8s"></i><i class="wk-pv" style="left:54.5cqw;--d:2.7s"></i><div class="wk-roof"></div><div class="pe" data-say="Installing solar panels!" style="left:78cqw;bottom:auto;top:13.4cqw;--v:#ff8a3d;--h:#ffc107;--sk:#c98b64;--t:1.2s;"><i class="hd"></i><i class="ht"></i><i class="bd"></i><i class="lg"></i><i class="ar"></i></div><div class="wk-bld"></div><div class="wk-bay" style="left:8cqw;top:27cqw"><b class="wk-tag">Lighting</b><div class="wk-pend" style="left:10cqw;--d:0s"><i></i></div><div class="wk-pend" style="left:22cqw;--d:0.7s"><i></i></div><div class="wk-pend" style="left:34cqw;--d:1.4s"><i></i></div><div class="wk-lad" style="left:17cqw"></div><div class="pe" data-say="Hanging the fixtures!" style="left:16.4cqw;--v:#d6f23a;--h:#ffc107;--sk:#e0a37a;--t:1.4s;bottom:8cqw"><i class="hd"></i><i class="ht"></i><i class="bd"></i><i class="lg"></i><i class="ar"></i></div></div><div class="wk-bay" style="left:52cqw;top:27cqw"><b class="wk-tag">Audio Visual</b><div class="wk-scr"><div class="wk-eq"><i style="left:1.0cqw;--d:-0.0s"></i><i style="left:3.8cqw;--d:-0.17s"></i><i style="left:6.6cqw;--d:-0.34s"></i><i style="left:9.399999999999999cqw;--d:-0.51s"></i><i style="left:12.2cqw;--d:-0.68s"></i><i style="left:15.0cqw;--d:-0.8500000000000001s"></i></div></div><div class="wk-spk" style="left:28cqw"></div><div class="wk-spk" style="left:33cqw"></div><div class="pe" data-say="Tuning the sound system!" style="left:37.5cqw;--v:#ff8a3d;--h:#fff;--sk:#c98b64;--t:1s;"><i class="hd"></i><i class="ht"></i><i class="bd"></i><i class="lg"></i><i class="ar"></i></div></div><div class="wk-bay" style="left:8cqw;top:53cqw"><b class="wk-tag">Dimming</b><div class="wk-pan"><i></i></div><div class="wk-lamp"></div><div class="wk-pool"></div><div class="pe" data-say="Dialing in the dimmers!" style="left:8.5cqw;--v:#d6f23a;--h:#ff8a3d;--sk:#f0b890;--t:1.4s;"><i class="hd"></i><i class="ht"></i><i class="bd"></i><i class="lg"></i><i class="ar"></i></div></div><div class="wk-bay" style="left:52cqw;top:53cqw"><b class="wk-tag">Planning</b><div class="wk-holo"><svg viewBox="0 0 180 90"><path class="p1" d="M10 78V18h62v22h38V18h60v60z M72 40v38 M110 40v38"/><path class="p2" d="M40 50L90 60L140 50"/><circle cx="40" cy="50" r="5"/><circle cx="90" cy="60" r="5"/><circle cx="140" cy="50" r="5"/></svg></div><div class="wk-tbl"></div><div class="pe" data-say="Mapping the layout." style="left:5cqw;--v:#3b5bff;--h:#fff;--sk:#e0a37a;--t:1.8s;"><i class="hd"></i><i class="ht"></i><i class="bd"></i><i class="lg"></i><i class="ar"></i></div><div class="pe" data-say="Plan approved!" style="left:33cqw;--v:#7a5cff;--h:#fff;--sk:#c98b64;--t:2.2s"><i class="hd"></i><i class="ht"></i><i class="bd"></i><i class="lg"></i><i class="ar"></i></div></div><div class="wk-gnd"></div><a class="wk-hire" href="#av-jobs">Now hiring &rarr;</a></div></div>
-</div></section>
+ <figure class="hr-pic rv" style="--i:2"><div class="hr-frame"><img src="career_hero.jpg" alt="The Systech team on site" fetchpriority="high" onerror="this.remove()"><span class="hr-ph">Hero photo<br><small>Save your image as career_hero.jpg</small></span><span class="hr-spot"></span></div><a class="hr-chip" href="#av-jobs"><i></i>Now hiring<b>View open roles</b></a></figure></div></section><div class="mq" aria-hidden="true"><div class="mq-t"><span>Hotels</span><span>Residences</span><span>Stadiums</span><span>Theaters</span><span>Offices</span><span>Malls</span><span>Universities</span><span>Houses of worship</span><span>Hotels</span><span>Residences</span><span>Stadiums</span><span>Theaters</span><span>Offices</span><span>Malls</span><span>Universities</span><span>Houses of worship</span></div></div>
+<section id="av-why" class="av-sec pj-soft-bg"><div class="av-wrap"><div class="av-head rv"><h2>Why build your career here</h2><p>Real projects, strong partners and people who teach what they know.</p></div>
+<div class="wy"><article class="wy-c rv" style="--i:0"><h3>Real projects</h3><p>Work on hotels, residences, stadiums and theaters across the Philippines.</p></article><article class="wy-c rv" style="--i:1"><h3>Leading brands</h3><p>Learn the systems from the manufacturers and partners we install with.</p></article><article class="wy-c rv" style="--i:2"><h3>Training from day one</h3><p>Structured onboarding, then hands-on guidance from senior engineers.</p></article><article class="wy-c rv" style="--i:0"><h3>Four disciplines</h3><p>Lighting, audio visual, dimming and solar under one roof.</p></article><article class="wy-c rv" style="--i:1"><h3>A clear process</h3><p>Four respectful steps from your application to your first day.</p></article><article class="wy-c rv" style="--i:2"><h3>Room to grow</h3><p>Take on more responsibility as projects and the team expand.</p></article></div></div></section>
 <section id="av-jobs" class="av-sec pj-soft-bg"><div class="av-wrap">
  <div class="av-head rv"><h2>Open positions</h2><p>Select a role to see the details, then apply.</p></div>
  <div class="cr-jg"><figure class="cr-pic rv" style="--i:2"><div class="cr-frame"><div class="cr-clip"><img src="career_icon.jpg" alt="Systech site supervisors on site" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='career_icon.jpg'}"></div></div></figure><div class="cr-jr"><div class="av-filter rv" id="crF"></div><div class="cr-list" id="crL"></div></div></div></div></section>
 <section id="av-process" class="av-sec pj-soft-bg"><div class="av-wrap"><div class="av-head rv"><h2>How we hire</h2><p>A simple, respectful process from first hello to first day.</p></div>
- <ol class="av-steps" id="avSteps"><li class="rv"><span class="n">1</span><h3>Apply</h3><p>Send your details and resume.</p></li><li class="rv" style="--i:1"><span class="n">2</span><h3>Screening</h3><p>A short call to get to know you.</p></li><li class="rv" style="--i:2"><span class="n">3</span><h3>Interview</h3><p>Meet the team and discuss the role.</p></li><li class="rv" style="--i:3"><span class="n">4</span><h3>Offer &amp; Onboarding</h3><p>Welcome aboard, with training from day one.</p></li></ol></div></section>
+ <ol class="av-steps" id="avSteps"><li class="rv"><span class="n">1</span><h3>Apply</h3><p>Send your details and resume.</p></li><li class="rv" style="--i:1"><span class="n">2</span><h3>Screening</h3><p>A short call to get to know you.</p></li><li class="rv" style="--i:2"><span class="n">3</span><h3>Interview</h3><p>Meet the team and discuss the role.</p></li><li class="rv" style="--i:3"><span class="n">4</span><h3>Offer &amp; Onboarding</h3><p>Welcome aboard, with training from day one.</p></li></ol></div></section><section id="av-faq" class="av-sec pj-soft-bg"><div class="av-wrap"><div class="av-head rv"><h2>Questions before you apply</h2><p>Quick answers about applying and what happens next.</p></div><div class="fq rv"><details><summary>What if no open role fits me?</summary><p>Send your details anyway and choose “General application” in the form. We keep it on file.</p></details><details><summary>How do I send my resume?</summary><p>The application form opens your email app with your details filled in. Attach your resume and send.</p></details><details><summary>What happens after I apply?</summary><p>We review your details and arrange a short screening call, then an interview with the team.</p></details><details><summary>Do you train new hires?</summary><p>Yes. New team members get training from day one and learn on real projects.</p></details><details><summary>Where are your projects?</summary><p>Across the Philippines, in hotels, residences, offices, stadiums, theaters and more.</p></details></div></div></section>
 <section id="av-apply" class="av-sec pj-soft-bg"><div class="av-wrap"><div class="av-head rv"><h2>Apply now</h2><p>Don't see your role? Send your details anyway and choose "General application".</p></div>
  <form class="ct-form rv" id="contactForm" novalidate><div class="ct-fields">
   <div class="ct-f"><label for="cN">Full name *</label><input id="cN" name="name" autocomplete="name" required></div>
@@ -1390,19 +1442,10 @@ p.addEventListener("mousemove",function(e){var r=p.getBoundingClientRect(),x=(e.
 p.addEventListener("mouseleave",function(){f.style.setProperty("--rx","0deg");f.style.setProperty("--ry","0deg")});})();</script>
 <script src="cc-config.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-(function(){
-  var w=document.querySelector('.wk-wrap');if(!w)return;
-  function fit(){
-    w.style.width='';
-    if(innerWidth<1000)return;
-    var t=0;[].slice.call(document.querySelectorAll('a,button')).forEach(function(a){if(/talk to expert/i.test(a.textContent)){var b=a.getBoundingClientRect();if(b.width>0&&b.right>t)t=b.right}});
-    if(!t)return;
-    var r=w.getBoundingClientRect();
-    if(t>r.right)w.style.width=Math.min(t-r.left,innerWidth-r.left-8)+'px';
-  }
-  fit();addEventListener('resize',fit);addEventListener('load',fit);
-})();
-</script>
+
+<script>(function(){var p=document.querySelector('.hr-pic');if(p)p.addEventListener('mousemove',function(e){var r=p.getBoundingClientRect();p.style.setProperty('--sx',(e.clientX-r.left)+'px');p.style.setProperty('--sy',(e.clientY-r.top)+'px')});
+var L=[].slice.call(document.querySelectorAll('#sn a:not(.sn-cta)'));if(!('IntersectionObserver' in window))return;
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)L.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})})},{rootMargin:'-45% 0px -50% 0px'});
+L.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)io.observe(t)})})();</script>
 </body>
 </html>

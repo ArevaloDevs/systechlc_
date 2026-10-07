@@ -844,23 +844,28 @@ body.b.eh .sn a:hover,body.b.eh .sn a.on{color:#8fa3ff}
 @media(max-width:900px){.pw-row,.pw-ap{grid-template-columns:1fr!important}}
 </style>
 <style>
-/* ===== Careers hero: text left, photo right (in line, right size) ===== */
-#av-hero{padding-bottom:clamp(56px,8vw,96px)}
-.hr-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,76px);align-items:center;margin:0 0 clamp(56px,7vw,88px)}
+/* ===== Careers hero: intro left + new photo right (original sections below are unchanged) ===== */
+#av-hero{padding-top:clamp(150px,19vh,190px)}
+.hr-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,5vw,72px);align-items:center;margin:0 0 clamp(56px,7vw,96px)}
 .hr-hero>*{min-width:0}
 .hr-hero .hr-intro{text-align:left;max-width:none;margin:0}
 .hr-hero .hr-intro p{margin:20px 0 30px!important;max-width:540px!important}
 .hr-hero .hr-intro .av-cta{justify-content:flex-start}
-.hr-hero .hr-pic{width:100%!important;margin:0;justify-self:end;display:block;align-self:center}
-.hr-hero .hr-frame{aspect-ratio:6/5;min-height:0;border-radius:32px;box-shadow:0 60px 110px -44px rgba(0,53,254,.6)}
-.hr-hero .hr-frame img{object-position:center}
-.hr-hero .hr-pic::before{border-radius:32px}
-.hr-hero .hr-chip{left:22px;bottom:22px}
-.hr-faq{max-width:820px;margin:0 auto}
+.ht-pic{position:relative;margin:0;width:100%;justify-self:end;isolation:isolate}
+.ht-pic::before{content:"";position:absolute;inset:16px 16px -16px -16px;border:2px solid rgba(0,53,254,.35);border-radius:32px;z-index:-1}
+.ht-frame{position:relative;aspect-ratio:6/5;border-radius:32px;overflow:hidden;background:linear-gradient(160deg,#0a1b8f,#0035fe 55%,#4e6bff);box-shadow:0 60px 110px -44px rgba(0,53,254,.6)}
+.ht-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.ht-pic:hover .ht-frame img{transform:scale(1.05)}
+.ht-ph{position:absolute;inset:0;display:grid;place-content:center;text-align:center;color:rgba(255,255,255,.85);font-weight:700;font-size:1.1rem}
+.ht-ph small{font-weight:500;opacity:.7}
+.ht-frame img~.ht-ph{display:none}
+[id^="av-"]{scroll-margin-top:110px}
 @media(max-width:900px){
+ #av-hero{padding-top:clamp(120px,16vh,150px)}
  .hr-hero{grid-template-columns:1fr;gap:34px}
- .hr-hero .hr-pic{justify-self:center;width:100%!important}
- .hr-hero .hr-frame{aspect-ratio:4/3;border-radius:26px}
+ .ht-pic{justify-self:center}
+ .ht-frame{aspect-ratio:4/3;border-radius:26px}
+ .ht-pic::before{border-radius:26px;inset:12px -10px -12px 10px}
 }
 </style>
 </head>
@@ -951,11 +956,8 @@ body.b.eh .sn a:hover,body.b.eh .sn a.on{color:#8fa3ff}
  <div class="hr-hero"><div class="rv hr-intro"><div class="av-crumb"><a href="index.html">Home</a> / Careers</div><span class="av-kick"><i></i>Careers</span>
   <h1>Build your career <span class="av-grad">with the light.</span></h1>
   <p>Join the team that lights, powers and connects hotels, residences, stadiums and theaters across the Philippines. Learn from leading brands and grow with real projects.</p>
-  <div class="av-cta"><a class="av-btn" href="#av-jobs">See Open Roles</a><a class="av-btn ghost" href="#av-apply">Apply Now</a></div></div>
- <figure class="hr-pic rv" style="--i:2"><div class="hr-frame"><img src="career_icon.jpg" alt="The Systech team on site" fetchpriority="high" onerror="this.remove()"><span class="hr-ph">Hero photo<br><small>career_icon.jpg</small></span><span class="hr-spot"></span></div><a class="hr-chip" href="#av-jobs"><i></i>Now hiring<b>View open roles</b></a></figure></div>
- <div id="av-faq" class="pw-col hr-faq"><div class="av-head rv"><h2>Questions before you apply</h2><p>Quick answers about applying and what happens next.</p></div><div class="pw-f rv"><details><summary>What if no open role fits me?</summary><p>Send your details anyway and choose “General application” in the form. We keep it on file.</p></details><details><summary>How do I send my resume?</summary><p>The application form opens your email app with your details filled in. Attach your resume and send.</p></details><details><summary>What happens after I apply?</summary><p>We review your details and arrange a short screening call, then an interview with the team.</p></details><details><summary>Do you train new hires?</summary><p>Yes. New team members get training from day one and learn on real projects.</p></details><details><summary>Where are your projects?</summary><p>Across the Philippines, in hotels, residences, offices, stadiums, theaters and more.</p></details></div></div>
-</div></section>
-
+  <div class="av-cta"><a class="av-btn" href="#av-jobs">See Open Roles</a><a class="av-btn ghost" href="#av-apply">Apply Now</a></div></div><figure class="ht-pic rv" style="--i:2"><div class="ht-frame"><img src="career_icon.jpg" alt="Careers at Systech Lighting and Controls" fetchpriority="high" onerror="this.remove()"><span class="ht-ph">Hero photo<br><small>career_icon.jpg</small></span></div></figure></div>
+ <div class="pw-row"><figure class="hr-pic rv" style="--i:2"><div class="hr-frame"><img src="career_icon2.png" alt="The Systech team on site" fetchpriority="high" onerror="this.remove()"><span class="hr-ph">Hero photo<br><small>Add career_icon2.png</small></span><span class="hr-spot"></span></div><a class="hr-chip" href="#av-jobs"><i></i>Now hiring<b>View open roles</b></a></figure><div id="av-faq" class="pw-col"><div class="av-head rv"><h2>Questions before you apply</h2><p>Quick answers about applying and what happens next.</p></div><div class="pw-f rv"><details><summary>What if no open role fits me?</summary><p>Send your details anyway and choose “General application” in the form. We keep it on file.</p></details><details><summary>How do I send my resume?</summary><p>The application form opens your email app with your details filled in. Attach your resume and send.</p></details><details><summary>What happens after I apply?</summary><p>We review your details and arrange a short screening call, then an interview with the team.</p></details><details><summary>Do you train new hires?</summary><p>Yes. New team members get training from day one and learn on real projects.</p></details><details><summary>Where are your projects?</summary><p>Across the Philippines, in hotels, residences, offices, stadiums, theaters and more.</p></details></div></div></div></div></section>
 <section id="av-jobs" class="av-sec pj-soft-bg"><div class="av-wrap">
  <div class="av-head rv"><h2>Open positions</h2><p>Select a role to see the details, then apply.</p></div>
  <div class="cr-jg"><div class="cr-jr"><div class="av-filter rv" id="crF"></div><div class="cr-list" id="crL"></div></div></div></div></section>

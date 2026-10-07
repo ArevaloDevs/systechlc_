@@ -793,28 +793,28 @@ main>section{scroll-margin-top:64px}
 body.b.eh .sn a:hover,body.b.eh .sn a.on{color:#8fa3ff}
 .sn .sn-cta{margin-left:auto;background:linear-gradient(135deg,#4e6bff,#0035fe);color:#fff!important}
 /* marquee */
-.mq{overflow:hidden;border-block:1px solid var(--av-line);background:var(--av-card);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.mq-t{display:flex;width:max-content;animation:mq 40s linear infinite}
-.mq span{padding:18px 34px;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--av-m);white-space:nowrap}
-.mq span::after{content:"";display:inline-block;width:6px;height:6px;margin-left:68px;border-radius:50%;background:#0035fe;vertical-align:middle;opacity:.5}
-@keyframes mq{to{transform:translateX(-50%)}}
+.pw-m{overflow:hidden;border-block:1px solid var(--av-line);background:var(--av-card);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.pw-mt{display:flex;width:max-content;animation:pw-m 40s linear infinite}
+.pw-m span{padding:18px 34px;font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--av-m);white-space:nowrap}
+.pw-m span::after{content:"";display:inline-block;width:6px;height:6px;margin-left:68px;border-radius:50%;background:#0035fe;vertical-align:middle;opacity:.5}
+@keyframes pw-m{to{transform:translateX(-50%)}}
 /* benefits */
-.wy{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.wy-c{padding:28px;border-radius:20px;background:var(--av-card);border:1px solid var(--av-line);border-top:3px solid #0035fe;transition:transform .4s var(--pj-ease),box-shadow .4s}
-.wy-c:hover{transform:translateY(-5px);box-shadow:0 24px 40px -24px rgba(0,53,254,.45)}
-.wy-c h3{font-size:1.15rem;font-weight:800;color:var(--av-t);margin-bottom:8px;letter-spacing:-.01em}
-.wy-c p{font-size:.95rem;line-height:1.65;color:var(--av-m)}
-@media(max-width:900px){.wy{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.wy{grid-template-columns:1fr}}
+.pw-y{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pw-yc{padding:28px;border-radius:20px;background:var(--av-card);border:1px solid var(--av-line);border-top:3px solid #0035fe;transition:transform .4s var(--pj-ease),box-shadow .4s}
+.pw-yc:hover{transform:translateY(-5px);box-shadow:0 24px 40px -24px rgba(0,53,254,.45)}
+.pw-yc h3{font-size:1.15rem;font-weight:800;color:var(--av-t);margin-bottom:8px;letter-spacing:-.01em}
+.pw-yc p{font-size:.95rem;line-height:1.65;color:var(--av-m)}
+@media(max-width:900px){.pw-y{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.pw-y{grid-template-columns:1fr}}
 /* faq */
-.fq{max-width:820px;margin:0 auto;display:grid;gap:12px}
-.fq details{border-radius:16px;background:var(--av-card);border:1px solid var(--av-line);transition:border-color .3s,box-shadow .3s}
-.fq details[open]{border-color:#4e6bff;box-shadow:0 18px 34px -24px rgba(0,53,254,.5)}
-.fq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:20px 24px;font-weight:700;color:var(--av-t)}
-.fq summary::-webkit-details-marker{display:none}
-.fq summary::after{content:"+";font-size:1.4rem;line-height:1;color:#0035fe;transition:transform .3s var(--pj-ease)}
-.fq details[open] summary::after{transform:rotate(45deg)}
-.fq details p{padding:0 24px 22px;line-height:1.7;color:var(--av-m)}
-@media(prefers-reduced-motion:reduce){.mq-t{animation:none}}
+.pw-f{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.pw-f details{border-radius:16px;background:var(--av-card);border:1px solid var(--av-line);transition:border-color .3s,box-shadow .3s}
+.pw-f details[open]{border-color:#4e6bff;box-shadow:0 18px 34px -24px rgba(0,53,254,.5)}
+.pw-f summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:20px 24px;font-weight:700;color:var(--av-t)}
+.pw-f summary::-webkit-details-marker{display:none}
+.pw-f summary::after{content:"+";font-size:1.4rem;line-height:1;color:#0035fe;transition:transform .3s var(--pj-ease)}
+.pw-f details[open] summary::after{transform:rotate(45deg)}
+.pw-f details p{padding:0 24px 22px;line-height:1.7;color:var(--av-m)}
+@media(prefers-reduced-motion:reduce){.pw-mt{animation:none}}
 </style>
 <style>
 /* section layouts */
@@ -822,18 +822,26 @@ body.b.eh .sn a:hover,body.b.eh .sn a.on{color:#8fa3ff}
 .hr-intro{text-align:center;max-width:780px;margin:0 auto 48px}
 .hr-intro p{margin:18px auto 28px!important;max-width:620px!important}
 .hr-intro .av-cta{justify-content:center}
-.hq{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch}
-.hq>*{min-width:0}
-.hq .hr-pic{width:100%!important;display:flex;margin:0;justify-self:stretch}
-.hq .hr-frame{flex:1;aspect-ratio:auto;min-height:440px;border-radius:24px}
-.hq-r{align-self:center}
-.hq-r .av-head,.ap2 .av-head{max-width:none;margin-bottom:28px}
-.hq-r .av-head h2,.ap2 .av-head h2{font-size:clamp(1.6rem,2.6vw,2.2rem)}
-.ap2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-.ap2>*{min-width:0}
-.ap2 .ct-form{max-width:none;margin:0}
-.ap2 .av-steps{grid-template-columns:1fr 1fr}
-@media(max-width:900px){.hq,.ap2{grid-template-columns:1fr;gap:36px}.hq .hr-frame{min-height:0;aspect-ratio:16/10}.ap2 .av-steps{grid-template-columns:1fr}}
+.pw-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch}
+.pw-row>*{min-width:0}
+.pw-row .hr-pic{width:100%!important;display:flex;margin:0;justify-self:stretch}
+.pw-row .hr-frame{flex:1;aspect-ratio:auto;min-height:440px;border-radius:24px}
+.pw-col{align-self:center}
+.pw-col .av-head,.pw-ap .av-head{max-width:none;margin-bottom:28px}
+.pw-col .av-head h2,.pw-ap .av-head h2{font-size:clamp(1.6rem,2.6vw,2.2rem)}
+.pw-ap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.pw-ap>*{min-width:0}
+.pw-ap .ct-form{max-width:none;margin:0}
+.pw-ap .av-steps{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.pw-row,.pw-ap{grid-template-columns:1fr;gap:36px}.pw-row .hr-frame{min-height:0;aspect-ratio:16/10}.pw-ap .av-steps{grid-template-columns:1fr}}
+</style>
+<style>
+.cr-jg{display:block!important;grid-template-columns:1fr!important}
+.cr-jr{width:100%!important;max-width:none!important}
+.pw-row{display:grid!important;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch;width:100%}
+.pw-ap{display:grid!important;grid-template-columns:1fr 1fr;gap:48px;align-items:start;width:100%}
+#av-hero>.av-wrap,#av-apply>.av-wrap{width:100%;box-sizing:border-box}
+@media(max-width:900px){.pw-row,.pw-ap{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body x-data="{ page: 'careers', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
@@ -924,11 +932,11 @@ body.b.eh .sn a:hover,body.b.eh .sn a.on{color:#8fa3ff}
   <h1>Build your career <span class="av-grad">with the light.</span></h1>
   <p>Join the team that lights, powers and connects hotels, residences, stadiums and theaters across the Philippines. Learn from leading brands and grow with real projects.</p>
   <div class="av-cta"><a class="av-btn" href="#av-jobs">See Open Roles</a><a class="av-btn ghost" href="#av-apply">Apply Now</a></div></div>
- <div class="hq"><figure class="hr-pic rv" style="--i:2"><div class="hr-frame"><img src="career_hero.jpg" alt="The Systech team on site" fetchpriority="high" onerror="this.remove()"><span class="hr-ph">Hero photo<br><small>Save your image as career_hero.jpg</small></span><span class="hr-spot"></span></div><a class="hr-chip" href="#av-jobs"><i></i>Now hiring<b>View open roles</b></a></figure><div id="av-faq" class="hq-r"><div class="av-head rv"><h2>Questions before you apply</h2><p>Quick answers about applying and what happens next.</p></div><div class="fq rv"><details><summary>What if no open role fits me?</summary><p>Send your details anyway and choose “General application” in the form. We keep it on file.</p></details><details><summary>How do I send my resume?</summary><p>The application form opens your email app with your details filled in. Attach your resume and send.</p></details><details><summary>What happens after I apply?</summary><p>We review your details and arrange a short screening call, then an interview with the team.</p></details><details><summary>Do you train new hires?</summary><p>Yes. New team members get training from day one and learn on real projects.</p></details><details><summary>Where are your projects?</summary><p>Across the Philippines, in hotels, residences, offices, stadiums, theaters and more.</p></details></div></div></div></div></section>
+ <div class="pw-row"><figure class="hr-pic rv" style="--i:2"><div class="hr-frame"><img src="career_icon.jpg" alt="The Systech team on site" fetchpriority="high" onerror="this.remove()"><span class="hr-ph">Hero photo<br><small>Add career_icon.jpg</small></span><span class="hr-spot"></span></div><a class="hr-chip" href="#av-jobs"><i></i>Now hiring<b>View open roles</b></a></figure><div id="av-faq" class="pw-col"><div class="av-head rv"><h2>Questions before you apply</h2><p>Quick answers about applying and what happens next.</p></div><div class="pw-f rv"><details><summary>What if no open role fits me?</summary><p>Send your details anyway and choose “General application” in the form. We keep it on file.</p></details><details><summary>How do I send my resume?</summary><p>The application form opens your email app with your details filled in. Attach your resume and send.</p></details><details><summary>What happens after I apply?</summary><p>We review your details and arrange a short screening call, then an interview with the team.</p></details><details><summary>Do you train new hires?</summary><p>Yes. New team members get training from day one and learn on real projects.</p></details><details><summary>Where are your projects?</summary><p>Across the Philippines, in hotels, residences, offices, stadiums, theaters and more.</p></details></div></div></div></div></section>
 <section id="av-jobs" class="av-sec pj-soft-bg"><div class="av-wrap">
  <div class="av-head rv"><h2>Open positions</h2><p>Select a role to see the details, then apply.</p></div>
- <div class="cr-jg"><figure class="cr-pic rv" style="--i:2"><div class="cr-frame"><div class="cr-clip"><img src="career_icon.jpg" alt="Systech site supervisors on site" onerror="if(!this.dataset.t){this.dataset.t=1;this.src='career_icon.jpg'}"></div></div></figure><div class="cr-jr"><div class="av-filter rv" id="crF"></div><div class="cr-list" id="crL"></div></div></div></div></section>
-<section id="av-apply" class="av-sec pj-soft-bg"><div class="av-wrap"><div class="ap2"><div><div class="av-head rv"><h2>Apply now</h2><p>Don't see your role? Send your details anyway and choose "General application".</p></div>
+ <div class="cr-jg"><div class="cr-jr"><div class="av-filter rv" id="crF"></div><div class="cr-list" id="crL"></div></div></div></div></section>
+<section id="av-apply" class="av-sec pj-soft-bg"><div class="av-wrap"><div class="pw-ap"><div><div class="av-head rv"><h2>Apply now</h2><p>Don't see your role? Send your details anyway and choose "General application".</p></div>
  <form class="ct-form rv" id="contactForm" novalidate><div class="ct-fields">
   <div class="ct-f"><label for="cN">Full name *</label><input id="cN" name="name" autocomplete="name" required></div>
   <div class="ct-f"><label for="cE">Email *</label><input id="cE" name="email" type="email" autocomplete="email" required></div>
@@ -939,9 +947,9 @@ body.b.eh .sn a:hover,body.b.eh .sn a.on{color:#8fa3ff}
   <div class="ct-submit"><button type="submit" class="av-btn">Send Application</button><span class="ct-note">Opens your email app. Please attach your resume before sending.</span></div><div id="ctStatus" role="status" aria-live="polite"></div></form>
 </div><div id="av-process"><div class="av-head rv"><h2>How we hire</h2><p>A simple, respectful process from first hello to first day.</p></div>
  <ol class="av-steps" id="avSteps"><li class="rv"><span class="n">1</span><h3>Apply</h3><p>Send your details and resume.</p></li><li class="rv" style="--i:1"><span class="n">2</span><h3>Screening</h3><p>A short call to get to know you.</p></li><li class="rv" style="--i:2"><span class="n">3</span><h3>Interview</h3><p>Meet the team and discuss the role.</p></li><li class="rv" style="--i:3"><span class="n">4</span><h3>Offer &amp; Onboarding</h3><p>Welcome aboard, with training from day one.</p></li></ol></div></div></div></section>
-<div class="mq" aria-hidden="true"><div class="mq-t"><span>Hotels</span><span>Residences</span><span>Stadiums</span><span>Theaters</span><span>Offices</span><span>Malls</span><span>Universities</span><span>Houses of worship</span><span>Hotels</span><span>Residences</span><span>Stadiums</span><span>Theaters</span><span>Offices</span><span>Malls</span><span>Universities</span><span>Houses of worship</span></div></div>
+<div class="pw-m" aria-hidden="true"><div class="pw-mt"><span>Hotels</span><span>Residences</span><span>Stadiums</span><span>Theaters</span><span>Offices</span><span>Malls</span><span>Universities</span><span>Houses of worship</span><span>Hotels</span><span>Residences</span><span>Stadiums</span><span>Theaters</span><span>Offices</span><span>Malls</span><span>Universities</span><span>Houses of worship</span></div></div>
 <section id="av-why" class="av-sec pj-soft-bg"><div class="av-wrap"><div class="av-head rv"><h2>Why build your career here</h2><p>Real projects, strong partners and people who teach what they know.</p></div>
-<div class="wy"><article class="wy-c rv" style="--i:0"><h3>Real projects</h3><p>Work on hotels, residences, stadiums and theaters across the Philippines.</p></article><article class="wy-c rv" style="--i:1"><h3>Leading brands</h3><p>Learn the systems from the manufacturers and partners we install with.</p></article><article class="wy-c rv" style="--i:2"><h3>Training from day one</h3><p>Structured onboarding, then hands-on guidance from senior engineers.</p></article><article class="wy-c rv" style="--i:0"><h3>Four disciplines</h3><p>Lighting, audio visual, dimming and solar under one roof.</p></article><article class="wy-c rv" style="--i:1"><h3>A clear process</h3><p>Four respectful steps from your application to your first day.</p></article><article class="wy-c rv" style="--i:2"><h3>Room to grow</h3><p>Take on more responsibility as projects and the team expand.</p></article></div></div></section>
+<div class="pw-y"><article class="pw-yc rv" style="--i:0"><h3>Real projects</h3><p>Work on hotels, residences, stadiums and theaters across the Philippines.</p></article><article class="pw-yc rv" style="--i:1"><h3>Leading brands</h3><p>Learn the systems from the manufacturers and partners we install with.</p></article><article class="pw-yc rv" style="--i:2"><h3>Training from day one</h3><p>Structured onboarding, then hands-on guidance from senior engineers.</p></article><article class="pw-yc rv" style="--i:0"><h3>Four disciplines</h3><p>Lighting, audio visual, dimming and solar under one roof.</p></article><article class="pw-yc rv" style="--i:1"><h3>A clear process</h3><p>Four respectful steps from your application to your first day.</p></article><article class="pw-yc rv" style="--i:2"><h3>Room to grow</h3><p>Take on more responsibility as projects and the team expand.</p></article></div></div></section>
 <section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Dimmings.html"><b>Dimming Systems and GRMS</b><small>Dimming and room control</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Partners.html"><b>Partner</b><small>Brands we work with</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
 </main>
 <footer>

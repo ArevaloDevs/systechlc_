@@ -472,6 +472,9 @@ footer .ft-col p,footer .ft-col a{overflow-wrap:anywhere}
   footer .ft-row{grid-template-columns:minmax(0,1fr)}
 }
 
+/* footer content must never wait for a scroll animation (it stayed hidden after translation) */
+footer .animate_top,footer .animate_right{opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important;transition:none!important}
+
 /* ===== Language switcher ===== */
 .ft-lang-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;transition:color .2s}
 .ft-lang-btn:hover,.ft-lang-btn[aria-expanded="true"]{color:#0035fe}

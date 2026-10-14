@@ -712,6 +712,84 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
 #nwFeat .nw-card p{-webkit-line-clamp:2}
 @media(max-width:999px){#nwFeat .nw-card{grid-template-rows:auto auto}#nwFeat .nw-art{height:auto}}
 </style>
+<style id="footer-fix">
+/* ===== Footer: even 5-column grid (brand + 4 link columns) ===== */
+footer .ft-row{display:grid!important;grid-template-columns:minmax(0,1.45fr) repeat(4,minmax(0,1fr));column-gap:clamp(24px,3.2vw,56px);row-gap:40px;align-items:start;width:100%}
+footer .ft-brand{width:auto!important;max-width:none!important;flex:none!important}
+footer .ft-brand>p{max-width:360px}
+footer .ft-cols{display:contents!important}
+footer .ft-col{width:auto!important;min-width:0;flex:none!important}
+footer .ft-col h4{margin-bottom:1.1rem}
+footer .ft-col p,footer .ft-col a{overflow-wrap:anywhere}
+@media (max-width:1100px){
+  footer .ft-row{grid-template-columns:repeat(4,minmax(0,1fr))}
+  footer .ft-brand{grid-column:1/-1}
+}
+@media (max-width:760px){
+  footer .ft-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:480px){
+  footer .ft-row{grid-template-columns:minmax(0,1fr)}
+}
+
+/* footer content must never wait for a scroll animation (it stayed hidden after translation) */
+footer .animate_top,footer .animate_right{opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important;transition:none!important}
+
+/* ===== Language switcher ===== */
+.ft-lang-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;transition:color .2s}
+.ft-lang-btn:hover,.ft-lang-btn[aria-expanded="true"]{color:#0035fe}
+body.b.eh .ft-lang-btn:hover,body.b.eh .ft-lang-btn[aria-expanded="true"]{color:#8fa3ff}
+.ft-caret{transition:transform .2s}
+.ft-lang-btn[aria-expanded="true"] .ft-caret{transform:rotate(180deg)}
+#ftLangMenu{position:fixed;z-index:100002;width:min(560px,calc(100vw - 24px));max-height:min(60vh,420px);overflow:auto;padding:10px;border-radius:16px;
+  background:#fff;color:#1b2150;border:1px solid rgba(0,53,254,.14);box-shadow:0 24px 60px -18px rgba(8,20,80,.45);
+  display:none;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px}
+#ftLangMenu.open{display:grid;animation:ftPop .18s ease-out}
+#ftLangMenu button{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:9px 12px;border:0;border-radius:10px;background:none;color:inherit;font:inherit;font-size:.92rem;cursor:pointer}
+#ftLangMenu button:hover,#ftLangMenu button:focus-visible{background:rgba(0,53,254,.08);outline:none}
+#ftLangMenu button[aria-selected="true"]{background:rgba(0,53,254,.12);color:#0035fe;font-weight:600}
+#ftLangMenu button[aria-selected="true"]::after{content:"✓"}
+body.b.eh #ftLangMenu{background:#171c38;color:#e7eaff;border-color:rgba(143,163,255,.22)}
+body.b.eh #ftLangMenu button:hover,body.b.eh #ftLangMenu button:focus-visible{background:rgba(143,163,255,.14)}
+body.b.eh #ftLangMenu button[aria-selected="true"]{background:rgba(143,163,255,.2);color:#b7c4ff}
+@keyframes ftPop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* hide Google Translate's own UI */
+.goog-te-banner-frame,.goog-te-balloon-frame,#goog-gt-tt,.goog-tooltip,.skiptranslate>iframe{display:none!important}
+.goog-text-highlight{background:none!important;box-shadow:none!important}
+body{top:0!important}
+#google_translate_element{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ===== Privacy Policy modal ===== */
+#ppModal{position:fixed;inset:0;z-index:100003;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,12,40,.62);backdrop-filter:blur(4px)}
+#ppModal.open{display:flex;animation:ppFade .2s ease-out}
+.pp-box{position:relative;display:flex;flex-direction:column;width:min(760px,100%);max-height:min(88vh,820px);border-radius:20px;overflow:hidden;
+  background:#fff;color:#2b3157;box-shadow:0 40px 90px -30px rgba(0,0,0,.65);animation:ppUp .28s cubic-bezier(.2,.8,.3,1)}
+.pp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 26px 18px;border-bottom:1px solid rgba(0,53,254,.12);background:linear-gradient(135deg,rgba(0,53,254,.07),transparent 70%)}
+.pp-head h2{margin:0;font-size:1.45rem;font-weight:700;color:#0b1240;line-height:1.25}
+.pp-head p{margin:4px 0 0;font-size:.85rem;color:#6b7194}
+.pp-x{flex:none;display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:50%;background:rgba(0,53,254,.08);color:#0035fe;cursor:pointer;transition:background .2s,transform .2s}
+.pp-x:hover{background:#0035fe;color:#fff;transform:rotate(90deg)}
+.pp-body{overflow:auto;padding:8px 26px 4px;font-size:.95rem;line-height:1.7;overscroll-behavior:contain}
+.pp-body h3{margin:22px 0 6px;font-size:1.05rem;font-weight:700;color:#0b1240}
+.pp-body p{margin:0 0 10px}
+.pp-body ul{margin:0 0 10px;padding-left:1.2rem;list-style:disc}
+.pp-body li{margin:3px 0}
+.pp-body a{color:#0035fe;text-decoration:underline}
+.pp-foot{display:flex;justify-content:flex-end;gap:10px;padding:14px 26px;border-top:1px solid rgba(0,53,254,.12)}
+.pp-ok{border:0;border-radius:999px;padding:10px 26px;background:linear-gradient(135deg,#0035fe,#4e6bff);color:#fff;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.pp-ok:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(0,53,254,.6)}
+body.b.eh .pp-box{background:#161a33;color:#c9cfee}
+body.b.eh .pp-head{border-color:rgba(143,163,255,.18);background:linear-gradient(135deg,rgba(78,107,255,.16),transparent 70%)}
+body.b.eh .pp-head h2,body.b.eh .pp-body h3{color:#fff}
+body.b.eh .pp-head p{color:#99a1cc}
+body.b.eh .pp-x{background:rgba(143,163,255,.15);color:#b7c4ff}
+body.b.eh .pp-body a{color:#9db0ff}
+body.b.eh .pp-foot{border-color:rgba(143,163,255,.18)}
+@keyframes ppFade{from{opacity:0}to{opacity:1}}
+@keyframes ppUp{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+@media (max-width:520px){.pp-head,.pp-body,.pp-foot{padding-left:18px;padding-right:18px}.pp-head h2{font-size:1.2rem}}
+</style>
 </head>
 <body x-data="{ page: 'news', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -832,8 +910,8 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
 <footer>
 <div class="bb ze ki xn 2xl:ud-px-0">
 <div class="ji gp">
-<div class="tc uf ap gg fp">
-<div class="animate_top zd/2 to/4">
+<div class="tc uf ap gg fp ft-row">
+<div class="animate_top zd/2 to/4 ft-brand">
 <a href="index.html"><img src="logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
 <p class="lc fb">Lighting, dimming, audio-visual and sound systems — planned, installed and supported by one team.</p>
 <ul class="tc wf cg"><li>
@@ -849,8 +927,8 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
                 </a>
               </li></ul>
 </div>
-<div class="vd ro tc sf rn un gg vn">
-<div class="animate_top"><h4 class="kk wm tj ec">Quick Links</h4><ul>
+<div class="vd ro tc sf rn un gg vn ft-cols">
+<div class="animate_top ft-col"><h4 class="kk wm tj ec">Quick Links</h4><ul>
 <li><a href="index.html" class="sc xl vb">Home</a></li>
 <li><a href="index.html#services" class="sc xl vb">Products</a></li>
 <li><a href="index.html#progress" class="sc xl vb">On-Going Projects</a></li>
@@ -861,25 +939,27 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
 <li><a href="Career.html" class="sc xl vb">Careers</a></li>
 <li><a href="CONTACT.html" class="sc xl vb">Contact</a></li>
 </ul></div>
-<div class="animate_top"><h4 class="kk wm tj ec">Services</h4><ul>
+<div class="animate_top ft-col"><h4 class="kk wm tj ec">Services</h4><ul>
 <li><a href="Audiovisual.html" class="sc xl vb">Audiovisual</a></li>
 <li><a href="Lightings.html" class="sc xl vb">Lightings</a></li>
 <li><a href="Dimmings.html" class="sc xl vb">Dimming Systems and GRMS</a></li>
 <li><a href="Solar.html" class="sc xl vb">Solar Power System</a></li>
 <li><a href="index.html#features-section" class="sc xl vb">24/7 Support</a></li>
 </ul></div>
-<div class="animate_top"><h4 class="kk wm tj ec">Contact</h4><ul>
+<div class="animate_top ft-col"><h4 class="kk wm tj ec">Contact</h4><ul>
 <li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
 <li><a href="mailto:sales@systechlc.com" class="sc xl vb">sales@systechlc.com</a></li>
 <li><a href="CONTACT.html#av-form" class="sc xl vb">Send an inquiry</a></li>
 </ul></div>
-<div class="animate_top"><h4 class="kk wm tj ec">Offices</h4>
+<div class="animate_top ft-col"><h4 class="kk wm tj ec">Offices</h4>
 <p class="ac qe">Quezon City &amp; Antipolo City, Philippines</p></div>
 </div>
 </div>
 </div>
 <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
-<div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li></ul></div>
+<div class="animate_top"><ul class="tc wf gg ft-legal">
+<li class="notranslate" translate="no"><button type="button" id="ftLangBtn" class="ft-lang-btn xl" aria-haspopup="listbox" aria-expanded="false" aria-controls="ftLangMenu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="ftLangLabel">English</span><svg class="ft-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
+<li><a href="#privacy-policy" id="ftPrivacyLink" class="xl" aria-haspopup="dialog">Privacy Policy</a></li></ul></div>
 <div class="animate_top"><p>&copy; 2027 Systech Lighting and Controls Inc. All rights reserved.</p></div>
 </div>
 </div>
@@ -950,7 +1030,7 @@ We look forward to turning these conversations into meaningful collaborations an
   },
 
       {
-    id: `HM-lightings`,
+    id: `hk-lightings`,
     category: `company`,
     date: `2026-09-23`,
     title: `HARMAN - Business Engagement in Budapest, Hungary`,
@@ -969,7 +1049,7 @@ Work with purpose. Build partnerships. Deliver excellence.`
   },
 
         {
-    id: `ANNIV-lightings`,
+    id: `hk-lightings`,
     category: `company`,
     date: `2026-07-18`,
     title: `Celebrating Another Year of Systech: A Journey of Growth, Partnership & Excellence`,
@@ -990,8 +1070,8 @@ Work with purpose. Build partnerships. Deliver excellence.`
           {
     id: `CEBU-lightings`,
     category: `company`,
-    date: `2026-07-08`,
-    title: `A New Theater for Cebu: Systech to Deliver World-Class AV & Sound`,
+    date: `2026-07-14`,
+    title: `A New Stage for Cebu: Systech to Deliver World-Class AV & Sound`,
     excerpt: `Systech Lighting & Controls, Inc. is proud to be awarded the Cebu Integrated Performing Arts Theatre at NU Star Resort & Casino, Cebu City.`,
     readTime: 1,
     image: `NUSTAR.jpg`,
@@ -1011,7 +1091,7 @@ Together, we continue to build world-class venues for the Philippines.`
             {
     id: `ise`,
     category: `company`,
-    date: `2026-02-7`,
+    date: `2026-07-14`,
     title: `Systech Lighting & Controls Represents the Philippines at Integrated Systems Europe (ISE)`,
     excerpt: `Representing Systech Lighting & Controls Inc. at Integrated Systems Europe (ISE) was a valuable opportunity to connect with industry leaders, explore emerging . .`,
     readTime: 1,
@@ -1028,13 +1108,13 @@ Experiences like ISE reinforce the importance of continuous learning, collaborat
   },
 
       {
-    id: `CCP-SYSTECH`,
+    id: `CEBU-lightings`,
     category: `company`,
-    date: `2026-05-19`,
+    date: `2026-07-14`,
     title: `A New Chapter for the CCP: Systech Lighting & Controls to Deliver World-Class Systems for Philippine Performing Arts`,
     excerpt: `We are deeply honored that Systech Lighting & Controls, Inc. has been awarded the Audiovisual, Sound System, Stage Lighting, Architectural Lighting, . .`,
     readTime: 2,
-    image: `ccp.jpg`,
+    image: `CCP.jpg`,
     body: [
       `We are deeply honored that Systech Lighting & Controls, Inc. has been awarded the Audiovisual, Sound System, Stage Lighting, Architectural Lighting, and Control Systems packages for the rehabilitation of the Cultural Center of the Philippines.
 
@@ -1053,7 +1133,7 @@ Together, we look forward to helping shape the future of Philippine performing a
   },
 
         {
-    id: `EELECTRON`,
+    id: `CEBU-lightings`,
     category: `lightings`,
     date: `2026-07-14`,
     title: `Systech Lighting & Controls Joins Industry Leaders at Smart Building Expo Milan`,
@@ -1569,6 +1649,144 @@ var POSITIONS = [
     if(t>r.right)w.style.width=Math.min(t-r.left,innerWidth-r.left-8)+'px';
   }
   fit();addEventListener('resize',fit);addEventListener('load',fit);
+})();
+</script>
+<div id="google_translate_element" class="notranslate" translate="no"></div>
+<ul id="ftLangMenu" class="notranslate" translate="no" role="listbox" aria-label="Select language"></ul>
+
+<div id="ppModal" role="dialog" aria-modal="true" aria-labelledby="ppTitle" aria-hidden="true">
+  <div class="pp-box" tabindex="-1">
+    <div class="pp-head">
+      <div>
+        <h2 id="ppTitle">Privacy Policy</h2>
+        <p>Systech Lighting and Controls Inc. &middot; Last updated: October 2026</p>
+      </div>
+      <button type="button" class="pp-x" id="ppClose" aria-label="Close privacy policy">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="pp-body">
+      <h3>1. Introduction</h3>
+      <p>Systech Lighting and Controls Inc. (&ldquo;Systech&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This policy explains what personal information we collect through this website, how we use and protect it, and the choices you have. We handle personal data in accordance with the Philippine Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules.</p>
+
+      <h3>2. Information We Collect</h3>
+      <ul>
+        <li><strong>Information you give us:</strong> your name, company, email address, phone number and the message or project details you submit through our inquiry or contact forms, or send by email or phone.</li>
+        <li><strong>Job applications:</strong> details and documents you send us when applying through our Careers page.</li>
+        <li><strong>Technical information:</strong> basic browser and device data (such as browser type, language and pages visited) and your display preferences, such as light/dark mode and language, stored on your device.</li>
+      </ul>
+
+      <h3>3. How We Use Your Information</h3>
+      <ul>
+        <li>To respond to your inquiries and prepare quotations for lighting, dimming, audio-visual, sound and solar power projects.</li>
+        <li>To deliver, install and support our products and services, including after-sales and 24/7 support.</li>
+        <li>To evaluate job applications.</li>
+        <li>To improve our website, services and communication with customers.</li>
+        <li>To comply with legal and regulatory obligations.</li>
+      </ul>
+
+      <h3>4. Cookies and Local Storage</h3>
+      <p>This website uses a small amount of browser storage to remember preferences such as dark mode and your selected language. You can clear this at any time through your browser settings. Blocking it will not stop you from using the site.</p>
+
+      <h3>5. Sharing of Information</h3>
+      <p>We do not sell your personal information. We share it only with:</p>
+      <ul>
+        <li>Service providers that help us run the website and handle your messages (for example, our email delivery service for form submissions).</li>
+        <li>Our project partners, suppliers and installers, where needed to fulfil your request, under confidentiality obligations.</li>
+        <li>Government agencies or other parties when required by law or to protect our legal rights.</li>
+      </ul>
+
+      <h3>6. Third-Party Services and Links</h3>
+      <p>Our website may load fonts from Google Fonts, offer page translation through Google Translate, and link to external sites such as our Facebook page. These services have their own privacy policies, and we are not responsible for their practices. When you choose a language other than English, the page text is sent to Google for translation.</p>
+
+      <h3>7. Data Retention</h3>
+      <p>We keep personal information only as long as needed for the purposes above, or as required by law, then securely delete or anonymize it.</p>
+
+      <h3>8. Data Security</h3>
+      <p>We use reasonable organizational, physical and technical safeguards to protect your information against unauthorized access, loss, misuse or disclosure. No method of transmission over the internet is completely secure, so we cannot guarantee absolute security.</p>
+
+      <h3>9. Your Rights</h3>
+      <p>Under the Data Privacy Act, you have the right to:</p>
+      <ul>
+        <li>Be informed about how your data is processed;</li>
+        <li>Access and obtain a copy of your personal data;</li>
+        <li>Correct inaccurate or outdated data;</li>
+        <li>Object to, or request suspension, removal or blocking of, your data in certain cases;</li>
+        <li>Withdraw consent previously given; and</li>
+        <li>File a complaint with the National Privacy Commission (privacy.gov.ph).</li>
+      </ul>
+
+      <h3>10. Children&rsquo;s Privacy</h3>
+      <p>Our website and services are intended for businesses and adults. We do not knowingly collect personal information from children.</p>
+
+      <h3>11. Changes to This Policy</h3>
+      <p>We may update this policy from time to time. The latest version will always be available on this page, with the date it was last updated.</p>
+
+      <h3>12. Contact Us</h3>
+      <p>For questions or requests about your personal data, contact us at:</p>
+      <ul>
+        <li>Email: <a href="mailto:sales@systechlc.com">sales@systechlc.com</a></li>
+        <li>Phone: <a href="tel:+63283749938">+632-8374-9938</a></li>
+        <li>Offices: Quezon City &amp; Antipolo City, Philippines</li>
+      </ul>
+    </div>
+    <div class="pp-foot"><button type="button" class="pp-ok" id="ppOk">I Understand</button></div>
+  </div>
+</div>
+
+<script>
+/* ===== Footer: Privacy Policy popup + language switcher ===== */
+(function(){
+  /* ---- Privacy Policy modal ---- */
+  var modal=document.getElementById('ppModal'),box=modal.querySelector('.pp-box'),link=document.getElementById('ftPrivacyLink'),lastFocus=null;
+  function openPP(e){if(e)e.preventDefault();lastFocus=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';modal.querySelector('.pp-body').scrollTop=0;box.focus()}
+  function closePP(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+  link.addEventListener('click',openPP);
+  document.getElementById('ppClose').addEventListener('click',closePP);
+  document.getElementById('ppOk').addEventListener('click',closePP);
+  modal.addEventListener('mousedown',function(e){if(e.target===modal)closePP()});
+
+  /* ---- Language switcher (Google Translate) ---- */
+  var LANGS=[['en','English'],['tl','Filipino'],['ceb','Cebuano'],['ilo','Ilocano'],['zh-CN','中文 (简体)'],['zh-TW','中文 (繁體)'],['ja','日本語'],['ko','한국어'],['es','Español'],['fr','Français'],['de','Deutsch'],['it','Italiano'],['pt','Português'],['nl','Nederlands'],['ru','Русский'],['ar','العربية'],['hi','हिन्दी'],['id','Bahasa Indonesia'],['ms','Bahasa Melayu'],['th','ไทย'],['vi','Tiếng Việt'],['tr','Türkçe']];
+  var btn=document.getElementById('ftLangBtn'),label=document.getElementById('ftLangLabel'),menu=document.getElementById('ftLangMenu'),KEY='siteLang',loading=false;
+  function name(c){for(var i=0;i<LANGS.length;i++)if(LANGS[i][0]===c)return LANGS[i][1];return 'English'}
+  function saved(){try{return localStorage.getItem(KEY)||'en'}catch(e){return 'en'}}
+  function setCookie(v){var d=location.hostname,h=['',';domain='+d];if(d.split('.').length>1)h.push(';domain=.'+d.split('.').slice(-2).join('.'));
+    h.forEach(function(x){document.cookie='googtrans='+v+';path=/'+x+(v?'':';expires=Thu, 01 Jan 1970 00:00:00 GMT')})}
+  function loadGT(cb){
+    if(window.google&&google.translate&&google.translate.TranslateElement){cb&&cb();return}
+    if(loading){return}
+    loading=true;
+    window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'en',autoDisplay:false},'google_translate_element');cb&&cb()};
+    var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';s.async=true;document.head.appendChild(s)}
+  function pick(code,tries){
+    var c=document.querySelector('select.goog-te-combo');
+    if(c){c.value=code;c.dispatchEvent(new Event('change'));return}
+    if((tries||0)<40)setTimeout(function(){pick(code,(tries||0)+1)},150)}
+  function mark(code){label.textContent=name(code);[].forEach.call(menu.children,function(li){li.firstChild.setAttribute('aria-selected',li.dataset.c===code)})}
+  function choose(code){
+    closeMenu();
+    try{localStorage.setItem(KEY,code)}catch(e){}
+    mark(code);
+    if(code==='en'){setCookie('');if(document.documentElement.classList.contains('translated-ltr')||document.documentElement.classList.contains('translated-rtl')||document.body.className.indexOf('translated')>-1)location.reload();return}
+    setCookie('/en/'+code);
+    loadGT(function(){pick(code)});
+    if(window.google&&google.translate)pick(code)}
+  LANGS.forEach(function(l){var li=document.createElement('li');li.dataset.c=l[0];li.setAttribute('role','presentation');li.style.listStyle='none';
+    var b=document.createElement('button');b.type='button';b.setAttribute('role','option');b.setAttribute('lang',l[0]);b.textContent=l[1];b.addEventListener('click',function(){choose(l[0])});li.appendChild(b);menu.appendChild(li)});
+  function place(){var r=btn.getBoundingClientRect(),w=Math.min(560,innerWidth-24);menu.style.left=Math.max(12,Math.min(r.left,innerWidth-w-12))+'px';menu.style.bottom=(innerHeight-r.top+10)+'px'}
+  function openMenu(){place();menu.classList.add('open');btn.setAttribute('aria-expanded','true');var sel=menu.querySelector('[aria-selected="true"]');(sel||menu.querySelector('button')).focus()}
+  function closeMenu(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false')}
+  btn.addEventListener('click',function(e){e.stopPropagation();menu.classList.contains('open')?closeMenu():openMenu()});
+  document.addEventListener('click',function(e){if(!menu.contains(e.target))closeMenu()});
+  addEventListener('resize',closeMenu);addEventListener('scroll',closeMenu,{passive:true});
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    if(menu.classList.contains('open')){closeMenu();btn.focus()}else if(modal.classList.contains('open'))closePP()});
+
+  /* restore the visitor's previous language */
+  var cur=saved();mark(cur);
+  if(cur!=='en'){setCookie('/en/'+cur);loadGT()}
 })();
 </script>
 </body>

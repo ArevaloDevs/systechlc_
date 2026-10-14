@@ -1038,7 +1038,7 @@ var CATS=[
   {n:'ACCLAIM',t:'Architectural Lighting',s:'www.acclaimlighting.com',f:'acclaim'},
   {n:'ELR',t:'Architectural Lighting',s:'www.elr-group.com',f:'elr'},
   {n:'KAMS',t:'Architectural Lighting',s:'www.kamsled.com',f:'kams'},
-  {n:'FOKUZ',t:'Architectural Lighting',s:'www.fokuzlighting.com',f:'fokuz'},
+  {n:'FOKU',t:'Architectural Lighting',s:'www.fokuzlighting.com',f:'fokuz'},
   {n:'TPK',t:'Architectural Lighting',s:'www.tpk-led.com',f:'tpk'},
   {n:'RCL',t:'Architectural Lighting',s:'www.rclighting.com',f:'rcl'},
   {n:'PHILIPS',t:'Architectural Lighting',s:'www.lighting.philips.com',f:'philips'},
@@ -1063,8 +1063,8 @@ var CATS=[
 function projCandidates(f){
   var b=f.replace(/\.[^.]+$/,''),bases=[b,b.toLowerCase(),b.toUpperCase(),b.charAt(0).toUpperCase()+b.slice(1).toLowerCase()];
   bases=bases.filter(function(x,i){return bases.indexOf(x)===i});
-  var out=['projects/'+f];
-  ['projects/','Projects/','','images/','img/'].forEach(function(d){bases.forEach(function(x){
+  var out=[f];
+  [''].forEach(function(d){bases.forEach(function(x){
     ['jpg','jpeg','png','webp'].forEach(function(e){var u=d+encodeURIComponent(x)+'.'+e;if(out.indexOf(u)<0)out.push(u)})})});
   out.push('https://www.systechlc.com/img/'+f);
   return out;

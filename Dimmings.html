@@ -834,6 +834,28 @@ body.b.eh .pp-foot{border-color:rgba(143,163,255,.18)}
 @keyframes ppUp{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
 @media (max-width:520px){.pp-head,.pp-body,.pp-foot{padding-left:18px;padding-right:18px}.pp-head h2{font-size:1.2rem}}
 </style>
+<style id="sp-style">
+#spModal{position:fixed;inset:0;z-index:100003;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,12,40,.62);backdrop-filter:blur(4px)}
+#spModal.open{display:flex;animation:ppFade .2s ease-out}
+#spModal .pp-box{width:min(560px,100%)}
+#spModal form{display:flex;flex-direction:column;min-height:0;flex:1 1 auto}
+.sp-body{overflow:auto;padding:18px 26px 6px;display:grid;grid-template-columns:1fr 1fr;gap:14px;overscroll-behavior:contain}
+.sp-body .full{grid-column:1/-1}
+.sp-body label{display:block;margin-bottom:5px;font-size:.82rem;font-weight:600;color:#0b1240}
+.sp-body input,.sp-body textarea{width:100%;box-sizing:border-box;padding:11px 13px;border:1px solid rgba(0,53,254,.2);border-radius:12px;background:#fff;color:#1b2150;font:inherit;font-size:.95rem;transition:border-color .2s,box-shadow .2s}
+.sp-body textarea{min-height:110px;resize:vertical}
+.sp-body input:focus,.sp-body textarea:focus{outline:none;border-color:#0035fe;box-shadow:0 0 0 3px rgba(0,53,254,.15)}
+.sp-intro{grid-column:1/-1;margin:0;font-size:.9rem;color:#5b6290}
+.sp-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+#spStatus{grid-column:1/-1;font-size:.9rem;min-height:1.2em}
+#spStatus.ok{color:#0a8a4a;font-weight:600}
+#spStatus.err{color:#c62828;font-weight:600}
+#spSend[disabled]{opacity:.65;cursor:wait}
+body.b.eh .sp-body label{color:#fff}
+body.b.eh .sp-intro{color:#99a1cc}
+body.b.eh .sp-body input,body.b.eh .sp-body textarea{background:#0f1228;color:#e7eaff;border-color:rgba(143,163,255,.28)}
+@media(max-width:520px){.sp-body{grid-template-columns:1fr;padding-left:18px;padding-right:18px}}
+</style>
 </head>
 <body x-data="{ page: 'dimming', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -1029,7 +1051,7 @@ body.b.eh .pp-foot{border-color:rgba(143,163,255,.18)}
 <li><a href="Lightings.html" class="sc xl vb">Lightings</a></li>
 <li><a href="Dimmings.html" class="sc xl vb">Dimming Systems & GRMS</a></li>
 <li><a href="Solar.html" class="sc xl vb">Solar Power System</a></li>
-<li><a href="index.html#features-section" class="sc xl vb">24/7 Support</a></li>
+<li><a href="index.html#features-section" id="ftSupportLink" class="sc xl vb" aria-haspopup="dialog">24/7 Support</a></li>
 </ul></div>
 <div class="animate_top ft-col"><h4 class="kk wm tj ec">Contact</h4><ul>
 <li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
@@ -1337,14 +1359,14 @@ var POSITIONS = [
     }
   };
 
-  var DEFAULT_CC = { sales: 'sales@systechlc.com', hr: 'hr@systechlc.com', aftersales: 'aftersales@systechlc.com' };
+  var DEFAULT_CC = { sales: 'sales@systechlc.com', hr: 'hr@systechlc.com,ghepurganan.systechlc@gmail.com', aftersales: 'aftersales@systechlc.com' };
   var FALLBACK_CC = (typeof CONTACT_EMAIL !== 'undefined' && CONTACT_EMAIL) ? CONTACT_EMAIL : 'sales@systechlc.com';
   /* the department that gets a CC copy. cc-config.js can override these; the defaults above always work */
   function ccFor(t) {
-    var key = t && t.cc, map = window.SYSTECH_CC || {}, pick = [map[key], DEFAULT_CC[key]];
+    var key = t && t.cc, map = window.SYSTECH_CC || {}, pick = [map[key], DEFAULT_CC[key]], re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
     for (var i = 0; i < pick.length; i++) {
-      var a = String(pick[i] || '').trim();
-      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(a) && a.indexOf('yourdomain') < 0) return a;
+      var list = String(pick[i] || '').split(',').map(function (x) { return x.trim(); }).filter(Boolean);
+      if (list.length && list.every(function (x) { return re.test(x) && x.indexOf('yourdomain') < 0; })) return list.join(',');
     }
     return FALLBACK_CC;   /* never blank, so the Cc line is always valid */
   }
@@ -1590,6 +1612,68 @@ var POSITIONS = [
   /* restore the visitor's previous language */
   var cur=saved();mark(cur);
   if(cur!=='en'){setCookie('/en/'+cur);loadGT()}
+})();
+</script>
+
+<div id="spModal" role="dialog" aria-modal="true" aria-labelledby="spTitle" aria-hidden="true">
+  <div class="pp-box" tabindex="-1">
+    <div class="pp-head">
+      <div>
+        <h2 id="spTitle">24/7 Support</h2>
+        <p>Systech Lighting and Controls Inc. &middot; After-sales team</p>
+      </div>
+      <button type="button" class="pp-x" id="spClose" aria-label="Close support form">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <form id="spForm" novalidate>
+      <div class="sp-body">
+        <p class="sp-intro">Describe the issue and our after-sales team will get back to you. Please include the product, project location and any model or serial number.</p>
+        <div><label for="spF">First name</label><input id="spF" name="first_name" autocomplete="given-name" required></div>
+        <div><label for="spL">Last name</label><input id="spL" name="last_name" autocomplete="family-name"></div>
+        <div class="full"><label for="spE">Email address</label><input id="spE" name="email" type="email" autocomplete="email" required></div>
+        <div class="full"><label for="spP">Phone number</label><input id="spP" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="full"><label for="spM">Message</label><textarea id="spM" name="message" required placeholder="What do you need help with?"></textarea></div>
+        <input class="sp-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div id="spStatus" role="status" aria-live="polite"></div>
+      </div>
+      <div class="pp-foot"><button type="submit" class="pp-ok" id="spSend">Send Message</button></div>
+    </form>
+  </div>
+</div>
+<script>
+/* ===== Footer: 24/7 Support popup form -> aftersales@systechlc.com ===== */
+(function(){
+  var TO='aftersales@systechlc.com',FALLBACK='sales@systechlc.com';
+  var KEY='gQ2T9LAubWGQijBsb',SVC='default_service',TPL='template_rkx63r6';
+  var link=document.getElementById('ftSupportLink'),modal=document.getElementById('spModal');
+  if(!link||!modal)return;
+  var box=modal.querySelector('.pp-box'),form=document.getElementById('spForm'),st=document.getElementById('spStatus'),btn=document.getElementById('spSend'),label=btn.textContent,last=null,ready=false;
+  function say(k,t){st.className=k;st.textContent=t}
+  function open(e){if(e)e.preventDefault();last=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';say('','');
+    if(!window.emailjs&&!document.getElementById('spEmailjs')){var s=document.createElement('script');s.id='spEmailjs';s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';document.head.appendChild(s)}
+    setTimeout(function(){document.getElementById('spF').focus()},60)}
+  function close(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(last&&last.focus)last.focus()}
+  link.addEventListener('click',open);
+  document.getElementById('spClose').addEventListener('click',close);
+  modal.addEventListener('mousedown',function(e){if(e.target===modal)close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))close()});
+  function send(p){return emailjs.send(SVC,TPL,p).catch(function(err){
+    if(p.cc_email!==FALLBACK){var q={};for(var k in p)q[k]=p[k];q.cc_email=FALLBACK;return emailjs.send(SVC,TPL,q)}throw err})}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();if(btn.disabled)return;
+    var d=new FormData(form);if(d.get('website'))return;
+    var first=(d.get('first_name')||'').trim(),lastN=(d.get('last_name')||'').trim(),email=(d.get('email')||'').trim(),phone=(d.get('phone')||'').trim(),msg=(d.get('message')||'').trim();
+    if(!first||!msg||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){say('err','Please add your first name, a valid email and a short message.');return}
+    if(!window.emailjs){say('err','The mail service could not be loaded. Please check your connection and try again, or write to '+TO+'.');return}
+    if(!ready){emailjs.init({publicKey:KEY});ready=true}
+    var p={name:(first+' '+lastN).trim(),first_name:first,last_name:lastN,email:email,phone:phone||'-',country:'-',topic:'24/7 Support (aftersales)',topic_icon:'\uD83C\uDFA7',role:'-',link:'-',
+      time:new Date().toLocaleString('en-PH',{year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'Asia/Manila',timeZoneName:'short'}),
+      message:msg,to_email:TO,cc_email:TO};
+    btn.disabled=true;btn.textContent='Sending...';say('','');
+    send(p).then(function(){form.reset();say('ok','Thank you! Your message was sent to our after-sales team. We will reply to '+email+'.')},
+      function(err){say('err','Sorry, we could not send your message'+(err&&err.text?' ('+err.text+')':'')+'. Please try again, or write to '+TO+'.')})
+    .then(function(){btn.disabled=false;btn.textContent=label})});
 })();
 </script>
 </body>

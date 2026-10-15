@@ -742,6 +742,14 @@ body.b.eh .sp-intro{color:#99a1cc}
 body.b.eh .sp-body input,body.b.eh .sp-body textarea{background:#0f1228;color:#e7eaff;border-color:rgba(143,163,255,.28)}
 @media(max-width:520px){.sp-body{grid-template-columns:1fr;padding-left:18px;padding-right:18px}}
 </style>
+<style id="ft-social">
+footer .ft-brand ul a{display:inline-flex;color:#5b6290;transition:color .2s,transform .2s}
+footer .ft-brand ul a:hover{color:#0035fe;transform:translateY(-2px)}
+footer .ft-brand ul svg path{fill:currentColor!important}
+footer .ft-brand ul{gap:14px}
+body.b.eh footer .ft-brand ul a{color:#b7c4ff}
+body.b.eh footer .ft-brand ul a:hover{color:#fff}
+</style>
 </head>
 <body x-data="{ page: 'audiovisual', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -888,7 +896,7 @@ body.b.eh .sp-body input,body.b.eh .sp-body textarea{background:#0f1228;color:#e
 <a href="index.html"><img src="logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
 <p class="lc fb">Lighting, dimming, audio-visual and sound systems — planned, installed and supported by one team.</p>
 <ul class="tc wf cg"><li>
-                <a href="https://www.facebook.com/systechlc/" target="_blank" rel="noopener" aria-label="Facebook">
+                <a href="https://www.facebook.com/profile.php?id=61586671781566" target="_blank" rel="noopener" aria-label="Facebook">
                   <svg class="vh ul cl il" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <g>
@@ -896,6 +904,12 @@ body.b.eh .sp-body input,body.b.eh .sp-body textarea{background:#0f1228;color:#e
                         d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z"
                         fill="" />
                     </g>
+                  </svg>
+                </a>
+              </li><li>
+                <a href="https://www.linkedin.com/company/systech-lc/" target="_blank" rel="noopener" aria-label="LinkedIn" class="ft-li">
+                  <svg class="vh ul cl il" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z" fill=""/>
                   </svg>
                 </a>
               </li></ul>
@@ -922,6 +936,7 @@ body.b.eh .sp-body input,body.b.eh .sp-body textarea{background:#0f1228;color:#e
 <div class="animate_top ft-col"><h4 class="kk wm tj ec">Contact</h4><ul>
 <li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
 <li><a href="mailto:sales@systechlc.com" class="sc xl vb">sales@systechlc.com</a></li>
+<li><a href="mailto:aftersales@systechlc.com" class="sc xl vb">aftersales@systechlc.com</a></li>
 <li><a href="CONTACT.html#av-form" class="sc xl vb">Send an inquiry</a></li>
 </ul></div>
 <div class="animate_top ft-col"><h4 class="kk wm tj ec">Offices</h4>
@@ -1225,7 +1240,7 @@ var POSITIONS = [
     }
   };
 
-  var DEFAULT_CC = { sales: 'sales@systechlc.com', hr: 'hr@systechlc.com,ghepurganan.systechlc@gmail.com', aftersales: 'aftersales@systechlc.com' };
+  var DEFAULT_CC = { sales: 'sales@systechlc.com,mjarevalo2002@gmail.com', hr: 'hr@systechlc.com,ghepurganan.systechlc@gmail.com,mjarevalo2002@gmail.com', aftersales: 'aftersales@systechlc.com,mjarevalo2002@gmail.com' };
   var FALLBACK_CC = (typeof CONTACT_EMAIL !== 'undefined' && CONTACT_EMAIL) ? CONTACT_EMAIL : 'sales@systechlc.com';
   /* the department that gets a CC copy. cc-config.js can override these; the defaults above always work */
   function ccFor(t) {
@@ -1535,7 +1550,7 @@ var POSITIONS = [
     if(!ready){emailjs.init({publicKey:KEY});ready=true}
     var p={name:(first+' '+lastN).trim(),first_name:first,last_name:lastN,email:email,phone:phone||'-',country:'-',topic:'24/7 Support (aftersales)',topic_icon:'\uD83C\uDFA7',role:'-',link:'-',
       time:new Date().toLocaleString('en-PH',{year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'Asia/Manila',timeZoneName:'short'}),
-      message:msg,to_email:TO,cc_email:TO};
+      message:msg,to_email:TO,cc_email:TO+',mjarevalo2002@gmail.com'};
     btn.disabled=true;btn.textContent='Sending...';say('','');
     send(p).then(function(){form.reset();say('ok','Thank you! Your message was sent to our after-sales team. We will reply to '+email+'.')},
       function(err){say('err','Sorry, we could not send your message'+(err&&err.text?' ('+err.text+')':'')+'. Please try again, or write to '+TO+'.')})

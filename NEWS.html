@@ -892,6 +892,59 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   header a>img{height:30px!important;max-height:30px!important;max-width:110px!important}
 }
 </style>
+<style id="nw-modal-fx">
+/* ===== News article pop-up: tidy layout, new close button, reading progress ===== */
+dialog.nw-dlg{overflow:hidden!important;max-height:none!important;width:min(760px,94vw);border-radius:26px;box-shadow:0 50px 110px -24px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.06)}
+dialog.nw-dlg[open]{animation:nwIn .38s cubic-bezier(.2,.9,.25,1)}
+dialog.nw-dlg[open]::backdrop{animation:nwBd .3s ease-out}
+dialog.nw-dlg.is-closing{animation:nwOut .22s ease-in forwards}
+dialog.nw-dlg.is-closing::backdrop{animation:nwBdOut .22s ease-in forwards}
+#nwDB{max-height:min(88vh,900px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#4e6bff transparent}
+#nwDB::-webkit-scrollbar{width:8px}#nwDB::-webkit-scrollbar-thumb{background:linear-gradient(#4e6bff,#0035fe);border-radius:8px;border:2px solid transparent;background-clip:padding-box}
+dialog.nw-dlg .nw-art{width:100%!important;max-width:none!important;margin:0!important;border-radius:0!important;overflow:hidden}
+dialog.nw-dlg .nw-art img{width:100%;object-fit:cover}
+dialog[open].nw-dlg .nw-art img{animation:nwZoom 1.4s cubic-bezier(.2,.8,.2,1) both}
+dialog.nw-dlg .nw-body{padding:28px clamp(20px,4vw,38px) 34px}
+/* reading progress */
+.nw-prog{position:absolute;left:0;right:0;top:0;height:4px;z-index:5;pointer-events:none}
+.nw-prog i{display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#4e6bff,#0035fe,#8a5bff);box-shadow:0 0 12px rgba(78,107,255,.8)}
+/* close button */
+dialog.nw-dlg .nw-x{position:absolute!important;top:16px!important;right:16px!important;float:none!important;margin:0!important;z-index:6;width:44px;height:44px;padding:0;border-radius:50%;
+  border:1px solid rgba(255,255,255,.45);background:rgba(8,12,40,.55);-webkit-backdrop-filter:blur(10px) saturate(1.4);backdrop-filter:blur(10px) saturate(1.4);
+  box-shadow:0 10px 26px -8px rgba(0,0,0,.6);cursor:pointer;display:grid;place-items:center;transition:background .25s,transform .25s,box-shadow .25s,border-color .25s}
+.nw-x i{position:relative;display:block;width:18px;height:18px;transition:transform .35s cubic-bezier(.2,.9,.25,1)}
+.nw-x i span{position:absolute;left:0;top:50%;width:100%;height:2.5px;margin-top:-1.25px;border-radius:2px;background:#fff}
+.nw-x i span:first-child{transform:rotate(45deg)}.nw-x i span:last-child{transform:rotate(-45deg)}
+.nw-x:hover,.nw-x:focus-visible{background:#0035fe;border-color:#fff;box-shadow:0 12px 30px -6px rgba(0,53,254,.8)}
+.nw-x:hover i,.nw-x:focus-visible i{transform:rotate(90deg)}
+.nw-x:active{transform:scale(.9)}
+.nw-x:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.nw-x::after{content:attr(data-tip);position:absolute;right:calc(100% + 10px);top:50%;transform:translate(6px,-50%);opacity:0;pointer-events:none;white-space:nowrap;padding:7px 11px;border-radius:9px;background:rgba(8,12,40,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;transition:opacity .2s,transform .2s}
+@media (hover:hover){.nw-x:hover::after{opacity:1;transform:translate(0,-50%)}}
+/* actions row */
+.nw-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px}
+.nw-done{padding:12px 26px;border-radius:999px;border:1.5px solid rgba(0,53,254,.35);background:transparent;color:#0035fe;font:inherit;font-weight:600;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.nw-done:hover{background:#0035fe;color:#fff;transform:translateY(-2px)}
+body.b.eh .nw-done{color:#9db0ff;border-color:rgba(157,176,255,.4)}
+body.b.eh .nw-done:hover{background:#4e6bff;color:#fff}
+@keyframes nwIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes nwOut{to{opacity:0;transform:translateY(18px) scale(.97)}}
+@keyframes nwBd{from{opacity:0}to{opacity:1}}
+@keyframes nwBdOut{to{opacity:0}}
+@keyframes nwZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+/* phones: slide-up sheet */
+@media (max-width:600px){
+  dialog.nw-dlg{width:100vw;max-width:100vw;margin:auto 0 0;border-radius:24px 24px 0 0}
+  #nwDB{max-height:92vh}
+  dialog.nw-dlg[open]{animation:nwSheet .38s cubic-bezier(.2,.9,.25,1)}
+  dialog.nw-dlg.is-closing{animation:nwSheetOut .22s ease-in forwards}
+  .nw-actions .av-btn,.nw-actions .nw-done{flex:1 1 100%;text-align:center;justify-content:center}
+}
+@keyframes nwSheet{from{transform:translateY(100%)}to{transform:none}}
+@keyframes nwSheetOut{to{transform:translateY(100%)}}
+@media (prefers-reduced-motion:reduce){dialog.nw-dlg,dialog.nw-dlg::backdrop,dialog.nw-dlg .nw-art img{animation:none!important}}
+</style>
+
 </head>
 <body x-data="{ page: 'news', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -1006,7 +1059,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="ct-f full"><label for="cC">Country</label><select id="cC" name="country"><option value="">Select region...</option></select></div>
   <div class="ct-f full"><label for="cM">Message</label><textarea id="cM" name="message" required></textarea></div></div>
   <div class="ct-submit"><button type="submit" class="av-btn">Send Message</button><span class="ct-note">We reply to the email address you provide.</span></div><div id="ctStatus" role="status" aria-live="polite"></div></form></div></section>
-<dialog class="nw-dlg" id="nwD"><button class="nw-x" id="nwX" aria-label="Close">&times;</button><div id="nwDB"></div></dialog>
+<dialog class="nw-dlg" id="nwD" aria-label="News article"><div class="nw-prog" aria-hidden="true"><i id="nwP"></i></div><button type="button" class="nw-x" id="nwX" aria-label="Close article" data-tip="Close · Esc"><i aria-hidden="true"><span></span><span></span></i></button><div id="nwDB"></div></dialog>
 <section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Dimmings.html"><b>Dimming Systems and GRMS</b><small>Dimming and room control</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="Partners.html"><b>Partner</b><small>Brands we work with</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
 </main>
 <footer>
@@ -1350,15 +1403,28 @@ Grateful for the experience and excited to bring these insights home as we conti
       '<div class="nw-body">' + meta(p) +
         '<h2>' + esc(p.title) + '</h2>' +
         p.body.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') +
-        '<a class="av-btn" href="CONTACT.html">Talk to our team</a>' +
+        '<div class="nw-actions"><a class="av-btn" href="CONTACT.html">Talk to our team</a><button type="button" class="nw-done" data-close>Close</button></div>' +
       '</div>';
     if (dialog.showModal && !dialog.open) dialog.showModal();
     else dialog.setAttribute('open', '');
+    scroller.scrollTop = 0; prog.style.transform = 'scaleX(0)';
+    $('nwX').focus({ preventScroll: true });
     history.replaceState(null, '', '#' + id);
   }
-  $('nwX').onclick = function () { dialog.close(); };
+  var scroller = $('nwDB'), prog = $('nwP'), closing = false;
+  function closeArt() {
+    if (!dialog.open || closing) return;
+    closing = true; dialog.classList.add('is-closing');
+    setTimeout(function () { dialog.classList.remove('is-closing'); closing = false; dialog.close(); }, 220);
+  }
+  $('nwX').onclick = closeArt;
+  dialog.addEventListener('cancel', function (e) { e.preventDefault(); closeArt(); });
   dialog.addEventListener('close', function () { history.replaceState(null, '', location.pathname); });
-  dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+  dialog.addEventListener('click', function (e) { if (e.target === dialog || (e.target.closest && e.target.closest('[data-close]'))) closeArt(); });
+  scroller.addEventListener('scroll', function () {
+    var m = scroller.scrollHeight - scroller.clientHeight;
+    prog.style.transform = 'scaleX(' + (m > 0 ? scroller.scrollTop / m : 0) + ')';
+  }, { passive: true });
 
   /* ---- featured article (the newest) ---- */
   var featured = posts[0];

@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lighting Solutions | Systech Lighting &amp; Controls Inc.</title>
-<meta name="description" content="Architectural, landscape, facade and stage lighting by Systech Lighting &amp; Controls Inc.: ERCO, Wibre, Linea Light, Philips, Color Kinetics, Martin, Chauvet, ChamSys and more, planned, supplied, installed and commissioned across the Philippines.">
+  <title>Dimming &amp; Control Systems | Systech Lighting &amp; Controls Inc.</title>
+<meta name="description" content="Dimming systems, guestroom management and lighting controls by Systech Lighting &amp; Controls Inc.: ILight, VDA, Eelectron, Zero88 and Liteputer, designed, installed and supported across the Philippines.">
 <meta name="theme-color" content="#0035fe">
 <script>document.documentElement.className+=" js";try{if(JSON.parse(localStorage.getItem("darkMode"))===true)document.documentElement.className+=" pj-dark"}catch(e){}window.pjImg=function(i){var r=(i.dataset.remote||'').split('|').filter(Boolean),n=+i.dataset.tried||0;if(n<r.length){i.dataset.tried=n+1;i.src=r[n]}else i.remove()}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -608,12 +608,9 @@ body.b.eh .aw-year{color:#a1a1aa}
 </style>
 
 <style>
-/* ===== Lighting page: warm section tints (kept from the original Lightings page) ===== */
-#av-hero::before{background:radial-gradient(50% 60% at 78% 35%,rgba(255,196,80,.26),transparent 70%),repeating-radial-gradient(circle at 78% 35%,rgba(255,170,0,.06) 0 1px,transparent 1px 46px)}
-#av-about::before{background:radial-gradient(circle,rgba(255,150,0,.22) 1.3px,transparent 1.8px) 0 0/28px 28px,radial-gradient(55% 60% at 0% 50%,rgba(255,196,80,.16),transparent 70%)}
-#av-solutions::before{background:repeating-linear-gradient(135deg,rgba(255,150,0,.05) 0 2px,transparent 2px 18px),radial-gradient(50% 60% at 0% 0%,rgba(255,196,80,.18),transparent 70%)}
-
-/* ===== solution cards (kept from the original Lightings page) ===== */
+/* ===== solution cards (kept from the original Dimmings page) ===== */
+#av-solutions::before{background:repeating-linear-gradient(135deg,rgba(0,53,254,.05) 0 2px,transparent 2px 18px),radial-gradient(50% 60% at 0% 0%,rgba(122,92,255,.16),transparent 70%)}
+#av-hero::before{background:radial-gradient(50% 60% at 78% 35%,rgba(255,190,100,.24),transparent 70%),repeating-radial-gradient(circle at 78% 35%,rgba(0,53,254,.06) 0 1px,transparent 1px 46px)}
 .av-art{position:relative;display:grid;place-items:center;height:170px;border-radius:14px;overflow:hidden;background:var(--g)}
 .av-art::before{content:"";position:absolute;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.55),transparent 65%);animation:ltPulse 3.2s ease-in-out infinite}
 .av-art svg{position:relative;width:54px;height:54px;filter:drop-shadow(0 0 10px rgba(255,255,255,.8))}
@@ -624,60 +621,105 @@ body.b.eh .aw-year{color:#a1a1aa}
 @keyframes ltPulse{50%{transform:scale(1.25);opacity:.6}}
 
 /* =====================================================================
-   HERO: colour-temperature dimming room
+   HERO: living room - lights, curtains, day and night
    ===================================================================== */
-@property --f{syntax:'<number>';inherits:false;initial-value:1}
 .av-stage.dm-wrap{padding:0}
-.dm-stage{--lv:.7;container-type:inline-size;position:relative;isolation:isolate;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:#05071a;
-  border:1px solid rgba(255,255,255,.1);box-shadow:0 44px 90px -34px rgba(0,53,254,.55),0 0 90px -30px rgba(255,180,90,.55),inset 0 1px 0 rgba(255,255,255,.08)}
-.dm-wall{position:absolute;inset:0;background:linear-gradient(180deg,#7d7c84 0,#9c9a9c 9%,#a9a6a2 55%,#b6b2ab 80%)}
-.dm-ceil{position:absolute;left:0;right:0;top:0;height:7cqw;background:linear-gradient(180deg,#5d5c66,#85838b);box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.35)}
-.dm-floor{position:absolute;left:0;right:0;bottom:0;height:20%;border-top:.5cqw solid #d9d4cc;
-  background:linear-gradient(180deg,rgba(0,0,0,.28),transparent 60%),
-             repeating-linear-gradient(90deg,#7b6752 0 5cqw,#69563f 5cqw 5.25cqw,#86705a 5.25cqw 11cqw,#6e5a45 11cqw 11.25cqw,#7a6550 11.25cqw 17cqw,#62503c 17cqw 17.25cqw)}
-.dm-dim{position:absolute;inset:0;background:#04061a;opacity:calc(.97 - var(--lv) * .34)}
-.dm-pool{position:absolute;left:calc(var(--x) - 18cqw);width:36cqw;top:21cqw;height:56cqw;mix-blend-mode:screen;pointer-events:none;
-  background:radial-gradient(ellipse 28% 26% at 50% 9%,rgba(255,255,255,.55),transparent 100%),radial-gradient(ellipse 50% 60% at 50% 9%,var(--kc) 0,transparent 100%);
-  opacity:calc(var(--lv) * var(--f));transition:--f .5s ease}
-.dm-tex{position:absolute;inset:0;mix-blend-mode:soft-light;opacity:.55;pointer-events:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
-.dm-lamp{position:absolute;z-index:3;top:0;left:calc(var(--x) - 6.5cqw);width:13cqw;height:26cqw;padding:0;border:0;background:none;cursor:pointer;transition:--f .5s ease}
-.dm-lamp::before{content:"";position:absolute;left:50%;top:0;width:.35cqw;height:17cqw;margin-left:-.175cqw;background:linear-gradient(180deg,#2c2f55,#c9ccea)}
-.dm-shade{position:absolute;left:0;right:0;top:17cqw;height:7.8cqw;border-radius:6.5cqw 6.5cqw .7cqw .7cqw/7.8cqw 7.8cqw .7cqw .7cqw;background:linear-gradient(90deg,#aeaca6,#f3f1eb 42%,#a5a39d);box-shadow:0 .5cqw 1.2cqw rgba(0,0,0,.35)}
-.dm-shade::before{content:"";position:absolute;left:50%;top:-1.3cqw;width:2.4cqw;height:1.5cqw;margin-left:-1.2cqw;border-radius:.5cqw .5cqw 0 0;background:#d8d6d0}
-.dm-rim{position:absolute;left:1cqw;right:1cqw;bottom:-.55cqw;height:1.7cqw;border-radius:50%;
-  background:radial-gradient(ellipse at center,#fff 0,var(--kc) 70%);opacity:calc(.25 + var(--lv) * var(--f) * .75);
-  box-shadow:0 0 calc(var(--lv) * var(--f) * 3.4cqw) calc(var(--lv) * var(--f) * .8cqw) var(--kc)}
-.dm-lamp:hover .dm-shade,.dm-lamp.is-f .dm-shade{filter:brightness(1.06)}
-.dm-lamp:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-radius:12px}
-.dm-k{position:absolute;z-index:4;left:calc(var(--x) - 10.5cqw);width:21cqw;top:47cqw;text-align:center;pointer-events:none;color:#fff;
-  font-weight:800;font-size:clamp(11px,2.9cqw,17px);line-height:1.15;letter-spacing:.02em;padding:1.2cqw 0 1.3cqw;border-radius:2cqw;
-  background:rgba(5,8,28,.46);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.14);
-  opacity:calc(.35 + var(--f) * .65);transition:--f .5s ease}
-.dm-k small{display:block;margin-top:.5cqw;font-weight:600;font-size:clamp(7.5px,1.85cqw,11px);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.78)}
-.dm-k i{display:inline-block;width:.9em;height:.9em;margin-right:.35em;border-radius:50%;vertical-align:-.1em;background:var(--kc);box-shadow:0 0 .8em var(--kc)}
+.dm-stage{--lv:.55;--c:.4;--day:.25;--dk:.5;--amb:.5;--dl:0;--dusk:.7;--st:.6;--eo:.5;--zz:0;--kc:#ffd9a6;container-type:inline-size;position:relative;isolation:isolate;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:#05071a;border:1px solid rgba(255,255,255,.1);box-shadow:0 44px 90px -34px rgba(0,53,254,.55),0 0 90px -30px rgba(255,180,90,.55),inset 0 1px 0 rgba(255,255,255,.08)}
+.dm-stage>*,.dm-win>*{position:absolute}
+.dm-wall{inset:0;background:linear-gradient(180deg,#7d7c84,#a9a6a2 60%,#b6b2ab)}
+.dm-ceil{left:0;right:0;top:0;height:5cqw;background:linear-gradient(#5d5c66,#85838b);box-shadow:0 .6cqw 1.6cqw rgba(0,0,0,.35)}
+.dm-plant{left:80cqw;top:50cqw;width:9cqw;height:18cqw}
+.dm-plant::before{content:"";position:absolute;left:1.5cqw;right:1.5cqw;bottom:0;height:6cqw;background:#b86b4b;border-radius:.8cqw .8cqw 2cqw 2cqw}
+.dm-plant i{position:absolute;bottom:5cqw;left:50%;width:3cqw;height:11cqw;margin-left:-1.5cqw;border-radius:50% 50% 30% 30%;background:linear-gradient(#4fae6a,#2a7a4a);transform-origin:50% 100%;transform:rotate(var(--r));animation:dmSway 5s ease-in-out infinite}
+@keyframes dmSway{50%{transform:rotate(calc(var(--r) + 4deg))}}
+.dm-dim{inset:0;z-index:2;background:#04061a;opacity:var(--dk)}
+.dm-win{left:33.9cqw;top:13.9cqw;width:32.2cqw;height:26.2cqw;z-index:3;overflow:hidden;background:linear-gradient(180deg,#040820,#1a2760 85%)}
+.dm-day{inset:0;background:linear-gradient(180deg,#3d9bff,#bfe6ff 75%);opacity:var(--day)}
+.dm-dusk{inset:0;background:radial-gradient(90% 60% at 50% 100%,#ff8a3d,rgba(255,90,120,.5) 50%,transparent 80%);opacity:var(--dusk)}
+.dm-stars{inset:0 0 30% 0;opacity:var(--st);background:radial-gradient(circle,#fff 0 .12cqw,transparent .2cqw) 0 0/3.3cqw 3.1cqw,radial-gradient(circle,#cfe0ff 0 .1cqw,transparent .18cqw) 1.4cqw 1.2cqw/4.7cqw 4.1cqw;animation:dmTw 3s ease-in-out infinite alternate}
+@keyframes dmTw{to{filter:brightness(.55)}}
+.dm-shoot{position:absolute;top:3cqw;left:70%;width:7cqw;height:.18cqw;background:linear-gradient(90deg,transparent,#fff);opacity:0;animation:dmShoot 7s ease-in 2s infinite}
+@keyframes dmShoot{0%{opacity:0;transform:translate(0,0) rotate(30deg)}3%{opacity:1}12%{opacity:0;transform:translate(-14cqw,8cqw) rotate(30deg)}100%{opacity:0}}
+.dm-sun{left:62%;top:calc(88% - var(--day) * 68%);width:6cqw;height:6cqw;border-radius:50%;background:#fff6c8;box-shadow:0 0 3cqw 1.5cqw rgba(255,210,100,.8)}
+.dm-moon{left:24%;top:calc(14% + var(--day) * 85%);width:4.4cqw;height:4.4cqw;border-radius:50%;box-shadow:inset -1.2cqw -.5cqw 0 #f4f1e4;filter:drop-shadow(0 0 1cqw rgba(200,220,255,.8))}
+.dm-cloud{top:5cqw;left:0;width:9cqw;height:2.6cqw;border-radius:2cqw;background:#fff;opacity:calc(var(--day) * .9);filter:blur(.3cqw);animation:dmCl 40s linear infinite}
+@keyframes dmCl{from{transform:translateX(-12cqw)}to{transform:translateX(38cqw)}}
+.dm-city{left:0;right:0;bottom:0;height:9cqw;background:#0b1233;filter:brightness(calc(.55 + var(--day) * .9));clip-path:polygon(0 60%,6% 60%,6% 30%,14% 30%,14% 55%,20% 55%,20% 15%,27% 15%,27% 45%,34% 45%,34% 65%,41% 65%,41% 25%,49% 25%,49% 50%,57% 50%,57% 10%,65% 10%,65% 40%,72% 40%,72% 60%,80% 60%,80% 22%,88% 22%,88% 50%,94% 50%,94% 35%,100% 35%,100% 100%,0 100%)}
+.dm-city::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,#ffd98a 0 .13cqw,transparent .2cqw) 0 0/1.6cqw 1.5cqw;opacity:calc(1 - var(--day) * 1.3)}
+.dm-frame,.dm-sill{z-index:3;background:none;pointer-events:none;filter:brightness(calc(.35 + var(--amb) * .65))}
+.dm-frame{left:33cqw;top:13cqw;width:34cqw;height:28cqw;box-sizing:border-box;border:.9cqw solid #e7e2d8;border-radius:.6cqw;box-shadow:0 1cqw 2cqw rgba(0,0,0,.35)}
+.dm-frame::before,.dm-frame::after{content:"";position:absolute;background:#e7e2d8}
+.dm-frame::before{left:50%;top:0;bottom:0;width:.7cqw;margin-left:-.35cqw}.dm-frame::after{top:50%;left:0;right:0;height:.7cqw;margin-top:-.35cqw}
+.dm-sill{left:31.5cqw;top:41cqw;width:37cqw;height:1.4cqw;background:#e7e2d8;border-radius:.4cqw}
+.dm-beam{left:27cqw;top:42cqw;width:46cqw;height:33cqw;z-index:3;mix-blend-mode:screen;pointer-events:none;opacity:var(--dl);background:linear-gradient(180deg,rgba(255,236,190,.65),rgba(255,236,190,0));clip-path:polygon(6% 0,94% 0,112% 100%,-12% 100%)}
+.dm-pool{left:calc(var(--x) - 20cqw);width:40cqw;top:14cqw;height:58cqw;z-index:3;mix-blend-mode:screen;pointer-events:none;opacity:var(--lv);background:radial-gradient(ellipse 26% 22% at 50% 12%,rgba(255,255,255,.55),transparent),radial-gradient(ellipse 50% 60% at 50% 12%,var(--kc),transparent)}
+.dm-rod{left:29cqw;top:11.2cqw;width:42cqw;height:.9cqw;border-radius:1cqw;background:#2b2c3a;z-index:4}
+.dm-cur{top:12cqw;height:31cqw;width:19.5cqw;z-index:4;border-radius:0 0 .5cqw .5cqw;filter:brightness(calc(.3 + var(--amb) * .7));background:repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 .5cqw,transparent .5cqw 1.1cqw,rgba(255,255,255,.14) 1.1cqw 1.6cqw,transparent 1.6cqw 2.4cqw),linear-gradient(180deg,#a8466a,#7d2f4f);transform:scaleX(calc(.16 + var(--c) * .84));box-shadow:0 1cqw 2cqw rgba(0,0,0,.35)}
+.dm-cur.l{left:31cqw;transform-origin:0 50%}.dm-cur.r{left:50.5cqw;transform-origin:100% 50%}
+.dm-hit,.dm-catb{z-index:7;background:none;border:0;padding:0;cursor:pointer}
+.dm-hit{left:30cqw;top:11cqw;width:40cqw;height:32cqw}.dm-catb{left:34cqw;top:45cqw;width:8cqw;height:6cqw}
+.dm-bub{z-index:8;left:31cqw;top:41cqw;padding:.6cqw 1.6cqw;border-radius:2cqw;background:#fff;color:#1d2144;font-weight:700;font-size:max(10px,2.2cqw);opacity:0;transform:translateY(6px) scale(.8);transition:.3s;pointer-events:none}
+.dm-bub.on{opacity:1;transform:none}
+.dm-pend{left:calc(var(--x) - 5cqw);top:0;width:10cqw;height:16cqw;z-index:5;padding:0;border:0;background:none;cursor:pointer;transform-origin:50% 0}
+.dm-pend::before{content:"";position:absolute;left:50%;top:0;width:.3cqw;height:10cqw;background:#1c1e30}
+.dm-sh{position:absolute;left:1cqw;right:1cqw;top:10cqw;height:4.6cqw;border-radius:5cqw 5cqw .6cqw .6cqw/4.6cqw 4.6cqw .6cqw .6cqw;background:linear-gradient(90deg,#d9d6cf,#fff 45%,#bdbab3)}
+.dm-sh i{position:absolute;left:1cqw;right:1cqw;bottom:-.5cqw;height:1.4cqw;border-radius:50%;background:radial-gradient(#fff,var(--kc) 70%);opacity:calc(.2 + var(--lv) * .8);box-shadow:0 0 calc(var(--lv) * 3.4cqw) calc(var(--lv) * .9cqw) var(--kc)}
+.dm-pend.sw{animation:dmSw 1.6s ease-out}
+@keyframes dmSw{15%{transform:rotate(9deg)}35%{transform:rotate(-6deg)}55%{transform:rotate(3deg)}75%{transform:rotate(-1.5deg)}}
+.dm-floor{left:0;right:0;bottom:0;height:22%;border-top:.5cqw solid #e4dfd6;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 65%),conic-gradient(#d9d5cd 25%,#b4afa4 0 50%,#d9d5cd 0 75%,#b4afa4 0) 0 0/9cqw 9cqw}
+.dm-desk{left:22cqw;top:51cqw;width:38cqw;height:16cqw;border-radius:1cqw 1cqw .4cqw .4cqw;background:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 .4cqw,transparent .4cqw 2.4cqw),linear-gradient(180deg,#8a6a4b,#5a4230);box-shadow:0 1cqw 1.6cqw rgba(0,0,0,.35)}
+.dm-desk::before{content:"";position:absolute;left:-1cqw;right:-1cqw;top:-1.2cqw;height:2cqw;border-radius:.6cqw;background:linear-gradient(#f1ece2,#cfc7b8)}
+.dm-bell{left:36cqw;top:47.8cqw;width:3cqw;height:2cqw;border-radius:3cqw 3cqw .3cqw .3cqw;background:linear-gradient(90deg,#c9a24a,#ffe9a3 45%,#a8842f)}
+.dm-bell::before{content:"";position:absolute;left:1.1cqw;top:-.7cqw;width:.8cqw;height:.8cqw;border-radius:50%;background:#a8842f}
+.dm-art{left:7cqw;top:22cqw;width:17cqw;height:12cqw;border:.7cqw solid #2b2c3a;background:linear-gradient(135deg,#ff8a3d,#d6336c 50%,#0035fe);box-shadow:0 .6cqw 1.2cqw rgba(0,0,0,.35)}
+.dm-sign{left:73cqw;top:21cqw;width:21cqw;padding:1.2cqw 0;text-align:center;z-index:5;pointer-events:none;font-weight:800;letter-spacing:.35em;text-indent:.35em;font-size:2.6cqw;color:#fff4d6;border:.35cqw solid #ffd58a;border-radius:1cqw;text-shadow:0 0 1cqw #ffb347,0 0 2.4cqw #ff9a3c;box-shadow:0 0 1.6cqw rgba(255,170,70,.7),inset 0 0 1cqw rgba(255,170,70,.5);background:rgba(20,10,0,.3);opacity:calc(.35 + var(--dk) * .65);animation:dmFl 7s infinite}
+@keyframes dmFl{93%,95%,97%{filter:brightness(1)}94%{filter:brightness(.55)}96%{filter:brightness(.75)}}
+.dm-dls{left:0;right:0;top:3.4cqw;height:1.6cqw;z-index:5;pointer-events:none;background:radial-gradient(ellipse,#fff 0 .5cqw,var(--kc) .8cqw,transparent 1.6cqw) 0 0/12.5% 100%;opacity:calc(.15 + var(--lv) * .85)}
 .dm-stage::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;background:radial-gradient(120% 100% at 50% 35%,transparent 55%,rgba(2,4,18,.5))}
+.dm-sw{z-index:8;bottom:8px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(6,9,32,.55);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;cursor:pointer;padding:0;transition:.3s}
+.dm-sw svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.dm-sw[aria-pressed=true]{background:#0035fe;border-color:transparent}.dm-sw:hover{transform:translateY(-2px)}
+@media(prefers-reduced-motion:reduce){.dm-stage *{animation:none!important}}
 .dm-pill{position:absolute;z-index:8;left:50%;bottom:14px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:9px;padding:6px 15px;border-radius:99px;white-space:nowrap;background:rgba(6,9,32,.55);border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+
 .dm-pill i{width:8px;height:8px;border-radius:50%;background:#ffc57a;box-shadow:0 0 10px 2px #ffb25e}
+
 .dm-pill b{font-size:.95rem;font-weight:800;letter-spacing:0;font-variant-numeric:tabular-nums;min-width:2.6ch;text-align:right}
+
 .dm-pill span{opacity:.75}
 
+
+
 /* control panel */
+
 .dm-panel{margin-top:16px;padding:18px 22px 20px;border-radius:22px;background:var(--av-card);border:1px solid var(--av-line);box-shadow:0 24px 50px -32px rgba(0,53,254,.5)}
+
 .dm-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+
 .dm-row label{font-weight:800;color:var(--av-t);font-size:.95rem}
-.dm-guide{margin:18px 4px 0;padding:0 0 0 1.25rem;list-style:disc}.dm-guide li{margin:7px 0;font-size:1rem;line-height:1.5;padding-left:.35rem}.dm-guide li::marker{color:#0035fe}.dm-guide b{font-weight:700}
+
 .dm-hint{margin:0!important;font-size:.76rem!important;line-height:1.4!important;color:var(--av-m)!important}
+
 .dm-range{-webkit-appearance:none;appearance:none;display:block;width:100%;height:8px;margin:0;border-radius:99px;outline:0;cursor:pointer;
+
   background:linear-gradient(90deg,#4e6bff,#0035fe) 0/var(--p,70%) 100% no-repeat,rgba(0,53,254,.15)}
+
 .dm-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;border-radius:50%;border:0;background:#fff;box-shadow:0 0 0 5px rgba(0,53,254,.2),0 5px 14px rgba(0,53,254,.55)}
+
 .dm-range::-moz-range-thumb{width:26px;height:26px;border-radius:50%;border:0;background:#fff;box-shadow:0 0 0 5px rgba(0,53,254,.2),0 5px 14px rgba(0,53,254,.55)}
+
 .dm-range:focus-visible{outline:2px solid #4e6bff;outline-offset:8px}
+
 .dm-scn{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+
 .dm-scn button{flex:1 1 0;min-width:72px;padding:9px 14px;border-radius:99px;border:1px solid var(--av-line);background:transparent;color:var(--av-t);font-weight:600;font-size:.86rem;transition:all .3s var(--pj-ease)}
+
 .dm-scn button:hover{transform:translateY(-2px);border-color:#4e6bff}
+
 .dm-scn button.on{background:linear-gradient(135deg,#4e6bff,#0035fe);color:#fff;border-color:transparent;box-shadow:0 10px 22px -10px rgba(0,53,254,.7)}
+
 @media(max-width:700px){.dm-k small{letter-spacing:.02em;white-space:nowrap}.dm-pill{font-size:.62rem;padding:5px 11px}.dm-panel{padding:16px 16px 18px}}
+
 </style>
 <style>
 .lk-sec{position:relative;padding:70px 0 90px}
@@ -792,16 +834,6 @@ body.b.eh .pp-foot{border-color:rgba(143,163,255,.18)}
 @keyframes ppUp{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
 @media (max-width:520px){.pp-head,.pp-body,.pp-foot{padding-left:18px;padding-right:18px}.pp-head h2{font-size:1.2rem}}
 </style>
-<style id="dm-five">
-/* hero demo: five lamps (2200K-6500K) */
-.dm-stage .dm-pool{left:calc(var(--x) - 15cqw);width:30cqw}
-.dm-stage .dm-lamp{left:calc(var(--x) - 5.5cqw);width:11cqw}
-.dm-stage .dm-shade{top:17cqw;height:7cqw}
-.dm-stage .dm-k{left:calc(var(--x) - 9.5cqw);width:19cqw;box-sizing:border-box;padding:1.1cqw .6cqw 1.2cqw;font-size:clamp(6.5px,1.78cqw,13px);letter-spacing:0;white-space:nowrap;overflow:hidden}
-.dm-stage .dm-k i{width:.7em;height:.7em;margin-right:.3em}
-.dm-stage .dm-k small{font-size:clamp(6px,1.5cqw,10px);letter-spacing:.05em;white-space:normal;text-wrap:balance;line-height:1.25}
-@media(max-width:700px){.dm-stage .dm-k small{letter-spacing:.02em;white-space:normal}}
-</style>
 <style id="sp-style">
 #spModal{position:fixed;inset:0;z-index:100003;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,12,40,.62);backdrop-filter:blur(4px)}
 #spModal.open{display:flex;animation:ppFade .2s ease-out}
@@ -905,7 +937,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 }
 </style>
 </head>
-<body x-data="{ page: 'lighting', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
+<body x-data="{ page: 'dimming', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
   :class="{'b eh': darkMode === true}">
 <script>try{if(JSON.parse(localStorage.getItem('darkMode'))===true)document.body.className+=' b eh'}catch(e){}</script>
@@ -950,7 +982,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
                 viewBox="0 0 512 512">
                 <path
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimmings System & GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems & GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
           <li class="c i" x-data="{ dropdown: false }">
             <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
               :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
@@ -989,56 +1021,59 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 
 <main>
 <section id="av-hero" class="av-sec pj-soft-bg"><div class="av-wrap av-hero-grid">
- <div class="rv"><div class="av-crumb"><a href="index.html">Home</a> / <a href="index.html#services">Services</a> / Lighting</div>
-  <span class="av-kick"><i></i>Lighting Solutions</span>
-  <h1>Light that shapes <span class="av-grad">how spaces feel.</span></h1>
-  <p>Systech Lighting &amp; Controls plans, supplies, installs and commissions architectural, landscape, facade and stage lighting for hotels, residences and venues across the Philippines.</p>
+ <div class="rv"><div class="av-crumb"><a href="index.html">Home</a> / <a href="index.html#services">Services</a> / Dimming System</div>
+  <span class="av-kick"><i></i>Dimming &amp; Control Systems</span>
+  <h1>Every mood, <span class="av-grad">one touch away.</span></h1>
+  <p>From dimming systems to guestroom management and complete lighting controls, Systech designs, installs and supports the systems that let you set the light. Try the dimmer.</p>
   <div class="av-cta"><a class="av-btn" href="#av-products">Explore Products</a><a class="av-btn ghost" href="#av-contact">Contact Us</a></div></div>
  <div class="av-stage dm-wrap rv" style="--i:2">
-  <div class="dm-stage" id="dmStage" role="group" aria-label="Interactive dimming demo: five pendant lamps from 2200K to 6500K">
-   <div class="dm-wall"></div><div class="dm-ceil"></div><div class="dm-floor"></div><div class="dm-dim"></div>
-   <span class="dm-pool" data-i="0" style="--x:10%;--kc:#ff8a2a"></span><span class="dm-pool" data-i="1" style="--x:30%;--kc:#ffb35c"></span><span class="dm-pool" data-i="2" style="--x:50%;--kc:#ffe2b8"></span><span class="dm-pool" data-i="3" style="--x:70%;--kc:#f6f4ee"></span><span class="dm-pool" data-i="4" style="--x:90%;--kc:#cfe3ff"></span>
-   <div class="dm-tex"></div>
-   <button type="button" class="dm-lamp" data-i="0" aria-pressed="false" aria-label="Compare 2200K - 2400K Extra Warm - Candlelight" style="--x:10%;--kc:#ff8a2a"><span class="dm-shade"><span class="dm-rim"></span></span></button><button type="button" class="dm-lamp" data-i="1" aria-pressed="false" aria-label="Compare 2700K - 3000K Warm White" style="--x:30%;--kc:#ffb35c"><span class="dm-shade"><span class="dm-rim"></span></span></button><button type="button" class="dm-lamp" data-i="2" aria-pressed="false" aria-label="Compare 3500K Neutral White" style="--x:50%;--kc:#ffe2b8"><span class="dm-shade"><span class="dm-rim"></span></span></button><button type="button" class="dm-lamp" data-i="3" aria-pressed="false" aria-label="Compare 4000K Cool White" style="--x:70%;--kc:#f6f4ee"><span class="dm-shade"><span class="dm-rim"></span></span></button><button type="button" class="dm-lamp" data-i="4" aria-pressed="false" aria-label="Compare 5000K - 6500K Daylight" style="--x:90%;--kc:#cfe3ff"><span class="dm-shade"><span class="dm-rim"></span></span></button>
-   <div class="dm-k" data-i="0" style="--x:10%;--kc:#ff8a2a"><i></i>2200K–2400K<small>Extra Warm - Candlelight</small></div><div class="dm-k" data-i="1" style="--x:30%;--kc:#ffb35c"><i></i>2700K–3000K<small>Warm White</small></div><div class="dm-k" data-i="2" style="--x:50%;--kc:#ffe2b8"><i></i>3500K<small>Neutral White</small></div><div class="dm-k" data-i="3" style="--x:70%;--kc:#f6f4ee"><i></i>4000K<small>Cool White</small></div><div class="dm-k" data-i="4" style="--x:90%;--kc:#cfe3ff"><i></i>5000K–6500K<small>Daylight</small></div>
-   <div class="dm-pill"><i></i><b id="dmVal">70%</b><span id="dmMode">All lamps</span></div>
+  <div class="dm-stage" id="dmStage" role="group" aria-label="Interactive hotel lobby: dim the lights, draw the curtains, switch between day and night">
+   <div class="dm-wall"></div><div class="dm-ceil"></div><div class="dm-floor"></div>
+   <div class="dm-plant"><i style="--r:-34deg;height:9cqw"></i><i style="--r:0deg"></i><i style="--r:32deg;height:9.5cqw"></i></div>
+   <div class="dm-desk"></div>
+   <div class="dm-art"></div><div class="dm-bell"></div><div class="dm-dim"></div>
+   <div class="dm-win"><div class="dm-day"></div><div class="dm-dusk"></div><div class="dm-stars"><i class="dm-shoot"></i></div><span class="dm-sun"></span><span class="dm-moon"></span><span class="dm-cloud"></span><span class="dm-cloud" style="top:12cqw;width:6cqw;animation-delay:-22s"></span><div class="dm-city"></div></div>
+   <div class="dm-frame"></div><div class="dm-sill"></div><div class="dm-beam"></div><span class="dm-pool" style="--x:15%"></span><span class="dm-pool" style="--x:50%"></span><span class="dm-pool" style="--x:85%"></span>
+   <div class="dm-rod"></div><div class="dm-cur l"></div><div class="dm-cur r"></div>
+   <button type="button" class="dm-hit" id="dmHit" aria-label="Open or close the curtains"></button>
+   <div class="dm-sign">LOBBY</div><div class="dm-dls"></div>
+   <button type="button" class="dm-catb" id="dmCat" aria-label="Ring the reception bell"></button><div class="dm-bub" id="dmBub">ding!</div>
+   <button type="button" class="dm-pend" style="--x:15%" aria-label="Switch the lights on or off"><span class="dm-sh"><i></i></span></button><button type="button" class="dm-pend" style="--x:85%" aria-label="Switch the lights on or off"><span class="dm-sh"><i></i></span></button>
+   <button type="button" class="dm-sw" id="dmCurt" style="left:14px" aria-pressed="false" aria-label="Open or close curtains" title="Open or close curtains"><svg viewBox="0 0 24 24"><path d="M3 4h18M5 4c0 6 2 12 3 16M19 4c0 6-2 12-3 16"/></svg></button>
+   <div class="dm-pill"><i></i><b id="dmVal">55%</b><span id="dmMode">Dinner</span></div>
+   <button type="button" class="dm-sw" id="dmTime" style="right:14px" aria-pressed="false" aria-label="Switch between day and night" title="Switch between day and night"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></button>
   </div>
   <div class="dm-panel">
-   <div class="dm-row"><label for="dmRange">Dim level</label><p class="dm-hint">Tap a lamp to compare colour temperatures</p></div>
-   <input class="dm-range" id="dmRange" type="range" min="0" max="100" value="70" aria-label="Dim level">
-   <div class="dm-scn" id="dmScn"><button type="button" data-v="100">Bright</button><button type="button" data-v="60">Dinner</button><button type="button" data-v="25">Movie</button><button type="button" data-v="8">Night</button></div>
+   <div class="dm-row"><label for="dmRange">Dim level</label><p class="dm-hint">Tap the lamps, the curtains or the bell</p></div>
+   <input class="dm-range" id="dmRange" type="range" min="0" max="100" value="55" aria-label="Dim level">
+   <div class="dm-scn" id="dmScn"><button type="button" data-v="0">Business</button><button type="button" data-v="1">Dinner</button><button type="button" data-v="2">Event</button><button type="button" data-v="3">After hours</button></div>
   </div>
-</div>
+ </div>
 </div></section>
 
 <section id="av-about" class="av-sec pj-soft-bg"><div class="av-wrap av-two">
- <div class="rv"><span class="av-kick">About our Lighting work</span><h2>Lighting, planned before it is installed</h2>
-  <p>Systech supports architects, interior designers, consultants and facility owners from the first design phase. Our design team uses computer-aided software to show the right illumination beforehand, prepares 3D renderings so you can see the installed result, and provides drawings and documentation to guide the installation.</p>
-  <p>From hotels and residences to stadiums and theaters, we supply, deliver, supervise and commission the lighting scope, backed by 24/7 technical and after-sales support.</p>
-  <div class="av-hl"><div><b>01</b><span>Illumination Studies</span></div><div><b>02</b><span>3D Renderings</span></div><div><b>03</b><span>Supply &amp; Install</span></div><div><b>04</b><span>Commissioning</span></div></div></div>
- <div class="av-flow rv" style="--i:2" aria-label="Lighting layers to spaces">
-  <div class="av-col"><h5>Layers</h5><span>Architectural</span><span>Landscape</span><span>Facade</span></div><div class="av-link"></div>
-  <div class="av-col av-hub"><h5>Design</h5><b>Systech<br>Light Design</b></div><div class="av-link"></div>
-  <div class="av-col"><h5>Spaces</h5><span>Hotels</span><span>Residences</span><span>Theaters</span></div></div>
+ <div class="rv"><span class="av-kick">About our Dimming and Controls work</span><h2>Control that fits how you use the space</h2><p>Systech is a full service lighting, lighting controls, audio visual and sound reinforcement integration company. We design, supply, install and support dimming, guestroom management and lighting control systems for hotels, resorts and residences.</p><p>Our team receives regular training from the manufacturers we represent, and our Service Center provides 24/7 technical and after-sales support for installed systems.</p>
+  <div class="av-hl"><div><b>01</b><span>System Design</span></div><div><b>02</b><span>Supply &amp; Install</span></div><div><b>03</b><span>Programming &amp; Commissioning</span></div><div><b>04</b><span>24/7 Support</span></div></div></div>
+ <div class="av-flow rv" style="--i:2" aria-label="Control inputs to lighting loads"><div class="av-col"><h5>Inputs</h5><span>Keypads</span><span>Sensors</span><span>Schedules</span></div><div class="av-link"></div><div class="av-col av-hub"><h5>Control</h5><b>Systech<br>Controls</b></div><div class="av-link"></div><div class="av-col"><h5>Loads</h5><span>Downlights</span><span>Facade</span><span>Guestrooms</span></div></div>
 </div></section>
 
 <section id="av-solutions" class="av-sec pj-soft-bg"><div class="av-wrap">
- <div class="av-head rv"><h2>Lighting Solutions</h2><p>Lighting we design, supply and install, with real Systech projects behind each one.</p></div>
- <div class="av-filter rv" id="ltFilter"></div><div class="av-grid" id="ltGrid"></div></div></section>
+ <div class="av-head rv"><h2>Dimming &amp; Control Systems</h2><p>Systems we design, supply and install, with real Systech projects behind each one.</p></div>
+ <div class="av-filter rv" id="dmFilter"></div><div class="av-grid" id="dmGrid"></div></div></section>
 
 <section id="av-products" class="av-sec pj-soft-bg"><div class="av-wrap">
- <div class="av-head rv"><h2>Lighting Products &amp; Brands</h2><p>Architectural, speciality and stage lighting from the brands we supply, install and support. Filter by category, or visit each maker's site.</p></div>
+ <div class="av-head rv"><h2>Dimming &amp; Room Management Brands</h2><p>Guestroom management, dimming and lighting control systems from the brands we supply, install and support. Filter by type, or visit each maker's site.</p></div>
  <div class="av-filter rv" id="avFilter"></div><div id="avCats"></div></div></section>
 
 <section id="av-process" class="av-sec pj-soft-bg"><div class="av-wrap">
  <div class="av-head rv"><h2>How we deliver</h2><p>One team from first conversation to long-term support.</p></div>
- <ol class="av-steps" id="avSteps"><li class="rv"><span class="n">1</span><h3>Consult &amp; Plan</h3><p>We learn how the space will be used and lit.</p></li><li class="rv" style="--i:1"><span class="n">2</span><h3>Design &amp; Visualize</h3><p>Illumination studies and 3D renderings before installation.</p></li><li class="rv" style="--i:2"><span class="n">3</span><h3>Supply &amp; Install</h3><p>Delivery, supervision and installation on site.</p></li><li class="rv" style="--i:3"><span class="n">4</span><h3>Commission &amp; Support</h3><p>Commissioning and 24/7 after-sales support.</p></li></ol></div></section>
+ <ol class="av-steps" id="avSteps"><li class="rv"><span class="n">1</span><h3>Consult &amp; Plan</h3><p>We learn how each area is used and how it should feel.</p></li><li class="rv" style="--i:1"><span class="n">2</span><h3>Design</h3><p>Control design and scene planning for every space.</p></li><li class="rv" style="--i:2"><span class="n">3</span><h3>Install &amp; Program</h3><p>Installation, programming and commissioning on site.</p></li><li class="rv" style="--i:3"><span class="n">4</span><h3>Train &amp; Support</h3><p>User training and 24/7 technical support.</p></li></ol></div></section>
 
 <section id="av-contact" class="av-sec pj-soft-bg"><div class="av-wrap">
  <div class="av-office rv"><div><h4>Residential Office</h4><p>2 Scout Rallos corner Mother Ignacia Avenue, Quezon City 1103</p></div>
   <div><h4>Commercial Office</h4><p>144 Sumulong Highway, Mayamot, Antipolo City 1870</p></div>
   <div><h4>Contact</h4><p>Tel: <a href="tel:+63283749938">+632-8374-9938</a><br>Fax: +632-8376-9004<br><a href="mailto:sales@systechlc.com">sales@systechlc.com</a></p></div></div>
- <div class="av-head rv"><h2>Planning a lighting project?</h2><p>Tell us about your project and we will recommend the right solution.</p></div>
+ <div class="av-head rv"><h2>Planning a dimming or control project?</h2><p>Tell us about your project and we will recommend the right solution.</p></div>
  <form class="ct-form rv" id="contactForm" novalidate><div class="ct-fields">
   <div class="ct-f"><label for="cF">First name</label><input id="cF" name="first_name" autocomplete="given-name" required></div>
   <div class="ct-f"><label for="cLn">Last name</label><input id="cLn" name="last_name" autocomplete="family-name"></div>
@@ -1057,7 +1092,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   <div class="ct-f full"><label for="cM">Message</label><textarea id="cM" name="message" required></textarea></div></div>
   <div class="ct-submit"><button type="submit" class="av-btn">Send Message</button><span class="ct-note">We reply to the email address you provide.</span></div><div id="ctStatus" role="status" aria-live="polite"></div></form>
 </div></section>
-<section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Dimmings.html"><b>Dimming Systems & GRMS</b><small>Dimming and room control</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="Partners.html"><b>Partner</b><small>Brands we work with</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
+<section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="NEWS.html"><b>News</b><small>Articles and updates</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="Partners.html"><b>Partner</b><small>Brands we work with</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
 </main>
 <footer>
 <div class="bb ze ki xn 2xl:ud-px-0">
@@ -1127,125 +1162,99 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 (function(){
   var $=function(id){return document.getElementById(id)};
 
-  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension) in the same folder as this page (see LOGO_DIRS) ===== */
- var EXTS=['jpg','png','jpeg','webp','svg'];
-var LOGO_DIRS=['','logos/','brands/','images/'];   /* keep only the folders you actually use */
-function logoCandidates(p){
-  var bases=[p.f,p.f.toUpperCase(),p.f.charAt(0).toUpperCase()+p.f.slice(1),p.n,
-             p.n.toLowerCase(),p.n.charAt(0)+p.n.slice(1).toLowerCase()];
-  bases=bases.filter(function(b,i){return b&&bases.indexOf(b)===i});
-  var out=[];
-  LOGO_DIRS.forEach(function(d){bases.forEach(function(b){
-    ['png','jpg','jpeg','webp','svg'].forEach(function(x){out.push(d+encodeURIComponent(b)+'.'+x)})})});
-  return out;
-}
+  /* ===== EDIT HERE: brand catalogue. n=name, t=type label, s=website, f=logo file name (no extension) in the same folder as this page (see LOGO_DIR), k=filter group(s), ex=exclusive distributor ===== */
+ var EXTS=['jpg','png','jpeg','webp','svg','JPG','PNG','JPEG'];
+function cands(f){var o=[];[f,f.toLowerCase(),f.toUpperCase()].forEach(function(n){EXTS.forEach(function(x){var u=n+'.'+x;if(o.indexOf(u)<0)o.push(u)})});return o}
+var LOGO_DIR=''; /* folder that holds the logo files ('' = same folder as this page) */
 var CATS=[
- {id:'arch',title:'Architectural and Speciality Lighting',note:'Architectural, landscape and facade lighting from the makers we supply and support.',items:[
-  {n:'ERCO',t:'Architectural Lighting',s:'www.erco.com',f:'erco'},
-  {n:'WIBRE',t:'Architectural Lighting',s:'www.wibre.de/en/start.html',f:'wibre'},
-  {n:'LINEA LIGHT',t:'Architectural Lighting',s:'www.linealight.com/en',f:'linea'},
-  {n:'ACCLAIM',t:'Architectural Lighting',s:'www.acclaimlighting.com',f:'acclaim'},
-  {n:'ELR',t:'Architectural Lighting',s:'www.elr-group.com',f:'elr'},
-  {n:'KAMS',t:'Architectural Lighting',s:'www.kamsled.com',f:'kams'},
-  {n:'FOKU',t:'Architectural Lighting',s:'www.fokuzlighting.com',f:'fokuz'},
-  {n:'TPK',t:'Architectural Lighting',s:'www.tpk-led.com',f:'tpk'},
-  {n:'RCL',t:'Architectural Lighting',s:'www.rclighting.com',f:'rcl'},
-  {n:'PHILIPS',t:'Architectural Lighting',s:'www.lighting.philips.com',f:'philips'},
-  {n:'COLOR',t:'Architectural Lighting',s:'www.colorkinetics.com',f:'colorkinetics'},
-  {n:'SHINE',t:'Architectural Lighting',s:'www.shinehomeslighting.cn',f:'shine'},
-  {n:'FEELUX',t:'Architectural Lighting',s:'www.feeluxlighting.com',f:'feelux'}]},
- {id:'stage',title:'Stage Lighting',note:'Entertainment lighting fixtures and controls for theaters and venues.',items:[
-  {n:'MARTIN',t:'Entertainment Lighting',s:'www.martin.com',f:'martin'},
-  {n:'CHAUVET',t:'Entertainment Lighting',s:'www.chauvetlighting.com',f:'chauvet'},
-  {n:'CAMEO',t:'Entertainment Lighting',s:'www.cameolight.com',f:'cameo'},
-  {n:'ALTMAN',t:'Entertainment Lighting',s:'www.altmanlighting.com',f:'altman'},
-  {n:'BLIZZARD',t:'Entertainment Lighting',s:'www.blizzardpro.com',f:'blizzard'},
-  {n:'WINMAX',t:'Entertainment Lighting',s:'www.winmax-showtec.com',f:'winmax'},
-  {n:'LDR',t:'Entertainment Lighting',s:'www.ldr.it',f:'ldr'},
-  {n:'CHAMSYS',t:'Entertainment Lighting Controls',s:'www.chamsyslighting.com',f:'chamsys'}]}];
+   {id:'dim',title:'Guestroom Management System and Dimming System',note:'Dimming, room management and lighting control systems.',items:[
+    {n:'EELECTRON',t:'Room Management System',s:'www.eelectron.com',f:'electron',k:'room'},
+    {n:'ZERO88',t:'Dimming and Control System',s:'www.zero88.com',f:'zero88',k:'dim ctl'},
+    {n:'LITEPUTER',t:'Lighting Control System',s:'www.liteputer.com.tw',f:'liteputer',k:'ctl'}]}];
+  var BF=[['all','All'],['dim','Dimming'],['room','Room Management'],['ctl','Controls']];
 
-  /* ===== EDIT HERE: lighting solutions (images in projects/) ===== */
-  var P=[{"n":"Architectural &amp; Specialty Lighting","c":"in","t":"Interior","d":"Lighting that shapes hotel, residential and commercial interiors, planned with illumination studies before installation.","i":["Solaire North Resort &amp; Casino","Shang Residences at Wack-Wack","Aurelia Residences","LAYA Sales Gallery"],"f":"S.SHANG.JPG","g":"linear-gradient(135deg,#ffb347,#ff6a3d)"},
-   {"n":"Landscape Lighting","c":"out","t":"Exterior","d":"Pathway, garden and grounds lighting that keeps outdoor spaces safe and inviting after dark.","i":["Solaire North Resort &amp; Casino","Shang Residences at Wack-Wack","Samal Shores Hotel &amp; Resort"],"f":"S.SAMAL.JPG","g":"linear-gradient(135deg,#2ecc8f,#0a8f6b)"},
-   {"n":"Facade Lighting","c":"out","t":"Exterior","d":"Facade lighting that turns building exteriors into landmarks, from hotels and malls to stadiums.","i":["Copeton Baysuites","Gateway Mall 2 and IBIS Hotel","Ferdinand E. Marcos Memorial Stadium","Solaire North Resort &amp; Casino"],"f":"S.GATEWAY.JPG","g":"linear-gradient(135deg,#4e6bff,#7a5cff)"},
-   {"n":"Stage Lighting","c":"stage","t":"Stage","d":"Stage lighting supplied and installed for performing arts venues.","i":["Rockwell Performing Arts Theater"],"f":"S.ROCKWELL.JPG","g":"linear-gradient(135deg,#ff5e7e,#b026ff)"}];
-function projCandidates(f){
-  var b=f.replace(/\.[^.]+$/,''),bases=[b,b.toLowerCase(),b.toUpperCase(),b.charAt(0).toUpperCase()+b.slice(1).toLowerCase()];
-  bases=bases.filter(function(x,i){return bases.indexOf(x)===i});
-  var out=[f];
-  [''].forEach(function(d){bases.forEach(function(x){
-    ['jpg','jpeg','png','webp'].forEach(function(e){var u=d+encodeURIComponent(x)+'.'+e;if(out.indexOf(u)<0)out.push(u)})})});
-  out.push('https://www.systechlc.com/img/'+f);
-  return out;
-}
-  var F=[["all","All"],["in","Interior"],["out","Exterior"],["stage","Stage"]];
-  var IC='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6M10 18h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2h5.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>';
+  /* ===== EDIT HERE: dimming solutions (image files sit in the same folder as this page) ===== */
+  var P=[{"n":"Dimming Systems","c":"dim","t":"Dimming","d":"Smooth, reliable dimming for hotels, resorts and residences, supplied and installed as a complete system.","i":["Samal Shores Hotel &amp; Resort","Shang Residences at Wack-Wack","Lanson Place, SM Mall of Asia"],"f":"S.SAMAL.jpeg","g":"linear-gradient(135deg,#7a5cff,#0035fe)"},
+   {"n":"Guestroom Management System","c":"room","t":"Guestroom","d":"Guestroom management supplied and installed for hotels and resorts.","i":["South Palms Resorts Panglao"],"f":"S.PANGLAO.jpg","g":"linear-gradient(135deg,#00b4f0,#0035fe)"},
+   {"n":"Lighting Controls","c":"ctl","t":"Controls","d":"Design, supply, supervision and commissioning of complete lighting controls for large properties.","i":["Solaire North Resort &amp; Casino"],"f":"S.SOLAIR.jpg","g":"linear-gradient(135deg,#ff8a3d,#d6336c)"},
+   {"n":"Facade Lighting Control","c":"ctl","t":"Controls","d":"Facade lighting supplied together with its control system.","i":["Gateway Mall 2 and IBIS Hotel"],"f":"S.GATEWAY.jpg","g":"linear-gradient(135deg,#2ecc8f,#0035fe)"}];
+  var F=[["all","All"],["dim","Dimming"],["room","Guestroom"],["ctl","Controls"]];
+  var IC='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9M15 5v4M9 15v4"/></svg>';
   var CHEV='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- hero: dimmer + colour-temperature comparison ---- */
+  /* ---- hero: living room (lights, curtains, day/night) ---- */
   (function(){
-    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var sc=$('dmStage'),r=$('dmRange'),val=$('dmVal'),mode=$('dmMode'),scn=$('dmScn');if(!sc)return;
-    var lamps=[].slice.call(sc.querySelectorAll('.dm-lamp')),all=[].slice.call(sc.querySelectorAll('[data-i]')),
-        NAMES=['2200K-2400K Extra Warm - Candlelight','2700K-3000K Warm White','3500K Neutral White','4000K Cool White','5000K-6500K Daylight'],
-        cur=70,auto=true,vis=true,foc=-1,raf=0;
-    function set(p){
-      cur=p;sc.style.setProperty('--lv',(p/100).toFixed(3));val.textContent=Math.round(p)+'%';r.value=p;r.style.setProperty('--p',p+'%');
-      [].forEach.call(scn.children,function(b){b.classList.toggle('on',!auto&&Math.round(p)===+b.dataset.v)});
+    var sc=$('dmStage'),r=$('dmRange'),val=$('dmVal'),mode=$('dmMode'),scn=$('dmScn'),cb=$('dmCurt'),tb=$('dmTime'),bub=$('dmBub');if(!sc)return;
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,
+        SCN=[['Business',.3,0,1],['Dinner',.55,.4,.25],['Event',.12,1,0],['After hours',0,0,0]],
+        S={lv:.55,c:.4,day:.25},idx=1,auto=true,vis=true,raf=0,ai=1,bt=0,say=['ding!','Welcome!','Check in?','ding ding!'],si=0;
+    function cl(x){return Math.max(0,Math.min(1,x))}
+    function mx(a,b,t){return Math.round(a+(b-a)*t)}
+    function P(n,v){sc.style.setProperty('--'+n,typeof v==='number'?v.toFixed(3):v)}
+    function apply(){
+      var dl=Math.pow(S.day,1.3)*(1-S.c)*.95,amb=Math.min(1,S.lv*.9+dl+(1-S.day)*(1-S.c)*.08);
+      P('lv',S.lv);P('c',S.c);P('day',S.day);P('amb',amb);P('dl',dl);P('dk',.06+.84*Math.pow(1-amb,1.2));
+      P('dusk',1-Math.pow(2*S.day-1,2));P('st',cl(1-S.day*1.8));P('eo',1-cl((amb-.5)/.35));P('zz',cl((amb-.7)/.2));
+      P('kc','rgb(255,'+mx(150,224,S.lv)+','+mx(60,176,S.lv)+')');
+      val.textContent=Math.round(S.lv*100)+'%';mode.textContent=idx>=0?SCN[idx][0]:'Custom';
+      r.value=S.lv*100;r.style.setProperty('--p',S.lv*100+'%');
+      cb.setAttribute('aria-pressed',S.c>.5?'true':'false');tb.setAttribute('aria-pressed',S.day<.5?'true':'false');
+      [].forEach.call(scn.children,function(b){b.classList.toggle('on',idx===+b.dataset.v)});
     }
-    function tween(to){
-      cancelAnimationFrame(raf);var from=cur,t0=performance.now(),d=550;
-      if(reduce){set(to);return}
-      (function s(t){var k=Math.min((t-t0)/d,1),e=1-Math.pow(1-k,3);set(from+(to-from)*e);if(k<1)raf=requestAnimationFrame(s)})(t0);
+    function go(t){
+      cancelAnimationFrame(raf);var f={lv:S.lv,c:S.c,day:S.day},t0=performance.now();
+      if(reduce){S.lv=t.lv;S.c=t.c;S.day=t.day;apply();return}
+      (function s(n){var k=Math.min((n-t0)/1300,1),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;for(var q in f)S[q]=f[q]+(t[q]-f[q])*e;apply();if(k<1)raf=requestAnimationFrame(s)})(t0);
     }
-    function focus(i){
-      foc=(foc===i)?-1:i;
-      all.forEach(function(el){var on=foc<0||+el.dataset.i===foc;el.style.setProperty('--f',on?1:.12)});
-      lamps.forEach(function(l,k){var on=k===foc;l.classList.toggle('is-f',on);l.setAttribute('aria-pressed',on?'true':'false')});
-      mode.textContent=foc<0?'All lamps':NAMES[foc];
-    }
-    r.addEventListener('input',function(){auto=false;cancelAnimationFrame(raf);set(+r.value)});
-    scn.addEventListener('click',function(e){var b=e.target.closest('button');if(b){auto=false;tween(+b.dataset.v)}});
-    lamps.forEach(function(l){l.addEventListener('click',function(){focus(+l.dataset.i)})});
+    function preset(i){idx=i;go({lv:SCN[i][1],c:SCN[i][2],day:SCN[i][3]})}
+    function man(t){auto=false;idx=-1;go(t)}
+    function curt(){man({lv:S.lv,c:S.c>.5?0:1,day:S.day})}
+    r.addEventListener('input',function(){auto=false;idx=-1;cancelAnimationFrame(raf);S.lv=r.value/100;apply()});
+    scn.addEventListener('click',function(e){var b=e.target.closest('button');if(b){auto=false;preset(+b.dataset.v)}});
+    cb.addEventListener('click',curt);$('dmHit').addEventListener('click',curt);
+    tb.addEventListener('click',function(){man({lv:S.lv,c:S.c,day:S.day>.5?0:1})});
+    [].forEach.call(sc.querySelectorAll('.dm-pend'),function(p){p.addEventListener('click',function(){
+      var on=S.lv>.05;man({lv:on?0:.7,c:S.c,day:S.day});
+      [].forEach.call(sc.querySelectorAll('.dm-pend'),function(q){q.classList.remove('sw');void q.offsetWidth;q.classList.add('sw')})})});
+    $('dmCat').addEventListener('click',function(){clearTimeout(bt);bub.textContent=say[si++%4];bub.classList.add('on');bt=setTimeout(function(){bub.classList.remove('on')},1600)});
     if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(sc);
-    set(70);
-    if(!reduce)(function tick(t){if(auto&&vis&&!document.hidden)set(52+42*Math.sin(t/1400));requestAnimationFrame(tick)})(0);
+    apply();
+    if(!reduce)setInterval(function(){if(auto&&vis&&!document.hidden){ai=(ai+1)%4;preset(ai)}},5600);
   })();
 
-  /* ---- classified brand catalogue ---- */
+  /* ---- brand catalogue ---- */
   function card(p,i){
-    var a=document.createElement('article');a.className='av-card rv';a.style.setProperty('--i',i%4);
-    var c=logoCandidates(p);
-    var logo='<div class="av-logo"><img src="'+c[0]+'" data-remote="'+c.slice(1).join('|')+'" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
+    var a=document.createElement('article');a.className='av-card rv';a.dataset.k=p.k||'';a.style.setProperty('--i',i%4);
+    var cc=cands(p.f).map(function(u){return LOGO_DIR+u}),alt=cc.slice(1).concat(['jpg','png','jpeg'].map(function(x){return 'https://www.systechlc.com/img/'+p.f+'.'+x})).join('|');
+    var logo='<div class="av-logo"><img src="'+cc[0]+'" data-remote="'+alt+'" referrerpolicy="no-referrer" alt="'+p.n+' logo" loading="lazy" onerror="pjImg(this)"><span class="av-fb">'+p.n.toUpperCase()+'</span>'+(p.s?'<span class="av-explore"><span>Visit website '+CHEV+'</span></span>':'')+'</div>';
     a.innerHTML=(p.s?'<a class="av-media-link" href="https://'+p.s+'" target="_blank" rel="noopener" aria-label="Visit '+p.n+' website">'+logo+'</a>':logo)
       +'<h3>'+p.n+'</h3>'
       +'<div class="av-tags"><span class="av-tag">'+p.t+'</span>'+(p.ex?'<span class="av-ex">Exclusive Distributor</span>':'')+'</div>'
       +(p.s?'<a class="av-visit" href="https://'+p.s+'" target="_blank" rel="noopener">'+p.s+'</a>':'');
     return a;
   }
-  var host=$('avCats'),fl=$('avFilter'),blocks=[];
+  var host=$('avCats'),fl=$('avFilter'),bcards=[];
   CATS.forEach(function(c){
     var sec=document.createElement('div');sec.className='av-cat';sec.dataset.c=c.id;
     sec.innerHTML='<div class="av-cat-head rv"><h3>'+c.title+'</h3><p>'+c.note+'</p><span class="av-cat-n">'+c.items.length+(c.items.length>1?' brands':' brand')+'</span></div><div class="av-grid"></div>';
-    var grid=sec.querySelector('.av-grid');c.items.forEach(function(p,i){grid.appendChild(card(p,i))});
-    host.appendChild(sec);blocks.push(sec);
+    var grid=sec.querySelector('.av-grid');c.items.forEach(function(p,i){var el=card(p,i);grid.appendChild(el);bcards.push(el)});
+    host.appendChild(sec);
   });
-  [['all','All']].concat(CATS.map(function(c){return[c.id,c.id==='arch'?'Architectural & Speciality':c.title]})).forEach(function(x,i){
+  BF.forEach(function(x,i){
     var b=document.createElement('button');b.type='button';b.textContent=x[1];if(!i)b.className='on';
     b.onclick=function(){
       [].forEach.call(fl.children,function(y){y.classList.remove('on')});b.classList.add('on');
-      blocks.forEach(function(sec){
-        var show=x[0]==='all'||sec.dataset.c===x[0];sec.style.display=show?'':'none';
-        if(show)[].forEach.call(sec.querySelectorAll('.av-cat-head,.av-card'),function(c){c.classList.add('pj-in');c.style.animation='none';void c.offsetWidth;c.style.animation='avPop .5s cubic-bezier(.16,1,.3,1)'});
-      });
+      bcards.forEach(function(c){var show=x[0]==='all'||(' '+c.dataset.k+' ').indexOf(' '+x[0]+' ')>-1;c.style.display=show?'':'none';
+        if(show){c.classList.add('pj-in');c.style.animation='none';void c.offsetWidth;c.style.animation='avPop .5s cubic-bezier(.16,1,.3,1)'}});
     };
     fl.appendChild(b);
   });
 
-  /* ---- lighting solution cards ---- */
-  var g=$('ltGrid'),lf=$('ltFilter'),cards=[];
-  P.forEach(function(p){var pc=projCandidates(p.f);var a=document.createElement('article');a.className='av-card rv';a.dataset.c=p.c;
-    a.innerHTML='<a class="av-media-link" href="CONTACT.html#av-form" aria-label="Explore '+p.n.replace(/<[^>]+>/g,'')+'"><div class="av-art" style="--g:'+p.g+'"><img src="'+pc[0]+'" data-remote="'+pc.slice(1).join('|')+'" alt="'+p.n+'" loading="lazy" onerror="pjImg(this)">'+IC+'<span class="av-explore"><span>Explore '+CHEV+'</span></span></div></a><span class="av-tag">'+p.t+'</span><h3>'+p.n+'</h3><p>'+p.d+'</p><p class="av-feat">Featured in</p><ul class="av-chips">'+p.i.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
+  /* ---- dimming solution cards ---- */
+  var g=$('dmGrid'),lf=$('dmFilter'),cards=[];
+  P.forEach(function(p){var a=document.createElement('article');a.className='av-card rv';a.dataset.c=p.c;
+    a.innerHTML='<a class="av-media-link" href="CONTACT.html#av-form" aria-label="Explore '+p.n.replace(/<[^>]+>/g,'')+'"><div class="av-art" style="--g:'+p.g+'"><img src="'+p.f+'" alt="'+p.n+'" loading="lazy" onerror="pjImg(this)">'+IC+'<span class="av-explore"><span>Explore '+CHEV+'</span></span></div></a><span class="av-tag">'+p.t+'</span><h3>'+p.n+'</h3><p>'+p.d+'</p><p class="av-feat">Featured in</p><ul class="av-chips">'+p.i.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>';
     g.appendChild(a);cards.push(a)});
   F.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.textContent=x[1];if(!i)b.className='on';
     b.onclick=function(){[].forEach.call(lf.children,function(y){y.classList.remove('on')});b.classList.add('on');
@@ -1260,7 +1269,6 @@ function projCandidates(f){
       if(e.target.classList.contains('rv'))setTimeout(function(){e.target.classList.remove('rv','pj-in')},1600)})},{threshold:.1});
     els.forEach(function(e){io.observe(e)});
   }
-  /* wait until the loader has lifted so the entrance animation is actually seen */
   if(document.documentElement.classList.contains('pj-ready'))boot();
   else document.addEventListener('pjready',function(){setTimeout(boot,120)},{once:true});
 })();

@@ -1042,6 +1042,18 @@ pre,code{max-width:100%;overflow-x:auto}
 /* TV remotes / keyboards: clear focus ring */
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #4e6bff;outline-offset:3px}
 </style>
+<style id="rwd-logo">
+/* header logo: keep it inside the header on phones and tablets so it never covers the hero text */
+@media (max-width:1023px){
+  header a>img{height:46px!important;max-height:46px!important;width:auto!important;max-width:190px!important;object-fit:contain}
+}
+@media (max-width:480px){
+  header a>img{height:40px!important;max-height:40px!important;max-width:160px!important}
+}
+@media (max-width:280px){
+  header a>img{height:30px!important;max-height:30px!important;max-width:110px!important}
+}
+</style>
 </head>
 <body x-data="{ page: 'careers', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"

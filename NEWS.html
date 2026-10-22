@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News &amp; Blog | Systech Lighting &amp; Controls Inc.</title>
+  <title>News &amp; Blog | Systech Lighting and Controls Inc.</title>
 <meta name="description" content="Latest news and articles from Systech Lighting &amp; Controls Inc.: lighting, dimming and controls, audiovisual and solar power guides.">
 <meta name="theme-color" content="#0035fe">
 <script>document.documentElement.className+=" js";try{if(JSON.parse(localStorage.getItem("darkMode"))===true)document.documentElement.className+=" pj-dark"}catch(e){}window.pjImg=function(i){var r=(i.dataset.remote||'').split('|').filter(Boolean),n=+i.dataset.tried||0;if(n<r.length){i.dataset.tried=n+1;i.src=r[n]}else i.remove()}</script>
@@ -712,239 +712,119 @@ body.b.eh .ct-f input,body.b.eh .ct-f select,body.b.eh .ct-f textarea{background
 #nwFeat .nw-card p{-webkit-line-clamp:2}
 @media(max-width:999px){#nwFeat .nw-card{grid-template-rows:auto auto}#nwFeat .nw-art{height:auto}}
 </style>
-<style id="footer-fix">
-/* ===== Footer: even 5-column grid (brand + 4 link columns) ===== */
-footer .ft-row{display:grid!important;grid-template-columns:minmax(0,1.45fr) repeat(4,minmax(0,1fr));column-gap:clamp(24px,3.2vw,56px);row-gap:40px;align-items:start;width:100%}
-footer .ft-brand{width:auto!important;max-width:none!important;flex:none!important}
-footer .ft-brand>p{max-width:360px}
-footer .ft-cols{display:contents!important}
-footer .ft-col{width:auto!important;min-width:0;flex:none!important}
-footer .ft-col h4{margin-bottom:1.1rem}
-footer .ft-col p,footer .ft-col a{overflow-wrap:anywhere}
-@media (max-width:1100px){
-  footer .ft-row{grid-template-columns:repeat(4,minmax(0,1fr))}
-  footer .ft-brand{grid-column:1/-1}
-}
-@media (max-width:760px){
-  footer .ft-row{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media (max-width:480px){
-  footer .ft-row{grid-template-columns:minmax(0,1fr)}
-}
+<style id="nav-interactive-css">
+/* nav: dropdown reveal + keyboard focus + current-page marker */
+header nav li > ul.tc{animation:navDrop .18s ease-out both;transform-origin:top left}
+@keyframes navDrop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+header nav a:focus-visible{outline:2px solid #0035fe;outline-offset:3px;border-radius:6px}
+body.b.eh header nav a:focus-visible{outline-color:#8fa3ff}
+header nav li > ul a[aria-current="page"]{color:#0035fe;font-weight:700}
+body.b.eh header nav li > ul a[aria-current="page"]{color:#8fa3ff}
+@media (prefers-reduced-motion:reduce){header nav li > ul.tc{animation:none}}
+</style>
+<style id="nav-icons-css">
+/* ---- nav icons: one animated icon per item, plays on hover / keyboard focus ---- */
+.nv-ic{display:inline-block;width:0;height:1.15em;margin-right:0;opacity:0;vertical-align:-.2em;flex:none;line-height:0;pointer-events:none;transition:width .25s ease,margin .25s ease,opacity .2s ease .05s,transform .25s cubic-bezier(.34,1.56,.64,1)}
+/* hidden at rest: nothing visible, no space taken. Appears only on hover / keyboard focus */
+header a:is(:hover,:focus-visible) > .nv-ic{width:1.15em;margin-right:.5em;opacity:1}
+/* desktop top-level items: icon appears beside (left of) the label, sitting in the gap so neighbours never shift */
+html.nv-roomy header nav > ul > li > a{position:relative}
+html.nv-roomy header nav > ul > li > a > .nv-ic{position:absolute;right:100%;top:50%;width:1.15em;height:1.15em;margin:0 .35em 0 0;transform:translateY(-50%) translateX(8px) scale(.3)}
+html.nv-roomy header nav > ul > li > a:is(:hover,:focus-visible) > .nv-ic{width:1.15em;margin:0 .35em 0 0;transform:translateY(-50%)}
+.nv-ic svg{display:block;width:100%;height:100%;overflow:visible;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nv-ic svg *{transform-origin:12px 12px}
+.nv-ic .fillc{fill:currentColor;stroke:none}
+.nv-ic .dim{opacity:.45}
 
-/* footer content must never wait for a scroll animation (it stayed hidden after translation) */
-footer .animate_top,footer .animate_right{opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important;transition:none!important}
+/* home: pops */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="home"] svg{animation:nvPop 1s ease-in-out infinite}
+@keyframes nvPop{0%,100%{transform:scale(1) rotate(0)}30%{transform:scale(1.38) rotate(-7deg)}55%{transform:scale(.9) rotate(3deg)}75%{transform:scale(1.12)}}
 
-/* ===== Language switcher ===== */
-.ft-lang-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;transition:color .2s}
-.ft-lang-btn:hover,.ft-lang-btn[aria-expanded="true"]{color:#0035fe}
-body.b.eh .ft-lang-btn:hover,body.b.eh .ft-lang-btn[aria-expanded="true"]{color:#8fa3ff}
-.ft-caret{transition:transform .2s}
-.ft-lang-btn[aria-expanded="true"] .ft-caret{transform:rotate(180deg)}
-#ftLangMenu{position:fixed;z-index:100002;width:min(560px,calc(100vw - 24px));max-height:min(60vh,420px);overflow:auto;padding:10px;border-radius:16px;
-  background:#fff;color:#1b2150;border:1px solid rgba(0,53,254,.14);box-shadow:0 24px 60px -18px rgba(8,20,80,.45);
-  display:none;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px}
-#ftLangMenu.open{display:grid;animation:ftPop .18s ease-out}
-#ftLangMenu button{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;text-align:left;padding:9px 12px;border:0;border-radius:10px;background:none;color:inherit;font:inherit;font-size:.92rem;cursor:pointer}
-#ftLangMenu button:hover,#ftLangMenu button:focus-visible{background:rgba(0,53,254,.08);outline:none}
-#ftLangMenu button[aria-selected="true"]{background:rgba(0,53,254,.12);color:#0035fe;font-weight:600}
-#ftLangMenu button[aria-selected="true"]::after{content:"✓"}
-body.b.eh #ftLangMenu{background:#171c38;color:#e7eaff;border-color:rgba(143,163,255,.22)}
-body.b.eh #ftLangMenu button:hover,body.b.eh #ftLangMenu button:focus-visible{background:rgba(143,163,255,.14)}
-body.b.eh #ftLangMenu button[aria-selected="true"]{background:rgba(143,163,255,.2);color:#b7c4ff}
-@keyframes ftPop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* audiovisual: speaker beats, sound waves pulse outward */
+.nv-ic .sp{transform-origin:6px 12px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .sp{animation:nvBeat .5s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .w1{animation:nvWave 1s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .w2{animation:nvWave 1s ease-in-out .25s infinite}
+@keyframes nvBeat{50%{transform:scale(1.14)}}
+@keyframes nvWave{0%,100%{opacity:.2;transform:translateX(-1px)}50%{opacity:1;transform:translateX(1.5px)}}
 
-/* hide Google Translate's own UI */
-.goog-te-banner-frame,.goog-te-balloon-frame,#goog-gt-tt,.goog-tooltip,.skiptranslate>iframe{display:none!important}
-.goog-text-highlight{background:none!important;box-shadow:none!important}
-body{top:0!important}
-#google_translate_element{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+/* lightings: bulb lights up and glows, rays flicker */
+.nv-ic .rays{transform-origin:12px 9px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="light"] .bulb{animation:nvGlow 1s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="light"] .rays{animation:nvRay 1s ease-in-out infinite}
+@keyframes nvGlow{0%,100%{fill:rgba(255,213,74,0);filter:drop-shadow(0 0 0 rgba(255,196,0,0))}50%{fill:#ffd54a;filter:drop-shadow(0 0 5px #ffc400)}}
+@keyframes nvRay{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.12)}}
 
-/* ===== Privacy Policy modal ===== */
-#ppModal{position:fixed;inset:0;z-index:100003;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,12,40,.62);backdrop-filter:blur(4px)}
-#ppModal.open{display:flex;animation:ppFade .2s ease-out}
-.pp-box{position:relative;display:flex;flex-direction:column;width:min(760px,100%);max-height:min(88vh,820px);border-radius:20px;overflow:hidden;
-  background:#fff;color:#2b3157;box-shadow:0 40px 90px -30px rgba(0,0,0,.65);animation:ppUp .28s cubic-bezier(.2,.8,.3,1)}
-.pp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 26px 18px;border-bottom:1px solid rgba(0,53,254,.12);background:linear-gradient(135deg,rgba(0,53,254,.07),transparent 70%)}
-.pp-head h2{margin:0;font-size:1.45rem;font-weight:700;color:#0b1240;line-height:1.25}
-.pp-head p{margin:4px 0 0;font-size:.85rem;color:#6b7194}
-.pp-x{flex:none;display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:50%;background:rgba(0,53,254,.08);color:#0035fe;cursor:pointer;transition:background .2s,transform .2s}
-.pp-x:hover{background:#0035fe;color:#fff;transform:rotate(90deg)}
-.pp-body{overflow:auto;padding:8px 26px 4px;font-size:.95rem;line-height:1.7;overscroll-behavior:contain}
-.pp-body h3{margin:22px 0 6px;font-size:1.05rem;font-weight:700;color:#0b1240}
-.pp-body p{margin:0 0 10px}
-.pp-body ul{margin:0 0 10px;padding-left:1.2rem;list-style:disc}
-.pp-body li{margin:3px 0}
-.pp-body a{color:#0035fe;text-decoration:underline}
-.pp-foot{display:flex;justify-content:flex-end;gap:10px;padding:14px 26px;border-top:1px solid rgba(0,53,254,.12)}
-.pp-ok{border:0;border-radius:999px;padding:10px 26px;background:linear-gradient(135deg,#0035fe,#4e6bff);color:#fff;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.pp-ok:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(0,53,254,.6)}
-body.b.eh .pp-box{background:#161a33;color:#c9cfee}
-body.b.eh .pp-head{border-color:rgba(143,163,255,.18);background:linear-gradient(135deg,rgba(78,107,255,.16),transparent 70%)}
-body.b.eh .pp-head h2,body.b.eh .pp-body h3{color:#fff}
-body.b.eh .pp-head p{color:#99a1cc}
-body.b.eh .pp-x{background:rgba(143,163,255,.15);color:#b7c4ff}
-body.b.eh .pp-body a{color:#9db0ff}
-body.b.eh .pp-foot{border-color:rgba(143,163,255,.18)}
-@keyframes ppFade{from{opacity:0}to{opacity:1}}
-@keyframes ppUp{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
-@media (max-width:520px){.pp-head,.pp-body,.pp-foot{padding-left:18px;padding-right:18px}.pp-head h2{font-size:1.2rem}}
-</style>
-<style id="sp-style">
-#spModal{position:fixed;inset:0;z-index:100003;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(8,12,40,.62);backdrop-filter:blur(4px)}
-#spModal.open{display:flex;animation:ppFade .2s ease-out}
-#spModal .pp-box{width:min(560px,100%)}
-#spModal form{display:flex;flex-direction:column;min-height:0;flex:1 1 auto}
-.sp-body{overflow:auto;padding:18px 26px 6px;display:grid;grid-template-columns:1fr 1fr;gap:14px;overscroll-behavior:contain}
-.sp-body .full{grid-column:1/-1}
-.sp-body label{display:block;margin-bottom:5px;font-size:.82rem;font-weight:600;color:#0b1240}
-.sp-body input,.sp-body textarea{width:100%;box-sizing:border-box;padding:11px 13px;border:1px solid rgba(0,53,254,.2);border-radius:12px;background:#fff;color:#1b2150;font:inherit;font-size:.95rem;transition:border-color .2s,box-shadow .2s}
-.sp-body textarea{min-height:110px;resize:vertical}
-.sp-body input:focus,.sp-body textarea:focus{outline:none;border-color:#0035fe;box-shadow:0 0 0 3px rgba(0,53,254,.15)}
-.sp-intro{grid-column:1/-1;margin:0;font-size:.9rem;color:#5b6290}
-.sp-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
-#spStatus{grid-column:1/-1;font-size:.9rem;min-height:1.2em}
-#spStatus.ok{color:#0a8a4a;font-weight:600}
-#spStatus.err{color:#c62828;font-weight:600}
-#spSend[disabled]{opacity:.65;cursor:wait}
-body.b.eh .sp-body label{color:#fff}
-body.b.eh .sp-intro{color:#99a1cc}
-body.b.eh .sp-body input,body.b.eh .sp-body textarea{background:#0f1228;color:#e7eaff;border-color:rgba(143,163,255,.28)}
-@media(max-width:520px){.sp-body{grid-template-columns:1fr;padding-left:18px;padding-right:18px}}
-</style>
-<style id="ft-social">
-footer .ft-brand ul a{display:inline-flex;color:#5b6290;transition:color .2s,transform .2s}
-footer .ft-brand ul a:hover{color:#0035fe;transform:translateY(-2px)}
-footer .ft-brand ul svg path{fill:currentColor!important}
-footer .ft-brand ul{gap:14px}
-body.b.eh footer .ft-brand ul a{color:#b7c4ff}
-body.b.eh footer .ft-brand ul a:hover{color:#fff}
-</style>
-<style id="rwd-all">
-/* ===== Responsive safety net: watch, phone, tablet, laptop, TV ===== */
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{overflow-x:hidden;overflow-x:clip;min-width:0}
-img,video,canvas,iframe,embed,object{max-width:100%}
-img,video{height:auto}
-h1,h2,h3,h4,h5,h6,p,li,a,td,th,label,button{overflow-wrap:break-word;min-width:0}
-pre,code{max-width:100%;overflow-x:auto}
-/* phones in landscape / very short screens */
-@media (max-height:480px){
-  .pp-box{max-height:94vh!important}
-  #ppModal,#spModal{padding:8px!important}
-  .pp-head{padding-top:12px!important;padding-bottom:10px!important}
-  .pp-foot{padding-top:8px!important;padding-bottom:8px!important}
-}
-/* touch screens: comfortable tap targets in the footer */
-@media (pointer:coarse){
-  footer .ft-col a,footer .ft-legal a,footer .ft-lang-btn{display:inline-flex;align-items:center;min-height:36px}
-  #ftLangMenu button{min-height:44px}
-}
-/* tablets / small laptops */
-@media (max-width:1024px){
-  .pp-box{width:min(720px,100%)}
-}
-/* small phones */
-@media (max-width:360px){
-  html{font-size:14.5px}
-  footer .ft-row{row-gap:28px}
-  .pp-head h2{font-size:1.05rem!important}
-  .pp-body{font-size:.88rem!important}
-  .pp-ok{padding:9px 18px!important}
-  .sp-body input,.sp-body textarea{font-size:16px}
-}
-/* smartwatches and other very narrow screens (<= 280px) */
-@media (max-width:280px){
-  html{font-size:12px}
-  .pp-box{border-radius:12px!important}
-  .pp-head,.pp-body,.pp-foot,.sp-body{padding-left:10px!important;padding-right:10px!important}
-  #ftLangMenu{grid-template-columns:1fr!important;padding:6px!important}
-}
-/* Lightings hero demo on narrow screens */
-@media (max-width:560px){
-  .dm-stage .dm-k{font-size:clamp(8px,2.7cqw,12px)!important;white-space:normal!important;line-height:1.15;padding:1cqw .3cqw!important;text-align:center}
-  .dm-stage .dm-k small{font-size:clamp(5.5px,1.8cqw,9px)!important}
-}
-@media (max-width:420px){
-  .dm-stage .dm-k small{display:none!important}
-}
-/* large monitors and TVs: scale the interface up so text stays readable from a distance */
-@media (min-width:1920px){html{font-size:18px}}
-@media (min-width:2560px){html{font-size:22px}}
-@media (min-width:3200px){html{font-size:28px}}
-@media (min-width:3840px){html{font-size:34px}}
-@media (min-width:1920px){
-  .pp-box{width:min(900px,100%)}
-  #spModal .pp-box{width:min(680px,100%)}
-}
-/* TV remotes / keyboards: clear focus ring */
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #4e6bff;outline-offset:3px}
-</style>
-<style id="rwd-logo">
-/* header logo: keep it inside the header on phones and tablets so it never covers the hero text */
-@media (max-width:1023px){
-  header a>img{height:46px!important;max-height:46px!important;width:auto!important;max-width:190px!important;object-fit:contain}
-}
-@media (max-width:480px){
-  header a>img{height:40px!important;max-height:40px!important;max-width:160px!important}
-}
-@media (max-width:280px){
-  header a>img{height:30px!important;max-height:30px!important;max-width:110px!important}
-}
-</style>
-<style id="nw-modal-fx">
-/* ===== News article pop-up: tidy layout, new close button, reading progress ===== */
-dialog.nw-dlg{overflow:hidden!important;max-height:none!important;width:min(760px,94vw);border-radius:26px;box-shadow:0 50px 110px -24px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.06)}
-dialog.nw-dlg[open]{animation:nwIn .38s cubic-bezier(.2,.9,.25,1)}
-dialog.nw-dlg[open]::backdrop{animation:nwBd .3s ease-out}
-dialog.nw-dlg.is-closing{animation:nwOut .22s ease-in forwards}
-dialog.nw-dlg.is-closing::backdrop{animation:nwBdOut .22s ease-in forwards}
-#nwDB{max-height:min(88vh,900px);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#4e6bff transparent}
-#nwDB::-webkit-scrollbar{width:8px}#nwDB::-webkit-scrollbar-thumb{background:linear-gradient(#4e6bff,#0035fe);border-radius:8px;border:2px solid transparent;background-clip:padding-box}
-dialog.nw-dlg .nw-art{width:100%!important;max-width:none!important;margin:0!important;border-radius:0!important;overflow:hidden}
-dialog.nw-dlg .nw-art img{width:100%;object-fit:cover}
-dialog[open].nw-dlg .nw-art img{animation:nwZoom 1.4s cubic-bezier(.2,.8,.2,1) both}
-dialog.nw-dlg .nw-body{padding:28px clamp(20px,4vw,38px) 34px}
-/* reading progress */
-.nw-prog{position:absolute;left:0;right:0;top:0;height:4px;z-index:5;pointer-events:none}
-.nw-prog i{display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#4e6bff,#0035fe,#8a5bff);box-shadow:0 0 12px rgba(78,107,255,.8)}
-/* close button */
-dialog.nw-dlg .nw-x{position:absolute!important;top:16px!important;right:16px!important;float:none!important;margin:0!important;z-index:6;width:44px;height:44px;padding:0;border-radius:50%;
-  border:1px solid rgba(255,255,255,.45);background:rgba(8,12,40,.55);-webkit-backdrop-filter:blur(10px) saturate(1.4);backdrop-filter:blur(10px) saturate(1.4);
-  box-shadow:0 10px 26px -8px rgba(0,0,0,.6);cursor:pointer;display:grid;place-items:center;transition:background .25s,transform .25s,box-shadow .25s,border-color .25s}
-.nw-x i{position:relative;display:block;width:18px;height:18px;transition:transform .35s cubic-bezier(.2,.9,.25,1)}
-.nw-x i span{position:absolute;left:0;top:50%;width:100%;height:2.5px;margin-top:-1.25px;border-radius:2px;background:#fff}
-.nw-x i span:first-child{transform:rotate(45deg)}.nw-x i span:last-child{transform:rotate(-45deg)}
-.nw-x:hover,.nw-x:focus-visible{background:#0035fe;border-color:#fff;box-shadow:0 12px 30px -6px rgba(0,53,254,.8)}
-.nw-x:hover i,.nw-x:focus-visible i{transform:rotate(90deg)}
-.nw-x:active{transform:scale(.9)}
-.nw-x:focus-visible{outline:3px solid #fff;outline-offset:3px}
-.nw-x::after{content:attr(data-tip);position:absolute;right:calc(100% + 10px);top:50%;transform:translate(6px,-50%);opacity:0;pointer-events:none;white-space:nowrap;padding:7px 11px;border-radius:9px;background:rgba(8,12,40,.88);color:#fff;font:600 12px/1 Inter,system-ui,sans-serif;letter-spacing:.02em;transition:opacity .2s,transform .2s}
-@media (hover:hover){.nw-x:hover::after{opacity:1;transform:translate(0,-50%)}}
-/* actions row */
-.nw-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px}
-.nw-done{padding:12px 26px;border-radius:999px;border:1.5px solid rgba(0,53,254,.35);background:transparent;color:#0035fe;font:inherit;font-weight:600;cursor:pointer;transition:background .2s,color .2s,transform .2s}
-.nw-done:hover{background:#0035fe;color:#fff;transform:translateY(-2px)}
-body.b.eh .nw-done{color:#9db0ff;border-color:rgba(157,176,255,.4)}
-body.b.eh .nw-done:hover{background:#4e6bff;color:#fff}
-@keyframes nwIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
-@keyframes nwOut{to{opacity:0;transform:translateY(18px) scale(.97)}}
-@keyframes nwBd{from{opacity:0}to{opacity:1}}
-@keyframes nwBdOut{to{opacity:0}}
-@keyframes nwZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-/* phones: slide-up sheet */
-@media (max-width:600px){
-  dialog.nw-dlg{width:100vw;max-width:100vw;margin:auto 0 0;border-radius:24px 24px 0 0}
-  #nwDB{max-height:92vh}
-  dialog.nw-dlg[open]{animation:nwSheet .38s cubic-bezier(.2,.9,.25,1)}
-  dialog.nw-dlg.is-closing{animation:nwSheetOut .22s ease-in forwards}
-  .nw-actions .av-btn,.nw-actions .nw-done{flex:1 1 100%;text-align:center;justify-content:center}
-}
-@keyframes nwSheet{from{transform:translateY(100%)}to{transform:none}}
-@keyframes nwSheetOut{to{transform:translateY(100%)}}
-@media (prefers-reduced-motion:reduce){dialog.nw-dlg,dialog.nw-dlg::backdrop,dialog.nw-dlg .nw-art img{animation:none!important}}
-</style>
+/* dimming: slider knobs slide */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="dimming"] .k1{animation:nvK1 1.3s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="dimming"] .k2{animation:nvK2 1.3s ease-in-out infinite}
+@keyframes nvK1{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+@keyframes nvK2{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
 
+/* solar: sun rays spin, core pulses */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="solar"] .rot{animation:nvSpin 2.4s linear infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="solar"] .core{animation:nvCore 1.2s ease-in-out infinite}
+@keyframes nvSpin{to{transform:rotate(360deg)}}
+@keyframes nvCore{50%{transform:scale(1.25)}}
+
+/* services + all products */
+.nv-ic .t1{transform-origin:6.5px 6.5px}.nv-ic .t2{transform-origin:17.5px 6.5px}
+.nv-ic .t3{transform-origin:6.5px 17.5px}.nv-ic .t4{transform-origin:17.5px 17.5px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] [class^="t"]{animation:nvTile 1s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t2{animation-delay:.12s}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t4{animation-delay:.24s}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t3{animation-delay:.36s}
+@keyframes nvTile{0%,70%,100%{transform:scale(1)}35%{transform:scale(.55)}}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="products"] svg{animation:nvTurn 1.2s ease-in-out infinite}
+@keyframes nvTurn{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.45)}}
+
+/* projects: folder flap opens */
+.nv-ic .fr{transform-origin:3px 20px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="projects"] .fr{animation:nvFolder 1s ease-in-out infinite}
+@keyframes nvFolder{0%,100%{transform:none}50%{transform:skewX(-16deg) scaleY(.92)}}
+
+/* on-going progress: bar fills */
+.nv-ic .bar{transform-origin:5px 12px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="progress"] .bar{animation:nvFill 1.4s ease-in-out infinite}
+@keyframes nvFill{0%{transform:scaleX(1)}80%,100%{transform:scaleX(3.5)}}
+
+/* completed: ring pulses, check draws */
+.nv-ic .ck{stroke-dasharray:10}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="completed"] .ck{animation:nvDraw 1.2s ease-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="completed"] .ring{animation:nvCore 1.2s ease-in-out infinite}
+@keyframes nvDraw{0%{stroke-dashoffset:10}45%,100%{stroke-dashoffset:0}}
+
+/* partners: circles link up */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="partners"] .c1{animation:nvC1 1s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="partners"] .c2{animation:nvC2 1s ease-in-out infinite}
+@keyframes nvC1{50%{transform:translateX(3px)}}
+@keyframes nvC2{50%{transform:translateX(-3px)}}
+
+/* news: text lines write in */
+.nv-ic .nl{stroke-dasharray:10}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl{animation:nvDraw 1.4s ease-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl2{animation-delay:.2s}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl3{animation-delay:.4s}
+
+/* careers: briefcase handle lifts */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="careers"] .hd{animation:nvLift .9s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="careers"] .bd{animation:nvSink .9s ease-in-out infinite}
+@keyframes nvLift{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}}
+@keyframes nvSink{0%,100%{transform:translateY(0)}40%{transform:translateY(.8px)}}
+
+/* contact: envelope flap opens */
+.nv-ic .fl{transform-origin:12px 7px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="contact"] .fl{animation:nvFlap 1.1s ease-in-out infinite}
+@keyframes nvFlap{0%,100%{transform:scaleY(1)}45%,60%{transform:scaleY(-.9)}}
+
+/* talk to expert: typing dots */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] :is(.d1,.d2,.d3){animation:nvDot .9s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] .d2{animation-delay:.15s}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] .d3{animation-delay:.3s}
+@keyframes nvDot{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}}
+
+@media (prefers-reduced-motion:reduce){.nv-ic svg,.nv-ic svg *{animation:none!important}}
+</style>
 </head>
 <body x-data="{ page: 'news', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
@@ -987,14 +867,14 @@ body.b.eh .nw-done:hover{background:#4e6bff;color:#fff}
       <nav>
         <ul class="tc _o sf yo cg ep">
           <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
-          <li class="c i" x-data="{ dropdown: false }"><a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown" :class="{ 'mk': ['audiovisual','lighting','dimming','solar'].includes(page) }">Services <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+          <li class="c i" x-data="{ dropdown: false, t: null, canHover(){ return !navigationOpen && matchMedia('(hover:hover)').matches } }" @mouseenter="if (canHover()) { clearTimeout(t); dropdown = true }" @mouseleave="if (canHover()) { t = setTimeout(() => dropdown = false, 160) }" @click.outside="dropdown = false" @keydown.escape.stop="dropdown = false; $refs.trig.focus()"><a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = canHover() ? true : !dropdown" x-ref="trig" role="button" aria-haspopup="true" :aria-expanded="dropdown" @keydown.down.prevent="dropdown = true; $nextTick(() => $refs.menu.querySelector('a').focus())" :class="{ 'mk': ['audiovisual','lighting','dimming','solar'].includes(page) }">Services <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512">
                 <path
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems and GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
-          <li class="c i" x-data="{ dropdown: false }">
-            <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
-              :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }" x-ref="menu" @click="if ($event.target.closest('a')) { dropdown = false; navigationOpen = false }" @keydown.down.prevent="($event.target.closest('li').nextElementSibling || $event.target.closest('li')).querySelector('a').focus()" @keydown.up.prevent="($event.target.closest('li').previousElementSibling ? $event.target.closest('li').previousElementSibling.querySelector('a').focus() : $refs.trig.focus())"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems and GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
+          <li class="c i" x-data="{ dropdown: false, t: null, canHover(){ return !navigationOpen && matchMedia('(hover:hover)').matches } }" @mouseenter="if (canHover()) { clearTimeout(t); dropdown = true }" @mouseleave="if (canHover()) { t = setTimeout(() => dropdown = false, 160) }" @click.outside="dropdown = false" @keydown.escape.stop="dropdown = false; $refs.trig.focus()">
+            <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = canHover() ? true : !dropdown" x-ref="trig" role="button" aria-haspopup="true" :aria-expanded="dropdown" @keydown.down.prevent="dropdown = true; $nextTick(() => $refs.menu.querySelector('a').focus())"
+              :class="{ 'mk': page === 'partners' || page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
               Projects
               <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512">
@@ -1002,7 +882,7 @@ body.b.eh .nw-done:hover{background:#4e6bff;color:#fff}
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
               </svg>
             </a>
-            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="Partners.html" class="xl">Partners</a></li></ul>
+            <ul class="a" :class="{ 'tc': dropdown }" x-ref="menu" @click="if ($event.target.closest('a')) { dropdown = false; navigationOpen = false }" @keydown.down.prevent="($event.target.closest('li').nextElementSibling || $event.target.closest('li')).querySelector('a').focus()" @keydown.up.prevent="($event.target.closest('li').previousElementSibling ? $event.target.closest('li').previousElementSibling.querySelector('a').focus() : $refs.trig.focus())"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="Partners.html" class="xl">Partners</a></li></ul>
           </li>
           <li><a href="NEWS.html" class="xl" :class="{ 'mk': page === 'news' }">News</a></li><li><a href="Career.html" class="xl" :class="{ 'mk': page === 'careers' }">Careers</a></li><li><a href="CONTACT.html" class="xl" :class="{ 'mk': page === 'contact' }">Contact</a></li>
         </ul>
@@ -1059,18 +939,18 @@ body.b.eh .nw-done:hover{background:#4e6bff;color:#fff}
   <div class="ct-f full"><label for="cC">Country</label><select id="cC" name="country"><option value="">Select region...</option></select></div>
   <div class="ct-f full"><label for="cM">Message</label><textarea id="cM" name="message" required></textarea></div></div>
   <div class="ct-submit"><button type="submit" class="av-btn">Send Message</button><span class="ct-note">We reply to the email address you provide.</span></div><div id="ctStatus" role="status" aria-live="polite"></div></form></div></section>
-<dialog class="nw-dlg" id="nwD" aria-label="News article"><div class="nw-prog" aria-hidden="true"><i id="nwP"></i></div><button type="button" class="nw-x" id="nwX" aria-label="Close article" data-tip="Close · Esc"><i aria-hidden="true"><span></span><span></span></i></button><div id="nwDB"></div></dialog>
+<dialog class="nw-dlg" id="nwD"><button class="nw-x" id="nwX" aria-label="Close">&times;</button><div id="nwDB"></div></dialog>
 <section class="lk-sec"><div class="av-wrap"><h2>Explore more</h2><p class="lk-sub">Jump to another part of Systech.</p><nav class="lk-strip" aria-label="Explore Systech pages"><a href="index.html"><b>Home</b><small>Back to the main page</small></a><a href="Audiovisual.html"><b>Audiovisual</b><small>Sound, video and automation</small></a><a href="Lightings.html"><b>Lightings</b><small>Architectural and stage lighting</small></a><a href="Dimmings.html"><b>Dimming Systems and GRMS</b><small>Dimming and room control</small></a><a href="Solar.html"><b>Solar Power System</b><small>Clean power for your property</small></a><a href="Career.html"><b>Careers</b><small>Join the Systech team</small></a><a href="Partners.html"><b>Partner</b><small>Brands we work with</small></a><a href="CONTACT.html"><b>Contact</b><small>Offices, map and inquiries</small></a></nav></div></section>
 </main>
 <footer>
 <div class="bb ze ki xn 2xl:ud-px-0">
 <div class="ji gp">
-<div class="tc uf ap gg fp ft-row">
-<div class="animate_top zd/2 to/4 ft-brand">
+<div class="tc uf ap gg fp">
+<div class="animate_top zd/2 to/4">
 <a href="index.html"><img src="logo-light_systech.png" alt="Systech Lighting &amp; Controls" class="om h-10 w-auto"><img src="logo-dark_systech.png" alt="Systech Lighting &amp; Controls" class="xc nm h-10 w-auto"></a>
 <p class="lc fb">Lighting, dimming, audio-visual and sound systems — planned, installed and supported by one team.</p>
 <ul class="tc wf cg"><li>
-                <a href="https://www.facebook.com/profile.php?id=61586671781566" target="_blank" rel="noopener" aria-label="Facebook">
+                <a href="https://www.facebook.com/systechlc/" target="_blank" rel="noopener" aria-label="Facebook">
                   <svg class="vh ul cl il" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <g>
@@ -1080,16 +960,10 @@ body.b.eh .nw-done:hover{background:#4e6bff;color:#fff}
                     </g>
                   </svg>
                 </a>
-              </li><li>
-                <a href="https://www.linkedin.com/company/systech-lc/" target="_blank" rel="noopener" aria-label="LinkedIn" class="ft-li">
-                  <svg class="vh ul cl il" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z" fill=""/>
-                  </svg>
-                </a>
               </li></ul>
 </div>
-<div class="vd ro tc sf rn un gg vn ft-cols">
-<div class="animate_top ft-col"><h4 class="kk wm tj ec">Quick Links</h4><ul>
+<div class="vd ro tc sf rn un gg vn">
+<div class="animate_top"><h4 class="kk wm tj ec">Quick Links</h4><ul>
 <li><a href="index.html" class="sc xl vb">Home</a></li>
 <li><a href="index.html#services" class="sc xl vb">Products</a></li>
 <li><a href="index.html#progress" class="sc xl vb">On-Going Projects</a></li>
@@ -1100,29 +974,26 @@ body.b.eh .nw-done:hover{background:#4e6bff;color:#fff}
 <li><a href="Career.html" class="sc xl vb">Careers</a></li>
 <li><a href="CONTACT.html" class="sc xl vb">Contact</a></li>
 </ul></div>
-<div class="animate_top ft-col"><h4 class="kk wm tj ec">Services</h4><ul>
+<div class="animate_top"><h4 class="kk wm tj ec">Services</h4><ul>
 <li><a href="Audiovisual.html" class="sc xl vb">Audiovisual</a></li>
 <li><a href="Lightings.html" class="sc xl vb">Lightings</a></li>
 <li><a href="Dimmings.html" class="sc xl vb">Dimming Systems and GRMS</a></li>
 <li><a href="Solar.html" class="sc xl vb">Solar Power System</a></li>
-<li><a href="index.html#features-section" id="ftSupportLink" class="sc xl vb" aria-haspopup="dialog">24/7 Support</a></li>
+<li><a href="index.html#features-section" class="sc xl vb">24/7 Support</a></li>
 </ul></div>
-<div class="animate_top ft-col"><h4 class="kk wm tj ec">Contact</h4><ul>
+<div class="animate_top"><h4 class="kk wm tj ec">Contact</h4><ul>
 <li><a href="tel:+63283749938" class="sc xl vb">+632-8374-9938</a></li>
 <li><a href="mailto:sales@systechlc.com" class="sc xl vb">sales@systechlc.com</a></li>
-<li><a href="mailto:aftersales@systechlc.com" class="sc xl vb">aftersales@systechlc.com</a></li>
 <li><a href="CONTACT.html#av-form" class="sc xl vb">Send an inquiry</a></li>
 </ul></div>
-<div class="animate_top ft-col"><h4 class="kk wm tj ec">Offices</h4>
+<div class="animate_top"><h4 class="kk wm tj ec">Offices</h4>
 <p class="ac qe">Quezon City &amp; Antipolo City, Philippines</p></div>
 </div>
 </div>
 </div>
 <div class="bh ch pm tc uf sf yo wf xf ap cg fp bj">
-<div class="animate_top"><ul class="tc wf gg ft-legal">
-<li class="notranslate" translate="no"><button type="button" id="ftLangBtn" class="ft-lang-btn xl" aria-haspopup="listbox" aria-expanded="false" aria-controls="ftLangMenu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="ftLangLabel">English</span><svg class="ft-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
-<li><a href="#privacy-policy" id="ftPrivacyLink" class="xl" aria-haspopup="dialog">Privacy Policy</a></li></ul></div>
-<div class="animate_top"><p>&copy; 2027 Systech Lighting &amp; Controls Inc. All rights reserved.</p></div>
+<div class="animate_top"><ul class="tc wf gg"><li><a href="#!" class="xl">English</a></li><li><a href="#!" class="xl">Privacy Policy</a></li></ul></div>
+<div class="animate_top"><p>&copy; 2027 Systech Lighting and Controls Inc. All rights reserved.</p></div>
 </div>
 </div>
 </footer>
@@ -1192,8 +1063,8 @@ We look forward to turning these conversations into meaningful collaborations an
   },
 
       {
-    id: `harman`,
-    category: `audiovisual`,
+    id: `hk-lightings`,
+    category: `company`,
     date: `2026-09-23`,
     title: `HARMAN - Business Engagement in Budapest, Hungary`,
     excerpt: `Systech recently participated in a productive business engagement in Budapest, Hungary, alongside our valued clients from the Cultural Center of the Philippines (CCP).`,
@@ -1211,7 +1082,7 @@ Work with purpose. Build partnerships. Deliver excellence.`
   },
 
         {
-    id: `anniv`,
+    id: `hk-lightings`,
     category: `company`,
     date: `2026-07-18`,
     title: `Celebrating Another Year of Systech: A Journey of Growth, Partnership & Excellence`,
@@ -1230,7 +1101,7 @@ Work with purpose. Build partnerships. Deliver excellence.`
   },
 
           {
-    id: `nustar`,
+    id: `CEBU-lightings`,
     category: `company`,
     date: `2026-07-14`,
     title: `A New Stage for Cebu: Systech to Deliver World-Class AV & Sound`,
@@ -1251,8 +1122,8 @@ Together, we continue to build world-class venues for the Philippines.`
   },
 
             {
-    id: `ISE`,
-    category: `audiovisual`,
+    id: `ise`,
+    category: `company`,
     date: `2026-07-14`,
     title: `Systech Lighting & Controls Represents the Philippines at Integrated Systems Europe (ISE)`,
     excerpt: `Representing Systech Lighting & Controls Inc. at Integrated Systems Europe (ISE) was a valuable opportunity to connect with industry leaders, explore emerging . .`,
@@ -1270,13 +1141,13 @@ Experiences like ISE reinforce the importance of continuous learning, collaborat
   },
 
       {
-    id: `CCP`,
+    id: `CEBU-lightings`,
     category: `company`,
     date: `2026-07-14`,
     title: `A New Chapter for the CCP: Systech Lighting & Controls to Deliver World-Class Systems for Philippine Performing Arts`,
     excerpt: `We are deeply honored that Systech Lighting & Controls, Inc. has been awarded the Audiovisual, Sound System, Stage Lighting, Architectural Lighting, . .`,
     readTime: 2,
-    image: `ccp.jpg`,
+    image: `CCP.jpg`,
     body: [
       `We are deeply honored that Systech Lighting & Controls, Inc. has been awarded the Audiovisual, Sound System, Stage Lighting, Architectural Lighting, and Control Systems packages for the rehabilitation of the Cultural Center of the Philippines.
 
@@ -1295,7 +1166,7 @@ Together, we look forward to helping shape the future of Philippine performing a
   },
 
         {
-    id: `MILAN`,
+    id: `CEBU-lightings`,
     category: `lightings`,
     date: `2026-07-14`,
     title: `Systech Lighting & Controls Joins Industry Leaders at Smart Building Expo Milan`,
@@ -1403,28 +1274,15 @@ Grateful for the experience and excited to bring these insights home as we conti
       '<div class="nw-body">' + meta(p) +
         '<h2>' + esc(p.title) + '</h2>' +
         p.body.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') +
-        '<div class="nw-actions"><a class="av-btn" href="CONTACT.html">Talk to our team</a><button type="button" class="nw-done" data-close>Close</button></div>' +
+        '<a class="av-btn" href="CONTACT.html">Talk to our team</a>' +
       '</div>';
     if (dialog.showModal && !dialog.open) dialog.showModal();
     else dialog.setAttribute('open', '');
-    scroller.scrollTop = 0; prog.style.transform = 'scaleX(0)';
-    $('nwX').focus({ preventScroll: true });
     history.replaceState(null, '', '#' + id);
   }
-  var scroller = $('nwDB'), prog = $('nwP'), closing = false;
-  function closeArt() {
-    if (!dialog.open || closing) return;
-    closing = true; dialog.classList.add('is-closing');
-    setTimeout(function () { dialog.classList.remove('is-closing'); closing = false; dialog.close(); }, 220);
-  }
-  $('nwX').onclick = closeArt;
-  dialog.addEventListener('cancel', function (e) { e.preventDefault(); closeArt(); });
+  $('nwX').onclick = function () { dialog.close(); };
   dialog.addEventListener('close', function () { history.replaceState(null, '', location.pathname); });
-  dialog.addEventListener('click', function (e) { if (e.target === dialog || (e.target.closest && e.target.closest('[data-close]'))) closeArt(); });
-  scroller.addEventListener('scroll', function () {
-    var m = scroller.scrollHeight - scroller.clientHeight;
-    prog.style.transform = 'scaleX(' + (m > 0 ? scroller.scrollTop / m : 0) + ')';
-  }, { passive: true });
+  dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
 
   /* ---- featured article (the newest) ---- */
   var featured = posts[0];
@@ -1695,14 +1553,14 @@ var POSITIONS = [
     }
   };
 
-  var DEFAULT_CC = { sales: 'sales@systechlc.com,mjarevalo2002@gmail.com', hr: 'hr@systechlc.com,ghepurganan.systechlc@gmail.com,mjarevalo2002@gmail.com', aftersales: 'aftersales@systechlc.com,mjarevalo2002@gmail.com' };
+  var DEFAULT_CC = { sales: 'sales@systechlc.com', hr: 'hr@systechlc.com', aftersales: 'aftersales@systechlc.com' };
   var FALLBACK_CC = (typeof CONTACT_EMAIL !== 'undefined' && CONTACT_EMAIL) ? CONTACT_EMAIL : 'sales@systechlc.com';
   /* the department that gets a CC copy. cc-config.js can override these; the defaults above always work */
   function ccFor(t) {
-    var key = t && t.cc, map = window.SYSTECH_CC || {}, pick = [map[key], DEFAULT_CC[key]], re = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    var key = t && t.cc, map = window.SYSTECH_CC || {}, pick = [map[key], DEFAULT_CC[key]];
     for (var i = 0; i < pick.length; i++) {
-      var list = String(pick[i] || '').split(',').map(function (x) { return x.trim(); }).filter(Boolean);
-      if (list.length && list.every(function (x) { return re.test(x) && x.indexOf('yourdomain') < 0; })) return list.join(',');
+      var a = String(pick[i] || '').trim();
+      if (/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(a) && a.indexOf('yourdomain') < 0) return a;
     }
     return FALLBACK_CC;   /* never blank, so the Cc line is always valid */
   }
@@ -1826,204 +1684,77 @@ var POSITIONS = [
   fit();addEventListener('resize',fit);addEventListener('load',fit);
 })();
 </script>
-<div id="google_translate_element" class="notranslate" translate="no"></div>
-<ul id="ftLangMenu" class="notranslate" translate="no" role="listbox" aria-label="Select language"></ul>
-
-<div id="ppModal" role="dialog" aria-modal="true" aria-labelledby="ppTitle" aria-hidden="true">
-  <div class="pp-box" tabindex="-1">
-    <div class="pp-head">
-      <div>
-        <h2 id="ppTitle">Privacy Policy</h2>
-        <p>Systech Lighting &amp; Controls Inc. &middot; Last updated: October 2026</p>
-      </div>
-      <button type="button" class="pp-x" id="ppClose" aria-label="Close privacy policy">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="pp-body">
-      <h3>1. Introduction</h3>
-      <p>Systech Lighting &amp; Controls Inc. (&ldquo;Systech&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This policy explains what personal information we collect through this website, how we use and protect it, and the choices you have. We handle personal data in accordance with the Philippine Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules.</p>
-
-      <h3>2. Information We Collect</h3>
-      <ul>
-        <li><strong>Information you give us:</strong> your name, company, email address, phone number and the message or project details you submit through our inquiry or contact forms, or send by email or phone.</li>
-        <li><strong>Job applications:</strong> details and documents you send us when applying through our Careers page.</li>
-        <li><strong>Technical information:</strong> basic browser and device data (such as browser type, language and pages visited) and your display preferences, such as light/dark mode and language, stored on your device.</li>
-      </ul>
-
-      <h3>3. How We Use Your Information</h3>
-      <ul>
-        <li>To respond to your inquiries and prepare quotations for lighting, dimming, audio-visual, sound and solar power projects.</li>
-        <li>To deliver, install and support our products and services, including after-sales and 24/7 support.</li>
-        <li>To evaluate job applications.</li>
-        <li>To improve our website, services and communication with customers.</li>
-        <li>To comply with legal and regulatory obligations.</li>
-      </ul>
-
-      <h3>4. Cookies and Local Storage</h3>
-      <p>This website uses a small amount of browser storage to remember preferences such as dark mode and your selected language. You can clear this at any time through your browser settings. Blocking it will not stop you from using the site.</p>
-
-      <h3>5. Sharing of Information</h3>
-      <p>We do not sell your personal information. We share it only with:</p>
-      <ul>
-        <li>Service providers that help us run the website and handle your messages (for example, our email delivery service for form submissions).</li>
-        <li>Our project partners, suppliers and installers, where needed to fulfil your request, under confidentiality obligations.</li>
-        <li>Government agencies or other parties when required by law or to protect our legal rights.</li>
-      </ul>
-
-      <h3>6. Third-Party Services and Links</h3>
-      <p>Our website may load fonts from Google Fonts, offer page translation through Google Translate, and link to external sites such as our Facebook page. These services have their own privacy policies, and we are not responsible for their practices. When you choose a language other than English, the page text is sent to Google for translation.</p>
-
-      <h3>7. Data Retention</h3>
-      <p>We keep personal information only as long as needed for the purposes above, or as required by law, then securely delete or anonymize it.</p>
-
-      <h3>8. Data Security</h3>
-      <p>We use reasonable organizational, physical and technical safeguards to protect your information against unauthorized access, loss, misuse or disclosure. No method of transmission over the internet is completely secure, so we cannot guarantee absolute security.</p>
-
-      <h3>9. Your Rights</h3>
-      <p>Under the Data Privacy Act, you have the right to:</p>
-      <ul>
-        <li>Be informed about how your data is processed;</li>
-        <li>Access and obtain a copy of your personal data;</li>
-        <li>Correct inaccurate or outdated data;</li>
-        <li>Object to, or request suspension, removal or blocking of, your data in certain cases;</li>
-        <li>Withdraw consent previously given; and</li>
-        <li>File a complaint with the National Privacy Commission (privacy.gov.ph).</li>
-      </ul>
-
-      <h3>10. Children&rsquo;s Privacy</h3>
-      <p>Our website and services are intended for businesses and adults. We do not knowingly collect personal information from children.</p>
-
-      <h3>11. Changes to This Policy</h3>
-      <p>We may update this policy from time to time. The latest version will always be available on this page, with the date it was last updated.</p>
-
-      <h3>12. Contact Us</h3>
-      <p>For questions or requests about your personal data, contact us at:</p>
-      <ul>
-        <li>Email: <a href="mailto:sales@systechlc.com">sales@systechlc.com</a></li>
-        <li>Phone: <a href="tel:+63283749938">+632-8374-9938</a></li>
-        <li>Offices: Quezon City &amp; Antipolo City, Philippines</li>
-      </ul>
-    </div>
-    <div class="pp-foot"><button type="button" class="pp-ok" id="ppOk">I Understand</button></div>
-  </div>
-</div>
-
-<script>
-/* ===== Footer: Privacy Policy popup + language switcher ===== */
+<script id="nav-interactive-js">
 (function(){
-  /* ---- Privacy Policy modal ---- */
-  var modal=document.getElementById('ppModal'),box=modal.querySelector('.pp-box'),link=document.getElementById('ftPrivacyLink'),lastFocus=null;
-  function openPP(e){if(e)e.preventDefault();lastFocus=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';modal.querySelector('.pp-body').scrollTop=0;box.focus()}
-  function closePP(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus()}
-  link.addEventListener('click',openPP);
-  document.getElementById('ppClose').addEventListener('click',closePP);
-  document.getElementById('ppOk').addEventListener('click',closePP);
-  modal.addEventListener('mousedown',function(e){if(e.target===modal)closePP()});
-
-  /* ---- Language switcher (Google Translate) ---- */
-  var LANGS=[['en','English'],['tl','Filipino'],['ceb','Cebuano'],['ilo','Ilocano'],['zh-CN','中文 (简体)'],['zh-TW','中文 (繁體)'],['ja','日本語'],['ko','한국어'],['es','Español'],['fr','Français'],['de','Deutsch'],['it','Italiano'],['pt','Português'],['nl','Nederlands'],['ru','Русский'],['ar','العربية'],['hi','हिन्दी'],['id','Bahasa Indonesia'],['ms','Bahasa Melayu'],['th','ไทย'],['vi','Tiếng Việt'],['tr','Türkçe']];
-  var btn=document.getElementById('ftLangBtn'),label=document.getElementById('ftLangLabel'),menu=document.getElementById('ftLangMenu'),KEY='siteLang',loading=false;
-  function name(c){for(var i=0;i<LANGS.length;i++)if(LANGS[i][0]===c)return LANGS[i][1];return 'English'}
-  function saved(){try{return localStorage.getItem(KEY)||'en'}catch(e){return 'en'}}
-  function setCookie(v){var d=location.hostname,h=['',';domain='+d];if(d.split('.').length>1)h.push(';domain=.'+d.split('.').slice(-2).join('.'));
-    h.forEach(function(x){document.cookie='googtrans='+v+';path=/'+x+(v?'':';expires=Thu, 01 Jan 1970 00:00:00 GMT')})}
-  function loadGT(cb){
-    if(window.google&&google.translate&&google.translate.TranslateElement){cb&&cb();return}
-    if(loading){return}
-    loading=true;
-    window.googleTranslateElementInit=function(){new google.translate.TranslateElement({pageLanguage:'en',autoDisplay:false},'google_translate_element');cb&&cb()};
-    var s=document.createElement('script');s.src='https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';s.async=true;document.head.appendChild(s)}
-  function pick(code,tries){
-    var c=document.querySelector('select.goog-te-combo');
-    if(c){c.value=code;c.dispatchEvent(new Event('change'));return}
-    if((tries||0)<40)setTimeout(function(){pick(code,(tries||0)+1)},150)}
-  function mark(code){label.textContent=name(code);[].forEach.call(menu.children,function(li){li.firstChild.setAttribute('aria-selected',li.dataset.c===code)})}
-  function choose(code){
-    closeMenu();
-    try{localStorage.setItem(KEY,code)}catch(e){}
-    mark(code);
-    if(code==='en'){setCookie('');if(document.documentElement.classList.contains('translated-ltr')||document.documentElement.classList.contains('translated-rtl')||document.body.className.indexOf('translated')>-1)location.reload();return}
-    setCookie('/en/'+code);
-    loadGT(function(){pick(code)});
-    if(window.google&&google.translate)pick(code)}
-  LANGS.forEach(function(l){var li=document.createElement('li');li.dataset.c=l[0];li.setAttribute('role','presentation');li.style.listStyle='none';
-    var b=document.createElement('button');b.type='button';b.setAttribute('role','option');b.setAttribute('lang',l[0]);b.textContent=l[1];b.addEventListener('click',function(){choose(l[0])});li.appendChild(b);menu.appendChild(li)});
-  function place(){var r=btn.getBoundingClientRect(),w=Math.min(560,innerWidth-24);menu.style.left=Math.max(12,Math.min(r.left,innerWidth-w-12))+'px';menu.style.bottom=(innerHeight-r.top+10)+'px'}
-  function openMenu(){place();menu.classList.add('open');btn.setAttribute('aria-expanded','true');var sel=menu.querySelector('[aria-selected="true"]');(sel||menu.querySelector('button')).focus()}
-  function closeMenu(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false')}
-  btn.addEventListener('click',function(e){e.stopPropagation();menu.classList.contains('open')?closeMenu():openMenu()});
-  document.addEventListener('click',function(e){if(!menu.contains(e.target))closeMenu()});
-  addEventListener('resize',closeMenu);addEventListener('scroll',closeMenu,{passive:true});
-  document.addEventListener('keydown',function(e){
-    if(e.key!=='Escape')return;
-    if(menu.classList.contains('open')){closeMenu();btn.focus()}else if(modal.classList.contains('open'))closePP()});
-
-  /* restore the visitor's previous language */
-  var cur=saved();mark(cur);
-  if(cur!=='en'){setCookie('/en/'+cur);loadGT()}
+  var cur=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  document.querySelectorAll('header nav li > ul a[href]').forEach(function(a){
+    var h=a.getAttribute('href').toLowerCase();
+    if(h.indexOf('#')>-1)return;           /* section links on index are not "pages" */
+    if(h===cur)a.setAttribute('aria-current','page');
+  });
 })();
 </script>
-
-<div id="spModal" role="dialog" aria-modal="true" aria-labelledby="spTitle" aria-hidden="true">
-  <div class="pp-box" tabindex="-1">
-    <div class="pp-head">
-      <div>
-        <h2 id="spTitle">24/7 Support</h2>
-        <p>Systech Lighting &amp; Controls Inc. &middot; After-sales team</p>
-      </div>
-      <button type="button" class="pp-x" id="spClose" aria-label="Close support form">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <form id="spForm" novalidate>
-      <div class="sp-body">
-        <p class="sp-intro">Describe the issue and our after-sales team will get back to you. Please include the product, project location and any model or serial number.</p>
-        <div><label for="spF">First name</label><input id="spF" name="first_name" autocomplete="given-name" required></div>
-        <div><label for="spL">Last name</label><input id="spL" name="last_name" autocomplete="family-name"></div>
-        <div class="full"><label for="spE">Email address</label><input id="spE" name="email" type="email" autocomplete="email" required></div>
-        <div class="full"><label for="spP">Phone number</label><input id="spP" name="phone" type="tel" autocomplete="tel"></div>
-        <div class="full"><label for="spM">Message</label><textarea id="spM" name="message" required placeholder="What do you need help with?"></textarea></div>
-        <input class="sp-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div id="spStatus" role="status" aria-live="polite"></div>
-      </div>
-      <div class="pp-foot"><button type="submit" class="pp-ok" id="spSend">Send Message</button></div>
-    </form>
-  </div>
-</div>
-<script>
-/* ===== Footer: 24/7 Support popup form -> aftersales@systechlc.com ===== */
+<script id="nav-icons-js">
 (function(){
-  var TO='aftersales@systechlc.com',FALLBACK='sales@systechlc.com';
-  var KEY='gQ2T9LAubWGQijBsb',SVC='default_service',TPL='template_rkx63r6';
-  var link=document.getElementById('ftSupportLink'),modal=document.getElementById('spModal');
-  if(!link||!modal)return;
-  var box=modal.querySelector('.pp-box'),form=document.getElementById('spForm'),st=document.getElementById('spStatus'),btn=document.getElementById('spSend'),label=btn.textContent,last=null,ready=false;
-  function say(k,t){st.className=k;st.textContent=t}
-  function open(e){if(e)e.preventDefault();last=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.documentElement.style.overflow='hidden';say('','');
-    if(!window.emailjs&&!document.getElementById('spEmailjs')){var s=document.createElement('script');s.id='spEmailjs';s.src='https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';document.head.appendChild(s)}
-    setTimeout(function(){document.getElementById('spF').focus()},60)}
-  function close(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.documentElement.style.overflow='';if(last&&last.focus)last.focus()}
-  link.addEventListener('click',open);
-  document.getElementById('spClose').addEventListener('click',close);
-  modal.addEventListener('mousedown',function(e){if(e.target===modal)close()});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('open'))close()});
-  function send(p){return emailjs.send(SVC,TPL,p).catch(function(err){
-    if(p.cc_email!==FALLBACK){var q={};for(var k in p)q[k]=p[k];q.cc_email=FALLBACK;return emailjs.send(SVC,TPL,q)}throw err})}
-  form.addEventListener('submit',function(e){
-    e.preventDefault();if(btn.disabled)return;
-    var d=new FormData(form);if(d.get('website'))return;
-    var first=(d.get('first_name')||'').trim(),lastN=(d.get('last_name')||'').trim(),email=(d.get('email')||'').trim(),phone=(d.get('phone')||'').trim(),msg=(d.get('message')||'').trim();
-    if(!first||!msg||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){say('err','Please add your first name, a valid email and a short message.');return}
-    if(!window.emailjs){say('err','The mail service could not be loaded. Please check your connection and try again, or write to '+TO+'.');return}
-    if(!ready){emailjs.init({publicKey:KEY});ready=true}
-    var p={name:(first+' '+lastN).trim(),first_name:first,last_name:lastN,email:email,phone:phone||'-',country:'-',topic:'24/7 Support (aftersales)',topic_icon:'\uD83C\uDFA7',role:'-',link:'-',
-      time:new Date().toLocaleString('en-PH',{year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'Asia/Manila',timeZoneName:'short'}),
-      message:msg,to_email:TO,cc_email:TO+',mjarevalo2002@gmail.com'};
-    btn.disabled=true;btn.textContent='Sending...';say('','');
-    send(p).then(function(){form.reset();say('ok','Thank you! Your message was sent to our after-sales team. We will reply to '+email+'.')},
-      function(err){say('err','Sorry, we could not send your message'+(err&&err.text?' ('+err.text+')':'')+'. Please try again, or write to '+TO+'.')})
-    .then(function(){btn.disabled=false;btn.textContent=label})});
+  var I={
+    home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+    audio:'<path class="sp" d="M4 9v6h4l5 4V5L8 9H4z"/><path class="w1" d="M16 9a4 4 0 010 6"/><path class="w2" d="M18.5 6.5a8 8 0 010 11"/>',
+    light:'<path class="bulb" d="M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1V17h5v-1c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/><path d="M10 20h4"/><g class="rays"><path d="M2.5 9H4M20 9h1.5M5 2.8l1 1M19 2.8l-1 1"/></g>',
+    dimming:'<path class="dim" d="M3 8h18M3 16h18"/><circle class="fillc k1" cx="8" cy="8" r="2.6"/><circle class="fillc k2" cx="16" cy="16" r="2.6"/>',
+    solar:'<circle class="core" cx="12" cy="12" r="4"/><g class="rot"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g>',
+    services:'<rect class="t1" x="3" y="3" width="7" height="7" rx="1.5"/><rect class="t2" x="14" y="3" width="7" height="7" rx="1.5"/><rect class="t3" x="3" y="14" width="7" height="7" rx="1.5"/><rect class="t4" x="14" y="14" width="7" height="7" rx="1.5"/>',
+    products:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
+    projects:'<path d="M3 9V6a2 2 0 012-2h4l2 2h7a2 2 0 012 2v1"/><path class="fr" d="M3 10h18l-1.2 8a2 2 0 01-2 1.7H6.2a2 2 0 01-2-1.7L3 10z"/>',
+    progress:'<rect x="3" y="9" width="18" height="6" rx="3"/><rect class="fillc bar" x="5" y="11" width="4" height="2" rx="1"/>',
+    completed:'<circle class="ring" cx="12" cy="12" r="9"/><path class="ck" pathLength="10" d="M7.5 12.5l3 3 6-6.5"/>',
+    partners:'<circle class="c1" cx="9" cy="12" r="5"/><circle class="c2" cx="15" cy="12" r="5"/>',
+    news:'<path d="M4 4h13v16H6a2 2 0 01-2-2V4z"/><path d="M17 8h3v10a2 2 0 01-2 2"/><path class="nl nl1" pathLength="10" d="M7.5 8h6"/><path class="nl nl2" pathLength="10" d="M7.5 12h6"/><path class="nl nl3" pathLength="10" d="M7.5 16h4"/>',
+    careers:'<g class="bd"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 13h18"/></g><path class="hd" d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/>',
+    contact:'<rect x="3" y="5" width="18" height="14" rx="2"/><path class="fl" d="M3 7l9 6 9-6"/>',
+    cta:'<path d="M4 4h16v12H9l-5 4V4z"/><circle class="fillc d1" cx="8.5" cy="10" r="1.1"/><circle class="fillc d2" cx="12" cy="10" r="1.1"/><circle class="fillc d3" cx="15.5" cy="10" r="1.1"/>'
+  };
+  function key(a){
+    var h=(a.getAttribute('href')||'').toLowerCase(), t=(a.textContent||'').replace(/\s+/g,' ').trim().toLowerCase();
+    if(a.classList.contains('lk'))return 'cta';
+    if(h==='index.html')return 'home';
+    if(h==='index.html#services')return 'products';
+    if(h==='index.html#progress')return 'progress';
+    if(h==='index.html#completed')return 'completed';
+    if(h==='audiovisual.html')return 'audio';
+    if(h==='lightings.html')return 'light';
+    if(h==='dimmings.html')return 'dimming';
+    if(h==='solar.html')return 'solar';
+    if(h==='partners.html')return 'partners';
+    if(h==='news.html')return 'news';
+    if(h==='career.html')return 'careers';
+    if(h==='contact.html')return 'contact';
+    if(t.indexOf('services')===0)return 'services';
+    if(t.indexOf('projects')===0)return 'projects';
+    return null;
+  }
+  document.querySelectorAll('header nav a, header a.lk').forEach(function(a){
+    if(a.querySelector('.nv-ic'))return;
+    var k=key(a); if(!k||!I[k])return;
+    var s=document.createElement('span');
+    s.className='nv-ic'; s.setAttribute('data-ic',k); s.setAttribute('aria-hidden','true');
+    s.innerHTML='<svg viewBox="0 0 24 24" focusable="false">'+I[k]+'</svg>';
+    a.insertBefore(s,a.firstChild);
+  });
+  /* detect whether the top-level menu is laid out horizontally (desktop) or stacked (mobile menu) */
+  var root=document.documentElement;
+  function mode(){
+    var lis=document.querySelectorAll('header nav > ul > li');
+    if(lis.length<2){root.classList.remove('nv-h');return}
+    var a=lis[0],b=lis[1];
+    var ra=a.getBoundingClientRect(),rb=b.getBoundingClientRect();
+    var h=a.offsetParent!==null&&ra.width>0&&rb.left>=ra.right-2;
+    root.classList.toggle('nv-h',h);
+    /* enough gap between items to fit an icon without touching the neighbouring label? */
+    root.classList.toggle('nv-roomy',h&&(rb.left-ra.right)>=28);
+  }
+  mode();
+  window.addEventListener('resize',mode);
+  document.addEventListener('pointerover',function(e){if(e.target.closest&&e.target.closest('header'))mode()},{passive:true});
 })();
 </script>
 </body>

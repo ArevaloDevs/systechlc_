@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Audiovisual &amp; Automation Systems | Systech Lighting &amp; Controls Inc.</title>
+  <title>Audiovisual &amp; Automation Systems | Systech Lighting and Controls Inc.</title>
 <meta name="description" content="Audiovisual systems by Systech Lighting &amp; Controls Inc.: sound systems from Adam Hall, Harman, JBL, Crown and Symetrix, audio accessories, and digital signage and display from Samsung, LG, BrightSign and Spinetix.">
 <meta name="theme-color" content="#0035fe">
 <script>document.documentElement.className+=" js";try{if(JSON.parse(localStorage.getItem("darkMode"))===true)document.documentElement.className+=" pj-dark"}catch(e){}window.pjImg=function(i){var r=(i.dataset.remote||'').split('|').filter(Boolean),n=+i.dataset.tried||0;if(n<r.length){i.dataset.tried=n+1;i.src=r[n]}else i.remove()}</script>
@@ -750,77 +750,118 @@ footer .ft-brand ul{gap:14px}
 body.b.eh footer .ft-brand ul a{color:#b7c4ff}
 body.b.eh footer .ft-brand ul a:hover{color:#fff}
 </style>
-<style id="rwd-all">
-/* ===== Responsive safety net: watch, phone, tablet, laptop, TV ===== */
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{overflow-x:hidden;overflow-x:clip;min-width:0}
-img,video,canvas,iframe,embed,object{max-width:100%}
-img,video{height:auto}
-h1,h2,h3,h4,h5,h6,p,li,a,td,th,label,button{overflow-wrap:break-word;min-width:0}
-pre,code{max-width:100%;overflow-x:auto}
-/* phones in landscape / very short screens */
-@media (max-height:480px){
-  .pp-box{max-height:94vh!important}
-  #ppModal,#spModal{padding:8px!important}
-  .pp-head{padding-top:12px!important;padding-bottom:10px!important}
-  .pp-foot{padding-top:8px!important;padding-bottom:8px!important}
-}
-/* touch screens: comfortable tap targets in the footer */
-@media (pointer:coarse){
-  footer .ft-col a,footer .ft-legal a,footer .ft-lang-btn{display:inline-flex;align-items:center;min-height:36px}
-  #ftLangMenu button{min-height:44px}
-}
-/* tablets / small laptops */
-@media (max-width:1024px){
-  .pp-box{width:min(720px,100%)}
-}
-/* small phones */
-@media (max-width:360px){
-  html{font-size:14.5px}
-  footer .ft-row{row-gap:28px}
-  .pp-head h2{font-size:1.05rem!important}
-  .pp-body{font-size:.88rem!important}
-  .pp-ok{padding:9px 18px!important}
-  .sp-body input,.sp-body textarea{font-size:16px}
-}
-/* smartwatches and other very narrow screens (<= 280px) */
-@media (max-width:280px){
-  html{font-size:12px}
-  .pp-box{border-radius:12px!important}
-  .pp-head,.pp-body,.pp-foot,.sp-body{padding-left:10px!important;padding-right:10px!important}
-  #ftLangMenu{grid-template-columns:1fr!important;padding:6px!important}
-}
-/* Lightings hero demo on narrow screens */
-@media (max-width:560px){
-  .dm-stage .dm-k{font-size:clamp(8px,2.7cqw,12px)!important;white-space:normal!important;line-height:1.15;padding:1cqw .3cqw!important;text-align:center}
-  .dm-stage .dm-k small{font-size:clamp(5.5px,1.8cqw,9px)!important}
-}
-@media (max-width:420px){
-  .dm-stage .dm-k small{display:none!important}
-}
-/* large monitors and TVs: scale the interface up so text stays readable from a distance */
-@media (min-width:1920px){html{font-size:18px}}
-@media (min-width:2560px){html{font-size:22px}}
-@media (min-width:3200px){html{font-size:28px}}
-@media (min-width:3840px){html{font-size:34px}}
-@media (min-width:1920px){
-  .pp-box{width:min(900px,100%)}
-  #spModal .pp-box{width:min(680px,100%)}
-}
-/* TV remotes / keyboards: clear focus ring */
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #4e6bff;outline-offset:3px}
+<style id="nav-interactive-css">
+/* nav: dropdown reveal + keyboard focus + current-page marker */
+header nav li > ul.tc{animation:navDrop .18s ease-out both;transform-origin:top left}
+@keyframes navDrop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+header nav a:focus-visible{outline:2px solid #0035fe;outline-offset:3px;border-radius:6px}
+body.b.eh header nav a:focus-visible{outline-color:#8fa3ff}
+header nav li > ul a[aria-current="page"]{color:#0035fe;font-weight:700}
+body.b.eh header nav li > ul a[aria-current="page"]{color:#8fa3ff}
+@media (prefers-reduced-motion:reduce){header nav li > ul.tc{animation:none}}
 </style>
-<style id="rwd-logo">
-/* header logo: keep it inside the header on phones and tablets so it never covers the hero text */
-@media (max-width:1023px){
-  header a>img{height:46px!important;max-height:46px!important;width:auto!important;max-width:190px!important;object-fit:contain}
-}
-@media (max-width:480px){
-  header a>img{height:40px!important;max-height:40px!important;max-width:160px!important}
-}
-@media (max-width:280px){
-  header a>img{height:30px!important;max-height:30px!important;max-width:110px!important}
-}
+<style id="nav-icons-css">
+/* ---- nav icons: one animated icon per item, plays on hover / keyboard focus ---- */
+.nv-ic{display:inline-block;width:0;height:1.15em;margin-right:0;opacity:0;vertical-align:-.2em;flex:none;line-height:0;pointer-events:none;transition:width .25s ease,margin .25s ease,opacity .2s ease .05s,transform .25s cubic-bezier(.34,1.56,.64,1)}
+/* hidden at rest: nothing visible, no space taken. Appears only on hover / keyboard focus */
+header a:is(:hover,:focus-visible) > .nv-ic{width:1.15em;margin-right:.5em;opacity:1}
+/* desktop top-level items: icon appears beside (left of) the label, sitting in the gap so neighbours never shift */
+html.nv-roomy header nav > ul > li > a{position:relative}
+html.nv-roomy header nav > ul > li > a > .nv-ic{position:absolute;right:100%;top:50%;width:1.15em;height:1.15em;margin:0 .35em 0 0;transform:translateY(-50%) translateX(8px) scale(.3)}
+html.nv-roomy header nav > ul > li > a:is(:hover,:focus-visible) > .nv-ic{width:1.15em;margin:0 .35em 0 0;transform:translateY(-50%)}
+.nv-ic svg{display:block;width:100%;height:100%;overflow:visible;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nv-ic svg *{transform-origin:12px 12px}
+.nv-ic .fillc{fill:currentColor;stroke:none}
+.nv-ic .dim{opacity:.45}
+
+/* home: pops */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="home"] svg{animation:nvPop 1s ease-in-out infinite}
+@keyframes nvPop{0%,100%{transform:scale(1) rotate(0)}30%{transform:scale(1.38) rotate(-7deg)}55%{transform:scale(.9) rotate(3deg)}75%{transform:scale(1.12)}}
+
+/* audiovisual: speaker beats, sound waves pulse outward */
+.nv-ic .sp{transform-origin:6px 12px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .sp{animation:nvBeat .5s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .w1{animation:nvWave 1s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .w2{animation:nvWave 1s ease-in-out .25s infinite}
+@keyframes nvBeat{50%{transform:scale(1.14)}}
+@keyframes nvWave{0%,100%{opacity:.2;transform:translateX(-1px)}50%{opacity:1;transform:translateX(1.5px)}}
+
+/* lightings: bulb lights up and glows, rays flicker */
+.nv-ic .rays{transform-origin:12px 9px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="light"] .bulb{animation:nvGlow 1s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="light"] .rays{animation:nvRay 1s ease-in-out infinite}
+@keyframes nvGlow{0%,100%{fill:rgba(255,213,74,0);filter:drop-shadow(0 0 0 rgba(255,196,0,0))}50%{fill:#ffd54a;filter:drop-shadow(0 0 5px #ffc400)}}
+@keyframes nvRay{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.12)}}
+
+/* dimming: slider knobs slide */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="dimming"] .k1{animation:nvK1 1.3s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="dimming"] .k2{animation:nvK2 1.3s ease-in-out infinite}
+@keyframes nvK1{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+@keyframes nvK2{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+/* solar: sun rays spin, core pulses */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="solar"] .rot{animation:nvSpin 2.4s linear infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="solar"] .core{animation:nvCore 1.2s ease-in-out infinite}
+@keyframes nvSpin{to{transform:rotate(360deg)}}
+@keyframes nvCore{50%{transform:scale(1.25)}}
+
+/* services + all products */
+.nv-ic .t1{transform-origin:6.5px 6.5px}.nv-ic .t2{transform-origin:17.5px 6.5px}
+.nv-ic .t3{transform-origin:6.5px 17.5px}.nv-ic .t4{transform-origin:17.5px 17.5px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] [class^="t"]{animation:nvTile 1s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t2{animation-delay:.12s}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t4{animation-delay:.24s}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t3{animation-delay:.36s}
+@keyframes nvTile{0%,70%,100%{transform:scale(1)}35%{transform:scale(.55)}}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="products"] svg{animation:nvTurn 1.2s ease-in-out infinite}
+@keyframes nvTurn{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.45)}}
+
+/* projects: folder flap opens */
+.nv-ic .fr{transform-origin:3px 20px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="projects"] .fr{animation:nvFolder 1s ease-in-out infinite}
+@keyframes nvFolder{0%,100%{transform:none}50%{transform:skewX(-16deg) scaleY(.92)}}
+
+/* on-going progress: bar fills */
+.nv-ic .bar{transform-origin:5px 12px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="progress"] .bar{animation:nvFill 1.4s ease-in-out infinite}
+@keyframes nvFill{0%{transform:scaleX(1)}80%,100%{transform:scaleX(3.5)}}
+
+/* completed: ring pulses, check draws */
+.nv-ic .ck{stroke-dasharray:10}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="completed"] .ck{animation:nvDraw 1.2s ease-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="completed"] .ring{animation:nvCore 1.2s ease-in-out infinite}
+@keyframes nvDraw{0%{stroke-dashoffset:10}45%,100%{stroke-dashoffset:0}}
+
+/* partners: circles link up */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="partners"] .c1{animation:nvC1 1s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="partners"] .c2{animation:nvC2 1s ease-in-out infinite}
+@keyframes nvC1{50%{transform:translateX(3px)}}
+@keyframes nvC2{50%{transform:translateX(-3px)}}
+
+/* news: text lines write in */
+.nv-ic .nl{stroke-dasharray:10}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl{animation:nvDraw 1.4s ease-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl2{animation-delay:.2s}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl3{animation-delay:.4s}
+
+/* careers: briefcase handle lifts */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="careers"] .hd{animation:nvLift .9s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="careers"] .bd{animation:nvSink .9s ease-in-out infinite}
+@keyframes nvLift{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}}
+@keyframes nvSink{0%,100%{transform:translateY(0)}40%{transform:translateY(.8px)}}
+
+/* contact: envelope flap opens */
+.nv-ic .fl{transform-origin:12px 7px}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="contact"] .fl{animation:nvFlap 1.1s ease-in-out infinite}
+@keyframes nvFlap{0%,100%{transform:scaleY(1)}45%,60%{transform:scaleY(-.9)}}
+
+/* talk to expert: typing dots */
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] :is(.d1,.d2,.d3){animation:nvDot .9s ease-in-out infinite}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] .d2{animation-delay:.15s}
+header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] .d3{animation-delay:.3s}
+@keyframes nvDot{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}}
+
+@media (prefers-reduced-motion:reduce){.nv-ic svg,.nv-ic svg *{animation:none!important}}
 </style>
 </head>
 <body x-data="{ page: 'audiovisual', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
@@ -864,14 +905,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
       <nav>
         <ul class="tc _o sf yo cg ep">
           <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
-          <li class="c i" x-data="{ dropdown: false }"><a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown" :class="{ 'mk': page === 'audiovisual' }">Services <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+          <li class="c i" x-data="{ dropdown: false, t: null, canHover(){ return !navigationOpen && matchMedia('(hover:hover)').matches } }" @mouseenter="if (canHover()) { clearTimeout(t); dropdown = true }" @mouseleave="if (canHover()) { t = setTimeout(() => dropdown = false, 160) }" @click.outside="dropdown = false" @keydown.escape.stop="dropdown = false; $refs.trig.focus()"><a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = canHover() ? true : !dropdown" x-ref="trig" role="button" aria-haspopup="true" :aria-expanded="dropdown" @keydown.down.prevent="dropdown = true; $nextTick(() => $refs.menu.querySelector('a').focus())" :class="{ 'mk': ['audiovisual','lighting','dimming','solar'].includes(page) }">Services <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512">
                 <path
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems & GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
-          <li class="c i" x-data="{ dropdown: false }">
-            <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
-              :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }" x-ref="menu" @click="if ($event.target.closest('a')) { dropdown = false; navigationOpen = false }" @keydown.down.prevent="($event.target.closest('li').nextElementSibling || $event.target.closest('li')).querySelector('a').focus()" @keydown.up.prevent="($event.target.closest('li').previousElementSibling ? $event.target.closest('li').previousElementSibling.querySelector('a').focus() : $refs.trig.focus())"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems & GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
+          <li class="c i" x-data="{ dropdown: false, t: null, canHover(){ return !navigationOpen && matchMedia('(hover:hover)').matches } }" @mouseenter="if (canHover()) { clearTimeout(t); dropdown = true }" @mouseleave="if (canHover()) { t = setTimeout(() => dropdown = false, 160) }" @click.outside="dropdown = false" @keydown.escape.stop="dropdown = false; $refs.trig.focus()">
+            <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = canHover() ? true : !dropdown" x-ref="trig" role="button" aria-haspopup="true" :aria-expanded="dropdown" @keydown.down.prevent="dropdown = true; $nextTick(() => $refs.menu.querySelector('a').focus())"
+              :class="{ 'mk': page === 'partners' || page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
               Projects
               <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512">
@@ -879,7 +920,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
               </svg>
             </a>
-            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="Partners.html" class="xl">Partners</a></li></ul>
+            <ul class="a" :class="{ 'tc': dropdown }" x-ref="menu" @click="if ($event.target.closest('a')) { dropdown = false; navigationOpen = false }" @keydown.down.prevent="($event.target.closest('li').nextElementSibling || $event.target.closest('li')).querySelector('a').focus()" @keydown.up.prevent="($event.target.closest('li').previousElementSibling ? $event.target.closest('li').previousElementSibling.querySelector('a').focus() : $refs.trig.focus())"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="Partners.html" class="xl">Partners</a></li></ul>
           </li><li><a href="NEWS.html" class="xl" :class="{ 'mk': page === 'news' }">News</a></li><li><a href="Career.html" class="xl" :class="{ 'mk': page === 'careers' }">Careers</a></li><li><a href="CONTACT.html" class="xl" :class="{ 'mk': page === 'contact' }">Contact</a></li>
         </ul>
       </nav>
@@ -1020,7 +1061,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <div class="animate_top"><ul class="tc wf gg ft-legal">
 <li class="notranslate" translate="no"><button type="button" id="ftLangBtn" class="ft-lang-btn xl" aria-haspopup="listbox" aria-expanded="false" aria-controls="ftLangMenu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="ftLangLabel">English</span><svg class="ft-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
 <li><a href="#privacy-policy" id="ftPrivacyLink" class="xl" aria-haspopup="dialog">Privacy Policy</a></li></ul></div>
-<div class="animate_top"><p>&copy; 2027 Systech Lighting &amp; Controls Inc. All rights reserved.</p></div>
+<div class="animate_top"><p>&copy; 2027 Systech Lighting and Controls Inc. All rights reserved.</p></div>
 </div>
 </div>
 </footer>
@@ -1437,7 +1478,7 @@ var POSITIONS = [
     <div class="pp-head">
       <div>
         <h2 id="ppTitle">Privacy Policy</h2>
-        <p>Systech Lighting &amp; Controls Inc. &middot; Last updated: October 2026</p>
+        <p>Systech Lighting and Controls Inc. &middot; Last updated: October 2026</p>
       </div>
       <button type="button" class="pp-x" id="ppClose" aria-label="Close privacy policy">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -1445,7 +1486,7 @@ var POSITIONS = [
     </div>
     <div class="pp-body">
       <h3>1. Introduction</h3>
-      <p>Systech Lighting &amp; Controls Inc. (&ldquo;Systech&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This policy explains what personal information we collect through this website, how we use and protect it, and the choices you have. We handle personal data in accordance with the Philippine Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules.</p>
+      <p>Systech Lighting and Controls Inc. (&ldquo;Systech&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This policy explains what personal information we collect through this website, how we use and protect it, and the choices you have. We handle personal data in accordance with the Philippine Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules.</p>
 
       <h3>2. Information We Collect</h3>
       <ul>
@@ -1573,7 +1614,7 @@ var POSITIONS = [
     <div class="pp-head">
       <div>
         <h2 id="spTitle">24/7 Support</h2>
-        <p>Systech Lighting &amp; Controls Inc. &middot; After-sales team</p>
+        <p>Systech Lighting and Controls Inc. &middot; After-sales team</p>
       </div>
       <button type="button" class="pp-x" id="spClose" aria-label="Close support form">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -1627,6 +1668,79 @@ var POSITIONS = [
     send(p).then(function(){form.reset();say('ok','Thank you! Your message was sent to our after-sales team. We will reply to '+email+'.')},
       function(err){say('err','Sorry, we could not send your message'+(err&&err.text?' ('+err.text+')':'')+'. Please try again, or write to '+TO+'.')})
     .then(function(){btn.disabled=false;btn.textContent=label})});
+})();
+</script>
+<script id="nav-interactive-js">
+(function(){
+  var cur=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  document.querySelectorAll('header nav li > ul a[href]').forEach(function(a){
+    var h=a.getAttribute('href').toLowerCase();
+    if(h.indexOf('#')>-1)return;           /* section links on index are not "pages" */
+    if(h===cur)a.setAttribute('aria-current','page');
+  });
+})();
+</script>
+<script id="nav-icons-js">
+(function(){
+  var I={
+    home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+    audio:'<path class="sp" d="M4 9v6h4l5 4V5L8 9H4z"/><path class="w1" d="M16 9a4 4 0 010 6"/><path class="w2" d="M18.5 6.5a8 8 0 010 11"/>',
+    light:'<path class="bulb" d="M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1V17h5v-1c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/><path d="M10 20h4"/><g class="rays"><path d="M2.5 9H4M20 9h1.5M5 2.8l1 1M19 2.8l-1 1"/></g>',
+    dimming:'<path class="dim" d="M3 8h18M3 16h18"/><circle class="fillc k1" cx="8" cy="8" r="2.6"/><circle class="fillc k2" cx="16" cy="16" r="2.6"/>',
+    solar:'<circle class="core" cx="12" cy="12" r="4"/><g class="rot"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g>',
+    services:'<rect class="t1" x="3" y="3" width="7" height="7" rx="1.5"/><rect class="t2" x="14" y="3" width="7" height="7" rx="1.5"/><rect class="t3" x="3" y="14" width="7" height="7" rx="1.5"/><rect class="t4" x="14" y="14" width="7" height="7" rx="1.5"/>',
+    products:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
+    projects:'<path d="M3 9V6a2 2 0 012-2h4l2 2h7a2 2 0 012 2v1"/><path class="fr" d="M3 10h18l-1.2 8a2 2 0 01-2 1.7H6.2a2 2 0 01-2-1.7L3 10z"/>',
+    progress:'<rect x="3" y="9" width="18" height="6" rx="3"/><rect class="fillc bar" x="5" y="11" width="4" height="2" rx="1"/>',
+    completed:'<circle class="ring" cx="12" cy="12" r="9"/><path class="ck" pathLength="10" d="M7.5 12.5l3 3 6-6.5"/>',
+    partners:'<circle class="c1" cx="9" cy="12" r="5"/><circle class="c2" cx="15" cy="12" r="5"/>',
+    news:'<path d="M4 4h13v16H6a2 2 0 01-2-2V4z"/><path d="M17 8h3v10a2 2 0 01-2 2"/><path class="nl nl1" pathLength="10" d="M7.5 8h6"/><path class="nl nl2" pathLength="10" d="M7.5 12h6"/><path class="nl nl3" pathLength="10" d="M7.5 16h4"/>',
+    careers:'<g class="bd"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 13h18"/></g><path class="hd" d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/>',
+    contact:'<rect x="3" y="5" width="18" height="14" rx="2"/><path class="fl" d="M3 7l9 6 9-6"/>',
+    cta:'<path d="M4 4h16v12H9l-5 4V4z"/><circle class="fillc d1" cx="8.5" cy="10" r="1.1"/><circle class="fillc d2" cx="12" cy="10" r="1.1"/><circle class="fillc d3" cx="15.5" cy="10" r="1.1"/>'
+  };
+  function key(a){
+    var h=(a.getAttribute('href')||'').toLowerCase(), t=(a.textContent||'').replace(/\s+/g,' ').trim().toLowerCase();
+    if(a.classList.contains('lk'))return 'cta';
+    if(h==='index.html')return 'home';
+    if(h==='index.html#services')return 'products';
+    if(h==='index.html#progress')return 'progress';
+    if(h==='index.html#completed')return 'completed';
+    if(h==='audiovisual.html')return 'audio';
+    if(h==='lightings.html')return 'light';
+    if(h==='dimmings.html')return 'dimming';
+    if(h==='solar.html')return 'solar';
+    if(h==='partners.html')return 'partners';
+    if(h==='news.html')return 'news';
+    if(h==='career.html')return 'careers';
+    if(h==='contact.html')return 'contact';
+    if(t.indexOf('services')===0)return 'services';
+    if(t.indexOf('projects')===0)return 'projects';
+    return null;
+  }
+  document.querySelectorAll('header nav a, header a.lk').forEach(function(a){
+    if(a.querySelector('.nv-ic'))return;
+    var k=key(a); if(!k||!I[k])return;
+    var s=document.createElement('span');
+    s.className='nv-ic'; s.setAttribute('data-ic',k); s.setAttribute('aria-hidden','true');
+    s.innerHTML='<svg viewBox="0 0 24 24" focusable="false">'+I[k]+'</svg>';
+    a.insertBefore(s,a.firstChild);
+  });
+  /* detect whether the top-level menu is laid out horizontally (desktop) or stacked (mobile menu) */
+  var root=document.documentElement;
+  function mode(){
+    var lis=document.querySelectorAll('header nav > ul > li');
+    if(lis.length<2){root.classList.remove('nv-h');return}
+    var a=lis[0],b=lis[1];
+    var ra=a.getBoundingClientRect(),rb=b.getBoundingClientRect();
+    var h=a.offsetParent!==null&&ra.width>0&&rb.left>=ra.right-2;
+    root.classList.toggle('nv-h',h);
+    /* enough gap between items to fit an icon without touching the neighbouring label? */
+    root.classList.toggle('nv-roomy',h&&(rb.left-ra.right)>=28);
+  }
+  mode();
+  window.addEventListener('resize',mode);
+  document.addEventListener('pointerover',function(e){if(e.target.closest&&e.target.closest('header'))mode()},{passive:true});
 })();
 </script>
 </body>

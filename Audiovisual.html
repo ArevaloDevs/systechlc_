@@ -970,6 +970,14 @@ html.nv-m body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
   .nv-dock,.nv-dock .nv-bub{transition:none!important}
 }
 </style>
+<style id="nav-logo-css">
+/* logo: the h-10 / max-h-10 utility classes aren't in the compiled stylesheet, so the image rendered at its natural size */
+@media (max-width:1279px){
+  header img[alt^="Logo"]{height:38px!important;width:auto!important;max-height:38px!important;max-width:min(58vw,220px)!important;object-fit:contain;object-position:left center}
+  header > div > div:first-child > a{display:flex;align-items:center;min-width:0}
+}
+html.nv-m header img[alt^="Logo"]{height:38px!important;width:auto!important;max-height:38px!important;max-width:min(58vw,220px)!important;object-fit:contain}
+</style>
 </head>
 <body x-data="{ page: 'audiovisual', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
   x-init="darkMode = JSON.parse(localStorage.getItem('darkMode')); $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"

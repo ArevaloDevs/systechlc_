@@ -857,93 +857,225 @@ html.nv-roomy header nav > ul > li > a:is(:hover,:focus-visible) > .nv-ic{width:
 .nv-ic .dim{opacity:.45}
 
 /* home: pops */
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="home"] svg{animation:nvPop 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="home"] svg{animation:nvPop 1s ease-in-out infinite}
 @keyframes nvPop{0%,100%{transform:scale(1) rotate(0)}30%{transform:scale(1.38) rotate(-7deg)}55%{transform:scale(.9) rotate(3deg)}75%{transform:scale(1.12)}}
 
 /* audiovisual: speaker beats, sound waves pulse outward */
 .nv-ic .sp{transform-origin:6px 12px}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .sp{animation:nvBeat .5s ease-in-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .w1{animation:nvWave 1s ease-in-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="audio"] .w2{animation:nvWave 1s ease-in-out .25s infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="audio"] .sp{animation:nvBeat .5s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="audio"] .w1{animation:nvWave 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="audio"] .w2{animation:nvWave 1s ease-in-out .25s infinite}
 @keyframes nvBeat{50%{transform:scale(1.14)}}
 @keyframes nvWave{0%,100%{opacity:.2;transform:translateX(-1px)}50%{opacity:1;transform:translateX(1.5px)}}
 
 /* lightings: bulb lights up and glows, rays flicker */
 .nv-ic .rays{transform-origin:12px 9px}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="light"] .bulb{animation:nvGlow 1s ease-in-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="light"] .rays{animation:nvRay 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="light"] .bulb{animation:nvGlow 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="light"] .rays{animation:nvRay 1s ease-in-out infinite}
 @keyframes nvGlow{0%,100%{fill:rgba(255,213,74,0);filter:drop-shadow(0 0 0 rgba(255,196,0,0))}50%{fill:#ffd54a;filter:drop-shadow(0 0 5px #ffc400)}}
 @keyframes nvRay{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.12)}}
 
 /* dimming: slider knobs slide */
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="dimming"] .k1{animation:nvK1 1.3s ease-in-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="dimming"] .k2{animation:nvK2 1.3s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="dimming"] .k1{animation:nvK1 1.3s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="dimming"] .k2{animation:nvK2 1.3s ease-in-out infinite}
 @keyframes nvK1{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
 @keyframes nvK2{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
 
 /* solar: sun rays spin, core pulses */
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="solar"] .rot{animation:nvSpin 2.4s linear infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="solar"] .core{animation:nvCore 1.2s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="solar"] .rot{animation:nvSpin 2.4s linear infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="solar"] .core{animation:nvCore 1.2s ease-in-out infinite}
 @keyframes nvSpin{to{transform:rotate(360deg)}}
 @keyframes nvCore{50%{transform:scale(1.25)}}
 
 /* services + all products */
 .nv-ic .t1{transform-origin:6.5px 6.5px}.nv-ic .t2{transform-origin:17.5px 6.5px}
 .nv-ic .t3{transform-origin:6.5px 17.5px}.nv-ic .t4{transform-origin:17.5px 17.5px}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] [class^="t"]{animation:nvTile 1s ease-in-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t2{animation-delay:.12s}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t4{animation-delay:.24s}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="services"] .t3{animation-delay:.36s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="services"] [class^="t"]{animation:nvTile 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="services"] .t2{animation-delay:.12s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="services"] .t4{animation-delay:.24s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="services"] .t3{animation-delay:.36s}
 @keyframes nvTile{0%,70%,100%{transform:scale(1)}35%{transform:scale(.55)}}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="products"] svg{animation:nvTurn 1.2s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="products"] svg{animation:nvTurn 1.2s ease-in-out infinite}
 @keyframes nvTurn{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.45)}}
 
 /* projects: folder flap opens */
 .nv-ic .fr{transform-origin:3px 20px}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="projects"] .fr{animation:nvFolder 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="projects"] .fr{animation:nvFolder 1s ease-in-out infinite}
 @keyframes nvFolder{0%,100%{transform:none}50%{transform:skewX(-16deg) scaleY(.92)}}
 
 /* on-going progress: bar fills */
 .nv-ic .bar{transform-origin:5px 12px}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="progress"] .bar{animation:nvFill 1.4s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="progress"] .bar{animation:nvFill 1.4s ease-in-out infinite}
 @keyframes nvFill{0%{transform:scaleX(1)}80%,100%{transform:scaleX(3.5)}}
 
 /* completed: ring pulses, check draws */
 .nv-ic .ck{stroke-dasharray:10}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="completed"] .ck{animation:nvDraw 1.2s ease-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="completed"] .ring{animation:nvCore 1.2s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="completed"] .ck{animation:nvDraw 1.2s ease-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="completed"] .ring{animation:nvCore 1.2s ease-in-out infinite}
 @keyframes nvDraw{0%{stroke-dashoffset:10}45%,100%{stroke-dashoffset:0}}
 
 /* partners: circles link up */
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="partners"] .c1{animation:nvC1 1s ease-in-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="partners"] .c2{animation:nvC2 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="partners"] .c1{animation:nvC1 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="partners"] .c2{animation:nvC2 1s ease-in-out infinite}
 @keyframes nvC1{50%{transform:translateX(3px)}}
 @keyframes nvC2{50%{transform:translateX(-3px)}}
 
 /* news: text lines write in */
 .nv-ic .nl{stroke-dasharray:10}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl{animation:nvDraw 1.4s ease-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl2{animation-delay:.2s}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="news"] .nl3{animation-delay:.4s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="news"] .nl{animation:nvDraw 1.4s ease-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="news"] .nl2{animation-delay:.2s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="news"] .nl3{animation-delay:.4s}
 
 /* careers: briefcase handle lifts */
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="careers"] .hd{animation:nvLift .9s ease-in-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="careers"] .bd{animation:nvSink .9s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="careers"] .hd{animation:nvLift .9s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="careers"] .bd{animation:nvSink .9s ease-in-out infinite}
 @keyframes nvLift{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}}
 @keyframes nvSink{0%,100%{transform:translateY(0)}40%{transform:translateY(.8px)}}
 
 /* contact: envelope flap opens */
 .nv-ic .fl{transform-origin:12px 7px}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="contact"] .fl{animation:nvFlap 1.1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="contact"] .fl{animation:nvFlap 1.1s ease-in-out infinite}
 @keyframes nvFlap{0%,100%{transform:scaleY(1)}45%,60%{transform:scaleY(-.9)}}
 
 /* talk to expert: typing dots */
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] :is(.d1,.d2,.d3){animation:nvDot .9s ease-in-out infinite}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] .d2{animation-delay:.15s}
-header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] .d3{animation-delay:.3s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="cta"] :is(.d1,.d2,.d3){animation:nvDot .9s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="cta"] .d2{animation-delay:.15s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="cta"] .d3{animation-delay:.3s}
 @keyframes nvDot{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}}
 
 @media (prefers-reduced-motion:reduce){.nv-ic svg,.nv-ic svg *{animation:none!important}}
+</style>
+<style id="nav-mobile-css">
+/* ===================== MOBILE NAV (only active when the hamburger is visible) ===================== */
+html.nv-open,html.nv-open body{overflow:hidden!important}
+[data-nv-panel],.nv-dock{--nvm-fg:#fff;--nvm-mut:rgba(255,255,255,.74);--nvm-ac:#8fa3ff;--nvm-line:rgba(143,163,255,.24);--nvm-tile:rgba(143,163,255,.15)}
+
+/* the header must not trap the fixed panel (sticky blur / hide-on-scroll transforms) */
+html.nv-open header{transform:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;filter:none!important;background:transparent!important;box-shadow:none!important}
+html.nv-m header > div > div:first-child{position:relative;z-index:50}
+html.nv-open header img[alt="Logo Light"]{display:none!important}
+html.nv-open header img[alt="Logo Dark"]{display:block!important}
+html.nv-open [data-nv-burger] span span span{background:#fff!important}
+html.nv-m [data-nv-burger]{-webkit-tap-highlight-color:transparent;transition:transform .2s}
+html.nv-m [data-nv-burger]:active{transform:scale(.88)}
+
+/* the panel: circular reveal from the hamburger corner */
+html.nv-m [data-nv-panel]{box-sizing:border-box!important;position:fixed!important;inset:0!important;z-index:5;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;width:100%!important;max-width:none!important;height:100dvh!important;margin:0!important;padding:92px 20px calc(22px + env(safe-area-inset-bottom))!important;overflow-y:auto!important;overscroll-behavior:contain;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;isolation:isolate;color:#fff;
+  background:radial-gradient(120% 70% at 100% 0%,rgba(0,53,254,.38),transparent 60%),linear-gradient(180deg,#0a0d24,#05061a)!important;
+  visibility:hidden;opacity:0;pointer-events:none;clip-path:circle(0px at calc(100% - 36px) 40px);translate:var(--nv-drag,0px) 0;
+  transition:clip-path .55s cubic-bezier(.7,0,.2,1),opacity .25s .3s,visibility 0s .6s,translate .3s}
+html.nv-m [data-nv-panel][data-open="true"]{visibility:visible;opacity:1;pointer-events:auto;clip-path:circle(150vmax at calc(100% - 36px) 40px);transition:clip-path .8s cubic-bezier(.7,0,.2,1),opacity .15s,visibility 0s,translate .3s}
+html.nv-m [data-nv-panel].nv-drag{transition:none!important}
+html.nv-m [data-nv-panel]::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(50% 40% at 15% 95%,rgba(0,53,254,.75),transparent 70%),radial-gradient(45% 35% at 95% 40%,rgba(106,61,255,.5),transparent 70%);background-size:150% 150%;animation:nvmDrift 16s ease-in-out infinite alternate}
+@keyframes nvmDrift{from{background-position:0% 0%}to{background-position:100% 100%}}
+
+/* menu list */
+html.nv-m header nav{width:100%}
+html.nv-m header nav::before{content:"Navigate";display:block;margin:0 4px 12px;font:600 12px/1 system-ui,-apple-system,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--nvm-ac)}
+html.nv-m header nav > ul{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:6px!important;margin:0!important;padding:0!important;list-style:none!important;width:100%}
+html.nv-m header nav > ul > li{opacity:0;transform:translateX(36px);transition:opacity .35s ease,transform .45s ease;width:100%}
+html.nv-m [data-nv-panel][data-open="true"] nav > ul > li{opacity:1;transform:none;transition:opacity .45s ease,transform .7s cubic-bezier(.2,1.25,.3,1);transition-delay:calc(.25s + var(--i,0)*.07s)}
+html.nv-m header nav > ul > li:nth-child(1){--i:0}
+html.nv-m header nav > ul > li:nth-child(2){--i:1}
+html.nv-m header nav > ul > li:nth-child(3){--i:2}
+html.nv-m header nav > ul > li:nth-child(4){--i:3}
+html.nv-m header nav > ul > li:nth-child(5){--i:4}
+html.nv-m header nav > ul > li:nth-child(6){--i:5}
+html.nv-m header nav > ul > li:nth-child(7){--i:6}
+
+html.nv-m header nav > ul > li > a{display:flex!important;align-items:center;gap:14px;width:100%;box-sizing:border-box;padding:12px 14px!important;border-radius:18px;font-size:1.4rem!important;line-height:1.2;font-weight:650!important;color:var(--nvm-fg)!important;text-decoration:none;position:relative;overflow:hidden;border:1px solid transparent;-webkit-tap-highlight-color:transparent;transition:background .25s,border-color .25s,transform .2s}
+html.nv-m header nav > ul > li > a:active{transform:scale(.97);background:var(--nvm-tile)}
+html.nv-m header nav > ul > li > a.mk{background:linear-gradient(90deg,rgba(0,53,254,.38),rgba(0,53,254,.04));border-color:var(--nvm-line)}
+html.nv-m header nav > ul > li > a > svg{margin-left:auto;width:16px!important;height:16px!important;fill:currentColor;flex:none;transition:transform .35s}
+
+/* icon tiles are always visible here (touch has no hover) and animate on tap */
+html.nv-m header nav a > .nv-ic{position:static!important;display:grid!important;place-items:center;flex:none;width:42px!important;height:42px!important;margin:0!important;opacity:1!important;transform:none!important;border-radius:13px;background:var(--nvm-tile);color:var(--nvm-ac);transition:background .25s,color .25s,box-shadow .25s}
+html.nv-m header nav a > .nv-ic svg{width:22px!important;height:22px!important}
+html.nv-m header nav a:active > .nv-ic,html.nv-m header nav a.nv-play > .nv-ic{background:var(--nvm-ac);color:#0a0d24;box-shadow:0 0 22px rgba(143,163,255,.6)}
+
+/* accordions */
+html.nv-m header nav li > ul{position:static!important;display:flex!important;flex-direction:column;gap:2px;max-height:0;opacity:0;overflow:hidden;margin:0!important;padding:0 0 0 22px!important;width:auto!important;min-width:0!important;list-style:none;background:transparent!important;box-shadow:none!important;border:0!important;transform:none!important;animation:none!important;transition:max-height .5s cubic-bezier(.22,1,.36,1),opacity .3s,padding .3s}
+html.nv-m header nav li > ul.tc{max-height:560px;opacity:1;padding:6px 0 10px 22px!important}
+html.nv-m header nav li > ul.tc > li{animation:nvmIn .5s cubic-bezier(.2,1.2,.3,1) both;animation-delay:calc(var(--j,0)*.05s + .08s)}
+@keyframes nvmIn{from{opacity:0;transform:translateX(-16px)}}
+html.nv-m header nav li > ul > li:nth-child(1){--j:0}
+html.nv-m header nav li > ul > li:nth-child(2){--j:1}
+html.nv-m header nav li > ul > li:nth-child(3){--j:2}
+html.nv-m header nav li > ul > li:nth-child(4){--j:3}
+html.nv-m header nav li > ul > li:nth-child(5){--j:4}
+html.nv-m header nav li > ul > li:nth-child(6){--j:5}
+html.nv-m header nav li > ul > li:nth-child(7){--j:6}
+html.nv-m header nav li > ul > li:nth-child(8){--j:7}
+html.nv-m header nav li > ul > li:nth-child(9){--j:8}
+
+html.nv-m header nav li > ul a{display:flex!important;align-items:center;gap:12px;padding:9px 12px!important;border-radius:14px;font-size:1.05rem!important;font-weight:500!important;color:var(--nvm-mut)!important;text-decoration:none;position:relative;overflow:hidden;white-space:normal;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s,transform .2s}
+html.nv-m header nav li > ul a:active{background:var(--nvm-tile);color:#fff!important;transform:scale(.97)}
+html.nv-m header nav li > ul a[aria-current="page"]{color:#fff!important;background:var(--nvm-tile);font-weight:650!important}
+html.nv-m header nav li > ul a > .nv-ic{width:34px!important;height:34px!important;border-radius:11px}
+html.nv-m header nav li > ul a > .nv-ic svg{width:18px!important;height:18px!important}
+
+/* bottom row: theme toggle + call to action */
+html.nv-m [data-nv-panel] > div:last-child{margin-top:auto!important;padding-top:26px!important;display:flex!important;align-items:center!important;gap:12px!important;width:100%;box-sizing:border-box;opacity:0;transform:translateY(24px);transition:opacity .3s,transform .4s}
+html.nv-m [data-nv-panel][data-open="true"] > div:last-child{opacity:1;transform:none;transition:opacity .45s,transform .7s cubic-bezier(.2,1.2,.3,1);transition-delay:.6s}
+html.nv-m [data-nv-panel] > div:last-child > div{position:static!important;display:block!important;visibility:visible!important;width:auto!important;height:auto!important;padding:0!important;margin:0!important;flex:none}
+html.nv-m [data-nv-panel] label{position:relative;display:grid!important;place-items:center;width:54px;height:54px;border-radius:16px;background:var(--nvm-tile);cursor:pointer;-webkit-tap-highlight-color:transparent}
+html.nv-m [data-nv-panel] label input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+html.nv-m [data-nv-panel] label svg,html.nv-m [data-nv-panel] label img{width:24px!important;height:24px!important}
+html.nv-m [data-nv-panel] label svg path{fill:#fff!important}
+html.nv-m [data-nv-panel] label img{filter:brightness(0) invert(1)}
+html.nv-m [data-nv-panel] a.lk{flex:1;display:flex!important;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 22px!important;box-sizing:border-box;border-radius:16px!important;font-weight:700!important;font-size:1.05rem!important;color:#fff!important;text-decoration:none;background:linear-gradient(135deg,#0035fe,#4d6bff)!important;box-shadow:0 10px 30px rgba(0,53,254,.45)!important;position:relative;overflow:hidden;opacity:1!important;transform:none!important;-webkit-tap-highlight-color:transparent}
+html.nv-m [data-nv-panel] a.lk::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:nvmShine 3.2s ease-in-out 1s infinite}
+@keyframes nvmShine{60%,100%{transform:translateX(120%)}}
+html.nv-m [data-nv-panel] a.lk > .nv-ic{position:static!important;display:inline-grid!important;width:22px!important;height:22px!important;margin:0!important;opacity:1!important;transform:none!important}
+
+/* tap ripple + swipe */
+.nv-rip{position:absolute;border-radius:50%;pointer-events:none;background:rgba(143,163,255,.38);width:20px;height:20px;margin:-10px 0 0 -10px;transform:scale(0);animation:nvmRip .65s ease-out forwards}
+@keyframes nvmRip{to{transform:scale(20);opacity:0}}
+
+/* ===================== BOTTOM DOCK ===================== */
+.nv-dock{display:none;--dk-bg:rgba(255,255,255,.86);--dk-fg:#5b6086;--dk-ac:#0035fe;--dk-pill:rgba(0,53,254,.12);--dk-line:rgba(0,53,254,.14)}
+body.b.eh .nv-dock{--dk-bg:rgba(14,17,44,.84);--dk-fg:#a3a9d6;--dk-ac:#8fa3ff;--dk-pill:rgba(143,163,255,.2);--dk-line:rgba(143,163,255,.22)}
+html.nv-m .nv-dock{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:9990;height:66px;padding:6px;box-sizing:border-box;border-radius:24px;display:grid;grid-template-columns:repeat(5,1fr);background:var(--dk-bg);border:1px solid var(--dk-line);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);box-shadow:0 18px 40px -12px rgba(10,13,60,.4);transition:transform .5s cubic-bezier(.2,.9,.3,1.1),opacity .3s}
+html.nv-m .nv-dock.nv-away,html.nv-open .nv-dock{transform:translateY(calc(100% + 32px));opacity:0;pointer-events:none}
+html.nv-m body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+.nv-dock .nv-bub{position:absolute;top:6px;bottom:6px;left:6px;width:calc((100% - 12px)/5);border-radius:18px;background:var(--dk-pill);transform:translateX(calc(var(--i,0)*100%));transition:transform .55s cubic-bezier(.3,1.55,.5,1),opacity .3s;pointer-events:none}
+.nv-dock.nv-none .nv-bub{opacity:0}
+.nv-dock a{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--dk-fg);font:600 10.5px/1 system-ui,-apple-system,sans-serif;text-decoration:none;border-radius:18px;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:color .25s,transform .2s}
+.nv-dock a:active{transform:scale(.9)}
+.nv-dock a.on{color:var(--dk-ac)}
+.nv-dock .nv-ic{position:static;display:block;width:22px;height:22px;margin:0;opacity:1;transform:none}
+
+/* ===================== BOTTOM SHEET (dock sub-navigation) ===================== */
+.nv-sheet,.nv-scrim{display:none}
+.nv-sheet{--dk-bg:rgba(255,255,255,.92);--dk-tx:#1d2144;--dk-ac:#0035fe;--dk-on:#fff;--dk-pill:rgba(0,53,254,.12);--dk-line:rgba(0,53,254,.14)}
+body.b.eh .nv-sheet{--dk-bg:rgba(14,17,44,.92);--dk-tx:#fff;--dk-ac:#8fa3ff;--dk-on:#0a0d24;--dk-pill:rgba(143,163,255,.2);--dk-line:rgba(143,163,255,.22)}
+html.nv-m .nv-scrim{display:block;position:fixed;inset:0;z-index:9980;background:rgba(5,8,30,.4);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s}
+html.nv-m .nv-scrim.on{opacity:1;pointer-events:auto}
+html.nv-m .nv-sheet{display:block;position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:9985;box-sizing:border-box;max-height:min(62vh,440px);overflow-y:auto;overscroll-behavior:contain;padding:10px;border-radius:24px;background:var(--dk-bg);border:1px solid var(--dk-line);-webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);box-shadow:0 24px 60px -16px rgba(10,13,60,.5);transform-origin:var(--cx,50%) 100%;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(26px) scale(.88);transition:transform .45s cubic-bezier(.2,1.2,.3,1),opacity .2s,visibility 0s .45s}
+html.nv-m .nv-sheet.on{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:transform .55s cubic-bezier(.2,1.3,.3,1),opacity .2s,visibility 0s}
+html.nv-open .nv-sheet,html.nv-open .nv-scrim{display:none}
+.nv-sheet .nv-sh-t{padding:6px 10px 8px;font-weight:700;font-size:11px;line-height:1;letter-spacing:.2em;text-transform:uppercase;color:var(--dk-ac)}
+.nv-sheet a{position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:16px;color:var(--dk-tx);text-decoration:none;font-weight:600;font-size:16px;line-height:1.2;-webkit-tap-highlight-color:transparent;transition:background .2s,transform .2s}
+.nv-sheet a:active{background:var(--dk-pill);transform:scale(.97)}
+.nv-sheet a[aria-current="page"]{background:var(--dk-pill);color:var(--dk-ac)}
+.nv-sheet .nv-ic{position:static;display:grid;place-items:center;flex:none;width:40px;height:40px;margin:0;opacity:1;transform:none;border-radius:13px;background:var(--dk-pill);color:var(--dk-ac);transition:background .25s,color .25s,box-shadow .25s}
+.nv-sheet .nv-ic svg{width:22px;height:22px}
+.nv-sheet a:active .nv-ic,.nv-sheet a.nv-play .nv-ic{background:var(--dk-ac);color:var(--dk-on);box-shadow:0 0 18px var(--dk-ac)}
+.nv-sheet.on a{animation:nvmIn2 .5s cubic-bezier(.2,1.2,.3,1) both;animation-delay:calc(var(--j,0)*.05s + .08s)}
+@keyframes nvmIn2{from{opacity:0;transform:translateY(14px)}}
+@media (prefers-reduced-motion:reduce){
+  html.nv-m [data-nv-panel],html.nv-m [data-nv-panel][data-open="true"]{clip-path:none!important;transition:opacity .2s,visibility 0s!important}
+  html.nv-m header nav > ul > li,html.nv-m [data-nv-panel] > div:last-child{opacity:1!important;transform:none!important;transition:none!important}
+  html.nv-m [data-nv-panel]::before,html.nv-m [data-nv-panel] a.lk::after,html.nv-m header nav li > ul.tc > li{animation:none!important}
+  .nv-dock,.nv-dock .nv-bub{transition:none!important}
+  .nv-sheet.on a{animation:none!important}
+}
+</style>
+<style id="nav-logo-css">
+/* logos: the h-10 / max-h-10 utility classes are missing from the compiled stylesheet, so every logo rendered at its natural file size.
+   h-10 (2.5rem = 40px) was the intended size — header and footer, every page, every screen width. */
+img[src^="logo-light_systech"],img[src^="logo-dark_systech"]{height:40px!important;width:auto!important;max-height:40px!important;max-width:min(70vw,260px)!important;object-fit:contain;object-position:left center}
+header > div > div:first-child > a{display:flex;align-items:center;min-width:0}
 </style>
 </head>
 <body x-data="{ page: 'lighting', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
@@ -969,7 +1101,7 @@ header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] .d3{animation-delay:.3s
         <img class="om h-10 w-auto max-h-10 object-contain" src="logo-light_systech.png" alt="Logo Light" />
         <img class="xc nm h-10 w-auto max-h-10 object-contain" src="logo-dark_systech.png" alt="Logo Dark" />
       </a>
-      <button class="po rc" @click="navigationOpen = !navigationOpen">
+      <button class="po rc" data-nv-burger aria-label="Menu" :aria-expanded="navigationOpen" @click="navigationOpen = !navigationOpen">
         <span class="rc i pf re pd">
           <span class="du-block h q vd yc">
             <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
@@ -983,7 +1115,7 @@ header a:is(:hover,:focus-visible) .nv-ic[data-ic="cta"] .d3{animation-delay:.3s
         </span>
       </button>
     </div>
-    <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+    <div class="vd wo/4 sd qo f ho oo wf yf" data-nv-panel :data-open="navigationOpen" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
       <nav>
         <ul class="tc _o sf yo cg ep">
           <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
@@ -1867,6 +1999,163 @@ var POSITIONS = [
   mode();
   window.addEventListener('resize',mode);
   document.addEventListener('pointerover',function(e){if(e.target.closest&&e.target.closest('header'))mode()},{passive:true});
+})();
+</script>
+<script id="nav-mobile-js">
+(function(){
+  var root=document.documentElement,
+      burger=document.querySelector('[data-nv-burger]'),
+      panel=document.querySelector('[data-nv-panel]');
+  if(!burger||!panel)return;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var isOpen=false, timers=[];
+  function haptic(ms){try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}}
+
+  /* mobile mode = the hamburger is actually visible */
+  function mode(){
+    var cs=getComputedStyle(burger);
+    root.classList.toggle('nv-m',cs.display!=='none'&&cs.visibility!=='hidden'&&burger.getClientRects().length>0);
+  }
+  mode();
+  addEventListener('resize',mode); addEventListener('orientationchange',mode); addEventListener('load',mode);
+
+  /* ---------- dock ---------- */
+  var cur=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  var pageKey={'index.html':'home','audiovisual.html':'services','lightings.html':'services','dimmings.html':'services','solar.html':'services','partners.html':'projects','news.html':'news','contact.html':'contact'}[cur]||null;
+  var defs=[['home',0],['services',1],['projects',1],['news',0],['contact',0]];
+  var dock=document.createElement('nav'); dock.className='nv-dock'; dock.setAttribute('aria-label','Quick navigation');
+  var bub=document.createElement('span'); bub.className='nv-bub'; dock.appendChild(bub);
+  var els={};
+  defs.forEach(function(d,i){
+    var ic=panel.querySelector('.nv-ic[data-ic="'+d[0]+'"]'); if(!ic)return;
+    var src=ic.parentNode, a=document.createElement('a');
+    a.href=d[1]?'#':src.getAttribute('href'); a.setAttribute('data-k',d[0]); a.setAttribute('data-i',i);
+    if(d[1]){a.setAttribute('role','button')}
+    var label=(src.textContent||'').replace(/\s+/g,' ').trim();
+    a.innerHTML='<span class="nv-ic" data-ic="'+d[0]+'" aria-hidden="true">'+ic.innerHTML+'</span><span>'+label+'</span>';
+    if(d[0]===pageKey){a.classList.add('on');a.setAttribute('aria-current','page')}
+    dock.appendChild(a); els[d[0]]=a;
+  });
+  document.body.appendChild(dock);
+  function setBubble(k){
+    var a=els[k];
+    dock.classList.toggle('nv-none',!a);
+    if(a)dock.style.setProperty('--i',a.getAttribute('data-i'));
+  }
+  setBubble(pageKey);
+
+  /* ---------- bottom sheet: the dock shows its own sub-navigation, the header menu stays out of it ---------- */
+  var scrim=document.createElement('div'); scrim.className='nv-scrim';
+  var sheet=document.createElement('div'); sheet.className='nv-sheet'; sheet.setAttribute('role','menu');
+  document.body.appendChild(scrim); document.body.appendChild(sheet);
+  var sheetKey=null;
+  function subLinks(k){
+    var lis=panel.querySelectorAll('nav > ul > li');
+    for(var i=0;i<lis.length;i++){
+      var ic=lis[i].querySelector(':scope > a > .nv-ic');
+      if(ic&&ic.getAttribute('data-ic')===k)return lis[i].querySelectorAll(':scope > ul a[href]');
+    }
+    return [];
+  }
+  function closeSheet(){
+    if(sheetKey===null)return;
+    sheetKey=null; sheet.classList.remove('on'); scrim.classList.remove('on');
+    setBubble(pageKey);
+  }
+  function openSheet(k){
+    if(sheetKey===k){closeSheet();return}
+    var links=subLinks(k), html='<div class="nv-sh-t">'+els[k].textContent.replace(/\s+/g,' ').trim()+'</div>';
+    [].forEach.call(links,function(a,i){
+      var ic=a.querySelector('.nv-ic'), cur=a.getAttribute('aria-current')==='page'?' aria-current="page"':'';
+      html+='<a role="menuitem" href="'+a.getAttribute('href')+'" style="--j:'+i+'"'+cur+'><span class="nv-ic" data-ic="'+(ic?ic.getAttribute('data-ic'):'')+'" aria-hidden="true">'+(ic?ic.innerHTML:'')+'</span><span>'+a.textContent.replace(/\s+/g,' ').trim()+'</span></a>';
+    });
+    sheet.classList.remove('on'); void sheet.offsetWidth;
+    sheet.innerHTML=html; sheet.scrollTop=0;
+    var r=els[k].getBoundingClientRect();
+    sheet.style.setProperty('--cx',Math.round(r.left+r.width/2-12)+'px');
+    setBubble(k); sheetKey=k; sheet.classList.add('on'); scrim.classList.add('on'); haptic(10);
+    if(!reduce)[].forEach.call(sheet.querySelectorAll('a'),function(a,i){setTimeout(function(){play(a,900)},260+i*90)});
+  }
+  scrim.addEventListener('click',closeSheet);
+  var ty=0;
+  sheet.addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});
+  sheet.addEventListener('touchend',function(e){if(e.changedTouches[0].clientY-ty>70&&sheet.scrollTop<=0)closeSheet()});
+  dock.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a)return;
+    var k=a.getAttribute('data-k');
+    if(a.getAttribute('role')==='button'){e.preventDefault();openSheet(k)}
+    else{closeSheet();setBubble(k)}
+  });
+
+  /* hide the dock while scrolling down, bring it back on scroll up */
+  var lastY=scrollY,tick=false;
+  addEventListener('scroll',function(){
+    if(tick)return; tick=true;
+    requestAnimationFrame(function(){
+      var y=scrollY;
+      if(y>lastY+6&&y>140){dock.classList.add('nv-away');closeSheet()}
+      else if(y<lastY-6||y<100)dock.classList.remove('nv-away');
+      lastY=y; tick=false;
+    });
+  },{passive:true});
+
+  /* ---------- open / close ---------- */
+  function play(a,ms){a.classList.add('nv-play');setTimeout(function(){a.classList.remove('nv-play')},ms||1000)}
+  function setOpen(v){
+    if(v===isOpen)return; isOpen=v;
+    root.classList.toggle('nv-open',v);
+    burger.setAttribute('aria-label',v?'Close menu':'Menu');
+    timers.forEach(clearTimeout); timers=[];
+    if(v){
+      closeSheet();haptic(12);
+      if(!reduce)panel.querySelectorAll('nav > ul > li > a').forEach(function(a,i){
+        timers.push(setTimeout(function(){play(a,1100)},300+i*110));
+      });
+    }else{
+      setBubble(pageKey);
+    }
+  }
+  new MutationObserver(function(){setOpen(panel.getAttribute('data-open')==='true')})
+    .observe(panel,{attributes:true,attributeFilter:['data-open']});
+  setOpen(panel.getAttribute('data-open')==='true');
+  function closeMenu(){if(isOpen)burger.click()}
+  addEventListener('keydown',function(e){if(e.key==='Escape'){if(isOpen)closeMenu();closeSheet()}});
+
+  /* ---------- swipe right to close (panel follows the finger) ---------- */
+  var sx=0,sy=0,dx=0,lock=null;
+  panel.addEventListener('touchstart',function(e){var t=e.touches[0];sx=t.clientX;sy=t.clientY;dx=0;lock=null},{passive:true});
+  panel.addEventListener('touchmove',function(e){
+    var t=e.touches[0],mx=t.clientX-sx,my=t.clientY-sy;
+    if(lock===null&&(Math.abs(mx)>10||Math.abs(my)>10))lock=(mx>0&&Math.abs(mx)>Math.abs(my)*1.4)?'x':'y';
+    if(lock==='x'){
+      dx=Math.max(0,mx);
+      panel.classList.add('nv-drag');
+      panel.style.setProperty('--nv-drag',dx+'px');
+      panel.style.opacity=String(1-Math.min(dx/320,.6));
+    }
+  },{passive:true});
+  function endDrag(){
+    if(lock==='x'){
+      var shut=dx>110;
+      panel.classList.remove('nv-drag');
+      panel.style.removeProperty('--nv-drag');
+      panel.style.opacity='';
+      if(shut)closeMenu();
+    }
+    lock=null; dx=0;
+  }
+  panel.addEventListener('touchend',endDrag); panel.addEventListener('touchcancel',endDrag);
+
+  /* ---------- tap ripple + icon play + haptic ---------- */
+  document.addEventListener('pointerdown',function(e){
+    var a=e.target.closest&&e.target.closest('[data-nv-panel] a, .nv-dock a, .nv-sheet a'); if(!a)return;
+    haptic(6);
+    play(a,1000);
+    if(reduce)return;
+    var r=a.getBoundingClientRect(), s=document.createElement('span');
+    s.className='nv-rip'; s.style.left=(e.clientX-r.left)+'px'; s.style.top=(e.clientY-r.top)+'px';
+    a.appendChild(s); setTimeout(function(){s.remove()},700);
+  },{passive:true});
 })();
 </script>
 </body>

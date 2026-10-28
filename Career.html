@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Careers | Systech Lighting &amp; Controls Inc.</title>
+  <title>Careers | Systech Lighting and Controls Inc.</title>
 <meta name="description" content="Join Systech Lighting &amp; Controls Inc. Explore open positions in lighting design, controls, sales, solar and operations.">
 <meta name="theme-color" content="#0035fe">
 <script>document.documentElement.className+=" js";try{if(JSON.parse(localStorage.getItem("darkMode"))===true)document.documentElement.className+=" pj-dark"}catch(e){}window.pjImg=function(i){var r=(i.dataset.remote||'').split('|').filter(Boolean),n=+i.dataset.tried||0;if(n<r.length){i.dataset.tried=n+1;i.src=r[n]}else i.remove()}</script>
@@ -982,77 +982,250 @@ footer .ft-brand ul{gap:14px}
 body.b.eh footer .ft-brand ul a{color:#b7c4ff}
 body.b.eh footer .ft-brand ul a:hover{color:#fff}
 </style>
-<style id="rwd-all">
-/* ===== Responsive safety net: watch, phone, tablet, laptop, TV ===== */
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{overflow-x:hidden;overflow-x:clip;min-width:0}
-img,video,canvas,iframe,embed,object{max-width:100%}
-img,video{height:auto}
-h1,h2,h3,h4,h5,h6,p,li,a,td,th,label,button{overflow-wrap:break-word;min-width:0}
-pre,code{max-width:100%;overflow-x:auto}
-/* phones in landscape / very short screens */
-@media (max-height:480px){
-  .pp-box{max-height:94vh!important}
-  #ppModal,#spModal{padding:8px!important}
-  .pp-head{padding-top:12px!important;padding-bottom:10px!important}
-  .pp-foot{padding-top:8px!important;padding-bottom:8px!important}
-}
-/* touch screens: comfortable tap targets in the footer */
-@media (pointer:coarse){
-  footer .ft-col a,footer .ft-legal a,footer .ft-lang-btn{display:inline-flex;align-items:center;min-height:36px}
-  #ftLangMenu button{min-height:44px}
-}
-/* tablets / small laptops */
-@media (max-width:1024px){
-  .pp-box{width:min(720px,100%)}
-}
-/* small phones */
-@media (max-width:360px){
-  html{font-size:14.5px}
-  footer .ft-row{row-gap:28px}
-  .pp-head h2{font-size:1.05rem!important}
-  .pp-body{font-size:.88rem!important}
-  .pp-ok{padding:9px 18px!important}
-  .sp-body input,.sp-body textarea{font-size:16px}
-}
-/* smartwatches and other very narrow screens (<= 280px) */
-@media (max-width:280px){
-  html{font-size:12px}
-  .pp-box{border-radius:12px!important}
-  .pp-head,.pp-body,.pp-foot,.sp-body{padding-left:10px!important;padding-right:10px!important}
-  #ftLangMenu{grid-template-columns:1fr!important;padding:6px!important}
-}
-/* Lightings hero demo on narrow screens */
-@media (max-width:560px){
-  .dm-stage .dm-k{font-size:clamp(8px,2.7cqw,12px)!important;white-space:normal!important;line-height:1.15;padding:1cqw .3cqw!important;text-align:center}
-  .dm-stage .dm-k small{font-size:clamp(5.5px,1.8cqw,9px)!important}
-}
-@media (max-width:420px){
-  .dm-stage .dm-k small{display:none!important}
-}
-/* large monitors and TVs: scale the interface up so text stays readable from a distance */
-@media (min-width:1920px){html{font-size:18px}}
-@media (min-width:2560px){html{font-size:22px}}
-@media (min-width:3200px){html{font-size:28px}}
-@media (min-width:3840px){html{font-size:34px}}
-@media (min-width:1920px){
-  .pp-box{width:min(900px,100%)}
-  #spModal .pp-box{width:min(680px,100%)}
-}
-/* TV remotes / keyboards: clear focus ring */
-a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #4e6bff;outline-offset:3px}
+<style id="nav-interactive-css">
+/* nav: dropdown reveal + keyboard focus + current-page marker */
+header nav li > ul.tc{animation:navDrop .18s ease-out both;transform-origin:top left}
+@keyframes navDrop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+header nav a:focus-visible{outline:2px solid #0035fe;outline-offset:3px;border-radius:6px}
+body.b.eh header nav a:focus-visible{outline-color:#8fa3ff}
+header nav li > ul a[aria-current="page"]{color:#0035fe;font-weight:700}
+body.b.eh header nav li > ul a[aria-current="page"]{color:#8fa3ff}
+@media (prefers-reduced-motion:reduce){header nav li > ul.tc{animation:none}}
 </style>
-<style id="rwd-logo">
-/* header logo: keep it inside the header on phones and tablets so it never covers the hero text */
-@media (max-width:1023px){
-  header a>img{height:46px!important;max-height:46px!important;width:auto!important;max-width:190px!important;object-fit:contain}
+<style id="nav-icons-css">
+/* ---- nav icons: one animated icon per item, plays on hover / keyboard focus ---- */
+.nv-ic{display:inline-block;width:0;height:1.15em;margin-right:0;opacity:0;vertical-align:-.2em;flex:none;line-height:0;pointer-events:none;transition:width .25s ease,margin .25s ease,opacity .2s ease .05s,transform .25s cubic-bezier(.34,1.56,.64,1)}
+/* hidden at rest: nothing visible, no space taken. Appears only on hover / keyboard focus */
+header a:is(:hover,:focus-visible) > .nv-ic{width:1.15em;margin-right:.5em;opacity:1}
+/* desktop top-level items: icon appears beside (left of) the label, sitting in the gap so neighbours never shift */
+html.nv-roomy header nav > ul > li > a{position:relative}
+html.nv-roomy header nav > ul > li > a > .nv-ic{position:absolute;right:100%;top:50%;width:1.15em;height:1.15em;margin:0 .35em 0 0;transform:translateY(-50%) translateX(8px) scale(.3)}
+html.nv-roomy header nav > ul > li > a:is(:hover,:focus-visible) > .nv-ic{width:1.15em;margin:0 .35em 0 0;transform:translateY(-50%)}
+.nv-ic svg{display:block;width:100%;height:100%;overflow:visible;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nv-ic svg *{transform-origin:12px 12px}
+.nv-ic .fillc{fill:currentColor;stroke:none}
+.nv-ic .dim{opacity:.45}
+
+/* home: pops */
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="home"] svg{animation:nvPop 1s ease-in-out infinite}
+@keyframes nvPop{0%,100%{transform:scale(1) rotate(0)}30%{transform:scale(1.38) rotate(-7deg)}55%{transform:scale(.9) rotate(3deg)}75%{transform:scale(1.12)}}
+
+/* audiovisual: speaker beats, sound waves pulse outward */
+.nv-ic .sp{transform-origin:6px 12px}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="audio"] .sp{animation:nvBeat .5s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="audio"] .w1{animation:nvWave 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="audio"] .w2{animation:nvWave 1s ease-in-out .25s infinite}
+@keyframes nvBeat{50%{transform:scale(1.14)}}
+@keyframes nvWave{0%,100%{opacity:.2;transform:translateX(-1px)}50%{opacity:1;transform:translateX(1.5px)}}
+
+/* lightings: bulb lights up and glows, rays flicker */
+.nv-ic .rays{transform-origin:12px 9px}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="light"] .bulb{animation:nvGlow 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="light"] .rays{animation:nvRay 1s ease-in-out infinite}
+@keyframes nvGlow{0%,100%{fill:rgba(255,213,74,0);filter:drop-shadow(0 0 0 rgba(255,196,0,0))}50%{fill:#ffd54a;filter:drop-shadow(0 0 5px #ffc400)}}
+@keyframes nvRay{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1.12)}}
+
+/* dimming: slider knobs slide */
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="dimming"] .k1{animation:nvK1 1.3s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="dimming"] .k2{animation:nvK2 1.3s ease-in-out infinite}
+@keyframes nvK1{0%,100%{transform:translateX(0)}50%{transform:translateX(8px)}}
+@keyframes nvK2{0%,100%{transform:translateX(0)}50%{transform:translateX(-8px)}}
+
+/* solar: sun rays spin, core pulses */
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="solar"] .rot{animation:nvSpin 2.4s linear infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="solar"] .core{animation:nvCore 1.2s ease-in-out infinite}
+@keyframes nvSpin{to{transform:rotate(360deg)}}
+@keyframes nvCore{50%{transform:scale(1.25)}}
+
+/* services + all products */
+.nv-ic .t1{transform-origin:6.5px 6.5px}.nv-ic .t2{transform-origin:17.5px 6.5px}
+.nv-ic .t3{transform-origin:6.5px 17.5px}.nv-ic .t4{transform-origin:17.5px 17.5px}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="services"] [class^="t"]{animation:nvTile 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="services"] .t2{animation-delay:.12s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="services"] .t4{animation-delay:.24s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="services"] .t3{animation-delay:.36s}
+@keyframes nvTile{0%,70%,100%{transform:scale(1)}35%{transform:scale(.55)}}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="products"] svg{animation:nvTurn 1.2s ease-in-out infinite}
+@keyframes nvTurn{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.45)}}
+
+/* projects: folder flap opens */
+.nv-ic .fr{transform-origin:3px 20px}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="projects"] .fr{animation:nvFolder 1s ease-in-out infinite}
+@keyframes nvFolder{0%,100%{transform:none}50%{transform:skewX(-16deg) scaleY(.92)}}
+
+/* on-going progress: bar fills */
+.nv-ic .bar{transform-origin:5px 12px}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="progress"] .bar{animation:nvFill 1.4s ease-in-out infinite}
+@keyframes nvFill{0%{transform:scaleX(1)}80%,100%{transform:scaleX(3.5)}}
+
+/* completed: ring pulses, check draws */
+.nv-ic .ck{stroke-dasharray:10}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="completed"] .ck{animation:nvDraw 1.2s ease-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="completed"] .ring{animation:nvCore 1.2s ease-in-out infinite}
+@keyframes nvDraw{0%{stroke-dashoffset:10}45%,100%{stroke-dashoffset:0}}
+
+/* partners: circles link up */
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="partners"] .c1{animation:nvC1 1s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="partners"] .c2{animation:nvC2 1s ease-in-out infinite}
+@keyframes nvC1{50%{transform:translateX(3px)}}
+@keyframes nvC2{50%{transform:translateX(-3px)}}
+
+/* news: text lines write in */
+.nv-ic .nl{stroke-dasharray:10}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="news"] .nl{animation:nvDraw 1.4s ease-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="news"] .nl2{animation-delay:.2s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="news"] .nl3{animation-delay:.4s}
+
+/* careers: briefcase handle lifts */
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="careers"] .hd{animation:nvLift .9s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="careers"] .bd{animation:nvSink .9s ease-in-out infinite}
+@keyframes nvLift{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}}
+@keyframes nvSink{0%,100%{transform:translateY(0)}40%{transform:translateY(.8px)}}
+
+/* contact: envelope flap opens */
+.nv-ic .fl{transform-origin:12px 7px}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="contact"] .fl{animation:nvFlap 1.1s ease-in-out infinite}
+@keyframes nvFlap{0%,100%{transform:scaleY(1)}45%,60%{transform:scaleY(-.9)}}
+
+/* talk to expert: typing dots */
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="cta"] :is(.d1,.d2,.d3){animation:nvDot .9s ease-in-out infinite}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="cta"] .d2{animation-delay:.15s}
+:is(header,.nv-dock,.nv-sheet) a:is(:hover,:focus-visible,.nv-play) .nv-ic[data-ic="cta"] .d3{animation-delay:.3s}
+@keyframes nvDot{0%,100%{transform:translateY(0)}40%{transform:translateY(-3px)}}
+
+@media (prefers-reduced-motion:reduce){.nv-ic svg,.nv-ic svg *{animation:none!important}}
+</style>
+<style id="nav-mobile-css">
+/* ===================== MOBILE NAV (only active when the hamburger is visible) ===================== */
+html.nv-open,html.nv-open body{overflow:hidden!important}
+[data-nv-panel],.nv-dock{--nvm-fg:#fff;--nvm-mut:rgba(255,255,255,.74);--nvm-ac:#8fa3ff;--nvm-line:rgba(143,163,255,.24);--nvm-tile:rgba(143,163,255,.15)}
+
+/* the header must not trap the fixed panel (sticky blur / hide-on-scroll transforms) */
+html.nv-open header{transform:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;filter:none!important;background:transparent!important;box-shadow:none!important}
+html.nv-m header > div > div:first-child{position:relative;z-index:50}
+html.nv-open header img[alt="Logo Light"]{display:none!important}
+html.nv-open header img[alt="Logo Dark"]{display:block!important}
+html.nv-open [data-nv-burger] span span span{background:#fff!important}
+html.nv-m [data-nv-burger]{-webkit-tap-highlight-color:transparent;transition:transform .2s}
+html.nv-m [data-nv-burger]:active{transform:scale(.88)}
+
+/* the panel: circular reveal from the hamburger corner */
+html.nv-m [data-nv-panel]{box-sizing:border-box!important;position:fixed!important;inset:0!important;z-index:5;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;width:100%!important;max-width:none!important;height:100dvh!important;margin:0!important;padding:92px 20px calc(22px + env(safe-area-inset-bottom))!important;overflow-y:auto!important;overscroll-behavior:contain;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;isolation:isolate;color:#fff;
+  background:radial-gradient(120% 70% at 100% 0%,rgba(0,53,254,.38),transparent 60%),linear-gradient(180deg,#0a0d24,#05061a)!important;
+  visibility:hidden;opacity:0;pointer-events:none;clip-path:circle(0px at calc(100% - 36px) 40px);translate:var(--nv-drag,0px) 0;
+  transition:clip-path .55s cubic-bezier(.7,0,.2,1),opacity .25s .3s,visibility 0s .6s,translate .3s}
+html.nv-m [data-nv-panel][data-open="true"]{visibility:visible;opacity:1;pointer-events:auto;clip-path:circle(150vmax at calc(100% - 36px) 40px);transition:clip-path .8s cubic-bezier(.7,0,.2,1),opacity .15s,visibility 0s,translate .3s}
+html.nv-m [data-nv-panel].nv-drag{transition:none!important}
+html.nv-m [data-nv-panel]::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(50% 40% at 15% 95%,rgba(0,53,254,.75),transparent 70%),radial-gradient(45% 35% at 95% 40%,rgba(106,61,255,.5),transparent 70%);background-size:150% 150%;animation:nvmDrift 16s ease-in-out infinite alternate}
+@keyframes nvmDrift{from{background-position:0% 0%}to{background-position:100% 100%}}
+
+/* menu list */
+html.nv-m header nav{width:100%}
+html.nv-m header nav::before{content:"Navigate";display:block;margin:0 4px 12px;font:600 12px/1 system-ui,-apple-system,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--nvm-ac)}
+html.nv-m header nav > ul{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:6px!important;margin:0!important;padding:0!important;list-style:none!important;width:100%}
+html.nv-m header nav > ul > li{opacity:0;transform:translateX(36px);transition:opacity .35s ease,transform .45s ease;width:100%}
+html.nv-m [data-nv-panel][data-open="true"] nav > ul > li{opacity:1;transform:none;transition:opacity .45s ease,transform .7s cubic-bezier(.2,1.25,.3,1);transition-delay:calc(.25s + var(--i,0)*.07s)}
+html.nv-m header nav > ul > li:nth-child(1){--i:0}
+html.nv-m header nav > ul > li:nth-child(2){--i:1}
+html.nv-m header nav > ul > li:nth-child(3){--i:2}
+html.nv-m header nav > ul > li:nth-child(4){--i:3}
+html.nv-m header nav > ul > li:nth-child(5){--i:4}
+html.nv-m header nav > ul > li:nth-child(6){--i:5}
+html.nv-m header nav > ul > li:nth-child(7){--i:6}
+
+html.nv-m header nav > ul > li > a{display:flex!important;align-items:center;gap:14px;width:100%;box-sizing:border-box;padding:12px 14px!important;border-radius:18px;font-size:1.4rem!important;line-height:1.2;font-weight:650!important;color:var(--nvm-fg)!important;text-decoration:none;position:relative;overflow:hidden;border:1px solid transparent;-webkit-tap-highlight-color:transparent;transition:background .25s,border-color .25s,transform .2s}
+html.nv-m header nav > ul > li > a:active{transform:scale(.97);background:var(--nvm-tile)}
+html.nv-m header nav > ul > li > a.mk{background:linear-gradient(90deg,rgba(0,53,254,.38),rgba(0,53,254,.04));border-color:var(--nvm-line)}
+html.nv-m header nav > ul > li > a > svg{margin-left:auto;width:16px!important;height:16px!important;fill:currentColor;flex:none;transition:transform .35s}
+
+/* icon tiles are always visible here (touch has no hover) and animate on tap */
+html.nv-m header nav a > .nv-ic{position:static!important;display:grid!important;place-items:center;flex:none;width:42px!important;height:42px!important;margin:0!important;opacity:1!important;transform:none!important;border-radius:13px;background:var(--nvm-tile);color:var(--nvm-ac);transition:background .25s,color .25s,box-shadow .25s}
+html.nv-m header nav a > .nv-ic svg{width:22px!important;height:22px!important}
+html.nv-m header nav a:active > .nv-ic,html.nv-m header nav a.nv-play > .nv-ic{background:var(--nvm-ac);color:#0a0d24;box-shadow:0 0 22px rgba(143,163,255,.6)}
+
+/* accordions */
+html.nv-m header nav li > ul{position:static!important;display:flex!important;flex-direction:column;gap:2px;max-height:0;opacity:0;overflow:hidden;margin:0!important;padding:0 0 0 22px!important;width:auto!important;min-width:0!important;list-style:none;background:transparent!important;box-shadow:none!important;border:0!important;transform:none!important;animation:none!important;transition:max-height .5s cubic-bezier(.22,1,.36,1),opacity .3s,padding .3s}
+html.nv-m header nav li > ul.tc{max-height:560px;opacity:1;padding:6px 0 10px 22px!important}
+html.nv-m header nav li > ul.tc > li{animation:nvmIn .5s cubic-bezier(.2,1.2,.3,1) both;animation-delay:calc(var(--j,0)*.05s + .08s)}
+@keyframes nvmIn{from{opacity:0;transform:translateX(-16px)}}
+html.nv-m header nav li > ul > li:nth-child(1){--j:0}
+html.nv-m header nav li > ul > li:nth-child(2){--j:1}
+html.nv-m header nav li > ul > li:nth-child(3){--j:2}
+html.nv-m header nav li > ul > li:nth-child(4){--j:3}
+html.nv-m header nav li > ul > li:nth-child(5){--j:4}
+html.nv-m header nav li > ul > li:nth-child(6){--j:5}
+html.nv-m header nav li > ul > li:nth-child(7){--j:6}
+html.nv-m header nav li > ul > li:nth-child(8){--j:7}
+html.nv-m header nav li > ul > li:nth-child(9){--j:8}
+
+html.nv-m header nav li > ul a{display:flex!important;align-items:center;gap:12px;padding:9px 12px!important;border-radius:14px;font-size:1.05rem!important;font-weight:500!important;color:var(--nvm-mut)!important;text-decoration:none;position:relative;overflow:hidden;white-space:normal;-webkit-tap-highlight-color:transparent;transition:background .2s,color .2s,transform .2s}
+html.nv-m header nav li > ul a:active{background:var(--nvm-tile);color:#fff!important;transform:scale(.97)}
+html.nv-m header nav li > ul a[aria-current="page"]{color:#fff!important;background:var(--nvm-tile);font-weight:650!important}
+html.nv-m header nav li > ul a > .nv-ic{width:34px!important;height:34px!important;border-radius:11px}
+html.nv-m header nav li > ul a > .nv-ic svg{width:18px!important;height:18px!important}
+
+/* bottom row: theme toggle + call to action */
+html.nv-m [data-nv-panel] > div:last-child{margin-top:auto!important;padding-top:26px!important;display:flex!important;align-items:center!important;gap:12px!important;width:100%;box-sizing:border-box;opacity:0;transform:translateY(24px);transition:opacity .3s,transform .4s}
+html.nv-m [data-nv-panel][data-open="true"] > div:last-child{opacity:1;transform:none;transition:opacity .45s,transform .7s cubic-bezier(.2,1.2,.3,1);transition-delay:.6s}
+html.nv-m [data-nv-panel] > div:last-child > div{position:static!important;display:block!important;visibility:visible!important;width:auto!important;height:auto!important;padding:0!important;margin:0!important;flex:none}
+html.nv-m [data-nv-panel] label{position:relative;display:grid!important;place-items:center;width:54px;height:54px;border-radius:16px;background:var(--nvm-tile);cursor:pointer;-webkit-tap-highlight-color:transparent}
+html.nv-m [data-nv-panel] label input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:pointer}
+html.nv-m [data-nv-panel] label svg,html.nv-m [data-nv-panel] label img{width:24px!important;height:24px!important}
+html.nv-m [data-nv-panel] label svg path{fill:#fff!important}
+html.nv-m [data-nv-panel] label img{filter:brightness(0) invert(1)}
+html.nv-m [data-nv-panel] a.lk{flex:1;display:flex!important;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 22px!important;box-sizing:border-box;border-radius:16px!important;font-weight:700!important;font-size:1.05rem!important;color:#fff!important;text-decoration:none;background:linear-gradient(135deg,#0035fe,#4d6bff)!important;box-shadow:0 10px 30px rgba(0,53,254,.45)!important;position:relative;overflow:hidden;opacity:1!important;transform:none!important;-webkit-tap-highlight-color:transparent}
+html.nv-m [data-nv-panel] a.lk::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:nvmShine 3.2s ease-in-out 1s infinite}
+@keyframes nvmShine{60%,100%{transform:translateX(120%)}}
+html.nv-m [data-nv-panel] a.lk > .nv-ic{position:static!important;display:inline-grid!important;width:22px!important;height:22px!important;margin:0!important;opacity:1!important;transform:none!important}
+
+/* tap ripple + swipe */
+.nv-rip{position:absolute;border-radius:50%;pointer-events:none;background:rgba(143,163,255,.38);width:20px;height:20px;margin:-10px 0 0 -10px;transform:scale(0);animation:nvmRip .65s ease-out forwards}
+@keyframes nvmRip{to{transform:scale(20);opacity:0}}
+
+/* ===================== BOTTOM DOCK ===================== */
+.nv-dock{display:none;--dk-bg:rgba(255,255,255,.86);--dk-fg:#5b6086;--dk-ac:#0035fe;--dk-pill:rgba(0,53,254,.12);--dk-line:rgba(0,53,254,.14)}
+body.b.eh .nv-dock{--dk-bg:rgba(14,17,44,.84);--dk-fg:#a3a9d6;--dk-ac:#8fa3ff;--dk-pill:rgba(143,163,255,.2);--dk-line:rgba(143,163,255,.22)}
+html.nv-m .nv-dock{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:9990;height:66px;padding:6px;box-sizing:border-box;border-radius:24px;display:grid;grid-template-columns:repeat(5,1fr);background:var(--dk-bg);border:1px solid var(--dk-line);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);box-shadow:0 18px 40px -12px rgba(10,13,60,.4);transition:transform .5s cubic-bezier(.2,.9,.3,1.1),opacity .3s}
+html.nv-m .nv-dock.nv-away,html.nv-open .nv-dock{transform:translateY(calc(100% + 32px));opacity:0;pointer-events:none}
+html.nv-m body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+.nv-dock .nv-bub{position:absolute;top:6px;bottom:6px;left:6px;width:calc((100% - 12px)/5);border-radius:18px;background:var(--dk-pill);transform:translateX(calc(var(--i,0)*100%));transition:transform .55s cubic-bezier(.3,1.55,.5,1),opacity .3s;pointer-events:none}
+.nv-dock.nv-none .nv-bub{opacity:0}
+.nv-dock a{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--dk-fg);font:600 10.5px/1 system-ui,-apple-system,sans-serif;text-decoration:none;border-radius:18px;overflow:hidden;-webkit-tap-highlight-color:transparent;transition:color .25s,transform .2s}
+.nv-dock a:active{transform:scale(.9)}
+.nv-dock a.on{color:var(--dk-ac)}
+.nv-dock .nv-ic{position:static;display:block;width:22px;height:22px;margin:0;opacity:1;transform:none}
+
+/* ===================== BOTTOM SHEET (dock sub-navigation) ===================== */
+.nv-sheet,.nv-scrim{display:none}
+.nv-sheet{--dk-bg:rgba(255,255,255,.92);--dk-tx:#1d2144;--dk-ac:#0035fe;--dk-on:#fff;--dk-pill:rgba(0,53,254,.12);--dk-line:rgba(0,53,254,.14)}
+body.b.eh .nv-sheet{--dk-bg:rgba(14,17,44,.92);--dk-tx:#fff;--dk-ac:#8fa3ff;--dk-on:#0a0d24;--dk-pill:rgba(143,163,255,.2);--dk-line:rgba(143,163,255,.22)}
+html.nv-m .nv-scrim{display:block;position:fixed;inset:0;z-index:9980;background:rgba(5,8,30,.4);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s}
+html.nv-m .nv-scrim.on{opacity:1;pointer-events:auto}
+html.nv-m .nv-sheet{display:block;position:fixed;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));z-index:9985;box-sizing:border-box;max-height:min(62vh,440px);overflow-y:auto;overscroll-behavior:contain;padding:10px;border-radius:24px;background:var(--dk-bg);border:1px solid var(--dk-line);-webkit-backdrop-filter:blur(22px) saturate(1.6);backdrop-filter:blur(22px) saturate(1.6);box-shadow:0 24px 60px -16px rgba(10,13,60,.5);transform-origin:var(--cx,50%) 100%;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(26px) scale(.88);transition:transform .45s cubic-bezier(.2,1.2,.3,1),opacity .2s,visibility 0s .45s}
+html.nv-m .nv-sheet.on{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:transform .55s cubic-bezier(.2,1.3,.3,1),opacity .2s,visibility 0s}
+html.nv-open .nv-sheet,html.nv-open .nv-scrim{display:none}
+.nv-sheet .nv-sh-t{padding:6px 10px 8px;font-weight:700;font-size:11px;line-height:1;letter-spacing:.2em;text-transform:uppercase;color:var(--dk-ac)}
+.nv-sheet a{position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:16px;color:var(--dk-tx);text-decoration:none;font-weight:600;font-size:16px;line-height:1.2;-webkit-tap-highlight-color:transparent;transition:background .2s,transform .2s}
+.nv-sheet a:active{background:var(--dk-pill);transform:scale(.97)}
+.nv-sheet a[aria-current="page"]{background:var(--dk-pill);color:var(--dk-ac)}
+.nv-sheet .nv-ic{position:static;display:grid;place-items:center;flex:none;width:40px;height:40px;margin:0;opacity:1;transform:none;border-radius:13px;background:var(--dk-pill);color:var(--dk-ac);transition:background .25s,color .25s,box-shadow .25s}
+.nv-sheet .nv-ic svg{width:22px;height:22px}
+.nv-sheet a:active .nv-ic,.nv-sheet a.nv-play .nv-ic{background:var(--dk-ac);color:var(--dk-on);box-shadow:0 0 18px var(--dk-ac)}
+.nv-sheet.on a{animation:nvmIn2 .5s cubic-bezier(.2,1.2,.3,1) both;animation-delay:calc(var(--j,0)*.05s + .08s)}
+@keyframes nvmIn2{from{opacity:0;transform:translateY(14px)}}
+@media (prefers-reduced-motion:reduce){
+  html.nv-m [data-nv-panel],html.nv-m [data-nv-panel][data-open="true"]{clip-path:none!important;transition:opacity .2s,visibility 0s!important}
+  html.nv-m header nav > ul > li,html.nv-m [data-nv-panel] > div:last-child{opacity:1!important;transform:none!important;transition:none!important}
+  html.nv-m [data-nv-panel]::before,html.nv-m [data-nv-panel] a.lk::after,html.nv-m header nav li > ul.tc > li{animation:none!important}
+  .nv-dock,.nv-dock .nv-bub{transition:none!important}
+  .nv-sheet.on a{animation:none!important}
 }
-@media (max-width:480px){
-  header a>img{height:40px!important;max-height:40px!important;max-width:160px!important}
-}
-@media (max-width:280px){
-  header a>img{height:30px!important;max-height:30px!important;max-width:110px!important}
-}
+</style>
+<style id="nav-logo-css">
+/* logos: the h-10 / max-h-10 utility classes are missing from the compiled stylesheet, so every logo rendered at its natural file size.
+   h-10 (2.5rem = 40px) was the intended size — header and footer, every page, every screen width. */
+img[src^="logo-light_systech"],img[src^="logo-dark_systech"]{height:40px!important;width:auto!important;max-height:40px!important;max-width:min(70vw,260px)!important;object-fit:contain;object-position:left center}
+header > div > div:first-child > a{display:flex;align-items:center;min-width:0}
 </style>
 </head>
 <body x-data="{ page: 'careers', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
@@ -1078,7 +1251,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         <img class="om h-10 w-auto max-h-10 object-contain" src="logo-light_systech.png" alt="Logo Light" />
         <img class="xc nm h-10 w-auto max-h-10 object-contain" src="logo-dark_systech.png" alt="Logo Dark" />
       </a>
-      <button class="po rc" @click="navigationOpen = !navigationOpen">
+      <button class="po rc" data-nv-burger aria-label="Menu" :aria-expanded="navigationOpen" @click="navigationOpen = !navigationOpen">
         <span class="rc i pf re pd">
           <span class="du-block h q vd yc">
             <span class="rc i r s eh um tg te rd eb ml jl dl" :class="{ 'ue el': !navigationOpen }"></span>
@@ -1092,18 +1265,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
         </span>
       </button>
     </div>
-    <div class="vd wo/4 sd qo f ho oo wf yf" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
+    <div class="vd wo/4 sd qo f ho oo wf yf" data-nv-panel :data-open="navigationOpen" :class="{ 'd hh rm sr td ud qg ug jc yh': navigationOpen }">
       <nav>
         <ul class="tc _o sf yo cg ep">
           <li><a href="index.html" class="xl" :class="{ 'mk': page === 'home' }">Home</a></li>
-          <li class="c i" x-data="{ dropdown: false }"><a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown" :class="{ 'mk': ['audiovisual','lighting','dimming','solar'].includes(page) }">Services <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
+          <li class="c i" x-data="{ dropdown: false, t: null, canHover(){ return !navigationOpen && matchMedia('(hover:hover)').matches } }" @mouseenter="if (canHover()) { clearTimeout(t); dropdown = true }" @mouseleave="if (canHover()) { t = setTimeout(() => dropdown = false, 160) }" @click.outside="dropdown = false" @keydown.escape.stop="dropdown = false; $refs.trig.focus()"><a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = canHover() ? true : !dropdown" x-ref="trig" role="button" aria-haspopup="true" :aria-expanded="dropdown" @keydown.down.prevent="dropdown = true; $nextTick(() => $refs.menu.querySelector('a').focus())" :class="{ 'mk': ['audiovisual','lighting','dimming','solar'].includes(page) }">Services <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512">
                 <path
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-              </svg></a><ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems and GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
-          <li class="c i" x-data="{ dropdown: false }">
-            <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = !dropdown"
-              :class="{ 'mk': page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
+              </svg></a><ul class="a" :class="{ 'tc': dropdown }" x-ref="menu" @click="if ($event.target.closest('a')) { dropdown = false; navigationOpen = false }" @keydown.down.prevent="($event.target.closest('li').nextElementSibling || $event.target.closest('li')).querySelector('a').focus()" @keydown.up.prevent="($event.target.closest('li').previousElementSibling ? $event.target.closest('li').previousElementSibling.querySelector('a').focus() : $refs.trig.focus())"><li><a href="index.html#services" class="xl">All Products</a></li><li><a href="Audiovisual.html" class="xl">Audiovisual</a></li><li><a href="Lightings.html" class="xl">Lightings</a></li><li><a href="Dimmings.html" class="xl">Dimming Systems and GRMS</a></li><li><a href="Solar.html" class="xl">Solar Power System</a></li></ul></li>
+          <li class="c i" x-data="{ dropdown: false, t: null, canHover(){ return !navigationOpen && matchMedia('(hover:hover)').matches } }" @mouseenter="if (canHover()) { clearTimeout(t); dropdown = true }" @mouseleave="if (canHover()) { t = setTimeout(() => dropdown = false, 160) }" @click.outside="dropdown = false" @keydown.escape.stop="dropdown = false; $refs.trig.focus()">
+            <a href="#!" class="xl tc wf yf bg" @click.prevent="dropdown = canHover() ? true : !dropdown" x-ref="trig" role="button" aria-haspopup="true" :aria-expanded="dropdown" @keydown.down.prevent="dropdown = true; $nextTick(() => $refs.menu.querySelector('a').focus())"
+              :class="{ 'mk': page === 'partners' || page === 'blog-grid' || page === 'blog-single' || page === 'signin' || page === 'signup' || page === '404' }">
               Projects
               <svg :class="{ 'wh': dropdown }" class="th mm we fd pf" xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512">
@@ -1111,7 +1284,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
                   d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
               </svg>
             </a>
-            <ul class="a" :class="{ 'tc': dropdown }"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="Partners.html" class="xl"> Partners</a></li></ul>
+            <ul class="a" :class="{ 'tc': dropdown }" x-ref="menu" @click="if ($event.target.closest('a')) { dropdown = false; navigationOpen = false }" @keydown.down.prevent="($event.target.closest('li').nextElementSibling || $event.target.closest('li')).querySelector('a').focus()" @keydown.up.prevent="($event.target.closest('li').previousElementSibling ? $event.target.closest('li').previousElementSibling.querySelector('a').focus() : $refs.trig.focus())"><li><a href="index.html#progress" class="xl">On-Going Progress</a></li><li><a href="index.html#completed" class="xl">Completed Projects</a></li><li><a href="Partners.html" class="xl"> Partners</a></li></ul>
           </li>
 <li><a href="NEWS.html" class="xl" :class="{ 'mk': page === 'news' }">News</a></li><li><a href="Career.html" class="xl" :class="{ 'mk': page === 'careers' }">Careers</a></li><li><a href="CONTACT.html" class="xl" :class="{ 'mk': page === 'contact' }">Contact</a></li>
         </ul>
@@ -1142,7 +1315,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
  <div class="hr-hero"><div class="rv hr-intro"><div class="av-crumb"><a href="index.html">Home</a> / Careers</div><span class="av-kick"><i></i>Careers</span>
   <h1>Build your career <span class="av-grad">with the light.</span></h1>
   <p>Join the team that lights, powers and connects hotels, residences, stadiums and theaters across the Philippines. Learn from leading brands and grow with real projects.</p>
-  <div class="av-cta"><a class="av-btn" href="#av-jobs">See Open Roles</a><a class="av-btn ghost" href="#av-apply">Apply Now</a></div></div><figure class="ht-pic rv" style="--i:2"><div class="ht-frame"><img src="career_icon.jpg" alt="Careers at Systech Lighting &amp; Controls" fetchpriority="high" onerror="this.remove()"><span class="ht-ph">Hero photo<br><small>career_icon.jpg</small></span></div></figure></div>
+  <div class="av-cta"><a class="av-btn" href="#av-jobs">See Open Roles</a><a class="av-btn ghost" href="#av-apply">Apply Now</a></div></div><figure class="ht-pic rv" style="--i:2"><div class="ht-frame"><img src="career_icon.jpg" alt="Careers at Systech Lighting and Controls" fetchpriority="high" onerror="this.remove()"><span class="ht-ph">Hero photo<br><small>career_icon.jpg</small></span></div></figure></div>
  <div class="pw-row"><figure class="hr-pic rv" style="--i:2"><div class="hr-frame"><img src="career_icon2.png" alt="The Systech team on site" fetchpriority="high" onerror="this.remove()"><span class="hr-ph">Hero photo<br><small>Add career_icon2.png</small></span><span class="hr-spot"></span></div><a class="hr-chip" href="#av-jobs"><i></i>Now hiring<b>View open roles</b></a></figure><div id="av-faq" class="pw-col"><div class="av-head rv"><h2>Questions before you apply</h2><p>Quick answers about applying and what happens next.</p></div><div class="pw-f rv"><details><summary>What if no open role fits me?</summary><p>Send your details anyway and choose “General application” in the form. We keep it on file.</p></details><details><summary>How do I send my resume?</summary><p>The application form opens your email app with your details filled in. Attach your resume and send.</p></details><details><summary>What happens after I apply?</summary><p>We review your details and arrange a short screening call, then an interview with the team.</p></details><details><summary>Do you train new hires?</summary><p>Yes. New team members get training from day one and learn on real projects.</p></details><details><summary>Where are your projects?</summary><p>Across the Philippines, in hotels, residences, offices, stadiums, theaters and more.</p></details></div></div></div></div></section>
 <section id="av-jobs" class="av-sec pj-soft-bg"><div class="av-wrap">
  <div class="av-head rv"><h2>Open positions</h2><p>Select a role to see the details, then apply.</p></div>
@@ -1223,7 +1396,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 <div class="animate_top"><ul class="tc wf gg ft-legal">
 <li class="notranslate" translate="no"><button type="button" id="ftLangBtn" class="ft-lang-btn xl" aria-haspopup="listbox" aria-expanded="false" aria-controls="ftLangMenu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span id="ftLangLabel">English</span><svg class="ft-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></li>
 <li><a href="#privacy-policy" id="ftPrivacyLink" class="xl" aria-haspopup="dialog">Privacy Policy</a></li></ul></div>
-<div class="animate_top"><p>&copy; 2027 Systech Lighting &amp; Controls Inc. All rights reserved.</p></div>
+<div class="animate_top"><p>&copy; 2027 Systech Lighting and Controls Inc. All rights reserved.</p></div>
 </div>
 </div>
 </footer>
@@ -1703,7 +1876,7 @@ L.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)
     <div class="pp-head">
       <div>
         <h2 id="ppTitle">Privacy Policy</h2>
-        <p>Systech Lighting &amp; Controls Inc. &middot; Last updated: October 2026</p>
+        <p>Systech Lighting and Controls Inc. &middot; Last updated: October 2026</p>
       </div>
       <button type="button" class="pp-x" id="ppClose" aria-label="Close privacy policy">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -1711,7 +1884,7 @@ L.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)
     </div>
     <div class="pp-body">
       <h3>1. Introduction</h3>
-      <p>Systech Lighting &amp; Controls Inc. (&ldquo;Systech&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This policy explains what personal information we collect through this website, how we use and protect it, and the choices you have. We handle personal data in accordance with the Philippine Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules.</p>
+      <p>Systech Lighting and Controls Inc. (&ldquo;Systech&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) respects your privacy. This policy explains what personal information we collect through this website, how we use and protect it, and the choices you have. We handle personal data in accordance with the Philippine Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules.</p>
 
       <h3>2. Information We Collect</h3>
       <ul>
@@ -1839,7 +2012,7 @@ L.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)
     <div class="pp-head">
       <div>
         <h2 id="spTitle">24/7 Support</h2>
-        <p>Systech Lighting &amp; Controls Inc. &middot; After-sales team</p>
+        <p>Systech Lighting and Controls Inc. &middot; After-sales team</p>
       </div>
       <button type="button" class="pp-x" id="spClose" aria-label="Close support form">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
@@ -1893,6 +2066,236 @@ L.forEach(function(a){var t=document.querySelector(a.getAttribute('href'));if(t)
     send(p).then(function(){form.reset();say('ok','Thank you! Your message was sent to our after-sales team. We will reply to '+email+'.')},
       function(err){say('err','Sorry, we could not send your message'+(err&&err.text?' ('+err.text+')':'')+'. Please try again, or write to '+TO+'.')})
     .then(function(){btn.disabled=false;btn.textContent=label})});
+})();
+</script>
+<script id="nav-interactive-js">
+(function(){
+  var cur=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  document.querySelectorAll('header nav li > ul a[href]').forEach(function(a){
+    var h=a.getAttribute('href').toLowerCase();
+    if(h.indexOf('#')>-1)return;           /* section links on index are not "pages" */
+    if(h===cur)a.setAttribute('aria-current','page');
+  });
+})();
+</script>
+<script id="nav-icons-js">
+(function(){
+  var I={
+    home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',
+    audio:'<path class="sp" d="M4 9v6h4l5 4V5L8 9H4z"/><path class="w1" d="M16 9a4 4 0 010 6"/><path class="w2" d="M18.5 6.5a8 8 0 010 11"/>',
+    light:'<path class="bulb" d="M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1V17h5v-1c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/><path d="M10 20h4"/><g class="rays"><path d="M2.5 9H4M20 9h1.5M5 2.8l1 1M19 2.8l-1 1"/></g>',
+    dimming:'<path class="dim" d="M3 8h18M3 16h18"/><circle class="fillc k1" cx="8" cy="8" r="2.6"/><circle class="fillc k2" cx="16" cy="16" r="2.6"/>',
+    solar:'<circle class="core" cx="12" cy="12" r="4"/><g class="rot"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g>',
+    services:'<rect class="t1" x="3" y="3" width="7" height="7" rx="1.5"/><rect class="t2" x="14" y="3" width="7" height="7" rx="1.5"/><rect class="t3" x="3" y="14" width="7" height="7" rx="1.5"/><rect class="t4" x="14" y="14" width="7" height="7" rx="1.5"/>',
+    products:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
+    projects:'<path d="M3 9V6a2 2 0 012-2h4l2 2h7a2 2 0 012 2v1"/><path class="fr" d="M3 10h18l-1.2 8a2 2 0 01-2 1.7H6.2a2 2 0 01-2-1.7L3 10z"/>',
+    progress:'<rect x="3" y="9" width="18" height="6" rx="3"/><rect class="fillc bar" x="5" y="11" width="4" height="2" rx="1"/>',
+    completed:'<circle class="ring" cx="12" cy="12" r="9"/><path class="ck" pathLength="10" d="M7.5 12.5l3 3 6-6.5"/>',
+    partners:'<circle class="c1" cx="9" cy="12" r="5"/><circle class="c2" cx="15" cy="12" r="5"/>',
+    news:'<path d="M4 4h13v16H6a2 2 0 01-2-2V4z"/><path d="M17 8h3v10a2 2 0 01-2 2"/><path class="nl nl1" pathLength="10" d="M7.5 8h6"/><path class="nl nl2" pathLength="10" d="M7.5 12h6"/><path class="nl nl3" pathLength="10" d="M7.5 16h4"/>',
+    careers:'<g class="bd"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M3 13h18"/></g><path class="hd" d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/>',
+    contact:'<rect x="3" y="5" width="18" height="14" rx="2"/><path class="fl" d="M3 7l9 6 9-6"/>',
+    cta:'<path d="M4 4h16v12H9l-5 4V4z"/><circle class="fillc d1" cx="8.5" cy="10" r="1.1"/><circle class="fillc d2" cx="12" cy="10" r="1.1"/><circle class="fillc d3" cx="15.5" cy="10" r="1.1"/>'
+  };
+  function key(a){
+    var h=(a.getAttribute('href')||'').toLowerCase(), t=(a.textContent||'').replace(/\s+/g,' ').trim().toLowerCase();
+    if(a.classList.contains('lk'))return 'cta';
+    if(h==='index.html')return 'home';
+    if(h==='index.html#services')return 'products';
+    if(h==='index.html#progress')return 'progress';
+    if(h==='index.html#completed')return 'completed';
+    if(h==='audiovisual.html')return 'audio';
+    if(h==='lightings.html')return 'light';
+    if(h==='dimmings.html')return 'dimming';
+    if(h==='solar.html')return 'solar';
+    if(h==='partners.html')return 'partners';
+    if(h==='news.html')return 'news';
+    if(h==='career.html')return 'careers';
+    if(h==='contact.html')return 'contact';
+    if(t.indexOf('services')===0)return 'services';
+    if(t.indexOf('projects')===0)return 'projects';
+    return null;
+  }
+  document.querySelectorAll('header nav a, header a.lk').forEach(function(a){
+    if(a.querySelector('.nv-ic'))return;
+    var k=key(a); if(!k||!I[k])return;
+    var s=document.createElement('span');
+    s.className='nv-ic'; s.setAttribute('data-ic',k); s.setAttribute('aria-hidden','true');
+    s.innerHTML='<svg viewBox="0 0 24 24" focusable="false">'+I[k]+'</svg>';
+    a.insertBefore(s,a.firstChild);
+  });
+  /* detect whether the top-level menu is laid out horizontally (desktop) or stacked (mobile menu) */
+  var root=document.documentElement;
+  function mode(){
+    var lis=document.querySelectorAll('header nav > ul > li');
+    if(lis.length<2){root.classList.remove('nv-h');return}
+    var a=lis[0],b=lis[1];
+    var ra=a.getBoundingClientRect(),rb=b.getBoundingClientRect();
+    var h=a.offsetParent!==null&&ra.width>0&&rb.left>=ra.right-2;
+    root.classList.toggle('nv-h',h);
+    /* enough gap between items to fit an icon without touching the neighbouring label? */
+    root.classList.toggle('nv-roomy',h&&(rb.left-ra.right)>=28);
+  }
+  mode();
+  window.addEventListener('resize',mode);
+  document.addEventListener('pointerover',function(e){if(e.target.closest&&e.target.closest('header'))mode()},{passive:true});
+})();
+</script>
+<script id="nav-mobile-js">
+(function(){
+  var root=document.documentElement,
+      burger=document.querySelector('[data-nv-burger]'),
+      panel=document.querySelector('[data-nv-panel]');
+  if(!burger||!panel)return;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var isOpen=false, timers=[];
+  function haptic(ms){try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}}
+
+  /* mobile mode = the hamburger is actually visible */
+  function mode(){
+    var cs=getComputedStyle(burger);
+    root.classList.toggle('nv-m',cs.display!=='none'&&cs.visibility!=='hidden'&&burger.getClientRects().length>0);
+  }
+  mode();
+  addEventListener('resize',mode); addEventListener('orientationchange',mode); addEventListener('load',mode);
+
+  /* ---------- dock ---------- */
+  var cur=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  var pageKey={'index.html':'home','audiovisual.html':'services','lightings.html':'services','dimmings.html':'services','solar.html':'services','partners.html':'projects','news.html':'news','contact.html':'contact'}[cur]||null;
+  var defs=[['home',0],['services',1],['projects',1],['news',0],['contact',0]];
+  var dock=document.createElement('nav'); dock.className='nv-dock'; dock.setAttribute('aria-label','Quick navigation');
+  var bub=document.createElement('span'); bub.className='nv-bub'; dock.appendChild(bub);
+  var els={};
+  defs.forEach(function(d,i){
+    var ic=panel.querySelector('.nv-ic[data-ic="'+d[0]+'"]'); if(!ic)return;
+    var src=ic.parentNode, a=document.createElement('a');
+    a.href=d[1]?'#':src.getAttribute('href'); a.setAttribute('data-k',d[0]); a.setAttribute('data-i',i);
+    if(d[1]){a.setAttribute('role','button')}
+    var label=(src.textContent||'').replace(/\s+/g,' ').trim();
+    a.innerHTML='<span class="nv-ic" data-ic="'+d[0]+'" aria-hidden="true">'+ic.innerHTML+'</span><span>'+label+'</span>';
+    if(d[0]===pageKey){a.classList.add('on');a.setAttribute('aria-current','page')}
+    dock.appendChild(a); els[d[0]]=a;
+  });
+  document.body.appendChild(dock);
+  function setBubble(k){
+    var a=els[k];
+    dock.classList.toggle('nv-none',!a);
+    if(a)dock.style.setProperty('--i',a.getAttribute('data-i'));
+  }
+  setBubble(pageKey);
+
+  /* ---------- bottom sheet: the dock shows its own sub-navigation, the header menu stays out of it ---------- */
+  var scrim=document.createElement('div'); scrim.className='nv-scrim';
+  var sheet=document.createElement('div'); sheet.className='nv-sheet'; sheet.setAttribute('role','menu');
+  document.body.appendChild(scrim); document.body.appendChild(sheet);
+  var sheetKey=null;
+  function subLinks(k){
+    var lis=panel.querySelectorAll('nav > ul > li');
+    for(var i=0;i<lis.length;i++){
+      var ic=lis[i].querySelector(':scope > a > .nv-ic');
+      if(ic&&ic.getAttribute('data-ic')===k)return lis[i].querySelectorAll(':scope > ul a[href]');
+    }
+    return [];
+  }
+  function closeSheet(){
+    if(sheetKey===null)return;
+    sheetKey=null; sheet.classList.remove('on'); scrim.classList.remove('on');
+    setBubble(pageKey);
+  }
+  function openSheet(k){
+    if(sheetKey===k){closeSheet();return}
+    var links=subLinks(k), html='<div class="nv-sh-t">'+els[k].textContent.replace(/\s+/g,' ').trim()+'</div>';
+    [].forEach.call(links,function(a,i){
+      var ic=a.querySelector('.nv-ic'), cur=a.getAttribute('aria-current')==='page'?' aria-current="page"':'';
+      html+='<a role="menuitem" href="'+a.getAttribute('href')+'" style="--j:'+i+'"'+cur+'><span class="nv-ic" data-ic="'+(ic?ic.getAttribute('data-ic'):'')+'" aria-hidden="true">'+(ic?ic.innerHTML:'')+'</span><span>'+a.textContent.replace(/\s+/g,' ').trim()+'</span></a>';
+    });
+    sheet.classList.remove('on'); void sheet.offsetWidth;
+    sheet.innerHTML=html; sheet.scrollTop=0;
+    var r=els[k].getBoundingClientRect();
+    sheet.style.setProperty('--cx',Math.round(r.left+r.width/2-12)+'px');
+    setBubble(k); sheetKey=k; sheet.classList.add('on'); scrim.classList.add('on'); haptic(10);
+    if(!reduce)[].forEach.call(sheet.querySelectorAll('a'),function(a,i){setTimeout(function(){play(a,900)},260+i*90)});
+  }
+  scrim.addEventListener('click',closeSheet);
+  var ty=0;
+  sheet.addEventListener('touchstart',function(e){ty=e.touches[0].clientY},{passive:true});
+  sheet.addEventListener('touchend',function(e){if(e.changedTouches[0].clientY-ty>70&&sheet.scrollTop<=0)closeSheet()});
+  dock.addEventListener('click',function(e){
+    var a=e.target.closest('a'); if(!a)return;
+    var k=a.getAttribute('data-k');
+    if(a.getAttribute('role')==='button'){e.preventDefault();openSheet(k)}
+    else{closeSheet();setBubble(k)}
+  });
+
+  /* hide the dock while scrolling down, bring it back on scroll up */
+  var lastY=scrollY,tick=false;
+  addEventListener('scroll',function(){
+    if(tick)return; tick=true;
+    requestAnimationFrame(function(){
+      var y=scrollY;
+      if(y>lastY+6&&y>140){dock.classList.add('nv-away');closeSheet()}
+      else if(y<lastY-6||y<100)dock.classList.remove('nv-away');
+      lastY=y; tick=false;
+    });
+  },{passive:true});
+
+  /* ---------- open / close ---------- */
+  function play(a,ms){a.classList.add('nv-play');setTimeout(function(){a.classList.remove('nv-play')},ms||1000)}
+  function setOpen(v){
+    if(v===isOpen)return; isOpen=v;
+    root.classList.toggle('nv-open',v);
+    burger.setAttribute('aria-label',v?'Close menu':'Menu');
+    timers.forEach(clearTimeout); timers=[];
+    if(v){
+      closeSheet();haptic(12);
+      if(!reduce)panel.querySelectorAll('nav > ul > li > a').forEach(function(a,i){
+        timers.push(setTimeout(function(){play(a,1100)},300+i*110));
+      });
+    }else{
+      setBubble(pageKey);
+    }
+  }
+  new MutationObserver(function(){setOpen(panel.getAttribute('data-open')==='true')})
+    .observe(panel,{attributes:true,attributeFilter:['data-open']});
+  setOpen(panel.getAttribute('data-open')==='true');
+  function closeMenu(){if(isOpen)burger.click()}
+  addEventListener('keydown',function(e){if(e.key==='Escape'){if(isOpen)closeMenu();closeSheet()}});
+
+  /* ---------- swipe right to close (panel follows the finger) ---------- */
+  var sx=0,sy=0,dx=0,lock=null;
+  panel.addEventListener('touchstart',function(e){var t=e.touches[0];sx=t.clientX;sy=t.clientY;dx=0;lock=null},{passive:true});
+  panel.addEventListener('touchmove',function(e){
+    var t=e.touches[0],mx=t.clientX-sx,my=t.clientY-sy;
+    if(lock===null&&(Math.abs(mx)>10||Math.abs(my)>10))lock=(mx>0&&Math.abs(mx)>Math.abs(my)*1.4)?'x':'y';
+    if(lock==='x'){
+      dx=Math.max(0,mx);
+      panel.classList.add('nv-drag');
+      panel.style.setProperty('--nv-drag',dx+'px');
+      panel.style.opacity=String(1-Math.min(dx/320,.6));
+    }
+  },{passive:true});
+  function endDrag(){
+    if(lock==='x'){
+      var shut=dx>110;
+      panel.classList.remove('nv-drag');
+      panel.style.removeProperty('--nv-drag');
+      panel.style.opacity='';
+      if(shut)closeMenu();
+    }
+    lock=null; dx=0;
+  }
+  panel.addEventListener('touchend',endDrag); panel.addEventListener('touchcancel',endDrag);
+
+  /* ---------- tap ripple + icon play + haptic ---------- */
+  document.addEventListener('pointerdown',function(e){
+    var a=e.target.closest&&e.target.closest('[data-nv-panel] a, .nv-dock a, .nv-sheet a'); if(!a)return;
+    haptic(6);
+    play(a,1000);
+    if(reduce)return;
+    var r=a.getBoundingClientRect(), s=document.createElement('span');
+    s.className='nv-rip'; s.style.left=(e.clientX-r.left)+'px'; s.style.top=(e.clientY-r.top)+'px';
+    a.appendChild(s); setTimeout(function(){s.remove()},700);
+  },{passive:true});
 })();
 </script>
 </body>

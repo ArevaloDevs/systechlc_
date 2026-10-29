@@ -952,10 +952,39 @@ html.nv-open .nv-sheet,html.nv-open .nv-scrim{display:none}
 }
 </style>
 <style id="nav-logo-css">
-/* logos: the h-10 / max-h-10 utility classes are missing from the compiled stylesheet, so every logo rendered at its natural file size.
-   h-10 (2.5rem = 40px) was the intended size — header and footer, every page, every screen width. */
-img[src^="logo-light_systech"],img[src^="logo-dark_systech"]{height:40px!important;width:auto!important;max-height:40px!important;max-width:min(70vw,260px)!important;object-fit:contain;object-position:left center}
-header > div > div:first-child > a{display:flex;align-items:center;min-width:0}
+/* logos: desktop keeps the original (Audiovisual page) size on every page.
+   Phones and tablets get the fixed size, because the h-10 class is missing from the compiled stylesheet. */
+@media (max-width:1279px){
+  img[src^="logo-light_systech"],img[src^="logo-dark_systech"]{height:40px!important;width:auto!important;max-height:40px!important;max-width:min(70vw,260px)!important;object-fit:contain;object-position:left center}
+  header > div > div:first-child > a{display:flex;align-items:center;min-width:0}
+}
+html.nv-m img[src^="logo-light_systech"],html.nv-m img[src^="logo-dark_systech"]{height:40px!important;width:auto!important;max-height:40px!important;max-width:min(70vw,260px)!important;object-fit:contain}
+</style>
+<style id="nw-viewer-css">
+/* article viewer: image beside the description (Facebook / Instagram style), close button outside the box */
+dialog.nw-dlg{width:min(1180px,94vw);height:min(86vh,760px);max-height:none;overflow:visible;border:0;border-radius:0;padding:0;background:transparent;box-shadow:none;color:var(--av-t)}
+dialog.nw-dlg[open]{display:block;animation:nwPop .35s cubic-bezier(.16,1,.3,1)}
+@keyframes nwPop{from{opacity:0;transform:scale(.96)}}
+dialog.nw-dlg::backdrop{background:rgba(5,8,22,.84);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.nw-x{position:fixed;top:18px;right:22px;z-index:5;float:none;margin:0;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:1.8rem;line-height:1;cursor:pointer;transition:transform .3s,background .3s}
+.nw-x:hover{background:rgba(255,255,255,.3);transform:rotate(90deg)}
+#nwDB{height:100%}
+.nw-split{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(320px,1fr);height:100%;border-radius:22px;overflow:hidden;background:var(--av-card);box-shadow:0 40px 100px -20px rgba(0,0,0,.75)}
+.nw-pic{position:relative;min-height:0;overflow:hidden;background:#05071a}
+.nw-pic::before{content:"";position:absolute;inset:-30px;background:var(--bg) center/cover no-repeat;filter:blur(34px) brightness(.55) saturate(1.2)}
+.nw-split .nw-art{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;border-radius:0;background:transparent}
+.nw-split .nw-art img{object-fit:contain}
+.nw-pic:not([style]) .nw-art{background:var(--g)}
+.nw-split .nw-body{display:flex;flex-direction:column;min-width:0;min-height:0;overflow-y:auto;padding:30px 28px 28px;border-left:1px solid var(--av-line)}
+.nw-split .nw-body .nw-meta{margin-top:0}
+.nw-split .nw-body h2{font-size:1.45rem;line-height:1.25;margin:10px 0 14px}
+.nw-split .nw-body .av-btn{align-self:flex-start;margin-top:auto}
+@media(max-width:860px){
+  dialog.nw-dlg{width:94vw;height:88vh}
+  .nw-split{grid-template-columns:1fr;grid-template-rows:minmax(0,42%) minmax(0,1fr)}
+  .nw-split .nw-body{border-left:0;padding:22px 20px}
+  .nw-x{top:10px;right:12px;width:42px;height:42px}
+}
 </style>
 </head>
 <body x-data="{ page: 'news', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
@@ -1402,12 +1431,13 @@ Grateful for the experience and excited to bring these insights home as we conti
   function openArticle(id) {
     var p = posts.filter(function (x) { return x.id === id; })[0];
     if (!p) return;
-    $('nwDB').innerHTML = art(p) +
+    var bg = p.image ? ' style="--bg:url(&quot;' + esc(p.image) + '&quot;)"' : '';
+    $('nwDB').innerHTML = '<div class="nw-split"><div class="nw-pic"' + bg + '>' + art(p) + '</div>' +
       '<div class="nw-body">' + meta(p) +
         '<h2>' + esc(p.title) + '</h2>' +
         p.body.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') +
         '<a class="av-btn" href="CONTACT.html">Talk to our team</a>' +
-      '</div>';
+      '</div></div>';
     if (dialog.showModal && !dialog.open) dialog.showModal();
     else dialog.setAttribute('open', '');
     history.replaceState(null, '', '#' + id);

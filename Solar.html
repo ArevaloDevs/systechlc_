@@ -1043,10 +1043,13 @@ html.nv-open .nv-sheet,html.nv-open .nv-scrim{display:none}
 }
 </style>
 <style id="nav-logo-css">
-/* logos: the h-10 / max-h-10 utility classes are missing from the compiled stylesheet, so every logo rendered at its natural file size.
-   h-10 (2.5rem = 40px) was the intended size — header and footer, every page, every screen width. */
-img[src^="logo-light_systech"],img[src^="logo-dark_systech"]{height:40px!important;width:auto!important;max-height:40px!important;max-width:min(70vw,260px)!important;object-fit:contain;object-position:left center}
-header > div > div:first-child > a{display:flex;align-items:center;min-width:0}
+/* logos: desktop keeps the original (Audiovisual page) size on every page.
+   Phones and tablets get the fixed size, because the h-10 class is missing from the compiled stylesheet. */
+@media (max-width:1279px){
+  img[src^="logo-light_systech"],img[src^="logo-dark_systech"]{height:40px!important;width:auto!important;max-height:40px!important;max-width:min(70vw,260px)!important;object-fit:contain;object-position:left center}
+  header > div > div:first-child > a{display:flex;align-items:center;min-width:0}
+}
+html.nv-m img[src^="logo-light_systech"],html.nv-m img[src^="logo-dark_systech"]{height:40px!important;width:auto!important;max-height:40px!important;max-width:min(70vw,260px)!important;object-fit:contain}
 </style>
 </head>
 <body x-data="{ page: 'solar', 'darkMode': false, 'stickyMenu': false, 'navigationOpen': false, 'scrollTop': false }"
